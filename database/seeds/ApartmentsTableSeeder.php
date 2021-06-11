@@ -2,6 +2,7 @@
 
 use App\Apartment;
 use App\User;
+use App\Service;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -372,6 +373,7 @@ class ApartmentsTableSeeder extends Seeder
             ],
         ];
         $users = User::all();
+        $services = Service::all();
         
         $inserted = [];
         foreach ($users as $user) {
@@ -398,7 +400,14 @@ class ApartmentsTableSeeder extends Seeder
                     $apartment->visible = rand(0,1);
 
                     $inserted[] = $index;
+
+                    
                     $apartment->save();
+                    
+                    for ( $y = 0; $y < rand( 1, count($services)-1 ); $y++ ) {
+                        $data['services'] = $services[rand( 0,count($services)-1 )];
+                        $apartment->services()->attach($data['services']);
+                    }
                 }
             }
         }

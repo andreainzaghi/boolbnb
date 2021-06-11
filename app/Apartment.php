@@ -6,13 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apartment extends Model
 {
-    protected $guarded = [];
+    protected $guarded = ['services', 'sponsors'];
 
     // SERVICES
     public function services()
     {
 
         return $this->belongsToMany('App\Service');
+    }
+
+    // SERVICES
+    public function sponsors()
+    {
+
+        return $this->belongsToMany('App\Sponsor');
     }
 
     // MESSAGES
