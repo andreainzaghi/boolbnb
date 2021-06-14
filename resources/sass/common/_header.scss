@@ -1,0 +1,25 @@
+header {
+    background-color: #fff;
+    position: fixed;
+    width: 100%;
+    padding: 4px 0;
+
+    #logo {
+        color: $primaryColor;
+        font-size: 30px;
+        transition: all 0.5s;
+
+        &:hover {
+            color: $primaryColorDark;
+        }
+    }
+
+    .my-btn-secondary {
+        margin-right: 10px;
+
+        @include media-breakpoint-up(md) { 
+            margin-right: 20px;
+        }
+    }
+}
+

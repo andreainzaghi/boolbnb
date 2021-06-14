@@ -22,7 +22,7 @@ class BnbController extends Controller
                 $sponsored[] = $apartment;
             }
         }
-        return view('welcome', compact('sponsored'));
+        return view('ui.welcome', /*compact('sponsored')*/);
     }
 
     public function search(Request $request) {

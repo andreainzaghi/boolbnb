@@ -1,0 +1,37 @@
+.my-btn {
+    border-radius: 10px;
+    box-shadow: 0 0 16px 0 $shadowColor;
+    padding: 5px 15px;
+    font-weight: $fontMed;
+    font-size: 13px;
+    transition: all ease-in-out 0.2s;
+
+
+    @include media-breakpoint-up(md) { 
+        i {
+            margin-right: 10px;
+        }
+    }
+}
+
+.my-btn-primary {
+    background-color: $primaryColor;
+    color: #fff;
+    border: 2px solid $primaryColorLight;
+
+    &:hover {
+        background-color: $primaryColorDark;
+        color: #fff;
+    }
+}
+
+.my-btn-secondary {
+    background-color: #fff;
+    color: $primaryColor;
+    border: 2px solid $primaryColor;
+
+    &:hover {
+        background-color: $primaryColor;
+        color: #fff;
+    }
+}
