@@ -24,7 +24,6 @@ class ApartmentsTableSeeder extends Seeder
         $sponsors = Sponsor::all();
 
         // Si prende la data corrente
-        $currentDate = Carbon::now();
 
         $appartamenti = [
             [
@@ -422,6 +421,7 @@ class ApartmentsTableSeeder extends Seeder
 
                     //Inserimento degli sponsor
                     if($apartment->visible){
+                        $currentDate = Carbon::now();
                         if(rand(0,1)){
                             $data['sponsors'] = $sponsors[rand( 0,count($sponsors)-1 )];
                             $apartment->sponsors()->attach($data['sponsors'],['expiration' => $currentDate->addHours($data['sponsors']->hours)]);
