@@ -12,6 +12,6 @@ class Message extends Model
     // APARTMENT
     public function apartment()
     {
-        return $this->belongsTo('App\Appartment');
+        return $this->belongsTo('App\Apartment');
     }
 }

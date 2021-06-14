@@ -16,7 +16,7 @@ class CreateApartmentSponsorTable extends Migration
         Schema::create('apartment_sponsor', function (Blueprint $table) {
             $table->foreignId('sponsor_id')->constrained()->onDelete('cascade');
             $table->foreignId('apartment_id')->constrained()->onDelete('cascade');
-            $table->date('expiration');
+            $table->dateTime('expiration');
             $table->boolean('settled')->default(0);
             //////////////////////////////////////
             $table->id();
