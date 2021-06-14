@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::prefix('/')->namespace('UI')->group(function () {
-    Route::get('', 'BnbController@index')->name('home');
+    Route::get('', 'BnbController@index')->name('welcome');
+    Route::get('search', 'BnbController@search')->name('search');
 });
 
 Route::get('/home', 'HomeController@index');
@@ -25,3 +26,5 @@ Auth::routes();
 Route::prefix('ur')->name('ur.')->namespace('UR')->middleware('auth')->group(function () {
     Route::resource('apartments', 'ApartmentController');
 });
+
+
