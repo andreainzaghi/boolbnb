@@ -3,6 +3,8 @@
 use App\Apartment;
 use App\User;
 use App\Service;
+use App\Sponsor;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -16,6 +18,14 @@ class ApartmentsTableSeeder extends Seeder
      */
     public function run( Faker $faker )
     {
+        
+        $users = User::all();
+        $services = Service::all();
+        $sponsors = Sponsor::all();
+
+        // Si prende la data corrente
+        $currentDate = Carbon::now();
+
         $appartamenti = [
             [
                 'address' => 'Via Nazionale, 12',
@@ -372,8 +382,7 @@ class ApartmentsTableSeeder extends Seeder
                 "long" => 9.197159,
             ],
         ];
-        $users = User::all();
-        $services = Service::all();
+     
         
         $inserted = [];
         foreach ($users as $user) {
@@ -381,8 +390,9 @@ class ApartmentsTableSeeder extends Seeder
             if( rand(0,1) ){
                 for ( $i = 0; $i < rand(1,6); $i++ ) {
                     do
-                    $index = rand(0, count($appartamenti) - 1);
+                        $index = rand(0, count($appartamenti) - 1);
                     while( in_array( $index, $inserted ) );
+
                     $apartment = new Apartment();
                     $apartment->user_id = $user->id;
                     $apartment->address = $appartamenti[$index]['address'];
@@ -404,9 +414,18 @@ class ApartmentsTableSeeder extends Seeder
                     
                     $apartment->save();
                     
+                    //Inserimento dei servizi
                     for ( $y = 0; $y < rand( 1, count($services)-1 ); $y++ ) {
                         $data['services'] = $services[rand( 0,count($services)-1 )];
                         $apartment->services()->attach($data['services']);
+                    }
+
+                    //Inserimento degli sponsor
+                    if($apartment->visible){
+                        if(rand(0,1)){
+                            $data['sponsors'] = $sponsors[rand( 0,count($sponsors)-1 )];
+                            $apartment->sponsors()->attach($data['sponsors'],['expiration' => $currentDate->addHours($data['sponsors']->hours)]);
+                        }
                     }
                 }
             }
