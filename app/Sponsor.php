@@ -11,6 +11,6 @@ class Sponsor extends Model
     // APARTMENT
     public function apartments()
     {
-        return $this->belongsToMany('App\Appartment');
+        return $this->belongsToMany('App\Apartment');
     }
 }
