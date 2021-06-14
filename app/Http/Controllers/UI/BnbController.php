@@ -26,7 +26,12 @@ class BnbController extends Controller
     }
 
     public function search(Request $request) {
-        $result = Apartment::where('city', 'LIKE', '%'.$request->input('search', '').'%')->get();
+        $data = $request->all();
+
+        $city = $data['city'];
+        $apartments = Apartment::where('city', 'LIKE', '%'.$city.'%')->get();
+
+        return view('ui.search', compact('apartments', 'city'));
 
     }
 }
