@@ -15,7 +15,7 @@ class CreateApartmentsTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('title', 100)->unique();
+            $table->string('title', 100);
             $table->text('description');
             $table->tinyInteger('rooms');
             $table->tinyInteger('bathrooms');
@@ -27,7 +27,7 @@ class CreateApartmentsTable extends Migration
             $table->double('long', 9.6);
             $table->string('image', 50)->nullable();
             $table->boolean('visible')->default(0);
-            $table->string('slug', 100)->unique();
+            $table->string('slug', 120)->unique();
             ///////////////////////////////////////
             $table->id();
             $table->timestamps();

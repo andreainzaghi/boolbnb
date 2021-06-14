@@ -399,7 +399,7 @@ class ApartmentsTableSeeder extends Seeder
                     $apartment->lat = $appartamenti[$index]['lat'];
                     $apartment->long = $appartamenti[$index]['long'];
                     $apartment->title = $faker->sentence(rand(1,3));
-                    $apartment->slug = Str::slug( $apartment->title, '-' );;
+                    $apartment->slug = Str::slug( $apartment->title, '-' );
                     $apartment->description = $faker->paragraph(5);
                     $apartment->rooms = rand(4, 10);
                     $apartment->bathrooms = rand(1, 2);
