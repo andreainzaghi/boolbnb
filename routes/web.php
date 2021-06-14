@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('/')->namespace('UI')->group(function () {
+    Route::get('', 'BnbController@index')->name('home');
 });
+
+Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('ur')->name('ur.')->namespace('UR')->middleware('auth')->group(function () {
+    Route::resource('apartments', 'ApartmentController');
+});

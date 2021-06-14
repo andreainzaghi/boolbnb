@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\UR;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
@@ -92,6 +93,9 @@ class ApartmentController extends Controller
      */
     public function show( Apartment $apartment )
     {
+        if($apartment->user_id != Auth::id()){
+            abort('403');
+        }
         return view('ur.apartments.show', compact('apartment'));
     }
 
@@ -103,6 +107,9 @@ class ApartmentController extends Controller
      */
     public function edit( Apartment $apartment )
     {
+        if($apartment->user_id != Auth::id()){
+            abort('403');
+        }
         $services = Service::all();
         return view('ur.apartments.edit', compact('apartment', 'service'));
     }
