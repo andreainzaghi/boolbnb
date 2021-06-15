@@ -37,7 +37,7 @@ class BnbController extends Controller
         return view('ui.search', compact('apartments', 'city', 'services'));
 
     }
-    public funtion show(){
+    public function show(){
         $apartments = Apartment::All();
         json_encode($apartments);
     }
