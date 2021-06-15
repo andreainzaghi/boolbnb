@@ -21,6 +21,7 @@ Route::prefix('/')->namespace('UI')->group(function () {
 
 Route::get('/home', 'HomeController@index');
 
+
 Auth::routes();
 
 Route::prefix('ur')->name('ur.')->namespace('UR')->middleware('auth')->group(function () {

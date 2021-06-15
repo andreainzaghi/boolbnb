@@ -14,17 +14,18 @@
 @import "~@fortawesome/fontawesome-free/scss/brands";
 
 //in comune
-@import 'common/mineVariables';
+@import 'common/myVariables';
 @import 'common/header';
 @import 'common/main';
 @import 'common/footer';
 @import 'common/typo';
 @import 'common/btns';
-
+@import 'common/helpers';
+@import 'common/common';
 
 //lato UR
-
-
+@import 'partials/ur/ur-main';
+@import 'partials/ur/ur-main-dashboard';
 
 //lato UI
 

@@ -1,0 +1,15 @@
+main {
+    height: calc(100vh - 40px);
+    background-color: $bgColor;
+}
+
+.main__box {
+    height: calc(100vh - 40px - 90px);
+    margin-top: 90px;
+    background-color: #fff;
+    flex-grow: 1;
+
+    @include media-breakpoint-up(sm) { 
+        border-radius: 20px 20px 0 0; 
+    }
+}
