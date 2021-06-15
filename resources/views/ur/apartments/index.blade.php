@@ -1,10 +1,14 @@
-@extends('layouts.ur-base')
+@extends('layouts.base-box')
 
 @section('pageTitle')
     BoolBnb - Dashboard
 @endsection
 
-@section('urMainContent')
+@section('mainTitle')
+    I miei appartamenti
+@endsection
+
+@section('MainContent')
     <div class="dash-wrapper">
         <div class="dash__card">
             <a href="#">

@@ -1,0 +1,10 @@
+@extends('layouts.base')
+
+@section('mainLay')
+    <div class="main__box box-shadow px-0">
+        <div class="ur-wrapper">
+            <h2 class="ur-main__title">@yield('mainTitle')</h2>
+            @yield('MainContent')
+        </div>
+    </div>
+@endsection
