@@ -4,36 +4,32 @@
     Risultati per - {{$city}}
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+@endsection
+
 @section('mainLay')
-<div class="container">
-    <div id="app">
-
-        <h1>Risultati per - {{$city}}</h1>
-
-        <input type="text" name="city" v-model="city"> <br/>
-        <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
-        <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button>
-
-        <div class='control-panel'>
+<div id="app" class="mt-20">
+    <h1>Risultati per - {{$city}}</h1>
+    <div class='control-panel'>
+        <div class="search">
+            <input type="text" name="city" v-model="city"> <br/>
+            {{-- <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
+            <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button> --}}
+        </div>
+        <div class="filter">
             @foreach ( $services as $service )
-                <div class="form-group-inline">
+                <div class="filter__services">
                     <input type="checkbox" name="{{$service->name}}" value="{{$service->name}}">
                     <label for="{{$service->name}}">{{$service->name}}</label>
                 </div>
             @endforeach
-            <div class='heading'>
-                <span>BOOLBNB</span>
-            </div>
-            <div id='apartments-list'></div>
         </div>
-        <!-- Fine Pannello di selezione -->
-        </div>
-        <!-- Mappa -->
-        <div id='map' class='map'></div>
-
-
-    </div>    
-</div>
+        <div id='apartments-list'></div>
+    </div>
+    <!-- Mappa -->
+    <div id='map' class='map'></div>
+</div>    
 @endsection
 
 @section('script')
