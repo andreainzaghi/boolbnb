@@ -6,25 +6,32 @@
     background-color: #fff;
     border-radius: 20px;
     margin-top: 80px;
-    margin-bottom: 80px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     overflow: hidden;
-
-    h1 {
-        font-size: 17px;
-        width: 100%;
-    }
+    padding: 15px 15px 15px 40px;
 }
 
 .control-panel {
     background-color: #fff;
-    height: calc(100vh - 170px);
+    height: calc(100vh - 210px);
     overflow: hidden;
     width: 65%;
     display: flex; 
     flex-direction: column;
+    position: relative;
+
+    .actions {
+        width: 100%;
+        background-color: #fff;
+    }
+
+    h1 {
+        font-size: 16px;
+        line-height: 1;
+        text-align: top;
+    }
 
     .filter {
         display: flex;
@@ -56,6 +63,7 @@
 /* Stile mappa */
 #map {
     width: 30%;
+    height: calc(100vh - 175px);
 
     .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
         display: none;

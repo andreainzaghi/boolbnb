@@ -6,24 +6,27 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
 @endsection
 
 @section('mainLay')
 <div id="app" class="mt-20">
-    <h1>Risultati per - {{$city}}</h1>
     <div class='control-panel'>
-        <div class="search">
-            <input type="text" name="city" v-model="city"> <br/>
-            {{-- <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
-            <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button> --}}
-        </div>
-        <div class="filter">
-            @foreach ( $services as $service )
-                <div class="filter__services">
-                    <input type="checkbox" name="{{$service->name}}" value="{{$service->name}}">
-                    <label for="{{$service->name}}">{{$service->name}}</label>
-                </div>
-            @endforeach
+        <div class="actions">
+            <h1>Risultati per - {{$city}}</h1>
+            <div class="search">
+                <input type="text" name="city" v-model="city"> <br/>
+                {{-- <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
+                <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button> --}}
+            </div>
+            <div class="filter">
+                @foreach ( $services as $service )
+                    <div class="filter__services">
+                        <input type="checkbox" name="{{$service->name}}" value="{{$service->name}}">
+                        <label for="{{$service->name}}">{{$service->name}}</label>
+                    </div>
+                @endforeach
+            </div>
         </div>
         <div id='apartments-list'></div>
     </div>

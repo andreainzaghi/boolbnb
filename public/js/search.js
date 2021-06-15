@@ -79,6 +79,8 @@ function buildLocation(htmlParent, text) {
   return details;
 }
 
+var markersCity = [];
+
 function generateMap() {
   var apartments = {
     "type": "FeatureCollection",
@@ -107,7 +109,6 @@ function generateMap() {
     // Prop. nec. ID dell' elemento HTML in cui viene mostrata la mappa
     container: 'map'
   });
-  var markersCity = [];
   var list = document.getElementById('apartments-list'); // Ciclo gli appartamenti per creare marker e voce della lista
 
   apartments.features.forEach(function (apartment, index) {
@@ -130,16 +131,9 @@ function generateMap() {
     };
 
     if (cityApartmentsList === null) {
-      var cityApartmentsListHeading = list.appendChild(document.createElement('h3'));
-      cityApartmentsListHeading.innerHTML = city;
       cityApartmentsList = list.appendChild(document.createElement('div'));
       cityApartmentsList.id = city;
       cityApartmentsList.className = 'list-entries-container';
-      cityApartmentsListHeading.addEventListener('click', function (e) {
-        map.fitBounds(getMarkersBoundsForCity(e.target.innerText), {
-          padding: 50
-        });
-      });
     }
 
     var details = buildLocation(cityApartmentsList, address);
@@ -165,12 +159,16 @@ function generateMap() {
         details.classList.add('selected');
         map.easeTo({
           center: marker.getLngLat(),
-          zoom: 18
+          zoom: 17
         });
         closeAllPopups();
         marker.togglePopup();
       };
     }(marker));
+    map.fitBounds(getMarkersBoundsForCity(app._data.city), {
+      /* padding: 50 */
+      zoom: 11
+    });
   });
 }
 /******/ })()
