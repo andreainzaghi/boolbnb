@@ -33,6 +33,10 @@ class BnbController extends Controller
         $apartments = Apartment::where('city', 'LIKE', '%'.$city.'%')->get();
         $services = Service::all();
 
+        json_encode($apartments);
+        json_encode($services);
+        json_encode($city);
+
         return view('ui.search', compact('apartments', 'city', 'services'));
 
     }
