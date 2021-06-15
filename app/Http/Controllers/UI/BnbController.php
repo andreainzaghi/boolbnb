@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UI;
 
 use App\Http\Controllers\Controller;
 use App\Sponsor;
+use App\Service;
 use App\Apartment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
