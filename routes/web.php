@@ -19,7 +19,7 @@ Route::prefix('/')->namespace('UI')->group(function () {
     Route::get('search', 'BnbController@search')->name('search');
 });
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index'); Pagina Login
 
 
 Auth::routes();

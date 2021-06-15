@@ -82,7 +82,7 @@ class ApartmentController extends Controller
             $newapartment->services()->attach( $data['services'] );
         }
 
-        return redirect()->route( 'admin.apartments.show', [ 'post' => $newapartment ] );
+        return redirect()->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] );
     }
 
     /**
