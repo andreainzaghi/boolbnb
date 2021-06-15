@@ -1,103 +1,69 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.base')
 
-        <title>Laravel</title>
+@section('pageTitle')
+    BoolBnb - Home
+@endsection
 
+@section('mainContent')
+<div id="app">
 
+    {{-- hero --}}
+    <div class="container">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <div>
+            <form action="{{route('search')}}">
+                <div class="form-group">
+                    <label for="city">Cerca appartamenti</label>
+                    <input class="search" type="text" id="city" placeholder="Inserisci una città" name="city">
+                <div class="form-group">
+                <button class="btn" type="submit">Cerca</button>
+            </form>
+        </div>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+        <div class="phrase">
+            <h1>Lorem ipsum orem ipsum abet</h1>
+            <p>Lorem ipsum abet Lorem ipsum</p>
+        </div>
 
-            .full-height {
-            }
+    </div>
+    {{-- /hero --}}
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div id="app">
-                    <form action="{{route('search')}}">
-                        <div class="form-group">
-                            <label for="city">Cerca appartamenti</label>
-                            <input type="text" class="form-control" id="city" placeholder="Inserisci una città" name="city" >
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-               
+    {{-- sposored --}}
+    <div class="sponsored">
+        <div class="card">
+            <h4 class="card_title">Lorem ipsum abet</h4>
+            <div class="card_image">
+                
             </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <div class="card">
+            <h4 class="card_title">Lorem ipsum abet</h4>
+            <div class="card_image">
+                
+            </div>
+        </div>
+
+        <div class="card">
+            <h4 class="card_title">Lorem ipsum abet</h4>
+            <div class="card_image">
+                
+            </div>
+        </div>
+
+        <div class="card">
+            <h4 class="card_title">Lorem ipsum abet</h4>
+            <div class="card_image">
+                
+            </div>
+        </div>
+    </div>
+    {{-- /sposored --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/search.js') }}" defer></script>
-    </body>
-</html>
+</div>  
+@endsection
