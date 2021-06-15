@@ -34,7 +34,7 @@
                                     @else
                                         <a href="{{ route('login') }}" class="my-btn my-btn-primary"><i class="fas fa-sign-out-alt"></i><span class="d-none d-md-inline-block">Log-in</span></a>                        
                                     @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="my-btn my-btn-primary"><i class="fas fa-sign-out-alt"></i><span class="d-none d-md-inline-block">Log-in</span></a>
+                                        <a href="{{ route('register') }}" class="my-btn my-btn-primary"><i class="fas fa-sign-in-alt"></i><span class="d-none d-md-inline-block">Log-in</span></a>
                                     @endif
                                     @endauth
                                 </div>
