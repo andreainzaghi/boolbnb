@@ -1,69 +1,62 @@
-@extends('layouts.base')
+@extends('layouts.base-empty')
 
 @section('pageTitle')
     BoolBnb - Home
 @endsection
 
-@section('mainContent')
-<div id="app">
-
+@section('mainLay')
     {{-- hero --}}
-    <div class="container">
 
-        <div>
-            <form action="{{route('search')}}">
-                <div class="form-group">
-                    <label for="city">Cerca appartamenti</label>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <form action="{{route('search')}}">
                     <input class="search" type="text" id="city" placeholder="Inserisci una città" name="city">
-                <div class="form-group">
-                <button class="btn" type="submit">Cerca</button>
-            </form>
+                    <button class="btn" type="submit">Cerca</button>
+                </form>
+                <div class="phrase">
+                    <h1 class="display-4">Scegli la tua prossima destinazione</h1>
+                    <p class="lead">Lorem ipsum abet Lorem ipsum</p>
+                </div>
+            </div>
         </div>
 
-        <div class="phrase">
-            <h1>Lorem ipsum orem ipsum abet</h1>
-            <p>Lorem ipsum abet Lorem ipsum</p>
-        </div>
-
-    </div>
     {{-- /hero --}}
 
     {{-- sposored --}}
     <div class="sponsored">
-        <div class="card">
+        <div class="ap_card">
             <h4 class="card_title">Lorem ipsum abet</h4>
-            <div class="card_image">
-                
+            <div class="card_image shadow p-3 mb-5 bg-white rounded">
+                <img src="" alt="">
             </div>
         </div>
 
-        <div class="card">
+        <div class="ap_card">
             <h4 class="card_title">Lorem ipsum abet</h4>
-            <div class="card_image">
-                
+            <div class="card_image shadow p-3 mb-5 bg-white rounded">
+                <img src="" alt="">
             </div>
         </div>
 
-        <div class="card">
+        <div class="ap_card">
             <h4 class="card_title">Lorem ipsum abet</h4>
-            <div class="card_image">
-                
+            <div class="card_image shadow p-3 mb-5 bg-white rounded">
+                <img src="" alt="">
             </div>
         </div>
 
-        <div class="card">
+        <div class="ap_card">
             <h4 class="card_title">Lorem ipsum abet</h4>
-            <div class="card_image">
-                
+            <div class="card_image shadow p-3 mb-5 bg-white rounded">
+                <img src="" alt="">
             </div>
         </div>
     </div>
     {{-- /sposored --}}
+@endsection
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/search.js') }}" defer></script>
-</div>  
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/search.js') }}" defer></script>
 @endsection
