@@ -18,7 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::name('api.')->namespace('Api')->group(function () {
-    Route::get('search', 'ApartmentController@search')->name('search');
-});
-
+Route::get('/search' , 'Api\ApartmentController@search');
