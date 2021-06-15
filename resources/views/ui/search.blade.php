@@ -1,27 +1,19 @@
-@extends('../layouts.app')
+@extends('../layouts.ui-base')
 
-@section('content')
+@section('pageTitle')
+    Risultati per - {{$city}}
+@endsection
+
+@section('mainLay')
 <div class="container">
-    <div id="app" onload="apartmentsSearch()">
+    <div id="app">
 
-        <input id="cityHidden" type="hidden" value="{{$city}}">
+        <h1>Risultati per - {{$city}}</h1>
 
-        <h1>Ricerca per - @{{citySearched}}</h1>
-
-
-        <input type="text" name="city" v-model="city" @@keyup.enter="apartmentsSearch"> <br/>
+        <input type="text" name="city" v-model="city"> <br/>
         <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
         <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button>
 
-        <ul class="list-group mt-5">
-            <li v-for="apartment in apartments" class="list-group-item mb-2"> 
-            
-                    @{{apartment.title}}
-                    <p>Città: @{{apartment.city}}</p>
-                    <p>Lat: @{{apartment.lat}}</p>
-                    <p>Long: @{{apartment.long}}</p>
-            </li>
-        </ul>
 
     </div>
 
