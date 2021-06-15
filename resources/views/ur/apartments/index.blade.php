@@ -5,5 +5,4 @@
 @endsection
 
 @section('mainContent')
-    BoolBnb - Dashboard
 @endsection

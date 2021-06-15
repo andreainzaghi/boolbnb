@@ -32,8 +32,8 @@
                 </div>
             </header>
             <main>
-                <div class="container main__box box-shadow">
-                    @yield('mainContent')
+                <div class="container">
+                    @yield('mainLay')
                 </div>
             </main>
             <footer>
