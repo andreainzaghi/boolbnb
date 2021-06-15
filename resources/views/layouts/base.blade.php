@@ -13,6 +13,7 @@
         <!-- / google-font -->
 
         <!-- style  -->
+        @yield('styles')
         <link rel="stylesheet"  href="{{ asset('css/app.css') }}">
         <!-- / style  -->
     </head>
@@ -51,5 +52,6 @@
                 </div>
             </footer>
         </div>
+        @yield('script')
     </body>
 </html>
