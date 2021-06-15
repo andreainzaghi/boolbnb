@@ -72,6 +72,8 @@ class ApartmentController extends Controller
             $data['image'] = Storage::disk('public')->put('images', $data['image']);
         }
 
+        $data['user_id'] = Auth::id();
+
         $data['visible'] = !isset( $data['visible'] ) ? 0 : 1;
 
         $data['slug'] = Str::slug ($data['title'], '-' );
