@@ -16327,3 +16327,71 @@ body {
   font-weight: 400;
   line-height: 1.5;
 }
+
+.jumbotron {
+  padding-top: 50px;
+  background-image: url("https://www.viaggi-estate.com/wp-content/uploads/2018/08/montagna-1024x512.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #ddd;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+.jumbotron .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  position: relative;
+  margin-top: 50px;
+}
+form .search {
+  border-radius: 20px;
+  border: 0px;
+  height: 41px;
+  line-height: 41px;
+  padding-left: 10px;
+  width: 350px;
+  outline: none;
+}
+form .btn {
+  background-color: #E94A47;
+  border-radius: 20px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 76px;
+  color: #fff;
+}
+
+.phrase {
+  margin-top: 60px;
+  color: #fff;
+  width: 90%;
+  text-align: left;
+}
+.phrase h1 {
+  color: #fff;
+}
+
+.sponsored {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.sponsored .ap_card {
+  border: 0px;
+  background-color: transparent;
+}
+.sponsored .ap_card .card_image {
+  background-color: lightgray;
+  height: 150px;
+  width: 250px;
+  border-radius: 10px;
+}
