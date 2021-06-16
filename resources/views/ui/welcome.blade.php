@@ -24,33 +24,21 @@
 
     {{-- sposored --}}
     <div class="sponsored">
+        
+        <?php $count = 0; ?>
+        @foreach ($sponsored as $item)
+        <?php if($count == 4) break; ?>
         <div class="ap_card">
-            <h4 class="card_title">Lorem ipsum abet</h4>
+            <h4 class="card_title">{{$item['title']}}</h4>
             <div class="card_image shadow p-3 mb-5 bg-white rounded">
-                <img src="" alt="">
+                <a href="">
+                    <img class="zoom" src="{{$item['image']}}" alt="Immagine appartamento">
+                </a>
             </div>
         </div>
+        <?php $count++; ?>
+        @endforeach
 
-        <div class="ap_card">
-            <h4 class="card_title">Lorem ipsum abet</h4>
-            <div class="card_image shadow p-3 mb-5 bg-white rounded">
-                <img src="" alt="">
-            </div>
-        </div>
-
-        <div class="ap_card">
-            <h4 class="card_title">Lorem ipsum abet</h4>
-            <div class="card_image shadow p-3 mb-5 bg-white rounded">
-                <img src="" alt="">
-            </div>
-        </div>
-
-        <div class="ap_card">
-            <h4 class="card_title">Lorem ipsum abet</h4>
-            <div class="card_image shadow p-3 mb-5 bg-white rounded">
-                <img src="" alt="">
-            </div>
-        </div>
     </div>
     {{-- /sposored --}}
 @endsection
