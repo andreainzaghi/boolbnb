@@ -1,7 +1,12 @@
-#root {
-  height: auto !important;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+/* #root {
+    height: auto !important;
+} */
 #app {
   background-color: #fff;
   border-radius: 20px;
@@ -36,6 +41,28 @@
   flex-wrap: wrap;
   align-items: center;
 }
+.control-panel .card-container {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.control-panel .card-container .apartment-card {
+  width: 40%;
+  margin-right: 10%;
+}
+.control-panel .card-container .apartment-card.selected {
+  background-color: lightcyan;
+}
+.control-panel .card-container .apartment-card .card__image {
+  width: 100%;
+}
+.control-panel .card-container .apartment-card .card__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 /* Stile lista app. */
 #apartments-list {
@@ -45,7 +72,6 @@
 #apartments-list .list-entries-container .list-entry {
   border-bottom: 1px solid #e8e8e8;
   display: block;
-  padding: 10px 50px 10px;
 }
 
 #apartments-list .list-entries-container .list-entry:nth-of-type(even) {
@@ -59,9 +85,16 @@
 }
 
 /* Stile mappa */
+.popup_title {
+  font-size: 17px;
+  color: blue;
+  display: block;
+}
+
 #map {
   width: 30%;
   height: calc(100vh - 175px);
+  border-radius: 15px;
 }
 #map .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
   display: none;
