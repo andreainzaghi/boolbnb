@@ -46,6 +46,19 @@ var app = new Vue({
     }
 });
 
+function displayFence(fence) {
+    axios.get( 'https://baseURL/geofencing/versionNumber/fences/'+fenceId, {
+        params: {
+            key: apiKey
+        }   
+    })
+    .then( (arr) => {
+    this.apartments = arr.data;
+    console.log(this.apartments);
+    generateMap();
+    });
+}
+
 function selectedScroll() {
     setTimeout(() => {
         selected = document.getElementsByClassName('selected');
@@ -74,9 +87,14 @@ return bounds;
 }
 
 const markersCity = [];
+let apartments, map;
+const adminKey = "xlh5oGUrsotW4VXTAD4dNxaxJ5MGwqrL2ezDmXAlv1OfuaAk";
+const apiKey = "GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn";
+const projectId = "6f2ff167-1c34-400b-9561-c650b915c786";
+const fenceId = "98e8488f-82db-4781-8ba6-8aa1dcb43051";
 
 function generateMap() {
-    let apartments = { 
+    apartments = { 
         "type": "FeatureCollection",
         "features": []
         };
@@ -100,25 +118,26 @@ function generateMap() {
         );
     })
     console.log(apartments);
-    let map = tt.map({
+    map = tt.map({
     // Proprietà necessaria API Key
     key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
     // Prop. nec. ID dell' elemento HTML in cui viene mostrata la mappa
     container: 'map',
     });
 
-    const list = document.getElementById('apartments-list');
-    
-   // Ciclo gli appartamenti per creare marker e voce della lista
+    map.on('load', function(){
+        displayFence(fenceId);
+    })
+}
+
+function createMarkers() {
+    // Ciclo gli appartamenti per creare marker e voce della lista
     apartments.features.forEach(function (apartment, index) {
-   // seleziono l' elemento html
-        let markerHTML = document.getElementById('markerHTML-' + index);
         // Salvo i dati
         const city = apartment.properties.city;
         const address = apartment.properties.address;
         const location = apartment.geometry.coordinates;
         const title = apartment.properties.title;
-        let cityApartmentsList = document.getElementById(city);
         
         // Creazione del marker
         const marker = new tt.Marker({
