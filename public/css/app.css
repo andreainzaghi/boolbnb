@@ -16276,8 +16276,18 @@ body {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  padding: 40px 100px;
+  padding: 40px;
   overflow: auto;
+}
+@media (min-width: 768px) {
+  .ur-wrapper {
+    padding: 40px 80px;
+  }
+}
+@media (min-width: 992px) {
+  .ur-wrapper {
+    padding: 40px 100px;
+  }
 }
 .ur-wrapper .ur-main__title {
   flex-basis: 100%;
@@ -16331,29 +16341,204 @@ body {
   line-height: 1.5;
 }
 
-* {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.container-principale {
+.myForm {
   width: 100%;
-  height: 100vh;
-  background-color: #F2F3FA;
-  padding: 30px 55px 0 55px;
+  margin-top: 0;
+}
+.myForm h3 {
+  margin-top: 30px;
+}
+.myForm label {
+  color: #23286B;
+  font-size: 12px;
+  font-weight: 500;
+}
+.myForm input,
+.myForm textarea {
+  border: 1px solid #6E7078;
+  padding: 12px 20px;
+}
+.myForm input::-webkit-input-placeholder,
+.myForm textarea::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #B9B7BD;
+  font-weight: 500;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+}
+.myForm input:focus,
+.myForm textarea:focus {
+  border: 3px solid #F7D7D6;
+}
+.myForm textarea {
+  height: 100px;
+  resize: none;
+}
+.myForm .input__title {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .myForm .input__title {
+    width: 50%;
+  }
+}
+.myForm .inlineInput {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.myForm .inlineInput.multiple-inline > div:not(:nth-child(2n)) {
+  padding-right: 20px;
+}
+@media (min-width: 768px) {
+  .myForm .inlineInput > div:not(:last-child) {
+    padding-right: 20px;
+  }
+}
+.myForm .numericInput > div {
+  width: 50%;
+}
+@media (min-width: 768px) {
+  .myForm .numericInput > div {
+    width: 25%;
+  }
+}
+.myForm .upload-wrapper {
+  position: relative;
+}
+.myForm .upload-image {
+  padding: 0;
+  height: 37px;
+  border-radius: 5px;
+}
+.myForm .upload-image::-webkit-file-upload-button {
+  visibility: hidden;
+  position: absolute;
+}
+.myForm .upload-image::before {
+  display: inline-block;
+  padding: 0 20px;
+  background-color: #23286B;
+  height: 37px;
+  line-height: 37px;
+  margin-right: 20px;
+  color: #fff;
+  border: none;
+  content: "Carica";
+  font-size: 12px;
+}
+.myForm .input__address,
+.myForm .input__city {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .myForm .input__address {
+    width: 65%;
+  }
+}
+@media (min-width: 768px) {
+  .myForm .input__city {
+    width: 35%;
+  }
 }
 
-.container-profilo-casa {
+.services {
+  display: inline-block;
+  margin: 0 15px 15px 0;
+  /* Hide the browser's default checkbox */
+  /* Create a custom checkbox */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
+}
+.services label {
+  margin-left: 5px;
+  color: black;
+}
+.services input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.services .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 2px solid #23286B;
+  border-radius: 5px;
+}
+.services .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.services input:checked ~ .checkmark:after, .services input:hover ~ .checkmark:after {
+  display: block;
+}
+.services .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #23286B;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.checkVisible {
+  margin: 20px 0;
+  width: 50px;
+  height: 28px;
+  position: relative;
+  border: 2px solid #23286B;
+  border-radius: 30px;
+}
+
+.checkVisible input {
+  position: absolute;
   width: 100%;
   height: 100%;
-  border-top-right-radius: 50px 50px;
-  border-top-left-radius: 50px 50px;
-  background-color: #FFFFFF;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 999;
+  top: -5px;
 }
 
-.container-profilo-casa {
+.checkVisible .toogle {
+  position: absolute;
+  z-index: 998;
+  width: 25px;
+  height: 25px;
+  background: #23286B;
+  top: 0px;
+  left: 0;
+  transition: all 0.2s ease;
+  text-align: center;
+  border-radius: 100%;
+  display: table-cell;
+}
+
+.checkVisible input:checked ~ .toogle {
+  margin-left: 21px;
+}
+
+.checkVisible label {
+  margin-left: 40px;
+  font-size: 20px;
+}
+
+.jumbotron {
+  padding-top: 50px;
+  background-image: url("https://www.viaggi-estate.com/wp-content/uploads/2018/08/montagna-1024x512.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #ddd;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
