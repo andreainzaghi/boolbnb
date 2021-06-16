@@ -30,4 +30,5 @@ Route::prefix('ur')->name('ur.')->namespace('UR')->middleware('auth')->group(fun
     Route::resource('apartments', 'ApartmentController');
 });
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
