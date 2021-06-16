@@ -16294,6 +16294,13 @@ body {
   margin-bottom: 30px;
 }
 
+.add_button {
+  width: 100%;
+  display: flex;
+  margin-bottom: 30px;
+  justify-content: flex-end;
+}
+
 .dash-wrapper {
   display: flex;
   flex-wrap: wrap;
