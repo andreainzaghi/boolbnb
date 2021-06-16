@@ -5,14 +5,14 @@
     
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
 @endsection
+
 @section('pageTitle')
     BoolBnb - Dashboard
 @endsection
 
 @section('MainContent')
-  
-
-      <div class="interno-profilo">
+<div class="box">
+   <div class="interno-profilo">
         <!-- title page -->
         <div class="title-page">
           <!-- v-for per ciclare il titolo-->
@@ -93,7 +93,7 @@
             
           </div>
         </div> --}}
-        <div class="buttons">
+      <div class="buttons">
           <div class="button-1">
             <button type="button" name="button">Modifica</button>
           </div>
@@ -103,15 +103,16 @@
           <div class="button-1">
             <button type="button" name="button">Statistiche</button>
           </div>
-          <div class="button-1">
+          <div class=" button-1 ">
             <button type="button" name="button">Visualizza Messaggi</button>
           </div>
           <div class="button-1">
             <button type="button" name="button">Elimina</button>
           </div>
       
-    </div>
+      </div>
   </div>
+</div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
   @section('script')

@@ -74,9 +74,12 @@
    display: flex;
  
  }
+ .box {
+    margin: 0 auto;
+ }
  .interno-profilo{
-  width:80%;
-  margin:auto;
+  width:100%;
+//   margin:auto;
  }
  .peculiarita-stanza p{
    font-size: 12px;
@@ -122,14 +125,12 @@
    justify-content:space-between;
  }
  .button-1 button{
-   height:36px;
- 
-   margin:10px 0;
+   margin: 10px 0;
    border-radius: 10px;
-   color:#fff;
-   border:none;
-   padding:10px 20px;
-   background-color: #CA3431;
+   color: #fff;
+   border: none;
+   padding: 7px 20px;
+   background-color: #e94a47;
  }
  /* scroll */
  /* width */
