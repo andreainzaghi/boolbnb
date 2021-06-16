@@ -6,6 +6,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
 @endsection
 

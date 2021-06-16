@@ -40,7 +40,8 @@ class BnbController extends Controller
 
     }
     public function show(){
-        $apartments = Apartment::All();
-        json_encode($apartments);
+     
+        return view('ui.show');
+ 
     }
 }

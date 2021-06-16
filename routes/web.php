@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 Route::prefix('/')->namespace('UI')->group(function () {
     Route::get('', 'BnbController@index')->name('welcome');
     Route::get('search', 'BnbController@search')->name('search');
+    Route::get('show', 'BnbController@show')->name('show');
 });
 
 // Route::get('/home', 'HomeController@index'); Pagina Login
