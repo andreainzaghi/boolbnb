@@ -55,6 +55,20 @@ var app = new Vue({
   }
 });
 
+function displayFence(fence) {
+  var _this2 = this;
+
+  axios.get('https://baseURL/geofencing/versionNumber/fences/' + fenceId, {
+    params: {
+      key: apiKey
+    }
+  }).then(function (arr) {
+    _this2.apartments = arr.data;
+    console.log(_this2.apartments);
+    generateMap();
+  });
+}
+
 function selectedScroll() {
   setTimeout(function () {
     selected = document.getElementsByClassName('selected');
@@ -84,9 +98,14 @@ function getMarkersBoundsForCity(city) {
 }
 
 var markersCity = [];
+var apartments, map;
+var adminKey = "xlh5oGUrsotW4VXTAD4dNxaxJ5MGwqrL2ezDmXAlv1OfuaAk";
+var apiKey = "GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn";
+var projectId = "6f2ff167-1c34-400b-9561-c650b915c786";
+var fenceId = "98e8488f-82db-4781-8ba6-8aa1dcb43051";
 
 function generateMap() {
-  var apartments = {
+  apartments = {
     "type": "FeatureCollection",
     "features": []
   };
@@ -108,23 +127,25 @@ function generateMap() {
   });
 
   console.log(apartments);
-  var map = tt.map({
+  map = tt.map({
     // Proprietà necessaria API Key
     key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
     // Prop. nec. ID dell' elemento HTML in cui viene mostrata la mappa
     container: 'map'
   });
-  var list = document.getElementById('apartments-list'); // Ciclo gli appartamenti per creare marker e voce della lista
+  map.on('load', function () {
+    displayFence(fenceId);
+  });
+}
 
+function createMarkers() {
+  // Ciclo gli appartamenti per creare marker e voce della lista
   apartments.features.forEach(function (apartment, index) {
-    // seleziono l' elemento html
-    var markerHTML = document.getElementById('markerHTML-' + index); // Salvo i dati
-
+    // Salvo i dati
     var city = apartment.properties.city;
     var address = apartment.properties.address;
     var location = apartment.geometry.coordinates;
-    var title = apartment.properties.title;
-    var cityApartmentsList = document.getElementById(city); // Creazione del marker
+    var title = apartment.properties.title; // Creazione del marker
 
     var marker = new tt.Marker({
       color: '#2271b3',
