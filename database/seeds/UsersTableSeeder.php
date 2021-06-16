@@ -28,5 +28,33 @@ class UsersTableSeeder extends Seeder
 
             $user->save();
         }
+
+        $this->addAdminUser();
+    }
+
+    /*
+    * *************** DA ELIMINARE PRIMA DI PRESENTARE IL PROGETTO FINALE ****************
+    *
+    * Funzione che aggiunge un utente con queste credenzia:
+    *   
+    * name: Franco
+    * last_name: Francone
+    * email: franco@gmail.com
+    * birthday: 1970-1-1
+    * password: ciao1234
+    * 
+    */
+
+    public function addAdminUser(){
+
+        $user = new User();
+
+        $user->name = "Franco";
+        $user->last_name = "Francone";
+        $user->birthday = "1970-1-1";
+        $user->email = "franco@gmail.com";
+        $user->password = Hash::make("ciao1234");
+
+        $user->save();
     }
 }
