@@ -1,34 +1,67 @@
-#root {
-  height: auto !important;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
+/* #root {
+    height: auto !important;
+} */
 #app {
   background-color: #fff;
   border-radius: 20px;
   margin-top: 80px;
-  margin-bottom: 80px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   overflow: hidden;
-}
-#app h1 {
-  font-size: 17px;
-  width: 100%;
+  padding: 15px 15px 15px 40px;
 }
 
 .control-panel {
   background-color: #fff;
-  height: calc(100vh - 170px);
+  height: calc(100vh - 210px);
   overflow: hidden;
   width: 65%;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+.control-panel .actions {
+  width: 100%;
+  background-color: #fff;
+}
+.control-panel h1 {
+  font-size: 16px;
+  line-height: 1;
+  text-align: top;
 }
 .control-panel .filter {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+}
+.control-panel .card-container {
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.control-panel .card-container .apartment-card {
+  width: 40%;
+  margin-right: 10%;
+}
+.control-panel .card-container .apartment-card.selected {
+  background-color: lightcyan;
+}
+.control-panel .card-container .apartment-card .card__image {
+  width: 100%;
+}
+.control-panel .card-container .apartment-card .card__description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Stile lista app. */
@@ -39,7 +72,6 @@
 #apartments-list .list-entries-container .list-entry {
   border-bottom: 1px solid #e8e8e8;
   display: block;
-  padding: 10px 50px 10px;
 }
 
 #apartments-list .list-entries-container .list-entry:nth-of-type(even) {
@@ -53,8 +85,16 @@
 }
 
 /* Stile mappa */
+.popup_title {
+  font-size: 17px;
+  color: blue;
+  display: block;
+}
+
 #map {
   width: 30%;
+  height: calc(100vh - 175px);
+  border-radius: 15px;
 }
 #map .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
   display: none;

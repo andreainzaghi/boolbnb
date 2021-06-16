@@ -1,4 +1,3 @@
-@extends('layouts.base-box')
 
 @section('pageTitle')
     BoolBnb - Show apartment
