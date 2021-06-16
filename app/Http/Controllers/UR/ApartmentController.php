@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
-use App\Sponsor;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -27,8 +26,19 @@ class ApartmentController extends Controller
             'address' => 'required | string | max:100',
             'city' => 'required | string | max:50',
             'lat' => 'required | numeric | max:90 | min: -90',
-            'long' => 'required | numeric | max:180 | min: -180',
-            'city' => 'required | string | max:50',
+            /*
+            * -- Long max 180 da problemi--
+            * 
+            * Ho riscontrato il problema con queste coordinate (Lat: 44.427155, Long: 8.839384),
+            * anche se la Long è meno di 180 mi resituisce un'errore dicendo che non piò inserire
+            * una long maggiore di 180.
+            * Quindi ho temporaneamente disabilitato max 180 per permettere il corretto inserimento del dato.
+            * possibili solizioni:
+            * - Validazione front-end e successivamente back-end
+            */
+           /**/ 'long' => 'required | numeric | min: -180', /**/ 
+
+            'city' => 'required | string | max:50', 
             'image' => 'nullable| image | mimes:jpeg,png,jpg,gif,svg | max:2048',
             'visible' => 'boolean'
         ];
@@ -76,15 +86,24 @@ class ApartmentController extends Controller
 
         $data['visible'] = !isset( $data['visible'] ) ? 0 : 1;
 
-        $data['slug'] = Str::slug ($data['title'], '-' );
+        //$data['slug'] = Str::slug ($data['title'], '-' );
 
-        $newapartment = Apartment::create( $data );
+        // Generazione dello slug univoco
+        do{
+            $randomNumSlug = "-".rand(0, 10000000000000000);
+            $slugTmp = Str::slug( $data['title'], '-' ).$randomNumSlug;
+        }
+        while( Apartment::where('slug', $slugTmp)->first() );
+
+        $data['slug'] = $slugTmp;
+
+       $newapartment = Apartment::create( $data );
 
         if ( isset($data['services']) ) {
             $newapartment->services()->attach( $data['services'] );
         }
 
-        return redirect()->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] );
+       return redirect()->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] );
     }
 
     /**
@@ -113,7 +132,7 @@ class ApartmentController extends Controller
             abort('403');
         }
         $services = Service::all();
-        return view('ur.apartments.edit', compact('apartment', 'service'));
+        return view('ur.apartments.edit', compact('apartment', 'services'));
     }
 
     /**
@@ -134,9 +153,18 @@ class ApartmentController extends Controller
 
         $data['visible'] = !isset( $data['visible'] ) ? 0 : 1;
 
-        $data['slug'] = Str::slug ($data['title'], '-' );
+        //$data['slug'] = Str::slug ($data['title'], '-' );
 
-        $newapartment = Apartment::create( $data );
+        // Generazione dello slug univoco
+        do{
+            $randomNumSlug = "-".rand(0, 10000000000000000);
+            $slugTmp = Str::slug( $data['title'], '-' ).$randomNumSlug;
+        }
+        while( Apartment::where('slug', $slugTmp)->first() );
+
+        $data['slug'] = $slugTmp;
+
+        $newapartment = Apartment::create( $data );//??
         
         $apartment->update($data);
 

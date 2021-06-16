@@ -1,11 +1,11 @@
 @extends('layouts.base-box')
 
 @section('pageTitle')
-    BoolBnb - Dashboard
+    BoolBnb - Show apartment
 @endsection
 
 @section('mainTitle')
-    I miei appartamenti
+    Show Apartment
 @endsection
 
 @section('MainContent')
