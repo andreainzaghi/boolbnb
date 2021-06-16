@@ -39,9 +39,10 @@ class BnbController extends Controller
         return view('ui.search', compact('apartments', 'city', 'services'));
 
     }
-    public function show(){
-     
-        return view('ui.show');
+    public function show($id){
+       
+        $apartment = Apartment::where('id', $id)->first();      
+        return view('ui.show', compact('apartment'));
  
     }
 }

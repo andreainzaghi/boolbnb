@@ -1,6 +1,6 @@
 @extends('layouts.base-box')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+   
     
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
 @endsection
@@ -16,6 +16,7 @@
         <div class="title-page">
           <!-- v-for per ciclare il titolo-->
           <div class="title">
+              {{-- {{$apartment ->title}} --}}
             <h3>Casa Paradiso</h3>
             <p>via Padova Rossi ,Milano,73102</p>
           </div>
@@ -27,14 +28,15 @@
           <!-- immagini -->
           <div class="immagini">
             <div 
-             :class="immagineappartamento">
+             class="immagineappartamento">
+
             {{-- <img class="imgaff" src="img/app.jpg" alt="">
             <img class="imgaff" src="img/3e.jpg" alt="">
             <img class="imgaff" src="img/art.jpg" alt="">
             <img class="imgaff" src="img/ds.jpg" alt=""> --}}
             
           </div>
-          <div id='map' :class='map'></div>
+          <div id='map' class='mappe'></div>
         </div>
         <!-- cose della stanza -->
         <div class="peculiarita-stanza">
@@ -46,7 +48,7 @@
           
           
         </div>
-        <div class="check-square">
+        {{-- <div class="check-square">
           <div class="square-1">
             Cucina
             
@@ -89,7 +91,7 @@
             <input type="checkbox" name="" value="">
             
           </div>
-        </div>
+        </div> --}}
         <div class="buttons">
           <div class="button-1">
             <button type="button" name="button">Modifica</button>
