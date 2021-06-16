@@ -28,7 +28,20 @@
                 @endforeach
             </div>
         </div>
-        <div id='apartments-list'></div>
+        <div id='apartments-list'>
+            <ul class="card-container">
+                <li class="apartment-card" v-for="apartment in apartments" :class="popupSelected == apartment.title? 'selected' : '' " v-if="{{-- target.every(v => arr.includes(v)) --}}">
+                    <a href="{{-- {{ route('apartments.show') }} + '/' + apartment.id --}}#">
+                        <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
+                        <h3 class="card__title">@{{ apartment.title }}</h3>
+                        <span class="card__rooms">Stanze: @{{ apartment.rooms }} | Bagni: @{{ apartment.bathrooms }} | Letti: @{{ apartment.beds }}</span><br>
+                        <span v-for="(service, i) in apartment.services" v-if="i == 0" class="card__service">@{{ service.name }}</span>
+                        <span  v-else class="card__service"> - @{{ service.name }}</span>
+                        <p class="card__description">@{{ apartment.description }}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
     <!-- Mappa -->
     <div id='map' class='map'></div>

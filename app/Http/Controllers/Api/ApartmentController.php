@@ -13,6 +13,9 @@ class ApartmentController extends Controller
 
         $city = $data['city'];
         $apartments = Apartment::where('city', 'LIKE', '%'.$city.'%')->get();
+        foreach( $apartments as $apartment ) {
+            $apartment->services;        
+        }
 
         return response()->json($apartments);
     }

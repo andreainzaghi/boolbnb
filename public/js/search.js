@@ -9,17 +9,18 @@ var app = new Vue({
     city: '',
     selected: '',
     apartments: [],
-    baseURL: 'api/search'
+    baseURL: 'api/search',
+    popupSelected: ''
   },
   methods: {
     /*         filter(services){
-               if ( this.selected.length == 0 ){
-                   return true;
-               }
-               services.forEach(service => {
-                   
-               });
-           } */
+            if ( this.selected.length == 0 ){
+                return true;
+            }
+            services.forEach(service => {
+                
+            });
+        } */
 
     /* cityApi(city) {
         this.city = city;
@@ -38,6 +39,7 @@ var app = new Vue({
         }
       }).then(function (arr) {
         _this.apartments = arr.data;
+        console.log(_this.apartments);
         generateMap();
       });
     }
@@ -52,6 +54,16 @@ var app = new Vue({
     this.search(this.city);
   }
 });
+
+function selectedScroll() {
+  setTimeout(function () {
+    selected = document.getElementsByClassName('selected');
+
+    if (selected.length != 0) {
+      selected[0].scrollIntoView();
+    }
+  }, 1);
+}
 
 function closeAllPopups() {
   markersCity.forEach(function (markerCity) {
@@ -69,14 +81,6 @@ function getMarkersBoundsForCity(city) {
     }
   });
   return bounds;
-}
-
-function buildLocation(htmlParent, text) {
-  var details = htmlParent.appendChild(document.createElement('a'));
-  details.href = '#';
-  details.className = 'list-entry';
-  details.innerHTML = text;
-  return details;
 }
 
 var markersCity = [];
@@ -97,7 +101,8 @@ function generateMap() {
       },
       "properties": {
         "address": apartment.address,
-        "city": apartment.city
+        "city": apartment.city,
+        "title": apartment.title
       }
     });
   });
@@ -118,57 +123,28 @@ function generateMap() {
     var city = apartment.properties.city;
     var address = apartment.properties.address;
     var location = apartment.geometry.coordinates;
+    var title = apartment.properties.title;
     var cityApartmentsList = document.getElementById(city); // Creazione del marker
 
     var marker = new tt.Marker({
-      color: '#2271b3'
+      color: '#2271b3',
+      id: apartment.properties.title
     }).setLngLat(location).setPopup(new tt.Popup({
       offset: 35
-    }).setHTML(address)).addTo(map);
+    }).setHTML('<span class="popup_title">' + title + '</span><span>' + address + '</span>')).addTo(map);
     markersCity[index] = {
       marker: marker,
       city: city
     };
 
-    if (cityApartmentsList === null) {
-      cityApartmentsList = list.appendChild(document.createElement('div'));
-      cityApartmentsList.id = city;
-      cityApartmentsList.className = 'list-entries-container';
-    }
-
-    var details = buildLocation(cityApartmentsList, address);
-
-    marker._element.addEventListener('click', function (details, city) {
-      var activeItem = document.getElementsByClassName('selected');
-      return function () {
-        if (activeItem[0]) {
-          activeItem[0].classList.remove('selected');
-        }
-
-        details.classList.add('selected');
-      };
-    }(details, city));
-
-    details.addEventListener('click', function (marker) {
-      var activeItem = document.getElementsByClassName('selected');
-      return function () {
-        if (activeItem[0]) {
-          activeItem[0].classList.remove('selected');
-        }
-
-        details.classList.add('selected');
-        map.easeTo({
-          center: marker.getLngLat(),
-          zoom: 17
-        });
-        closeAllPopups();
-        marker.togglePopup();
-      };
-    }(marker));
-    map.fitBounds(getMarkersBoundsForCity(app._data.city), {
-      /* padding: 50 */
-      zoom: 11
+    marker._element.addEventListener('click', function () {
+      app._data.popupSelected = apartment.properties.title;
+      selectedScroll();
     });
+  });
+  map.fitBounds(getMarkersBoundsForCity(app._data.city), {
+    /* padding: 50 */
+    zoom: 11
   });
 }
 /******/ })()

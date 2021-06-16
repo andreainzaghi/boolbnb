@@ -1,6 +1,12 @@
-#root {
-    height: auto !important;
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
+
+/* #root {
+    height: auto !important;
+} */
 
 #app {
     background-color: #fff;
@@ -38,6 +44,29 @@
         flex-wrap: wrap;
         align-items: center;
     }
+
+    .card-container {
+        width: 100%;
+        overflow: auto;
+        display: flex;
+        flex-wrap: wrap;
+        .apartment-card {
+            width: 40%;
+            margin-right: 10%;
+            &.selected {
+                background-color: lightcyan;
+            }
+            .card__image {
+                width: 100%;
+            }
+            .card__description {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;  
+                overflow: hidden;
+            }
+        }
+    }
 }
 
 /* Stile lista app. */
@@ -48,7 +77,6 @@
 #apartments-list .list-entries-container .list-entry {
     border-bottom: 1px solid #e8e8e8;
     display: block;
-    padding: 10px 50px 10px;
 }
 
 #apartments-list .list-entries-container .list-entry:nth-of-type(even) {
@@ -61,13 +89,20 @@
     border-bottom-color: #2271b3;
 }
 /* Stile mappa */
+.popup_title {
+    font-size: 17px;
+    color: blue;
+    display: block;
+}
 #map {
     width: 30%;
     height: calc(100vh - 175px);
+    border-radius: 15px;
 
     .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
         display: none;
     }
+
 }
 /* Stile Marker delle posizioni */
 /* [id*='markerHTML'] {
