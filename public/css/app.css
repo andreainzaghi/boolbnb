@@ -16395,7 +16395,7 @@ form .btn {
 .sponsored .ap_card .card_image {
   height: 150px;
   width: 250px;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
 }
 .sponsored .ap_card .card_image img {
