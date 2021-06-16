@@ -21,11 +21,11 @@ class BnbController extends Controller
         foreach ( $query as $array ) {
             foreach ( $array as $apartment ) {
                 if(rand(0,1)){
-                    $sponsored[] = $apartment;
-                }
+                $sponsored[] = $apartment;
             }
+          } 
         }
-        return view('ui.welcome', compact('sponsored'));
+        return view('ui.welcome', /*compact('sponsored')*/);
     }
 
     public function search(Request $request) {
@@ -39,10 +39,9 @@ class BnbController extends Controller
         return view('ui.search', compact('apartments', 'city', 'services'));
 
     }
-    public function show($id){
-       
-        $apartment = Apartment::where('id', $id)->first();      
+    public function show($id ){
+        $apartment = Apartment::where('id', $id)->first();
+        // json_encode($apartments);
         return view('ui.show', compact('apartment'));
- 
     }
 }

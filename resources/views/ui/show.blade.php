@@ -1,3 +1,4 @@
+
 @extends('layouts.base-box')
 @section('styles')
    
@@ -20,7 +21,7 @@
             <h3>Casa Paradiso</h3>
             <p>via Padova Rossi ,Milano,73102</p>
           </div>
-          <div class="alert">
+          <div class="alert12">
             <p>questo appartamento e' sponsorizzato
               la promozione scadra il giorno 21/12/2021</p>
             </div>
@@ -42,7 +43,7 @@
         <div class="peculiarita-stanza">
           <div class="sottot">
             <p>stanze:5|bagni:3|letti:3|ospiti:2|dimensioni:90mq</p>
-            <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
             
           </div>
           
