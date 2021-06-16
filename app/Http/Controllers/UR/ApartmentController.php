@@ -146,13 +146,12 @@ class ApartmentController extends Controller
     {
 
         $validation = $this->validation;
-        $validation['title'] = 'required|string|max:100|unique:apartments,title,' . $apartment->id;
+        // $validation['title'] = 'required|string|max:100|' . $apartment->id;
        
 
         $request->validate($validation);
 
         $data = $request->all();
-
         
         if ( isset($data['image']) ) {
             $data['image'] = Storage::disk('public')->put('images', $data['image']);
@@ -160,7 +159,6 @@ class ApartmentController extends Controller
 
         $data['visible'] = !isset( $data['visible'] ) ? 0 : 1;
 
-        //$data['slug'] = Str::slug ($data['title'], '-' );
 
         // Generazione dello slug univoco
         do{
@@ -172,16 +170,17 @@ class ApartmentController extends Controller
         $data['slug'] = $slugTmp;
         $data['user_id'] = Auth::id();
 
-        $newapartment = Apartment::create( $data );
+        // $newapartment = Apartment::create( $data );
+        
         
         $apartment->update($data);
 
         if ( isset($data['services']) ) {
-            $newapartment->services()->sync( $data['services'] );
+            $apartment->services()->sync( $data['services'] );
         }
 
         return redirect()
-                ->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] )
+                ->route( 'ur.apartments.show', [ 'apartment' => $apartment ] )
                 ->with('message', $apartment->title . 'è stato modificato');
     }
 
