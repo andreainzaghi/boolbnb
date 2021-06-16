@@ -25,7 +25,7 @@ class CreateApartmentsTable extends Migration
             $table->string('city', 50);
             $table->double('lat', 9,6);
             $table->double('long', 9.6);
-            $table->string('image', 50)->nullable();
+            $table->string('image')->nullable();
             $table->boolean('visible')->default(0);
             $table->string('slug', 120)->unique();
             ///////////////////////////////////////

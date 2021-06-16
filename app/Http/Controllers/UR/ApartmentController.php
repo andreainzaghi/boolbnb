@@ -39,7 +39,7 @@ class ApartmentController extends Controller
            /**/ 'long' => 'required | numeric | min: -180', /**/ 
 
             'city' => 'required | string | max:50', 
-            'image' => 'nullable| image | mimes:jpeg,png,jpg,gif,svg | max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'visible' => 'boolean'
         ];
     } 
@@ -144,9 +144,16 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        $request->validate( $this->validation );
+
+        $validation = $this->validation;
+        $validation['title'] = 'required|string|max:100|unique:apartments,title,' . $apartment->id;
+       
+
+        $request->validate($validation);
+
         $data = $request->all();
 
+        
         if ( isset($data['image']) ) {
             $data['image'] = Storage::disk('public')->put('images', $data['image']);
         }
@@ -163,8 +170,9 @@ class ApartmentController extends Controller
         while( Apartment::where('slug', $slugTmp)->first() );
 
         $data['slug'] = $slugTmp;
+        $data['user_id'] = Auth::id();
 
-        $newapartment = Apartment::create( $data );//??
+        $newapartment = Apartment::create( $data );
         
         $apartment->update($data);
 
@@ -172,7 +180,9 @@ class ApartmentController extends Controller
             $newapartment->services()->sync( $data['services'] );
         }
 
-        return redirect()->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] );
+        return redirect()
+                ->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] )
+                ->with('message', $apartment->title . 'è stato modificato');
     }
 
     /**
@@ -186,7 +196,7 @@ class ApartmentController extends Controller
         $apartment->delete();
 
         return redirect()
-        ->route('ur.apartments.index')
-        ->with('message', $apartment->title . 'è stato eliminato');
+                ->route('ur.apartments.index')
+                ->with('message', $apartment->title . 'è stato eliminato');
     }
 }
