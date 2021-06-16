@@ -424,7 +424,13 @@ class ApartmentsTableSeeder extends Seeder
                    $apartment->save();
                     
                     //Inserimento dei servizi
-                    for ( $y = 0; $y < rand( 1, count($services)-1 ); $y++ ) {
+                    $randService = [];
+
+                    for ( $y = 0; $y < count($services)-1; $y++ ) {
+                    
+                        // if( in_array("Irix", $randService)){
+
+                        // }
                         $data['services'] = $services[rand( 0,count($services)-1 )];
                         $apartment->services()->attach($data['services']);
                     }
