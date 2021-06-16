@@ -86,8 +86,6 @@ class ApartmentController extends Controller
 
         $data['visible'] = !isset( $data['visible'] ) ? 0 : 1;
 
-        //$data['slug'] = Str::slug ($data['title'], '-' );
-
         // Generazione dello slug univoco
         do{
             $randomNumSlug = "-".rand(0, 10000000000000000);
@@ -169,9 +167,6 @@ class ApartmentController extends Controller
         $data['slug'] = $slugTmp;
         $data['user_id'] = Auth::id();
 
-        // $newapartment = Apartment::create( $data );
-        
-        
         $apartment->update($data);
 
         if ( isset($data['services']) ) {
@@ -191,6 +186,10 @@ class ApartmentController extends Controller
      */
     public function destroy( Apartment $apartment )
     {
+
+        if( $apartment->user_id != Auth::id() ) {
+            abort('403');
+        }
         $apartment->delete();
 
         return redirect()
