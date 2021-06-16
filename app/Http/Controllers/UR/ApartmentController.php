@@ -146,8 +146,7 @@ class ApartmentController extends Controller
     {
 
         $validation = $this->validation;
-        // $validation['title'] = 'required|string|max:100|' . $apartment->id;
-       
+        $validation['title'] = 'required|string|max:100|unique:apartments,title,' . $apartment->id;
 
         $request->validate($validation);
 

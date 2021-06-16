@@ -28,7 +28,7 @@ class CreateApartmentsTable extends Migration
             $table->string('image')->nullable();
             $table->boolean('visible')->default(0);
             $table->string('slug', 120);
-            //$table->string('slug', 120)->unique();
+            $table->string('slug', 120)->unique();
             ///////////////////////////////////////
             $table->id();
             $table->timestamps();
