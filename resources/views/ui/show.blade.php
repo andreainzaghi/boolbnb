@@ -43,7 +43,8 @@
             <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
             <div class="select-servizi">
               <h4>Servizi</h4> 
-              <div class="check-square">
+              {{-- checkboxes lato admin --}}
+              {{-- <div class="check-square">
                 <div class="square-1">
                   Cucina
                   
@@ -130,7 +131,9 @@
                   <input type="checkbox" name="" value="">
                   
                 </div>
-              </div>
+              </div> --}}
+              {{-- checkboxes lato admin --}}
+
             </div>          
           </div>
           <div class="box-right">
