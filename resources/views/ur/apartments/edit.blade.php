@@ -27,7 +27,7 @@
         <!-- titolo -->
         <div class="form-group input__title">
             <label for="title">Nome</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci nome dell’appartamento" value="{{ old('title') }}">
+            <input type="text" class="form-control form-control-sm" id="title" name="title" placeholder="Inserisci nome dell’appartamento" value="{{ old('title') }}">
         </div>
         <!-- / titolo -->
 
