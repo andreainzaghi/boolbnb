@@ -23,9 +23,7 @@ class BnbController extends Controller
         }
         foreach ( $query as $array ) {
             foreach ( $array as $apartment ) {
-                if(rand(0,1)){
                 $sponsored[] = $apartment;
-            }
           } 
         }
 
