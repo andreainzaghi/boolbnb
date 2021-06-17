@@ -9,7 +9,7 @@
 
     @section('fixedElement')
         <div class="add-btn-wrp">
-            <a href="{{route('ur.apartments.create')}}" class="my-btn my-btn-primary add_button"> <i class="fas fa-plus"></i></a>
+            <a href="{{route('admin.apartments.create')}}" class="my-btn my-btn-primary add_button"> <i class="fas fa-plus"></i></a>
         </div>
     @endsection
 @endsection
@@ -20,7 +20,7 @@
 
         @foreach ($apartments as $apartment)
             <div class="dash__card">
-                <a href="{{ route('ur.apartments.show', ['apartment' => $apartment->id ] ) }}">
+                <a href="{{ route('admin.apartments.show', ['apartment' => $apartment->id ] ) }}">
                     <!-- card top -->
                     <div class="img__wrapper">
                         <img src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento">

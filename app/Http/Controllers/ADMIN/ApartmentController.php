@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\UR;
+namespace App\Http\Controllers\ADMIN;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -53,7 +53,7 @@ class ApartmentController extends Controller
     {
         $userId = Auth::id();
         $apartments = Apartment::where( 'user_id', $userId )->get();
-        return view('ur.apartments.index', compact('apartments'));
+        return view('admin.apartments.index', compact('apartments'));
     }
 
     /**
@@ -64,7 +64,7 @@ class ApartmentController extends Controller
     public function create()
     {
         $services = Service::all();
-        return view('ur.apartments.create', compact('services'));
+        return view('admin.apartments.create', compact('services'));
     }
 
     /**
@@ -101,7 +101,7 @@ class ApartmentController extends Controller
             $newapartment->services()->attach( $data['services'] );
         }
 
-       return redirect()->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] );
+       return redirect()->route( 'admin.apartments.show', [ 'apartment' => $newapartment ] );
     }
 
     /**
@@ -115,7 +115,7 @@ class ApartmentController extends Controller
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
-        return view('ur.apartments.show', compact('apartment'));
+        return view('admin.apartments.show', compact('apartment'));
     }
 
     /**
@@ -130,7 +130,7 @@ class ApartmentController extends Controller
             abort('403');
         }
         $services = Service::all();
-        return view('ur.apartments.edit', compact('apartment', 'services'));
+        return view('admin.apartments.edit', compact('apartment', 'services'));
     }
 
     /**
@@ -174,7 +174,7 @@ class ApartmentController extends Controller
         }
 
         return redirect()
-                ->route( 'ur.apartments.show', [ 'apartment' => $apartment ] )
+                ->route( 'admin.apartments.show', [ 'apartment' => $apartment ] )
                 ->with('message', $apartment->title . 'è stato modificato');
     }
 
@@ -193,7 +193,7 @@ class ApartmentController extends Controller
         $apartment->delete();
 
         return redirect()
-                ->route('ur.apartments.index')
+                ->route('admin.apartments.index')
                 ->with('message', $apartment->title . 'è stato eliminato');
     }
 }

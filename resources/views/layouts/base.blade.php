@@ -29,7 +29,7 @@
                             @if (Route::has('login'))
                                 <div>
                                     @auth
-                                        <a href="{{ route('ur.apartments.index') }}" class="my-btn my-btn-secondary align-bottom"><i class="fas fa-home"></i><span class="d-none d-md-inline-block">Dashboard</span></a>
+                                        <a href="{{ route('admin.apartments.index') }}" class="my-btn my-btn-secondary align-bottom"><i class="fas fa-home"></i><span class="d-none d-md-inline-block">Dashboard</span></a>
                                         <a href="/logout" class="my-btn my-btn-primary"><i class="fas fa-sign-out-alt"></i><span class="d-none d-md-inline-block">Log-out</span></a>                        
                                     @else
                                         <a href="{{ route('login') }}" class="my-btn my-btn-primary"><i class="fas fa-sign-out-alt"></i><span class="d-none d-md-inline-block">Log-in</span></a>                        
