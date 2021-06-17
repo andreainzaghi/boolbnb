@@ -21,7 +21,7 @@
     @endif
     <!-- /stampo, se ci sono, lista di errori -->
 
-    <form action="{{route('ur.apartments.store')}}" method="POST" class="myForm">
+    <form action="{{route('ur.apartments.store')}}" method="POST" class="myForm" enctype="multipart/form-data">
         @method('POST')
         @csrf
         <!-- titolo -->
@@ -63,7 +63,7 @@
             <!-- bathroom -->
             <div class="form-group">
                 <label for="bathroom">N. bagni</label>
-                <input type="bathroom" class="form-control" id="bathroom" name="bathrooms" placeholder="1" value="{{ old('bathroom') }}">
+                <input type="bathroom" class="form-control" id="bathroom" name="bathrooms" placeholder="1" value="{{ old('bathrooms') }}">
             </div>
             <!-- / bathroom -->
         </div>

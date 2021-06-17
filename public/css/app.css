@@ -16262,6 +16262,10 @@ a:hover {
   box-shadow: 6px 6px 16px 0 #D9DCEA;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 body {
   font-family: "Poppins", sans-serif;
 }
@@ -16270,6 +16274,12 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.titlewrapper {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
 }
 
 .ur-wrapper {
@@ -16290,21 +16300,38 @@ body {
   }
 }
 .ur-wrapper .ur-main__title {
-  flex-basis: 100%;
   margin-bottom: 30px;
+}
+.ur-wrapper .add-btn-wrp {
+  width: 50px;
+}
+
+h2 {
+  display: inline-block;
 }
 
 .add_button {
-  width: 100%;
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
   display: flex;
-  margin-bottom: 30px;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  bottom: 60px;
+}
+@media (min-width: 768px) {
+  .add_button {
+    justify-content: flex-end;
+  }
 }
 
 .dash-wrapper {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -20px;
+  width: 100%;
 }
 
 .dash__card {

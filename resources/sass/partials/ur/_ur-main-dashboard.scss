@@ -1,14 +1,27 @@
+h2 {
+    display: inline-block;
+}
 .add_button {
-    width: 100%;
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
     display: flex;
-    margin-bottom: 30px;
-    justify-content:flex-end;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    bottom: 60px;
+
+    @include media-breakpoint-up(md) { 
+        justify-content: flex-end;
+    }
 }
 
 .dash-wrapper {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -20px;
+    width: 100%;
 }
 
 .dash__card{
