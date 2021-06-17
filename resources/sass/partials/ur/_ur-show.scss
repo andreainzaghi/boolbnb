@@ -1,17 +1,26 @@
-* {
-   margin:0;
-   font-family: 'Poppins', sans-serif;
-   padding:0;
-   box-sizing:border-box;
- }
+// * {
+//    margin:0;
+//    font-family: 'Poppins', sans-serif;
+//    padding:0;
+//    box-sizing:border-box;
+//  }
 
 .box {
   margin: 0 auto;
+   .admin-sponsor-box {
+      border: 2px solid $primaryColor;
+      border-radius: 13px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;  
+      padding: 16px;;    
+      margin-bottom: 20px;
+}
 
-  .interno-profilo{
-    width:100%;
+   .admin-interno-profilo{
+      width:100%;
 
-    .title-page { 
+      .admin-title-page { 
       display:flex;
       justify-content:space-between;
       width:100%;
@@ -42,9 +51,9 @@
         }
       }  
   
-    }
+      }
   
-    .immagini {
+      .admin-immagini {
       height:250px;
       display: flex;
     
@@ -65,9 +74,9 @@
         border-top-right-radius: 20px 20px;
         border-bottom-right-radius: 20px 20px;
       }
-    }
+      }
     
-    .box-appartamento {
+      .admin-box-appartamento {
       display: flex;
       margin-top:10px;
       width:100%;
@@ -113,7 +122,9 @@
 
       .box-right {
         width: 35%;
-        .alert {
+
+        .alert-admin {
+
           p {
             font-size: 12px;
             color: $secondaryColor;
@@ -136,37 +147,23 @@
           }       
         }      
       }      
-    }  
+      }
 
-    .buttons{
-      display:flex;
-      justify-content:space-between;
-      align-items: center;
-    }
-  }
-
+      .buttons-admin {
+         display:flex;
+         justify-content:space-between;
+         align-items: center;
+      }  
+      
+   }
+     
 }
 
   
 
-//  .posizione{
-//    width:30%;
-//    margin-top:20px;
-//  }
-//   .imgaff{
-//    height:300px;
-//    width:99%;
-//  }
- 
 
 
 
-//  bottoni per le azioni lato admin 
-.buttons{
-  display:flex;
-  justify-content: flex-end;
-  align-items: center;
-}
 //  .button-1 button{
 //    margin: 10px 0;
 //    border-radius: 10px;

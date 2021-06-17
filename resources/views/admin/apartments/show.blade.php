@@ -12,9 +12,34 @@
 
 @section('MainContent')
 <div class="box">
-  <div class="interno-profilo">
+  <div class="admin-sponsor-box">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+      <label class="form-check-label" for="inlineRadio1">Silver | 2,99 € per 24 ore</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2">Gold | 5,99 € per 72 ore</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
+      <label class="form-check-label" for="inlineRadio3">Platinum | 9,99 € per 144 ore</label>
+    </div>
+    <div class="buttons-admin">
+      <a href="#" class="my-btn my-btn-primary"><span class="d-none d-md-inline-block">Sponsorizza</span></a> 
+    </div>
+    
+    
+    {{-- sponsor box  --}}
+    
+    {{-- sponsor box  --}}      
+  </div>  
+  
+  <div class="admin-interno-profilo">
+        
+        
         <!-- title page -->
-        <div class="title-page">
+        <div class="admin-title-page">
           <!-- v-for per ciclare il titolo-->
           <div class="title">
             <h3>Casa Paradiso</h3>
@@ -25,22 +50,22 @@
           </div>
         </div>
         <!-- immagini -->
-        <div class="immagini">
+        <div class="admin-immagini">
           <div class="immagineappartamento">
 
             
           </div>
           <div id='map' class='mappe'></div>
         </div>
-        <!-- cose della stanza -->
-        <div class="box-appartamento">
+        
+        <div class="admin-box-appartamento">
           <div class="descrizione">
             <p class="recap">Stanze: 5 | Bagni: 3| Letti: 3 | Ospiti: 2 | Dimensioni: 90mq </p>
             <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
             <div class="select-servizi">
               <h4>Servizi</h4> 
               {{-- checkboxes lato admin --}}
-              {{-- <div class="check-square">
+              <div class="check-square">
                 <div class="square-1">
                   Cucina
                   
@@ -127,53 +152,29 @@
                   <input type="checkbox" name="" value="">
                   
                 </div>
-              </div> --}}
+              </div>
               {{-- checkboxes lato admin --}}
 
             </div>          
           </div>
           <div class="box-right">
-
             {{-- messaggio alert lato admin --}}
-            {{-- <div class="alert">
+          <div class="alert-admin">
               <p><i class="fas fa-exclamation-circle"></i> Questo appartamento è sponsorizzato. <br>La promozione scadrà in data: 21-06-2022</p>
-            </div> --}}
-            {{-- messaggio alert lato admin --}}
-
-            {{-- form invio messaggio lato guest  --}}
-            <div class="send-msg">
-              <div class="email">
-                {{-- campo email --}}
-                <label for="indirizzo email">Indirizzo email</label>
-                <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" placeholder="Inserisci la tua email" value="{{ old('email') }}">
-                <small id="emailHelp" class="form-text text-muted">Non condivideremo la tua email con nessuno</small>
-              </div>
-                {{-- campo messaggio  --}}
-              <div class="messaggio">
-                <label for="messaggio testo">Invia un messaggio al proprietario</label>
-                <textarea class="form-control form-control-sm" id="message" rows="8"
-                placeholder="Scrivi qui il messaggio"></textarea>
-              </div>
             </div>
-            {{-- form invio messaggio lato guest  --}}
-
+            {{-- messaggio alert lato admin --}}
           </div>
         </div>
         
-        {{-- bottoni lato guest  --}}
-        <div class="buttons">  
-          <a href="#" class="my-btn my-btn-primary"><span class="d-none d-md-inline-block">Invia</span></a>  
-        </div>
-        {{-- bottoni lato guest  --}}
-
         {{-- bottoni lato admin --}}
-        {{-- <div class="buttons">
+        <div class="buttons-admin">
           <a href="#" class="my-btn my-btn-secondary"><span class="d-none d-md-inline-block">Modifica</span></a> 
           <a href="#" class="my-btn my-btn-secondary"><span class="d-none d-md-inline-block">Sponsorizza</span></a>  
           <a href="#" class="my-btn my-btn-secondary"><span class="d-none d-md-inline-block">Visualizza messaggi</span></a>   
           <a href="#" class="my-btn my-btn-primary"><span class="d-none d-md-inline-block">Elimina</span></a>  
-        </div>  --}}
-        {{-- bottoni lato admin --}}      
+        </div> 
+        {{-- bottoni lato admin --}}    
+        
   </div>
 </div>
 </div>

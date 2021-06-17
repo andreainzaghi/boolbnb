@@ -16532,51 +16532,53 @@ body {
   font-size: 20px;
 }
 
-* {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .box {
   margin: 0 auto;
 }
-.box .interno-profilo {
+.box .admin-sponsor-box {
+  border: 2px solid #E94A47;
+  border-radius: 13px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.box .admin-interno-profilo {
   width: 100%;
 }
-.box .interno-profilo .title-page {
+.box .admin-interno-profilo .admin-title-page {
   display: flex;
   justify-content: space-between;
   width: 100%;
   font-weight: bold;
 }
-.box .interno-profilo .title-page .title {
+.box .admin-interno-profilo .admin-title-page .title {
   width: 65%;
   margin-right: 20px;
 }
-.box .interno-profilo .title-page .title h3 {
+.box .admin-interno-profilo .admin-title-page .title h3 {
   font-size: 30px;
 }
-.box .interno-profilo .title-page .title p {
+.box .admin-interno-profilo .admin-title-page .title p {
   font-size: 12px;
   font-weight: 400;
   color: #23286B;
   margin-bottom: 5px;
 }
-.box .interno-profilo .title-page .title-map {
+.box .admin-interno-profilo .admin-title-page .title-map {
   width: 35%;
   display: flex;
   align-items: flex-end;
 }
-.box .interno-profilo .title-page .title-map p {
+.box .admin-interno-profilo .admin-title-page .title-map p {
   font-size: 10px;
 }
-.box .interno-profilo .immagini {
+.box .admin-interno-profilo .admin-immagini {
   height: 250px;
   display: flex;
 }
-.box .interno-profilo .immagini .immagineappartamento {
+.box .admin-interno-profilo .admin-immagini .immagineappartamento {
   height: 250px;
   width: 65%;
   margin-right: 20px;
@@ -16585,78 +16587,72 @@ body {
   border-bottom-left-radius: 20px 20px;
   overflow: hidden;
 }
-.box .interno-profilo .immagini .mappe {
+.box .admin-interno-profilo .admin-immagini .mappe {
   height: 250px;
   border: 1px solid black;
   width: 35%;
   border-top-right-radius: 20px 20px;
   border-bottom-right-radius: 20px 20px;
 }
-.box .interno-profilo .box-appartamento {
+.box .admin-interno-profilo .admin-box-appartamento {
   display: flex;
   margin-top: 10px;
   width: 100%;
 }
-.box .interno-profilo .box-appartamento .descrizione {
+.box .admin-interno-profilo .admin-box-appartamento .descrizione {
   width: 65%;
   margin-right: 20px;
 }
-.box .interno-profilo .box-appartamento .descrizione .recap {
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .recap {
   color: #23286B;
   font-size: 13px;
 }
-.box .interno-profilo .box-appartamento .descrizione .sottotesto {
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .sottotesto {
   color: #6E7078;
   font-size: 12px;
 }
-.box .interno-profilo .box-appartamento .descrizione .select-servizi {
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi {
   color: #23286B;
   font-size: 12px;
 }
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square {
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi .check-square {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
   font-size: 12px;
 }
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-1,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-2,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-3,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-4,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-5,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-6,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-7 {
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi .check-square .check-square .square-1,
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi .check-square .check-square .square-2,
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi .check-square .check-square .square-3,
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi .check-square .check-square .square-4,
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi .check-square .check-square .square-5,
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi .check-square .check-square .square-6,
+.box .admin-interno-profilo .admin-box-appartamento .descrizione .select-servizi .check-square .check-square .square-7 {
   padding-left: 10px;
 }
-.box .interno-profilo .box-appartamento .box-right {
+.box .admin-interno-profilo .admin-box-appartamento .box-right {
   width: 35%;
 }
-.box .interno-profilo .box-appartamento .box-right .alert p {
+.box .admin-interno-profilo .admin-box-appartamento .box-right .alert-admin p {
   font-size: 12px;
   color: #23286B;
 }
-.box .interno-profilo .box-appartamento .box-right .alert p .fa-exclamation-circle {
+.box .admin-interno-profilo .admin-box-appartamento .box-right .alert-admin p .fa-exclamation-circle {
   color: #E94A47;
 }
-.box .interno-profilo .box-appartamento .box-right .send-msg {
+.box .admin-interno-profilo .admin-box-appartamento .box-right .send-msg {
   margin-bottom: 30px;
 }
-.box .interno-profilo .box-appartamento .box-right .send-msg .email {
+.box .admin-interno-profilo .admin-box-appartamento .box-right .send-msg .email {
   margin-bottom: 10px;
 }
-.box .interno-profilo .box-appartamento .box-right .send-msg .email label, .box .interno-profilo .box-appartamento .box-right .send-msg .messaggio label {
+.box .admin-interno-profilo .admin-box-appartamento .box-right .send-msg .email label, .box .admin-interno-profilo .admin-box-appartamento .box-right .send-msg .messaggio label {
   font-size: 13px;
   color: #23286B;
 }
-.box .interno-profilo .buttons {
+.box .admin-interno-profilo .buttons-admin {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.buttons {
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
 }
 
