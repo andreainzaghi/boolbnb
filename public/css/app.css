@@ -16789,11 +16789,16 @@ form .btn {
   transform: scale(1.4);
 }
 
+<<<<<<< HEAD
+.title {
+  width: 95%;
+=======
 * {
   margin: 0;
   font-family: "Poppins", sans-serif;
   padding: 0;
   box-sizing: border-box;
+>>>>>>> main
 }
 
 .box {
@@ -16817,6 +16822,12 @@ form .btn {
 }
 .box .interno-profilo .title-page .title p {
   font-size: 12px;
+<<<<<<< HEAD
+}
+
+.posizione {
+  width: 30%;
+=======
   font-weight: 400;
   color: #23286B;
   margin-bottom: 5px;
@@ -16825,15 +16836,21 @@ form .btn {
   width: 35%;
   display: flex;
   align-items: flex-end;
+>>>>>>> main
 }
 .box .interno-profilo .title-page .title-map p {
   font-size: 10px;
 }
+<<<<<<< HEAD
+
+.immagineappartamento {
+=======
 .box .interno-profilo .immagini {
   height: 250px;
   display: flex;
 }
 .box .interno-profilo .immagini .immagineappartamento {
+>>>>>>> main
   height: 250px;
   width: 65%;
   margin-right: 20px;
@@ -16842,21 +16859,40 @@ form .btn {
   border-bottom-left-radius: 20px 20px;
   overflow: hidden;
 }
+<<<<<<< HEAD
+
+.mappe {
+  height: 250px;
+=======
 .box .interno-profilo .immagini .mappe {
   height: 250px;
   border: 1px solid black;
+>>>>>>> main
   width: 35%;
   border-top-right-radius: 20px 20px;
   border-bottom-right-radius: 20px 20px;
 }
+<<<<<<< HEAD
+
+.immagini {
+  height: 250px;
+=======
 .box .interno-profilo .box-appartamento {
+>>>>>>> main
   display: flex;
   margin-top: 10px;
   width: 100%;
 }
+<<<<<<< HEAD
+
+.interno-profilo {
+  width: 100%;
+  margin: auto;
+=======
 .box .interno-profilo .box-appartamento .descrizione {
   width: 65%;
   margin-right: 20px;
+>>>>>>> main
 }
 .box .interno-profilo .box-appartamento .descrizione .recap {
   color: #23286B;
@@ -16866,6 +16902,16 @@ form .btn {
   color: #6E7078;
   font-size: 12px;
 }
+<<<<<<< HEAD
+
+.sottot {
+  width: 100%;
+  padding: 10px;
+}
+
+.sottot .sottotesto {
+  width: 100%;
+=======
 .box .interno-profilo .box-appartamento .descrizione .select-servizi {
   color: #23286B;
   font-size: 12px;
@@ -16874,8 +16920,24 @@ form .btn {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+>>>>>>> main
   font-size: 12px;
 }
+<<<<<<< HEAD
+
+.alert12 p {
+  font-size: 10px;
+}
+
+.peculiarita-stanza {
+  display: flex;
+  width: 100%;
+}
+
+.alert12 {
+  width: 80%;
+  text-align: right;
+=======
 .box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-1,
 .box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-2,
 .box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-3,
@@ -16897,6 +16959,7 @@ form .btn {
 }
 .box .interno-profilo .box-appartamento .box-right .send-msg {
   margin-bottom: 30px;
+>>>>>>> main
 }
 .box .interno-profilo .box-appartamento .box-right .send-msg .email {
   margin-bottom: 10px;
@@ -16914,7 +16977,18 @@ form .btn {
 .buttons {
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
+}
+
+.button-1 button {
+  border-radius: 10px;
+  color: #fff;
+  border: none;
+  padding: 7px 20px;
+  background-color: #e94a47;
+=======
   align-items: center;
+>>>>>>> main
 }
 
 /* scroll */

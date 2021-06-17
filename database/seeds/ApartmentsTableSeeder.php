@@ -403,7 +403,7 @@ class ApartmentsTableSeeder extends Seeder
 
                    // Generazione dello slug univoco
                    do{
-                        $randomNumSlug = "-".rand(0, 10000000000000000);
+                        $randomNumSlug = "-".rand(0, 10000000);
                         $slugTmp = Str::slug( $apartment->title, '-' ).$randomNumSlug;
                    }
                    while( Apartment::where('slug', $slugTmp)->first() );
