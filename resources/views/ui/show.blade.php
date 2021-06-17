@@ -27,11 +27,6 @@
         <!-- immagini -->
         <div class="immagini">
           <div class="immagineappartamento">
-
-            {{-- <img class="imgaff" src="img/app.jpg" alt="">
-            <img class="imgaff" src="img/3e.jpg" alt="">
-            <img class="imgaff" src="img/art.jpg" alt="">
-            <img class="imgaff" src="img/ds.jpg" alt=""> --}}
             
           </div>
           <div id='map' class='mappe'></div>
