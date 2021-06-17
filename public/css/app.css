@@ -16089,7 +16089,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7);
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.svg?19e27d348fefc21941e0310a0ec6339b) format("svg");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.eot?4079ae2d2a15d0689568f3a5459241c7?#iefix) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff2?68c5af1f48e2bfca1e57ae1c556a5c72) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.woff?3672264812746c3c7225909742da535c) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.ttf?1017bce89c72f95bcf8e2bf4774efdbf) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-regular-400.svg?19e27d348fefc21941e0310a0ec6339b#fontawesome) format("svg");
 }
 .far {
   font-family: "Font Awesome 5 Free";
@@ -16106,7 +16106,7 @@ readers do not read off random characters that represent icons */
   font-weight: 900;
   font-display: block;
   src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1);
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?13de59f1a36b6cb4bca0050160ff0e41) format("svg");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?efbd5d20e407bbf85f2b3087ee67bfa1?#iefix) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?ada6e6df937f7e5e8b790dfea07109b7) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?c6ec080084769a6d8a34ab35b77999cd) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?07c3313b24f7b1ca85ee99b4fa7db55e) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?13de59f1a36b6cb4bca0050160ff0e41#fontawesome) format("svg");
 }
 .fa,
 .fas {
@@ -16124,7 +16124,7 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
   font-display: block;
   src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?89a52ae1d02b86d6143987c865471c24);
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?89a52ae1d02b86d6143987c865471c24) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?216edb96b562c79adc09e2d3c63db7c0) format("svg");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?89a52ae1d02b86d6143987c865471c24?#iefix) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?c1210e5ebe4344da508396540be7f52c) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?329a95a9172fdb2cccb4f9347ed55233) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?9e138496e8f1719c6ebf0abe50563635) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?216edb96b562c79adc09e2d3c63db7c0#fontawesome) format("svg");
 }
 .fab {
   font-family: "Font Awesome 5 Brands";
@@ -16565,6 +16565,152 @@ h2 {
 .checkVisible label {
   margin-left: 40px;
   font-size: 20px;
+}
+
+* {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  margin: 0 auto;
+}
+.box .interno-profilo {
+  width: 100%;
+}
+.box .interno-profilo .title-page {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: bold;
+}
+.box .interno-profilo .title-page .title {
+  width: 65%;
+  margin-right: 20px;
+}
+.box .interno-profilo .title-page .title h3 {
+  font-size: 30px;
+}
+.box .interno-profilo .title-page .title p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #23286B;
+  margin-bottom: 5px;
+}
+.box .interno-profilo .title-page .title-map {
+  width: 35%;
+  display: flex;
+  align-items: flex-end;
+}
+.box .interno-profilo .title-page .title-map p {
+  font-size: 10px;
+}
+.box .interno-profilo .immagini {
+  height: 250px;
+  display: flex;
+}
+.box .interno-profilo .immagini .immagineappartamento {
+  height: 250px;
+  width: 65%;
+  margin-right: 20px;
+  border: 1px solid black;
+  border-top-left-radius: 20px 20px;
+  border-bottom-left-radius: 20px 20px;
+  overflow: hidden;
+}
+.box .interno-profilo .immagini .mappe {
+  height: 250px;
+  border: 1px solid black;
+  width: 35%;
+  border-top-right-radius: 20px 20px;
+  border-bottom-right-radius: 20px 20px;
+}
+.box .interno-profilo .box-appartamento {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+}
+.box .interno-profilo .box-appartamento .descrizione {
+  width: 65%;
+  margin-right: 20px;
+}
+.box .interno-profilo .box-appartamento .descrizione .recap {
+  color: #23286B;
+  font-size: 13px;
+}
+.box .interno-profilo .box-appartamento .descrizione .sottotesto {
+  color: #6E7078;
+  font-size: 12px;
+}
+.box .interno-profilo .box-appartamento .descrizione .select-servizi {
+  color: #23286B;
+  font-size: 12px;
+}
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-1,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-2,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-3,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-4,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-5,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-6,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-7 {
+  padding-left: 10px;
+}
+.box .interno-profilo .box-appartamento .box-right {
+  width: 35%;
+}
+.box .interno-profilo .box-appartamento .box-right .alert p {
+  font-size: 12px;
+  color: #23286B;
+}
+.box .interno-profilo .box-appartamento .box-right .alert p .fa-exclamation-circle {
+  color: #E94A47;
+}
+.box .interno-profilo .box-appartamento .box-right .send-msg {
+  margin-bottom: 30px;
+}
+.box .interno-profilo .box-appartamento .box-right .send-msg .email {
+  margin-bottom: 10px;
+}
+.box .interno-profilo .box-appartamento .box-right .send-msg .email label, .box .interno-profilo .box-appartamento .box-right .send-msg .messaggio label {
+  font-size: 13px;
+  color: #23286B;
+}
+.box .interno-profilo .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* scroll */
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #CA3431;
+  border-radius: 7px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
 }
 
 .jumbotron {

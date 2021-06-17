@@ -1,0 +1,201 @@
+* {
+   margin:0;
+   font-family: 'Poppins', sans-serif;
+   padding:0;
+   box-sizing:border-box;
+ }
+
+.box {
+  margin: 0 auto;
+
+  .interno-profilo{
+    width:100%;
+
+    .title-page { 
+      display:flex;
+      justify-content:space-between;
+      width:100%;
+      font-weight: bold;
+       
+      .title{
+        width:65%;
+        margin-right: 20px;
+       
+        h3 {
+          font-size: 30px;
+        }
+    
+        p {
+          font-size: 12px; 
+          font-weight: 400;
+          color: $secondaryColor;
+          margin-bottom: 5px;
+        }  
+      }
+      .title-map {
+        width: 35%;
+        display: flex;
+        align-items: flex-end;
+  
+        p {
+          font-size: 10px;
+        }
+      }  
+  
+    }
+  
+    .immagini {
+      height:250px;
+      display: flex;
+    
+      .immagineappartamento {
+        height:250px;
+        width:65%;
+        margin-right: 20px;
+        border:1px solid black;
+        border-top-left-radius: 20px 20px;
+        border-bottom-left-radius: 20px 20px;
+        overflow: hidden;
+      }
+  
+      .mappe {
+        height:250px;
+        border:1px solid black;
+        width:35%;
+        border-top-right-radius: 20px 20px;
+        border-bottom-right-radius: 20px 20px;
+      }
+    }
+    
+    .box-appartamento {
+      display: flex;
+      margin-top:10px;
+      width:100%;
+  
+      .descrizione {
+        width:65%;
+        margin-right: 20px;
+
+        .recap {
+          color: $secondaryColor;
+          font-size: 13px;
+        }
+
+        .sottotesto {
+          color:$supportColor;
+          font-size: 12px;
+        }
+
+        .select-servizi {        
+          color: $secondaryColor;
+          font-size: 12px;
+          //  checkboxes per i serevizi lato admin
+          .check-square{
+          display:flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+          font-size: 12px;
+        
+          .check-square .square-1,
+          .check-square .square-2,
+          .check-square .square-3,
+          .check-square .square-4,
+          .check-square .square-5,
+          .check-square .square-6,
+          .check-square .square-7 {
+            padding-left:10px;
+          } 
+          }
+          //  checkboxes per i serevizi lato admin
+        }
+        
+      }
+
+      .box-right {
+        width: 35%;
+        .alert {
+          p {
+            font-size: 12px;
+            color: $secondaryColor;
+  
+            .fa-exclamation-circle {
+              color: $primaryColor;
+            }
+          }
+        } 
+        .send-msg {
+          margin-bottom: 30px;
+
+          .email {
+            margin-bottom: 10px; 
+          }
+
+          .email label, .messaggio label {
+            font-size: 13px;
+            color: $secondaryColor;
+          }       
+        }      
+      }      
+    }  
+
+    .buttons{
+      display:flex;
+      justify-content:space-between;
+      align-items: center;
+    }
+  }
+
+}
+
+  
+
+//  .posizione{
+//    width:30%;
+//    margin-top:20px;
+//  }
+//   .imgaff{
+//    height:300px;
+//    width:99%;
+//  }
+ 
+
+
+
+//  bottoni per le azioni lato admin 
+ .buttons{
+   display:flex;
+   justify-content:space-between;
+   align-items: center;
+ }
+//  .button-1 button{
+//    margin: 10px 0;
+//    border-radius: 10px;
+//    color: #fff;
+//    border: none;
+//    padding: 7px 20px;
+//    background-color: #e94a47;
+//  }
+
+ //  bottoni per le azioni lato admin 
+
+
+
+ /* scroll */
+ /* width */
+ ::-webkit-scrollbar {
+   width:5px;
+ }
+ 
+ /* Track */
+ 
+ 
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+   background:#CA3431;
+   border-radius: 7px;
+ }
+ 
+ /* Handle on hover */
+ ::-webkit-scrollbar-thumb:hover {
+   background: #b30000;
+ }
