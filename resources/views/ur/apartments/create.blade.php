@@ -113,7 +113,7 @@
             @foreach ($services as $service)
                 <div class="form-check services">
                     <label class="form-check-label" for="{{ $service->name }}">{{ $service->name }}
-                        <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="{{ $service->name }}" name="services[]" {{ old('name') ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="{{ $service->name }}" name="services[]" {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
                         <span class="checkmark"></span>
                     </label>
                 </div>
