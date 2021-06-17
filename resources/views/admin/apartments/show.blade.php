@@ -13,6 +13,7 @@
 @section('MainContent')
 <div class="box">
   <div class="admin-sponsor-box">
+    {{-- checkboxes  --}}
     <div class="custom-control custom-radio custom-control-inline">
       <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
       <label class="custom-control-label" for="customRadioInline1">Silver | 2,99 € per 24 ore</label>
@@ -25,33 +26,23 @@
       <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
       <label class="custom-control-label" for="customRadioInline3">Platinum | 9,99 € per 144 ore</label>
     </div>
-
-    {{-- <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-      <label class="form-check-label" for="inlineRadio1">Silver | 2,99 € per 24 ore</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">Gold | 5,99 € per 72 ore</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
-      <label class="form-check-label" for="inlineRadio3">Platinum | 9,99 € per 144 ore</label>
-    </div> --}}
+    {{-- checkboxes  --}}
+    {{-- bottone sponsorizza  --}}
     <div class="buttons-admin">
       <a href="#" class="my-btn my-btn-primary"><span class="d-none d-md-inline-block">Sponsorizza</span></a> 
-    </div>   
-  </div>  
+    </div>
+    {{-- bottone sponsorizza  --}}
+      
+  </div> 
   
-  <div class="admin-interno-profilo">
-        
-        
+  
+  <div class="admin-interno-profilo"> 
         <!-- title page -->
         <div class="admin-title-page">
           <!-- v-for per ciclare il titolo-->
           <div class="title">
             <h3>Casa Paradiso</h3>
-            <p>via Padova Rossi ,Milano,73102</p>
+            <p>via Padova Rossi, Milano 73102</p>
           </div>
           <div class="title-map">
             <h4>Posizione</h4>

@@ -17,8 +17,6 @@
       margin-bottom: 30px;
 
       .custom-control-input:checked ~ .custom-control-label::before {
-         // color: $secondaryColor;
-         // border-color: $secondaryColor;
          background-color: $primaryColor;
        }
       

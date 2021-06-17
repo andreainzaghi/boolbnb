@@ -16545,6 +16545,7 @@ body {
   margin-bottom: 30px;
 }
 .box .admin-sponsor-box .custom-control-input:checked ~ .custom-control-label::before {
+  color: #23286B;
   background-color: #E94A47;
 }
 .box .admin-interno-profilo {
