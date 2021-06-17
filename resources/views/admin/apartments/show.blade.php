@@ -13,7 +13,20 @@
 @section('MainContent')
 <div class="box">
   <div class="admin-sponsor-box">
-    <div class="form-check form-check-inline">
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+      <label class="custom-control-label" for="customRadioInline1">Silver | 2,99 € per 24 ore</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadioInline2">Gold | 5,99 € per 72 ore</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+      <label class="custom-control-label" for="customRadioInline3">Platinum | 9,99 € per 144 ore</label>
+    </div>
+
+    {{-- <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
       <label class="form-check-label" for="inlineRadio1">Silver | 2,99 € per 24 ore</label>
     </div>
@@ -24,15 +37,10 @@
     <div class="form-check form-check-inline">
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">
       <label class="form-check-label" for="inlineRadio3">Platinum | 9,99 € per 144 ore</label>
-    </div>
+    </div> --}}
     <div class="buttons-admin">
       <a href="#" class="my-btn my-btn-primary"><span class="d-none d-md-inline-block">Sponsorizza</span></a> 
-    </div>
-    
-    
-    {{-- sponsor box  --}}
-    
-    {{-- sponsor box  --}}      
+    </div>   
   </div>  
   
   <div class="admin-interno-profilo">
@@ -52,8 +60,7 @@
         <!-- immagini -->
         <div class="admin-immagini">
           <div class="immagineappartamento">
-
-            
+            <a href=""><img src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento"></a>
           </div>
           <div id='map' class='mappe'></div>
         </div>
@@ -160,7 +167,7 @@
           <div class="box-right">
             {{-- messaggio alert lato admin --}}
           <div class="alert-admin">
-              <p><i class="fas fa-exclamation-circle"></i> Questo appartamento è sponsorizzato. <br>La promozione scadrà in data: 21-06-2022</p>
+              <p><i class="fas fa-exclamation-circle"></i> Questo appartamento è sponsorizzato. <br>La promozione scadrà in data: <span>21-06-2022</span></p>
             </div>
             {{-- messaggio alert lato admin --}}
           </div>
@@ -169,9 +176,8 @@
         {{-- bottoni lato admin --}}
         <div class="buttons-admin">
           <a href="#" class="my-btn my-btn-secondary"><span class="d-none d-md-inline-block">Modifica</span></a> 
-          <a href="#" class="my-btn my-btn-secondary"><span class="d-none d-md-inline-block">Sponsorizza</span></a>  
           <a href="#" class="my-btn my-btn-secondary"><span class="d-none d-md-inline-block">Visualizza messaggi</span></a>   
-          <a href="#" class="my-btn my-btn-primary"><span class="d-none d-md-inline-block">Elimina</span></a>  
+          <a href="#" class="my-btn my-btn-primary"><span class="d-none d-md-inline-block">Elimina struttura</span></a>  
         </div> 
         {{-- bottoni lato admin --}}    
         

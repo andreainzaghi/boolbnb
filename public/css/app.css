@@ -16542,7 +16542,10 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+.box .admin-sponsor-box .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #E94A47;
 }
 .box .admin-interno-profilo {
   width: 100%;
@@ -16579,24 +16582,33 @@ body {
   display: flex;
 }
 .box .admin-interno-profilo .admin-immagini .immagineappartamento {
-  height: 250px;
   width: 65%;
   margin-right: 20px;
-  border: 1px solid black;
   border-top-left-radius: 20px 20px;
   border-bottom-left-radius: 20px 20px;
   overflow: hidden;
 }
+.box .admin-interno-profilo .admin-immagini .immagineappartamento img {
+  background-color: grey;
+  display: block;
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.5s;
+}
+.box .admin-interno-profilo .admin-immagini .immagineappartamento:hover img {
+  transform: scale(1.05);
+}
 .box .admin-interno-profilo .admin-immagini .mappe {
   height: 250px;
-  border: 1px solid black;
   width: 35%;
   border-top-right-radius: 20px 20px;
   border-bottom-right-radius: 20px 20px;
 }
 .box .admin-interno-profilo .admin-box-appartamento {
   display: flex;
-  margin-top: 10px;
+  margin-top: 15px;
   width: 100%;
 }
 .box .admin-interno-profilo .admin-box-appartamento .descrizione {
@@ -16633,22 +16645,16 @@ body {
 .box .admin-interno-profilo .admin-box-appartamento .box-right {
   width: 35%;
 }
-.box .admin-interno-profilo .admin-box-appartamento .box-right .alert-admin p {
+.box .admin-interno-profilo .admin-box-appartamento .alert-admin p {
   font-size: 12px;
   color: #23286B;
 }
-.box .admin-interno-profilo .admin-box-appartamento .box-right .alert-admin p .fa-exclamation-circle {
+.box .admin-interno-profilo .admin-box-appartamento .alert-admin p .fa-exclamation-circle {
   color: #E94A47;
+  font-size: 14px;
 }
-.box .admin-interno-profilo .admin-box-appartamento .box-right .send-msg {
-  margin-bottom: 30px;
-}
-.box .admin-interno-profilo .admin-box-appartamento .box-right .send-msg .email {
-  margin-bottom: 10px;
-}
-.box .admin-interno-profilo .admin-box-appartamento .box-right .send-msg .email label, .box .admin-interno-profilo .admin-box-appartamento .box-right .send-msg .messaggio label {
-  font-size: 13px;
-  color: #23286B;
+.box .admin-interno-profilo .admin-box-appartamento .alert-admin p span {
+  color: #E94A47;
 }
 .box .admin-interno-profilo .buttons-admin {
   display: flex;
