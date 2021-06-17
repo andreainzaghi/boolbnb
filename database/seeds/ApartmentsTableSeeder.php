@@ -424,16 +424,25 @@ class ApartmentsTableSeeder extends Seeder
                    $apartment->save();
                     
                     //Inserimento dei servizi
-                    $randService = [];
-
-                    for ( $y = 0; $y < count($services)-1; $y++ ) {
+                   
+                    $maxServices = rand(0,count($services)-1);
+                    $numServiceEntered = 0;
+                    $numGen = [];
                     
-                        // if( in_array("Irix", $randService)){
+                    while( $numServiceEntered <= $maxServices ){
 
-                        // }
-                        $data['services'] = $services[rand( 0,count($services)-1 )];
-                        $apartment->services()->attach($data['services']);
+                        $numService = rand(0, count($services)-1);
+
+                        if( !in_array($numService, $numGen) ){
+                            $numGen[] = $numService;
+
+                            $data['services'] = $services[$numService];
+                            $apartment->services()->attach($data['services']);
+                            $numServiceEntered++;
+                        
+                        }
                     }
+                }
 
                     //Inserimento degli sponsor
                     if($apartment->visible){
@@ -446,5 +455,4 @@ class ApartmentsTableSeeder extends Seeder
                 }
             }
         }
-    }
 }
