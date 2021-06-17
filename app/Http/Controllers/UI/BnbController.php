@@ -14,6 +14,9 @@ class BnbController extends Controller
     public function index() {
         $count = 0;
         $sponsors = Sponsor::orderBy('id', 'desc')->get();
+        $query = [];
+        $sponsored = [];
+
         foreach ( $sponsors as $sponsor ) {
             $currentDate = Carbon::now();
             $query[] = $sponsor->apartments()->where('expiration', '>', $currentDate)->get();
@@ -25,6 +28,11 @@ class BnbController extends Controller
             }
           } 
         }
+
+        if ($sponsored == []) {
+            return view('ui.welcome');
+        } 
+
         return view('ui.welcome', compact('sponsored'));
     }
 
