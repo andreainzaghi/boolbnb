@@ -22,16 +22,13 @@
 @import 'common/btns';
 @import 'common/helpers';
 @import 'common/common';
-
+@import 'common/show';
 
 //lato UR
 @import 'partials/ur/ur-main';
 @import 'partials/ur/ur-main-dashboard';
 @import 'partials/ur/ur-create-edit';
 
-
-
-
 //lato UI
-
 @import 'partials/ui/ui-home';
+@import 'partials/ui/ui-show';
