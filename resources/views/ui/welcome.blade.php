@@ -23,6 +23,7 @@
     {{-- /hero --}}
 
     {{-- sposored --}}
+    @if(isset($sponsored))
     <div class="sponsored">
         
         <?php $count = 0; ?>
@@ -40,6 +41,7 @@
         @endforeach
 
     </div>
+    @endif
     {{-- /sposored --}}
 @endsection
 
