@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\UR;
+namespace App\Http\Controllers\ADMIN;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
-use App\Sponsor;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -27,9 +26,20 @@ class ApartmentController extends Controller
             'address' => 'required | string | max:100',
             'city' => 'required | string | max:50',
             'lat' => 'required | numeric | max:90 | min: -90',
-            'long' => 'required | numeric | max:180 | min: -180',
-            'city' => 'required | string | max:50',
-            'image' => 'nullable| image | mimes:jpeg,png,jpg,gif,svg | max:2048',
+            /*
+            * -- Long max 180 da problemi--
+            * 
+            * Ho riscontrato il problema con queste coordinate (Lat: 44.427155, Long: 8.839384),
+            * anche se la Long è meno di 180 mi resituisce un'errore dicendo che non piò inserire
+            * una long maggiore di 180.
+            * Quindi ho temporaneamente disabilitato max 180 per permettere il corretto inserimento del dato.
+            * possibili solizioni:
+            * - Validazione front-end e successivamente back-end
+            */
+           /**/ 'long' => 'required | numeric | min: -180', /**/ 
+
+            'city' => 'required | string | max:50', 
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'visible' => 'boolean'
         ];
     } 
@@ -43,7 +53,7 @@ class ApartmentController extends Controller
     {
         $userId = Auth::id();
         $apartments = Apartment::where( 'user_id', $userId )->get();
-        return view('ur.apartments.index', compact('apartments'));
+        return view('admin.apartments.index', compact('apartments'));
     }
 
     /**
@@ -54,7 +64,7 @@ class ApartmentController extends Controller
     public function create()
     {
         $services = Service::all();
-        return view('ur.apartments.create', compact('services'));
+        return view('admin.apartments.create', compact('services'));
     }
 
     /**
@@ -76,15 +86,22 @@ class ApartmentController extends Controller
 
         $data['visible'] = !isset( $data['visible'] ) ? 0 : 1;
 
-        $data['slug'] = Str::slug ($data['title'], '-' );
+        // Generazione dello slug univoco
+        do{
+            $randomNumSlug = "-".rand(0, 10000000000000000);
+            $slugTmp = Str::slug( $data['title'], '-' ).$randomNumSlug;
+        }
+        while( Apartment::where('slug', $slugTmp)->first() );
 
-        $newapartment = Apartment::create( $data );
+        $data['slug'] = $slugTmp;
+
+       $newapartment = Apartment::create( $data );
 
         if ( isset($data['services']) ) {
             $newapartment->services()->attach( $data['services'] );
         }
 
-        return redirect()->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] );
+       return redirect()->route( 'admin.apartments.show', [ 'apartment' => $newapartment ] );
     }
 
     /**
@@ -98,7 +115,7 @@ class ApartmentController extends Controller
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
-        return view('ur.apartments.show', compact('apartment'));
+        return view('admin.apartments.show', compact('apartment'));
     }
 
     /**
@@ -113,7 +130,7 @@ class ApartmentController extends Controller
             abort('403');
         }
         $services = Service::all();
-        return view('ur.apartments.edit', compact('apartment', 'service'));
+        return view('admin.apartments.edit', compact('apartment', 'services'));
     }
 
     /**
@@ -125,26 +142,40 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        $request->validate( $this->validation );
-        $data = $request->all();
 
+        $validation = $this->validation;
+        $validation['title'] = 'required|string|max:100|unique:apartments,title,' . $apartment->id;
+
+        $request->validate($validation);
+
+        $data = $request->all();
+        
         if ( isset($data['image']) ) {
             $data['image'] = Storage::disk('public')->put('images', $data['image']);
         }
 
         $data['visible'] = !isset( $data['visible'] ) ? 0 : 1;
 
-        $data['slug'] = Str::slug ($data['title'], '-' );
 
-        $newapartment = Apartment::create( $data );
-        
+        // Generazione dello slug univoco
+        do{
+            $randomNumSlug = "-".rand(0, 10000000000000000);
+            $slugTmp = Str::slug( $data['title'], '-' ).$randomNumSlug;
+        }
+        while( Apartment::where('slug', $slugTmp)->first() );
+
+        $data['slug'] = $slugTmp;
+        $data['user_id'] = Auth::id();
+
         $apartment->update($data);
 
         if ( isset($data['services']) ) {
-            $newapartment->services()->sync( $data['services'] );
+            $apartment->services()->sync( $data['services'] );
         }
 
-        return redirect()->route( 'ur.apartments.show', [ 'apartment' => $newapartment ] );
+        return redirect()
+                ->route( 'admin.apartments.show', [ 'apartment' => $apartment ] )
+                ->with('message', $apartment->title . 'è stato modificato');
     }
 
     /**
@@ -155,10 +186,14 @@ class ApartmentController extends Controller
      */
     public function destroy( Apartment $apartment )
     {
+
+        if( $apartment->user_id != Auth::id() ) {
+            abort('403');
+        }
         $apartment->delete();
 
         return redirect()
-        ->route('ur.apartments.index')
-        ->with('message', $apartment->title . 'è stato eliminato');
+                ->route('admin.apartments.index')
+                ->with('message', $apartment->title . 'è stato eliminato');
     }
 }

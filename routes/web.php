@@ -22,12 +22,11 @@ Route::prefix('/')->namespace('UI')->group(function () {
 
 // Route::get('/home', 'HomeController@index'); Pagina Login
 
-
-
 Auth::routes();
 
-Route::prefix('ur')->name('ur.')->namespace('UR')->middleware('auth')->group(function () {
+Route::prefix('admin')->name('admin.')->namespace('ADMIN')->middleware('auth')->group(function () {
     Route::resource('apartments', 'ApartmentController');
 });
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

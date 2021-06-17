@@ -16262,6 +16262,10 @@ a:hover {
   box-shadow: 6px 6px 16px 0 #D9DCEA;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 body {
   font-family: "Poppins", sans-serif;
 }
@@ -16272,22 +16276,63 @@ body {
   flex-direction: column;
 }
 
+.titlewrapper {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+}
+
 .ur-wrapper {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  padding: 40px 100px;
+  padding: 40px;
   overflow: auto;
 }
+@media (min-width: 768px) {
+  .ur-wrapper {
+    padding: 40px 80px;
+  }
+}
+@media (min-width: 992px) {
+  .ur-wrapper {
+    padding: 40px 100px;
+  }
+}
 .ur-wrapper .ur-main__title {
-  flex-basis: 100%;
   margin-bottom: 30px;
+}
+.ur-wrapper .add-btn-wrp {
+  width: 50px;
+}
+
+h2 {
+  display: inline-block;
+}
+
+.add_button {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  bottom: 60px;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .add_button {
+    justify-content: flex-end;
+  }
 }
 
 .dash-wrapper {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -20px;
+  width: 100%;
 }
 
 .dash__card {
@@ -16331,92 +16376,387 @@ body {
   line-height: 1.5;
 }
 
+.myForm {
+  width: 100%;
+  margin-top: 0;
+}
+.myForm h3 {
+  margin-top: 30px;
+}
+.myForm label {
+  color: #23286B;
+  font-size: 12px;
+  font-weight: 500;
+}
+.myForm input,
+.myForm textarea {
+  border: 1px solid #6E7078;
+  padding: 12px 20px;
+}
+.myForm input::-webkit-input-placeholder,
+.myForm textarea::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #B9B7BD;
+  font-weight: 500;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+}
+.myForm input:focus,
+.myForm textarea:focus {
+  border: 3px solid #F7D7D6;
+}
+.myForm textarea {
+  height: 100px;
+  resize: none;
+}
+.myForm .input__title {
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .myForm .input__title {
+    width: 50%;
+  }
+}
+.myForm .inlineInput {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.myForm .inlineInput.multiple-inline > div:not(:nth-child(2n)) {
+  padding-right: 20px;
+}
+@media (min-width: 768px) {
+  .myForm .inlineInput > div:not(:last-child) {
+    padding-right: 20px;
+  }
+}
+.myForm .numericInput > div {
+  width: 50%;
+}
+@media (min-width: 768px) {
+  .myForm .numericInput > div {
+    width: 25%;
+  }
+}
+.myForm .upload-wrapper {
+  position: relative;
+}
+.myForm .upload-image {
+  padding: 0;
+  height: 37px;
+  border-radius: 5px;
+}
+.myForm .upload-image::-webkit-file-upload-button {
+  visibility: hidden;
+  position: absolute;
+}
+.myForm .upload-image::before {
+  display: inline-block;
+  padding: 0 20px;
+  background-color: #23286B;
+  height: 37px;
+  line-height: 37px;
+  margin-right: 20px;
+  color: #fff;
+  border: none;
+  content: "Carica";
+  font-size: 12px;
+}
+.myForm .input__address,
+.myForm .input__city {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .myForm .input__address {
+    width: 65%;
+  }
+}
+@media (min-width: 768px) {
+  .myForm .input__city {
+    width: 35%;
+  }
+}
+
+.services {
+  display: inline-block;
+  margin: 0 15px 15px 0;
+  /* Hide the browser's default checkbox */
+  /* Create a custom checkbox */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
+}
+.services label {
+  margin-left: 5px;
+  color: black;
+}
+.services input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.services .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 2px solid #23286B;
+  border-radius: 5px;
+}
+.services .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.services input:checked ~ .checkmark:after, .services input:hover ~ .checkmark:after {
+  display: block;
+}
+.services .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #23286B;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.checkVisible {
+  margin: 20px 0;
+  width: 50px;
+  height: 28px;
+  position: relative;
+  border: 2px solid #23286B;
+  border-radius: 30px;
+}
+
+.checkVisible input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 999;
+  top: -5px;
+}
+
+.checkVisible .toogle {
+  position: absolute;
+  z-index: 998;
+  width: 25px;
+  height: 25px;
+  background: #23286B;
+  top: 0px;
+  left: 0;
+  transition: all 0.2s ease;
+  text-align: center;
+  border-radius: 100%;
+  display: table-cell;
+}
+
+.checkVisible input:checked ~ .toogle {
+  margin-left: 21px;
+}
+
+.checkVisible label {
+  margin-left: 40px;
+  font-size: 20px;
+}
+
+.jumbotron {
+  padding-top: 50px;
+  background-image: url("https://www.viaggi-estate.com/wp-content/uploads/2018/08/montagna-1024x512.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 1px solid #ddd;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+.jumbotron .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  position: relative;
+  margin-top: 50px;
+}
+form .search {
+  border-radius: 20px;
+  border: 0px;
+  height: 41px;
+  line-height: 41px;
+  padding-left: 10px;
+  width: 350px;
+  outline: none;
+}
+form .btn {
+  background-color: #E94A47;
+  border-radius: 20px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 76px;
+  color: #fff;
+}
+
+.phrase {
+  margin-top: 60px;
+  color: #fff;
+  width: 90%;
+  text-align: left;
+}
+.phrase h1 {
+  color: #fff;
+}
+
+.sponsored {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.sponsored .ap_card {
+  border: 0px;
+  background-color: transparent;
+}
+.sponsored .ap_card .card_image {
+  height: 150px;
+  width: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.sponsored .ap_card .card_image img {
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s;
+}
+.sponsored .ap_card .card_image img:hover {
+  transform: scale(1.4);
+}
+
+<<<<<<< HEAD
+.title {
+  width: 95%;
+=======
 * {
   margin: 0;
   font-family: "Poppins", sans-serif;
   padding: 0;
   box-sizing: border-box;
+>>>>>>> main
 }
 
-.container-principale {
+.box {
+  margin: 0 auto;
+}
+.box .interno-profilo {
   width: 100%;
-  height: 100vh;
-  background-color: #F2F3FA;
-  padding: 30px 55px 0 55px;
 }
-
-.container-profilo-casa {
-  width: 100%;
-  height: 100%;
-  border-top-right-radius: 50px 50px;
-  border-top-left-radius: 50px 50px;
-  background-color: #FFFFFF;
-}
-
-.container-profilo-casa {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.title-page {
+.box .interno-profilo .title-page {
   display: flex;
   justify-content: space-between;
-  padding: 10px 10px 0 10px;
   width: 100%;
   font-weight: bold;
 }
-
-.title {
-  width: 95%;
+.box .interno-profilo .title-page .title {
+  width: 65%;
+  margin-right: 20px;
 }
-
-.title h3 {
+.box .interno-profilo .title-page .title h3 {
   font-size: 30px;
 }
-
-.title p {
+.box .interno-profilo .title-page .title p {
   font-size: 12px;
+<<<<<<< HEAD
 }
 
 .posizione {
   width: 30%;
+=======
+  font-weight: 400;
+  color: #23286B;
+  margin-bottom: 5px;
 }
-
-.imgaff {
-  height: 300px;
-  width: 99%;
+.box .interno-profilo .title-page .title-map {
+  width: 35%;
+  display: flex;
+  align-items: flex-end;
+>>>>>>> main
 }
+.box .interno-profilo .title-page .title-map p {
+  font-size: 10px;
+}
+<<<<<<< HEAD
 
 .immagineappartamento {
-  height: 250px;
-  width: 65%;
-  border: 3px solid black;
-  border-top-left-radius: 20px 20px;
-  border-bottom-left-radius: 20px 20px;
-  overflow: hidden;
-  overflow: scroll;
-}
-
-.mappe {
-  height: 250px;
-  width: 35%;
-  border-top-right-radius: 20px 20px;
-}
-
-.immagini {
+=======
+.box .interno-profilo .immagini {
   height: 250px;
   display: flex;
 }
+.box .interno-profilo .immagini .immagineappartamento {
+>>>>>>> main
+  height: 250px;
+  width: 65%;
+  margin-right: 20px;
+  border: 1px solid black;
+  border-top-left-radius: 20px 20px;
+  border-bottom-left-radius: 20px 20px;
+  overflow: hidden;
+}
+<<<<<<< HEAD
+
+.mappe {
+  height: 250px;
+=======
+.box .interno-profilo .immagini .mappe {
+  height: 250px;
+  border: 1px solid black;
+>>>>>>> main
+  width: 35%;
+  border-top-right-radius: 20px 20px;
+  border-bottom-right-radius: 20px 20px;
+}
+<<<<<<< HEAD
+
+.immagini {
+  height: 250px;
+=======
+.box .interno-profilo .box-appartamento {
+>>>>>>> main
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+}
+<<<<<<< HEAD
 
 .interno-profilo {
   width: 100%;
   margin: auto;
+=======
+.box .interno-profilo .box-appartamento .descrizione {
+  width: 65%;
+  margin-right: 20px;
+>>>>>>> main
 }
-
-.peculiarita-stanza p {
+.box .interno-profilo .box-appartamento .descrizione .recap {
+  color: #23286B;
+  font-size: 13px;
+}
+.box .interno-profilo .box-appartamento .descrizione .sottotesto {
+  color: #6E7078;
   font-size: 12px;
 }
+<<<<<<< HEAD
 
 .sottot {
   width: 100%;
@@ -16425,9 +16765,19 @@ body {
 
 .sottot .sottotesto {
   width: 100%;
+=======
+.box .interno-profilo .box-appartamento .descrizione .select-servizi {
+  color: #23286B;
   font-size: 12px;
-  font-weight: bold;
 }
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+>>>>>>> main
+  font-size: 12px;
+}
+<<<<<<< HEAD
 
 .alert12 p {
   font-size: 10px;
@@ -16441,25 +16791,47 @@ body {
 .alert12 {
   width: 80%;
   text-align: right;
+=======
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-1,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-2,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-3,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-4,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-5,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-6,
+.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-7 {
+  padding-left: 10px;
 }
-
-.check-square {
+.box .interno-profilo .box-appartamento .box-right {
+  width: 35%;
+}
+.box .interno-profilo .box-appartamento .box-right .alert p {
+  font-size: 12px;
+  color: #23286B;
+}
+.box .interno-profilo .box-appartamento .box-right .alert p .fa-exclamation-circle {
+  color: #E94A47;
+}
+.box .interno-profilo .box-appartamento .box-right .send-msg {
+  margin-bottom: 30px;
+>>>>>>> main
+}
+.box .interno-profilo .box-appartamento .box-right .send-msg .email {
+  margin-bottom: 10px;
+}
+.box .interno-profilo .box-appartamento .box-right .send-msg .email label, .box .interno-profilo .box-appartamento .box-right .send-msg .messaggio label {
+  font-size: 13px;
+  color: #23286B;
+}
+.box .interno-profilo .buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-/* .check-square .square-1,
-.check-square .square-2.
-.check-square .square-3,
-.check-square .square-4,
-.check-square .square-5,
-.check-square .square-6,
-.check-square .square-7{
-  padding-left:10px;
-} */
 .buttons {
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
 }
 
 .button-1 button {
@@ -16468,6 +16840,9 @@ body {
   border: none;
   padding: 7px 20px;
   background-color: #e94a47;
+=======
+  align-items: center;
+>>>>>>> main
 }
 
 /* scroll */

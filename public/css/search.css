@@ -95,9 +95,9 @@ ul {
   width: 30%;
   height: calc(100vh - 175px);
   border-radius: 15px;
-}
-#map .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
-  display: none;
+  /*     .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
+          display: none;
+      } */
 }
 
 /* Stile Marker delle posizioni */

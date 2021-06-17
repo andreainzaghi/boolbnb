@@ -22,7 +22,7 @@ class ApartmentsTableSeeder extends Seeder
         $users = User::all();
         $services = Service::all();
         $sponsors = Sponsor::all();
-
+        
         // Si prende la data corrente
 
         $appartamenti = [
@@ -399,7 +399,17 @@ class ApartmentsTableSeeder extends Seeder
                     $apartment->lat = $appartamenti[$index]['lat'];
                     $apartment->long = $appartamenti[$index]['long'];
                     $apartment->title = $faker->sentence(rand(1,3));
-                    $apartment->slug = Str::slug( $apartment->title, '-' );
+
+
+                   // Generazione dello slug univoco
+                   do{
+                        $randomNumSlug = "-".rand(0, 10000000);
+                        $slugTmp = Str::slug( $apartment->title, '-' ).$randomNumSlug;
+                   }
+                   while( Apartment::where('slug', $slugTmp)->first() );
+
+                   
+                    $apartment->slug = $slugTmp;
                     $apartment->description = $faker->paragraph(5);
                     $apartment->rooms = rand(4, 10);
                     $apartment->bathrooms = rand(1, 2);
@@ -411,13 +421,28 @@ class ApartmentsTableSeeder extends Seeder
                     $inserted[] = $index;
 
                     
-                    $apartment->save();
+                   $apartment->save();
                     
                     //Inserimento dei servizi
-                    for ( $y = 0; $y < rand( 1, count($services)-1 ); $y++ ) {
-                        $data['services'] = $services[rand( 0,count($services)-1 )];
-                        $apartment->services()->attach($data['services']);
+                   
+                    $maxServices = rand(0,count($services)-1);
+                    $numServiceEntered = 0;
+                    $numGen = [];
+                    
+                    while( $numServiceEntered <= $maxServices ){
+
+                        $numService = rand(0, count($services)-1);
+
+                        if( !in_array($numService, $numGen) ){
+                            $numGen[] = $numService;
+
+                            $data['services'] = $services[$numService];
+                            $apartment->services()->attach($data['services']);
+                            $numServiceEntered++;
+                        
+                        }
                     }
+                }
 
                     //Inserimento degli sponsor
                     if($apartment->visible){
@@ -430,5 +455,4 @@ class ApartmentsTableSeeder extends Seeder
                 }
             }
         }
-    }
 }

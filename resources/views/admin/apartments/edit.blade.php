@@ -21,20 +21,20 @@
     @endif
     <!-- /stampo, se ci sono, lista di errori -->
 
-    <form action="{{route('ur.apartments.update')}}" method="POST" class="myForm">
-        @method('POST')
+    <form action="{{route('admin.apartments.update', ['apartment' => $apartment->id])}}" method="POST" class="myForm" enctype="multipart/form-data"  method="POST">
+        @method('PUT')
         @csrf
         <!-- titolo -->
         <div class="form-group input__title">
             <label for="title">Nome</label>
-            <input type="text" class="form-control form-control-sm" id="title" name="title" placeholder="Inserisci nome dell’appartamento" value="{{ old('title') }}">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci nome dell’appartamento" value="{{ old('title', $apartment->title) }}">
         </div>
         <!-- / titolo -->
 
         <!-- descrizione -->
         <div class="form-group">
             <label for="description">Descrizione</label>
-            <textarea class="form-control" name="description" id="description" rows="10" placeholder="Inserisci descrizione">{{ old('description') }}</textarea>
+            <textarea class="form-control" name="description" id="description" rows="10" placeholder="Inserisci descrizione">{{ old('description', $apartment->description) }}</textarea>
         </div>
         <!-- / descrizione -->
 
@@ -42,28 +42,28 @@
             <!-- mq -->
             <div class="form-group">
                 <label for="mq">Superficie</label>
-                <input type="mq" class="form-control" id="mq" name="mq" placeholder="25" value="{{ old('mq') }}">
+                <input type="mq" class="form-control" id="mq" name="mq" placeholder="25" value="{{ old('mq', $apartment->mq) }}">
             </div>
             <!-- / mq -->
 
             <!-- rooms -->
             <div class="form-group">
                 <label for="rooms">N. stanze</label>
-                <input type="rooms" class="form-control" id="rooms" name="rooms" placeholder="1" value="{{ old('rooms') }}">
+                <input type="rooms" class="form-control" id="rooms" name="rooms" placeholder="1" value="{{ old('rooms', $apartment->rooms) }}">
             </div>
             <!-- / rooms -->
 
             <!-- beds -->
             <div class="form-group">
                 <label for="beds">N. posti letto</label>
-                <input type="text" class="form-control" id="beds" name="beds" value="{{ old('beds') }}" placeholder="1">
+                <input type="text" class="form-control" id="beds" name="beds" value="{{ old('beds', $apartment->beds) }}" placeholder="1">
             </div>
             <!-- / beds -->
 
             <!-- bathroom -->
             <div class="form-group">
                 <label for="bathroom">N. bagni</label>
-                <input type="bathroom" class="form-control" id="bathroom" name="bathrooms" placeholder="1" value="{{ old('bathroom') }}">
+                <input type="bathroom" class="form-control" id="bathroom" name="bathrooms" placeholder="1" value="{{ old('bathrooms', $apartment->bathrooms) }}">
             </div>
             <!-- / bathroom -->
         </div>
@@ -72,7 +72,7 @@
         <!-- image -->
         <div class="form-group upload-wrapper">
             <label for="image">Carica un immagine</label>
-            <input type="file" class="form-control-file upload-image" id="image" name="image">
+            <input type="file" class="form-control-file upload-image" id="image" name="image" {{ old('image', $apartment->image) }}>
         </div>
         <!-- / image -->
 
@@ -81,14 +81,14 @@
             <!-- address -->
             <div class="form-group input__address">
                 <label for="address">Indirizzo</label>
-                <input type="address" class="form-control" id="address" name="address" placeholder="address" value="{{ old('address') }}">
+                <input type="address" class="form-control" id="address" name="address" placeholder="address" value="{{ old('address', $apartment->address) }}">
             </div>
             <!-- / address -->
 
             <!-- city -->
             <div class="form-group input__city">
                 <label for="city">Città</label>
-                <input type="city" class="form-control" id="city" name="city" placeholder="city" value="{{ old('city') }}">
+                <input type="city" class="form-control" id="city" name="city" placeholder="city" value="{{ old('city', $apartment->city) }}">
             </div>
             <!-- / city -->
         </div>
@@ -96,14 +96,14 @@
         <!-- lat -->
         <div class="form-group">
             <label for="lat">lat</label>
-            <input type="lat" class="form-control" id="lat" name="lat" placeholder="lat" value="{{ old('lat') }}">
+            <input type="lat" class="form-control" id="lat" name="lat" placeholder="lat" value="{{ old('lat', $apartment->lat) }}">
         </div>
         <!-- / lat -->
 
         <!-- long -->
         <div class="form-group">
             <label for="long">long</label>
-            <input type="long" class="form-control" id="long" name="long" placeholder="long" value="{{ old('long') }}">
+            <input type="long" class="form-control" id="long" name="long" placeholder="long" value="{{ old('long', $apartment->long) }}">
         </div>
         <!-- / long -->
 
@@ -113,7 +113,7 @@
             @foreach ($services as $service)
                 <div class="form-check services">
                     <label class="form-check-label" for="{{ $service->name }}">{{ $service->name }}
-                        <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="{{ $service->name }}" name="services[]" {{ old('name') ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" value="{{ old('id',$service->id) }}" id="{{ $service->name }}" name="services[]" {{ old('name', $apartment->services->contains($service)) ? 'checked' : '' }}>
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -124,13 +124,13 @@
         <!-- visible -->
         <div class="form-check checkVisible">
             <label class="form-check-label" for="visible">Visibile</label>
-            <input class="form-check-input" type="checkbox" id="visible" name="visible" value="1" {{ old('visible') ? 'checked' : '' }}>
+            <input class="form-check-input" type="checkbox" id="visible" name="visible" value="1" {{ old('visible', $apartment->visible) ? 'checked' : '' }}>
             <span class="toogle"></span>
         </div>
         <!-- /visible -->
 
         <div class="text-right">
-            <button type="submit" class="my-btn my-btn-primary submit">Aggiungi appartamento</button>
+            <button type="submit" class="my-btn my-btn-primary submit">Modifica appartamento</button>
         </div>
     </form>
 @endsection

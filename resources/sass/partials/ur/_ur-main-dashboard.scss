@@ -1,12 +1,34 @@
+h2 {
+    display: inline-block;
+}
+.add_button {
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    bottom: 60px;
+    z-index: 1;
+
+    @include media-breakpoint-up(md) { 
+        justify-content: flex-end;
+    }
+}
+
 .dash-wrapper {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -20px;
+    width: 100%;
 }
 
 .dash__card{
     margin: 0 20px 30px;
     flex-basis: calc( (100% - (40px * 4) ) / 4);
+    
 
     .img__wrapper {
         overflow: hidden;

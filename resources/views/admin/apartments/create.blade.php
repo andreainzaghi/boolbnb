@@ -1,11 +1,11 @@
 @extends('layouts.base-box')
 
 @section('pageTitle')
-    BoolBnb - Modifica struttura
+    BoolBnb - Aggiungi struttura
 @endsection
 
 @section('mainTitle')
-    Modifica appartamento
+    Aggiungi un nuovo appartamento
 @endsection
 
 @section('MainContent')
@@ -21,13 +21,13 @@
     @endif
     <!-- /stampo, se ci sono, lista di errori -->
 
-    <form action="{{route('ur.apartments.update')}}" method="POST" class="myForm">
+    <form action="{{route('admin.apartments.store')}}" method="POST" class="myForm" enctype="multipart/form-data">
         @method('POST')
         @csrf
         <!-- titolo -->
         <div class="form-group input__title">
             <label for="title">Nome</label>
-            <input type="text" class="form-control form-control-sm" id="title" name="title" placeholder="Inserisci nome dell’appartamento" value="{{ old('title') }}">
+            <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci nome dell’appartamento" value="{{ old('title') }}">
         </div>
         <!-- / titolo -->
 
@@ -63,7 +63,7 @@
             <!-- bathroom -->
             <div class="form-group">
                 <label for="bathroom">N. bagni</label>
-                <input type="bathroom" class="form-control" id="bathroom" name="bathrooms" placeholder="1" value="{{ old('bathroom') }}">
+                <input type="bathroom" class="form-control" id="bathroom" name="bathrooms" placeholder="1" value="{{ old('bathrooms') }}">
             </div>
             <!-- / bathroom -->
         </div>
@@ -113,7 +113,7 @@
             @foreach ($services as $service)
                 <div class="form-check services">
                     <label class="form-check-label" for="{{ $service->name }}">{{ $service->name }}
-                        <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="{{ $service->name }}" name="services[]" {{ old('name') ? 'checked' : '' }}>
+                        <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="{{ $service->name }}" name="services[]" {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
                         <span class="checkmark"></span>
                     </label>
                 </div>

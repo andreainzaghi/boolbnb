@@ -30,30 +30,71 @@ var app = new Vue({
         }
         return true;
     }, */
-    search: function search(city) {
+    search: function search(location) {
       var _this = this;
 
+      console.log(location.results[0].position.lat);
       axios.get(this.baseURL, {
         params: {
-          city: this.city
+          lat: location.results[0].position.lat,
+          "long": location.results[0].position.lon
         }
-      }).then(function (arr) {
-        _this.apartments = arr.data;
+      }).then(function (response) {
+        _this.apartments = response.data;
         console.log(_this.apartments);
         generateMap();
+        createMarkers();
       });
     }
   },
   created: function created() {
+    var _this2 = this;
+
     var urlParams = new URLSearchParams(window.location.search);
 
     if (urlParams.has('city')) {
       this.city = urlParams.get('city');
     }
 
-    this.search(this.city);
+    axios.get('https://api.tomtom.com/search/2/geocode/' + this.city + '.json', {
+      params: {
+        key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
+        language: 'it-IT',
+        limit: 1
+      }
+    }).then(function (geoJson) {
+      _this2.search(geoJson.data);
+    });
   }
 });
+
+function displayFence(fence) {
+  axios.get('https://api.tomtom.com/geofencing/1/fences/' + fenceId, {
+    params: {
+      key: apiKey
+    }
+  }).then(function (response) {
+    fence = response.data;
+    console.log(fence);
+    map.addSource(userFence, {
+      type: "geojson",
+      data: fence
+    });
+    map.addLayer({
+      'id': 'Milano-20km',
+      'type': 'fill',
+      'source': userFence,
+      'layout': {},
+      'paint': {
+        'fill-color': 'orange'
+        /* 'fill-opacity': 0.5,
+        'fill-outline-color': 'black' */
+
+      }
+    });
+    console.log('ok');
+  });
+}
 
 function selectedScroll() {
   setTimeout(function () {
@@ -84,9 +125,14 @@ function getMarkersBoundsForCity(city) {
 }
 
 var markersCity = [];
+var apartments, map;
+var adminKey = "xlh5oGUrsotW4VXTAD4dNxaxJ5MGwqrL2ezDmXAlv1OfuaAk";
+var apiKey = "GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn";
+var projectId = "6f2ff167-1c34-400b-9561-c650b915c786";
+var fenceId = "4e3cc3b6-d7b2-4cfd-9ea1-d1ff12164a9b";
 
 function generateMap() {
-  var apartments = {
+  apartments = {
     "type": "FeatureCollection",
     "features": []
   };
@@ -108,23 +154,51 @@ function generateMap() {
   });
 
   console.log(apartments);
-  var map = tt.map({
+  map = tt.map({
     // Proprietà necessaria API Key
-    key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
+    key: apiKey,
     // Prop. nec. ID dell' elemento HTML in cui viene mostrata la mappa
-    container: 'map'
+    container: 'map',
+    center: [9.18812, 45.46362],
+    zoom: 9
   });
-  var list = document.getElementById('apartments-list'); // Ciclo gli appartamenti per creare marker e voce della lista
+  map.on('load', function () {
+    var layer = {
+      'id': fenceId,
+      'type': 'fill',
+      'source': {
+        'type': 'geojson',
+        'data': {
+          'type': 'Feature',
+          'geometry': {
+            "radius": 20000,
+            'coordinates': [[[9.18812, 45.46362]]],
+            'type': 'Point',
+            'shapeType': 'Circle'
+          }
+        }
+      },
+      'layout': {},
+      'paint': {
+        'fill-color': 'orange'
+        /* 'fill-opacity': 0.5,
+        'fill-outline-color': 'black' */
 
+      }
+    };
+    map.addLayer(layer);
+    /* displayFence(fenceId); */
+  });
+}
+
+function createMarkers() {
+  // Ciclo gli appartamenti per creare marker e voce della lista
   apartments.features.forEach(function (apartment, index) {
-    // seleziono l' elemento html
-    var markerHTML = document.getElementById('markerHTML-' + index); // Salvo i dati
-
+    // Salvo i dati
     var city = apartment.properties.city;
     var address = apartment.properties.address;
     var location = apartment.geometry.coordinates;
-    var title = apartment.properties.title;
-    var cityApartmentsList = document.getElementById(city); // Creazione del marker
+    var title = apartment.properties.title; // Creazione del marker
 
     var marker = new tt.Marker({
       color: '#2271b3',
