@@ -26,7 +26,7 @@ Route::prefix('/')->namespace('UI')->group(function () {
 
 Auth::routes();
 
-Route::prefix('ur')->name('ur.')->namespace('UR')->middleware('auth')->group(function () {
+Route::prefix('ur')->name('admin.')->namespace('ADMIN')->middleware('auth')->group(function () {
     Route::resource('apartments', 'ApartmentController');
 });
 
