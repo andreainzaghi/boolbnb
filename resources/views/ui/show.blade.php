@@ -17,21 +17,6 @@
         <div class="title-page">
           <!-- v-for per ciclare il titolo-->
           <div class="title">
-<<<<<<< HEAD
-              {{-- {{$apartment ->title}} --}}
-            <h3>{{$apartment ->title}}</h3>
-            <p>{{$apartment ->city}}|{{$apartment ->address}}</p>
-          </div>
-          <div class="alert12">
-            <p></p>
-            </div>
-          </div>
-          <!-- immagini -->
-          <div class="immagini">
-            <div 
-             class="immagineappartamento">
-             <img class="imgaff" src="{{$apartment ->image}}" alt="">
-=======
             <h3>Casa Paradiso</h3>
             <p>via Padova Rossi ,Milano,73102</p>
           </div>
@@ -43,7 +28,6 @@
         <div class="immagini">
           <div class="immagineappartamento">
 
->>>>>>> main
             {{-- <img class="imgaff" src="img/app.jpg" alt="">
             
             <img class="imgaff" src="img/art.jpg" alt="">
@@ -53,73 +37,6 @@
           <div id='map' class='mappe'></div>
         </div>
         <!-- cose della stanza -->
-<<<<<<< HEAD
-        <div class="peculiarita-stanza">
-          <div class="sottot">
-            <p>stanze:{{$apartment ->rooms}}|bagni:{{$apartment ->rooms}}|letti:{{$apartment ->rooms}}|ospiti:{{$apartment ->rooms}}|dimensioni:{{$apartment ->mq}}mq</p>
-            <p class="sottotesto">{{$apartment ->description}}</p>
-            
-          </div>
-          
-          
-        </div>
-        {{-- <div class="check-square">
-          <div class="square-1">
-            Cucina
-            
-            <input type="checkbox" name="" value="">
-            
-          </div>
-          <div class="square-2">
-            Wifi
-            
-            <input type="checkbox" name="" value="">
-            
-          </div>
-          <div class="square-3">
-            Tv
-            
-            <input type="checkbox" name="" value="">
-            
-          </div>
-          <div class="square-4">
-            Lavatrice
-            
-            <input type="checkbox" name="" value="">
-            
-          </div>
-          <div class="square-5">
-            Biancheria
-            
-            <input type="checkbox" name="" value="">
-            
-          </div>
-          <div class="square-6">
-            Cucina
-            
-            <input type="checkbox" name="" value="">
-            
-          </div>
-          <div class="square-7">
-            Superfice
-            
-            <input type="checkbox" name="" value="">
-            
-          </div>
-        </div> --}}
-        <div class="buttons">
-          <div class="button-1">
-            <button type="button" name="button">Modifica</button>
-          </div>
-          <div class="button-1">
-            <button type="button" name="button">Sponsorizza</button>
-          </div>
-          <div class="button-1">
-            <button type="button" name="button">Statistiche</button>
-          </div>
-          <div class="button-1">
-            <button type="button" name="button">Visualizza Messaggi</button>
-=======
         <div class="box-appartamento">
           <div class="descrizione">
             <p class="recap">Stanze: 5 | Bagni: 3| Letti: 3 | Ospiti: 2 | Dimensioni: 90mq </p>
@@ -218,7 +135,6 @@
               {{-- checkboxes lato admin --}}
 
             </div>          
->>>>>>> main
           </div>
           <div class="box-right">
 
