@@ -16736,6 +16736,10 @@ form .btn {
   align-items: center;
 }
 
+.pippo {
+  background-color: darkblue;
+}
+
 /* scroll */
 /* width */
 ::-webkit-scrollbar {
