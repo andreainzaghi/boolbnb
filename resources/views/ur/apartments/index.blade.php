@@ -9,6 +9,11 @@
 @endsection
 
 @section('MainContent')
+
+    <div class="add_button">
+        <a href="{{route('ur.apartments.create')}}" class="my-btn my-btn-primary"><i class="fas fa-plus"></i><span class="d-none d-md-inline-block">Aggiungi appartamento</span></a>
+    </div>
+
     <div class="dash-wrapper">
 
         @foreach ($apartments as $item)

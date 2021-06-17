@@ -21,7 +21,7 @@
     @endif
     <!-- /stampo, se ci sono, lista di errori -->
 
-    <form action="{{route('ur.apartments.update')}}" method="POST" class="myForm">
+    <form action="{{route('ur.apartments.update', ['apartment'=>$apartment->id])}}" method="POST" class="myForm">
         @method('POST')
         @csrf
         <!-- titolo -->
