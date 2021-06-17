@@ -23,7 +23,7 @@
                 <a href="{{ route('ur.apartments.show', ['apartment' => $apartment->id ] ) }}">
                     <!-- card top -->
                     <div class="img__wrapper">
-                        <img src="{{asset($apartment['image'])}}" alt="Immagine appartamento">
+                        <img src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento">
                     </div>
                     <!-- / card top -->
                     <!-- card bottom -->

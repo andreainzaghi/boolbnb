@@ -32,7 +32,7 @@
             <h4 class="card_title">{{$item['title']}}</h4>
             <div class="card_image shadow p-3 mb-5 bg-white rounded">
                 <a href="">
-                    <img class="zoom" src="{{$item['image']}}" alt="Immagine appartamento">
+                    <img class="zoom" src="{{asset('storage/'.$item['image'])}}" alt="Immagine appartamento">
                 </a>
             </div>
         </div>
