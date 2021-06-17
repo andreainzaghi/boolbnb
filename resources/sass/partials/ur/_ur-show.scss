@@ -140,12 +140,45 @@
 
     .buttons{
       display:flex;
-      justify-content: flex-end;
+      justify-content:space-between;
       align-items: center;
     }
   }
 
 }
+
+  
+
+//  .posizione{
+//    width:30%;
+//    margin-top:20px;
+//  }
+//   .imgaff{
+//    height:300px;
+//    width:99%;
+//  }
+ 
+
+
+
+//  bottoni per le azioni lato admin 
+.buttons{
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+//  .button-1 button{
+//    margin: 10px 0;
+//    border-radius: 10px;
+//    color: #fff;
+//    border: none;
+//    padding: 7px 20px;
+//    background-color: #e94a47;
+//  }
+
+ //  bottoni per le azioni lato admin 
+
+
 
  /* scroll */
  /* width */
