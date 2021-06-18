@@ -199,3 +199,23 @@
  ::-webkit-scrollbar-thumb:hover {
    background: #b30000;
  }
+// grafico
+
+.grafico-footer{
+  width:100%;
+  margin:auto;
+  height:500px;
+  display: flex;
+justify-content: center;
+  align-items: center;
+  background-color:#fff;
+}
+.grafico-footer2{
+    width:80%;
+}
+.grafico-footer1{
+  width:100%;
+padding:0 55px;
+background-color:#F2F3FA;
+  align-items: center;
+}
