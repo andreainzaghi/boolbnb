@@ -1,7 +1,6 @@
 var app = new Vue({
     el: '#app',
     data: {
-        isActive: false,
         city: '',
         selected: '',
         apartments: [],
