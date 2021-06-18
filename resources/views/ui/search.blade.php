@@ -1,4 +1,4 @@
-@extends('../layouts.base-empty')
+@extends('../layouts.base-box')
 
 @section('pageTitle')
     Risultati per - {{$city}}
@@ -10,43 +10,59 @@
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
 @endsection
 
-@section('mainLay')
-<div id="app" class="mt-20">
-    <div class='control-panel'>
-        <div class="actions">
-            <h1>Risultati per - {{$city}}</h1>
-            <div class="search">
-                <input type="text" name="city" v-model="city"> <br/>
-                {{-- <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
-                <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button> --}}
+@section('mainTitle')
+    Zona: {{$city}}
+@endsection
+
+@section('MainContent')
+    <div id="app">
+        <div class='control-panel'>
+            <div class="text-right adv-search-btn-wrp">
+                <button v-on:click="makeActive" :class="{'active': isActive}" class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Filtra</span></button>
             </div>
-            <div class="filter">
-                @foreach ( $services as $service )
-                    <div class="filter__services">
-                        <input type="checkbox" name="{{$service->name}}" value="{{$service->name}}">
-                        <label for="{{$service->name}}">{{$service->name}}</label>
-                    </div>
-                @endforeach
+            <!-- ricerca avanzata -->
+            <div class="advanced-search" v-on:click="makeActive" :class="{'active': isActive}">
+                <div class="search">
+                    <label for="adv-search-city">Città</label>
+                    <input type="text" name="city" v-model="city" id="adv-search-city" placeholder="Inserisci un nome di una città">
+                    {{-- <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
+                    <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button> --}}
+                </div>
+
+                <h4 class="filter-title">Servizi</h4>
+                <div class="filter">
+                    @foreach ( $services as $service )
+                        <div class="filter__services">
+                            <input type="checkbox" name="{{$service->name}}" value="{{$service->name}}">
+                            <label for="{{$service->name}}">{{$service->name}}</label>
+                        </div>
+                    @endforeach                    
+                </div>
+                <div class="text-right">
+                    <button class="my-btn my-btn-primary search-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
             </div>
+            <!-- /ricerca avanzata -->
+            <div id='apartments-list'>
+                <a href="{{-- {{ route('apartments.show') }} + '/' + apartment.id --}}#" class="apartment-card" v-for="apartment in apartments" :class="popupSelected == apartment.title? 'selected' : '' " v-if="{{-- target.every(v => arr.includes(v)) --}}">
+                    <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
+                    <h4 class="card__title">@{{ apartment.title }}</h4>
+                    <p class="card__rooms">Stanze: @{{ apartment.rooms }} | Bagni: @{{ apartment.bathrooms }} | Letti: @{{ apartment.beds }}</p>
+                    <ul class="services-list">
+                        <li v-for="service in apartment.services" class="card__service">
+                            <i :class="service.icon_class"></i>
+                        </li>
+                    </ul>
+                    <!--<p v-for="(service, i) in apartment.services" v-if="i == 0" class="card__service">@{{ service.name }}</p>
+                    <p  v-else class="card__service"> - @{{ service.name }}</p> -->
+                    <p class="card__description">@{{ apartment.description }}</p>
+                </a>
+            </div>    
         </div>
-        <div id='apartments-list'>
-            <ul class="card-container">
-                <li class="apartment-card" v-for="apartment in apartments" :class="popupSelected == apartment.title? 'selected' : '' " v-if="{{-- target.every(v => arr.includes(v)) --}}">
-                    <a href="{{-- {{ route('apartments.show') }} + '/' + apartment.id --}}#">
-                        <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
-                        <h3 class="card__title">@{{ apartment.title }}</h3>
-                        <span class="card__rooms">Stanze: @{{ apartment.rooms }} | Bagni: @{{ apartment.bathrooms }} | Letti: @{{ apartment.beds }}</span><br>
-                        <span v-for="(service, i) in apartment.services" v-if="i == 0" class="card__service">@{{ service.name }}</span>
-                        <span  v-else class="card__service"> - @{{ service.name }}</span>
-                        <p class="card__description">@{{ apartment.description }}</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
+
+        <div id='map' class='map'></div>
     </div>
-    <!-- Mappa -->
-    <div id='map' class='map'></div>
-</div>    
+    
 @endsection
 
 @section('script')
