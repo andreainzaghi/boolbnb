@@ -1,168 +1,139 @@
-// * {
-//    margin:0;
-//    font-family: 'Poppins', sans-serif;
-//    padding:0;
-//    box-sizing:border-box;
-//  }
+// classi helpers
+.d-flex-colmn {
+  display: flex;
+  flex-direction: column;
+}
+.d-flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.sp-btw {
+  justify-content: space-between;
+}
+// classi helpers
 
-.box {
-  margin: 0 auto;
-   .admin-sponsor-box {
-      border: 2px solid $primaryColor;
-      border-radius: 13px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;  
-      padding: 16px;;    
-      margin-bottom: 30px;
 
-      .custom-control-input:checked ~ .custom-control-label::before {
-         background-color: $primaryColor;
-       }
-      
+
+.admin-sponsor-box {
+  border: 1px solid $primaryColor;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-   .admin-interno-profilo{
-      width:100%;
+.admin-appartamento {
+  width: 100%;
 
-      .admin-title-page { 
-      display:flex;
-      justify-content:space-between;
-      width:100%;
-      font-weight: bold;
-       
-      .title{
-        width:65%;
-        margin-right: 20px;
-       
-        h3 {
-          font-size: 30px;
-        }
-    
-        p {
-          font-size: 12px; 
-          font-weight: 400;
-          color: $secondaryColor;
-          margin-bottom: 5px;
-        }  
-      }
-      .title-map {
-        width: 35%;
-        display: flex;
-        align-items: flex-end;
-  
-        p {
-          font-size: 10px;
-        }
-      }  
-  
-      }
-  
-      .admin-immagini {
-      height:250px;
-      display: flex;      
-    
-      .immagineappartamento {
-      //   height:250px;
-        width:65%;
-        margin-right: 20px;
-        border-top-left-radius: 20px 20px;
-        border-bottom-left-radius: 20px 20px;
-        overflow: hidden;
+  .box-left {
+    width: 65%;
 
-         img {
-            background-color: grey;
-            display: block;
-            height: 250px;
-            width: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-         }
-         &:hover img {
+    .title {
+      p {
+        color: $secondaryColor;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .admin-img-box {
+      margin-right: 20px;
+      border-top-left-radius: 20px 20px;
+      border-bottom-left-radius: 20px 20px;
+      overflow: hidden;
+      height: 250px;
+      display: flex;
+      margin-bottom: 15px;
+
+      a .immagine {
+        background-color: grey;
+        display: block;
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+        }
+        &:hover img {
             transform: scale(1.05);
         }
       }
-  
-      .mappe {
-        height:250px;
-        width:35%;
-        border-top-right-radius: 20px 20px;
-        border-bottom-right-radius: 20px 20px;
-      }
-      }
-    
-      .admin-box-appartamento {
+        .descrizione {
       display: flex;
-      margin-top:15px;
-      width:100%;
-  
-         .descrizione {
-        width:65%;
-        margin-right: 20px;
+      flex-direction: column;
 
         .recap {
           color: $secondaryColor;
+          font-size: 12px;
+        }    
+        .sottotesto {
+          display: flex;
+          flex-direction: column;
+          color: $supportColor;
           font-size: 13px;
         }
+        .select-servizi {
+        color: $secondaryColor;
+        font-size: 12px;
 
-        .sottotesto {
-          color:$supportColor;
-          font-size: 12px;
-        }
-
-        .select-servizi {        
-          color: $secondaryColor;
-          font-size: 12px;
           //  checkboxes per i serevizi lato admin
-          .check-square{
-          display:flex;
-          justify-content: space-between;
-          margin-bottom: 20px;
-          font-size: 12px;
+          .check-squares {  
+            color: $secondaryColor;
+            margin-bottom: 20px;
+            font-size: 12px;
+            justify-content: space-between;
         
-          .check-square .square-1,
-          .check-square .square-2,
-          .check-square .square-3,
-          .check-square .square-4,
-          .check-square .square-5,
-          .check-square .square-6,
-          .check-square .square-7 {
-            padding-left:10px;
-          } 
+            .check-squares .square-1,
+            .check-squares .square-2,
+            .check-squares .square-3,
+            .check-squares .square-4,
+            .check-squares .square-5,
+            .check-squares .square-6,
+            .check-squares .square-7 {
+              padding-left:10px;
+            } 
           }
-          //  checkboxes per i serevizi lato admin
         }
-        
-         }
+      }
+  }
 
-         .box-right {
-            width: 35%;     
-         }  
-         .alert-admin {
 
-            p {
-               font-size: 12px;
-               color: $secondaryColor;
-   
-               .fa-exclamation-circle {
-                  color: $primaryColor;
-                  font-size: 14px;
-               }  
-               span {
-                  color: $primaryColor;
-               } 
-            }
-         }     
+  .box-right {
+    width: 35%;
+    margin-top: 43px;
+  
+    .admin-title-page { 
+      width:100%;
+      margin-bottom: 15px;
+
+      .mappa {
+        height:250px;
+        border-top-right-radius: 20px 20px;
+        border-bottom-right-radius: 20px 20px;
       }
 
-      .buttons-admin {
-         display:flex;
-         justify-content:space-between;
-         align-items: center;
-      }  
-      
-   }
+    }
+    .alert-admin {
+      p {  
+        font-size: 12px;
+        color: $secondaryColor;
+           
+        .fa-exclamation-circle {
+          color: $primaryColor;
+          font-size: 14px;
+        }  
+        span {
+          color: $primaryColor;
+        } 
+      }
+    }
      
+  }
+
+}
+
+.buttons-admin {
+  justify-content: space-between;
 }
 
  /* scroll */
@@ -184,3 +155,65 @@
  ::-webkit-scrollbar-thumb:hover {
    background: #b30000;
  }
+
+// mediaquery 
+@media screen and (max-width: 1200px) {
+  .custom-control-inline {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .custom-control-inline {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .admin-appartamento {
+    flex-wrap: wrap;
+  }
+  .admin-appartamento .box-left {
+    width: 100%;
+  }
+  .admin-appartamento .box-left .admin-img-box {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 0;
+  }
+  .admin-appartamento .box-right {
+    width: 100%;
+  }
+  .admin-appartamento .box-right .admin-title-page .mappa {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  .admin-appartamento .box-right .alert-admin p br {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+ 
+}
+
+@media screen and (max-width: 425px) {
+
+  .admin-sponsor-box .my-btn-primary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .my-btn-primary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px
+  }
+}
+@media screen and (max-width: 320px) {
+
+  .my-btn-secondary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;   
+  }
+}
+

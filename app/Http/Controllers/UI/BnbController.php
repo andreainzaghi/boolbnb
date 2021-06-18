@@ -25,7 +25,7 @@ class BnbController extends Controller
             }
           } 
         }
-        return view('ui.welcome', /*compact('sponsored')*/);
+        return view('ui.welcome', compact('sponsored'));
     }
 
     public function search(Request $request) {
