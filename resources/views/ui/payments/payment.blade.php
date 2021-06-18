@@ -1,4 +1,5 @@
 @extends('layouts.base-box')
+
 @section('styles')
     
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
@@ -29,22 +30,24 @@
        </div>
      </div>
   </div>
-
   @section('script')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" referer></script>
   <script src="https://js.braintreegateway.com/web/dropin/1.8.1/js/dropin.min.js"></script>
-
+  
   <script>
     var button = document.querySelector('#submit-button');
-    let apartment = "{{$apartment}}";
-
+    // let apartment = "{{$apartment}}";
+  
     braintree.dropin.create({
       authorization: "{{ Braintree\ClientToken::generate() }}",
       container: '#dropin-container'
     }, function (createErr, instance) {
       button.addEventListener('click', function () {
         instance.requestPaymentMethod(function (err, payload) {
-          $.get('{{ route('payment.process', compact('apartment')) }}', {payload}, function (response) {
+
+          $.get("{{ route('payment.process',$sponsor,$apartment) }}", {payload}, function (response) {
+        alert("Click 3");
+
             if (response.success) {
               alert('Payment successfull!');
             } else {

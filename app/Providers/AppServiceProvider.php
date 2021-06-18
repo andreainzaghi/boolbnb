@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use Braintree\Configuration;
 use Braintree\Gateway;
 
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         //
-         $this->app->singleton(Gateway::class, function(){
+        //
+        $this->app->singleton(Gateway::class, function(){
             return new Gateway([
                 'environment' => env('BRAINTREE_ENV'),
                 'merchantId' => env('BRAINTREE_MERCHANT_ID'),

@@ -5,53 +5,60 @@ namespace App\Http\Controllers\Transactions;
 use App\Apartment;
 use App\Http\Controllers\Controller;
 use App\Sponsor;
+use App\User;
+use Braintree\Transaction;
+use Braintree;
 use Braintree\Gateway;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
 
-    public function form(Apartment $apartment){
+    public function process(Request $request,Sponsor $sponsor, Apartment $apartment){
 
-        $sponsor = Sponsor::where('name', 'Silver')->first();
-        $date = Carbon::now()->addHour($sponsor->hours)->isoFormat('DD-MM-YYYY, hh:mm');
-
-        return view('ui.payments.payment', compact('apartment','sponsor','date'));
-        //return redirect( 'apartments/{apartment}/payment/result')->with("");
+        // dd("ciao");
+        // dd($data);
+        // $user = $data['apartment'];
+        // $sponsor = $data['sponsor'];
+        $payload = $request->input('payload', false);
+        $nonce = $payload['nonce'];
+    
+        $status = Braintree\Transaction::sale([
+        'amount' => "2.99",
+        'customer' => [
+            'firstName' => 'Drew',
+            'lastName' => 'Smith',
+            'email' => 'drew@example.com'
+          ],
+        'paymentMethodNonce' => $nonce,
+        'options' => [
+            'submitForSettlement' => True
+        ]
+        ]);
+    
+        return response()->json($status);
+            // return view('ui.payments.payment', compact('apartment','sponsor','date'));
     }
 
-    public function process(Request $request, Gateway $gateway)
+    public function form(Request $request, Apartment $apartment)
     {
 
-        dd("processo pagamento");
-      //  dd($gateway->clientToken()->generate());
-    // $payload = $request->input('payload', false);
-    // $nonce = $payload['nonce'];
+        if($apartment->user_id != Auth::id()){
+            abort('403');
+        }
 
-    // $status = Braintree\Transaction::sale([
-	// 'amount' => '10.00',
-	// 'paymentMethodNonce' => $nonce,
-	// 'options' => [
-	//     'submitForSettlement' => True
-	// ]
-    // ]);
+        
 
-    //         if ($status->success) {
-    //     print_r("success!: " . $status->transaction->id);
-    // } else if ($status->transaction) {
-    //     print_r("Error processing transaction:");
-    //     print_r("\n  code: " . $status->transaction->processorResponseCode);
-    //     print_r("\n  text: " . $status->transaction->processorResponseText);
-    // } else {
-    //     foreach($status->errors->deepAll() AS $error) {
-    //         print_r($error->code . ": " . $error->message . "\n");
-    //     }
-    // }
+        $sponsor = Sponsor::where('name', 'Silver')->first();
+        $data = ['apartment'=> $apartment,'sponsor'=> $sponsor];
+        $date = Carbon::now()->addHour($sponsor->hours)->isoFormat('DD-MM-YYYY, hh:mm');
+        $user = User::where('id', Auth::id())->first();
 
-    //     return response()->json($status);
-  
-    // }
+        dump(gettype($data));
+        return view('ui.payments.payment', compact('apartment','sponsor','date'));
+
 
     }
 }

@@ -26,7 +26,8 @@ Route::prefix('/')->namespace('UI')->group(function () {
 // BRAINTREE - TRANSAZIONI
 Route::prefix('/')->namespace('Transactions')->group(function () {
     Route::get('apartments/{apartment}/payment', 'PaymentController@form')->name('payment.form');
-    Route::get('apartments/{apartment}/payment/result', 'PaymentController@process')->name('payment.process');
+    
+    Route::get('apartments/payment/process', 'PaymentController@process')->name('payment.process');
 
 });
 
