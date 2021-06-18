@@ -11,7 +11,7 @@
             <div class="container">
                 <form action="{{route('search')}}">
                     <input class="search" type="text" id="city" placeholder="Inserisci una città" name="city">
-                    <button class="btn" type="submit">Cerca</button>
+                    <button class="btn btn-search" type="submit">Cerca</button>
                 </form>
                 <div class="phrase">
                     <h1 class="display-4">Scegli la tua prossima destinazione</h1>
