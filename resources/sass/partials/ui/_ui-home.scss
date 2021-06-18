@@ -1,15 +1,17 @@
 // hero
 .jumbotron {
     padding-top: 50px;
-    background-image: url("https://www.viaggi-estate.com/wp-content/uploads/2018/08/montagna-1024x512.jpg");
+    background-image: url("https://source.unsplash.com/1600x900/?travel, city");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     border: 1px solid #ddd;
     height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
+    
     .container {
         display: flex;
         flex-direction: column;
@@ -29,6 +31,7 @@ form {
         padding-left: 10px;
         width: 350px;
         outline: none; 
+        box-shadow: 1px 1px lightgray;
     }
 
     .btn-search {
@@ -50,6 +53,7 @@ form {
     text-align: left;
     h1 {
         color: #fff;
+        text-shadow: 2px 2px #666666;
     }
 }
 // /hero
