@@ -4,37 +4,48 @@ var app = new Vue({
         city: '',
         selected: '',
         apartments: [],
-        baseURL: 'api/search',
+        services: [],
+        rooms: 0,
+        bathrooms: 0, 
+        beds: 0,
+        mq: 0,
+        radius: 20,
+        lat: 0,
+        long: 0,
+        apiSearch: 'api/search',
+        apiFilter: 'api/filter',
         popupSelected: '',
     },
     methods: {
-    /*         filter(services){
-            if ( this.selected.length == 0 ){
-                return true;
-            }
-            services.forEach(service => {
-                
-            });
-        } */
-        /* cityApi(city) {
-            this.city = city;
-            this.filter(city);
-            if ( this.apartments.length === 0 ) {
-                return false;
-            }
-            return true;
-        }, */
-        search(location){
-            console.log(location.results[0].position.lat);
-            axios.get( this.baseURL, {
+        getPosition(city) {
+            axios.get( 'https://api.tomtom.com/search/2/geocode/'+city+'.json', {
                 params: {
-                    lat: location.results[0].position.lat,
-                    long: location.results[0].position.lon
-                }
+                    key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
+                    language: 'it-IT',
+                    limit: 1,
+                }   
+            })
+            .then( (geoJson) => {
+                this.lat = geoJson.data.results[0].position.lat;
+                this.long = geoJson.data.results[0].position.lon;
+                this.search();
+            });
+        },
+        search(location){
+            axios.get( this.apiSearch, {
+                params: {
+                    lat: this.lat,
+                    long: this.long,
+                    services: this.services,
+                    rooms: this.rooms,
+                    bathrooms: this.bathrooms, 
+                    beds: this.beds,
+                    mq: this.mq,
+                    radius: this.radius
+                },
             })
             .then( (response) => {
             this.apartments = response.data;
-            console.log(this.apartments);
             generateMap();
             createMarkers();
             });
@@ -45,46 +56,9 @@ var app = new Vue({
         if ( urlParams.has('city') ) {
             this.city = urlParams.get('city');
         }
-        axios.get( 'https://api.tomtom.com/search/2/geocode/'+this.city+'.json', {
-            params: {
-                key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
-                language: 'it-IT',
-                limit: 1,
-            }   
-        })
-        .then( (geoJson) => {
-        this.search(geoJson.data);
-        });
+        this.getPosition(this.city);
     }
 });
-
-function displayFence(fence) {
-    axios.get( 'https://api.tomtom.com/geofencing/1/fences/'+fenceId, {
-        params: {
-            key: apiKey
-        }   
-    })
-    .then( (response) => {
-    fence = response.data;
-    console.log(fence);
-    map.addSource(userFence, {
-        type: "geojson",
-        data: fence
-      });
-    map.addLayer({
-        'id': 'Milano-20km',
-        'type': 'fill',
-        'source': userFence,
-        'layout': {},
-        'paint': {
-            'fill-color': 'orange',
-            /* 'fill-opacity': 0.5,
-            'fill-outline-color': 'black' */
-        }
-    });
-    console.log('ok');
-    });
-}
 
 function selectedScroll() {
     setTimeout(() => {
@@ -151,36 +125,35 @@ function generateMap() {
     // Prop. nec. ID dell' elemento HTML in cui viene mostrata la mappa
     container: 'map',
 
-    center: [ 9.18812, 45.46362 ],
+    center: [ app._data.long, app._data.lat ],
 
     zoom: 9,
     });
 
     map.on('load', function(){
-        let layer = {
-            'id': fenceId,
+        
+        map.addLayer({
+            'id': 'searchZone',
             'type': 'fill',
             'source': {
                 'type': 'geojson',
                 'data': {
                     'type': 'Feature',
                     'geometry': {
-                        "radius": 20000,
-                        'coordinates': [[[9.18812, 45.46362]]],
-                        'type': 'Point',
-                        'shapeType': 'Circle'
+                        "type": "Point",
+                        "radius": app._data.radius * 1000,
+                        "shapeType": "Circle",
+                        "coordinates": [app._data.long, app._data.lat]
                     }
                 }
             },
             'layout': {},
             'paint': {
-                'fill-color': 'orange',
-                /* 'fill-opacity': 0.5,
-                'fill-outline-color': 'black' */
+                'fill-color': '#2FAAFF',
+                'fill-opacity': 0.8,
+                'fill-outline-color': 'black'
             }
-        };
-        map.addLayer(layer);
-        /* displayFence(fenceId); */
+        });
     })
 }
 
@@ -211,7 +184,7 @@ function createMarkers() {
         })
     });
     map.fitBounds(getMarkersBoundsForCity(app._data.city), {
-        /* padding: 50 */
-        zoom: 11
+        padding: 50,
+        maxZoom: 12
     });
 }
