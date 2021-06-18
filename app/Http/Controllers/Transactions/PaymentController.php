@@ -17,7 +17,7 @@ class PaymentController extends Controller
         $sponsor = Sponsor::where('name', 'Silver')->first();
         $date = Carbon::now()->addHour($sponsor->hours)->isoFormat('DD-MM-YYYY, hh:mm');
 
-        return view('ui.payment', compact('apartment','sponsor','date'));
+        return view('ui.payments.payment', compact('apartment','sponsor','date'));
         //return redirect( 'apartments/{apartment}/payment/result')->with("");
     }
 
