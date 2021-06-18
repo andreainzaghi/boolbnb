@@ -1,117 +1,168 @@
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import '../../app.scss';
+
+h2 {
+    position: fixed;
 }
 
-/* #root {
-    height: auto !important;
-} */
+
+// ul {
+//     list-style: none;
+//     margin: 0;
+//     padding: 0;
+// }
+
+// .action__caption {
+//     display: flex;
+//     justify-content: space-between;
+// }
+
 
 #app {
-    background-color: #fff;
-    border-radius: 20px;
-    margin-top: 80px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    overflow: hidden;
-    padding: 15px 15px 15px 40px;
+    height: 100%;
+    width: 100%;
+    display: flex;    
+//     border-radius: 20px;
+//     margin-top: 80px;
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+//     overflow: hidden;
+//     padding: 15px 15px 15px 40px;
 }
 
 .control-panel {
-    background-color: #fff;
-    height: calc(100vh - 210px);
-    overflow: hidden;
-    width: 65%;
-    display: flex; 
-    flex-direction: column;
     position: relative;
+    padding-right: 10px;
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
 
-    .actions {
-        width: 100%;
-        background-color: #fff;
-    }
-
-    h1 {
-        font-size: 16px;
-        line-height: 1;
-        text-align: top;
+    @include media-breakpoint-up(md) { 
+        flex-basis: 65%;
     }
 
     .filter {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
+        &.active {
+            border-radius: 10px 10px 0 0;
+        }
+        span {
+            display: none;
+            @include media-breakpoint-up(md) { 
+                display: inline-block;
+            }
+        }
+    }
+    .adv-search-btn-wrp {
+        width: 100%;
     }
 
-    .card-container {
-        width: 100%;
+    .advanced-search.active{
+        display: block;
+    }
+    .advanced-search{
+        display: none;
+        background-color: white;
+        border-radius: 15px 0 15px 15px;
+        top: 33px;
+        right: 10px;
+        max-height: 100%;
+        padding: 20px 30px;
+        overflow: auto;
+        position: absolute;
+        border: 2px solid $primaryColorLight;
+
+        .filter__services{
+            display: inline-block;
+        }
+
+        .search-btn i {
+
+            margin-right: 0;
+        }
+
+        label {
+            color: $secondaryColor;
+            font-size: 12px;
+            font-weight: $fontMed;
+        }
+    
+        input {
+            border: 1px solid $supportColor;
+            padding: 6px 18px;
+            border-radius: 5px;
+            margin-left: 10px;
+
+
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                color: #B9B7BD;
+                font-weight: $fontMed;
+            font-size: 12px;
+            font-family: $fontType;
+        }
+            &:focus {
+                border: 3px solid #F7D7D6;
+            }
+        }
+    }
+
+    #apartments-list{
+        padding-right: 10px;
+        margin-top: 30px;
+        flex-grow: 1;
         overflow: auto;
         display: flex;
         flex-wrap: wrap;
+
         .apartment-card {
-            width: 40%;
-            margin-right: 10%;
-            &.selected {
-                background-color: lightcyan;
+            color: #B9B7BD;
+            padding-right: 25px;
+            flex-basis: 100%;
+            
+            @include media-breakpoint-up(md) { 
+                flex-basis: 50%;
             }
-            .card__image {
+
+            img.card__image {
+                margin-bottom: 10px;
+                border-radius: 15px;
+                object-fit: cover;
                 width: 100%;
+                height: 150px;
             }
-            .card__description {
+
+            .card__rooms {
+                color: $secondaryColor;
+                margin-bottom: 5px;
+            }
+            .services-list {
+                margin: 5px 0;
+                li {
+                    list-style: none;
+                    display: inline-block;
+                    margin-right: 10px;
+                    color: $primaryColor;
+                }
+            }   
+            .card__description{
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;  
                 overflow: hidden;
+                margin-bottom: 40px;
             }
         }
     }
-}
 
-/* Stile lista app. */
-#apartments-list {
-    overflow: auto;
-}
-
-#apartments-list .list-entries-container .list-entry {
-    border-bottom: 1px solid #e8e8e8;
-    display: block;
-}
-
-#apartments-list .list-entries-container .list-entry:nth-of-type(even) {
-    background-color: #f5f5f5;
-}
-
-#apartments-list .list-entries-container .list-entry:hover,
-#apartments-list .list-entries-container .list-entry.selected {
-    background-color: #2271b3;
-    border-bottom-color: #2271b3;
-}
-/* Stile mappa */
-.popup_title {
-    font-size: 17px;
-    color: blue;
-    display: block;
-}
 #map {
-    width: 30%;
-    height: calc(100vh - 175px);
-    border-radius: 15px;
+    flex-basis: 35%;
+    height: 100%;
+    border-radius: 15px 15px 0 0;
+    display: none;
 
-/*     .mapboxgl-ctrl.mapboxgl-ctrl-attrib {
-        display: none;
-    } */
-
+    @include media-breakpoint-up(md) { 
+        display: block;
+    }
 }
-/* Stile Marker delle posizioni */
-/* [id*='markerHTML'] {
-    color: #2271b3;
-    background-color: #fff;
-    border: 2px solid #2271b3;
-    padding: 2px 5px;
-}
-
-[id*='markerHTML']:hover {
-    cursor: pointer;
-} */
