@@ -15,7 +15,7 @@
                 </form>
                 <div class="phrase">
                     <h1 class="display-4">Scegli la tua prossima destinazione</h1>
-                    <p class="lead">Lorem ipsum abet Lorem ipsum</p>
+                    <p class="lead"></p>
                 </div>
             </div>
         </div>
