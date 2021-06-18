@@ -38,7 +38,7 @@
         </div>
         <!-- / descrizione -->
 
-        <div class="inlineInput multiple-inline">
+        <div class="inlineInput numericInput multiple-inline">
             <!-- mq -->
             <div class="form-group">
                 <label for="mq">Superficie</label>

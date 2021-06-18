@@ -18,10 +18,10 @@
     <div id="app">
         <div class='control-panel'>
             <div class="text-right adv-search-btn-wrp">
-                <button v-on:click="makeActive" :class="{'active': isActive}" class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Filtra</span></button>
+                <button class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Filtra</span></button>
             </div>
             <!-- ricerca avanzata -->
-            <div class="advanced-search" v-on:click="makeActive" :class="{'active': isActive}">
+            <div class="advanced-search">
                 <div class="search">
                     <label for="adv-search-city">Città</label>
                     <input type="text" name="city" v-model="city" id="adv-search-city" placeholder="Inserisci un nome di una città">
@@ -44,7 +44,7 @@
             </div>
             <!-- /ricerca avanzata -->
             <div id='apartments-list'>
-                <a href="{{-- {{ route('apartments.show') }} + '/' + apartment.id --}}#" class="apartment-card" v-for="apartment in apartments" :class="popupSelected == apartment.title? 'selected' : '' " v-if="{{-- target.every(v => arr.includes(v)) --}}">
+                <a v-for="apartment in apartments" href="{{-- {{ route('apartments.show') }} + '/' + apartment.id --}}#" class="apartment-card"  :class="popupSelected == apartment.title? 'selected' : '' " v-if="{{-- target.every(v => arr.includes(v)) --}}">
                     <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
                     <h4 class="card__title">@{{ apartment.title }}</h4>
                     <p class="card__rooms">Stanze: @{{ apartment.rooms }} | Bagni: @{{ apartment.bathrooms }} | Letti: @{{ apartment.beds }}</p>

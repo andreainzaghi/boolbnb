@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     height: 100%;
-    padding: 40px 40px 0;
+    padding: 40px 40px 0px;
     overflow: auto;
 
     @include media-breakpoint-up(md) { 
