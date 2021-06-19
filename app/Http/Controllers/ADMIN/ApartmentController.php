@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
+use App\View;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -115,6 +116,9 @@ class ApartmentController extends Controller
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
+
+        $views = View::where('apartment_id', $apartment['id'])->get();
+
         return view('admin.apartments.show', compact('apartment'));
     }
 
