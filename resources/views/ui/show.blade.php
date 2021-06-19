@@ -11,6 +11,7 @@
 @endsection
 
 @section('MainContent')
+
 <div class="box">
   <div class="interno-profilo">
         <!-- title page -->
