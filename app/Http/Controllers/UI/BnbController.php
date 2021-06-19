@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Sponsor;
 use App\Service;
 use App\Apartment;
-use app\View;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -47,14 +46,7 @@ class BnbController extends Controller
     }
     
     public function show($id){
-
-        
-        $newView = View::create(
-            $newView['apartment_id'] = $id;
-            $newView['ip'] = '33.45.46';
-        );
-
-       
+   
         $apartment = Apartment::where('id', $id)->first();
 
 
