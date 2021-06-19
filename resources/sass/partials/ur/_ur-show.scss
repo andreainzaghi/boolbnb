@@ -21,6 +21,11 @@
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
+
+  .color {
+    color: $secondaryColor;
+  }
+  
 }
 
 .admin-appartamento {
@@ -75,24 +80,6 @@
         .select-servizi {
         color: $secondaryColor;
         font-size: 12px;
-
-          //  checkboxes per i serevizi lato admin
-          .check-squares {  
-            color: $secondaryColor;
-            margin-bottom: 20px;
-            font-size: 12px;
-            justify-content: space-between;
-        
-            .check-squares .square-1,
-            .check-squares .square-2,
-            .check-squares .square-3,
-            .check-squares .square-4,
-            .check-squares .square-5,
-            .check-squares .square-6,
-            .check-squares .square-7 {
-              padding-left:10px;
-            } 
-          }
         }
       }
   }
@@ -132,9 +119,9 @@
 
 }
 
-.buttons-admin {
-  justify-content: space-between;
-}
+  // .admin button {
+  //   // justify-content: space-between;
+  // }
 
  /* scroll */
  /* width */
@@ -157,15 +144,15 @@
  }
 
 // mediaquery 
-@media screen and (max-width: 1200px) {
-  .custom-control-inline {
-    margin-bottom: 20px;
-  }
-}
+// @media screen and (max-width: 1200px) {
+//   .custom-control-inline {
+//     margin-bottom: 20px;
+//   }
+// }
 @media screen and (max-width: 992px) {
-  .custom-control-inline {
-    margin-bottom: 20px;
-  }
+  // .custom-control-inline {
+  //   margin-bottom: 20px;
+  // }
 }
 @media screen and (max-width: 768px) {
   .admin-appartamento {

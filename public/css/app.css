@@ -60,7 +60,7 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #212529;
+  color: #23286B;;
   text-align: left;
   background-color: #f8fafc;
 }
@@ -16555,6 +16555,9 @@ body {
   padding: 20px;
   margin-bottom: 20px;
 }
+.admin-sponsor-box .custom-control-label span {
+  color: #23286B;
+}
 
 .admin-appartamento {
   width: 100%;
@@ -16606,21 +16609,6 @@ body {
   color: #23286B;
   font-size: 12px;
 }
-.admin-appartamento .box-left .descrizione .select-servizi .check-squares {
-  color: #23286B;
-  margin-bottom: 20px;
-  font-size: 12px;
-  justify-content: space-between;
-}
-.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-1,
-.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-2,
-.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-3,
-.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-4,
-.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-5,
-.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-6,
-.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-7 {
-  padding-left: 10px;
-}
 .admin-appartamento .box-right {
   width: 35%;
   margin-top: 43px;
@@ -16646,10 +16634,6 @@ body {
   color: #E94A47;
 }
 
-.buttons-admin {
-  justify-content: space-between;
-}
-
 /* scroll */
 /* width */
 ::-webkit-scrollbar {
@@ -16668,16 +16652,6 @@ body {
   background: #b30000;
 }
 
-@media screen and (max-width: 1200px) {
-  .custom-control-inline {
-    margin-bottom: 20px;
-  }
-}
-@media screen and (max-width: 992px) {
-  .custom-control-inline {
-    margin-bottom: 20px;
-  }
-}
 @media screen and (max-width: 768px) {
   .admin-appartamento {
     flex-wrap: wrap;
