@@ -21,18 +21,16 @@
           <div class="title">
             <h3>{{$apartment['title']}}</h3>
             <p>{{$apartment['address']. ' - ' . $apartment['city']}}</p>
-          </div>
-
-
-            <img src="{{asset('storage/'.$apartment['image'])}}" alt="immagine appartamento">
-            {{-- <img class="imgaff" src="img/app.jpg" alt="">
-            
-            <img class="imgaff" src="img/art.jpg" alt="">
-            <img class="imgaff" src="img/ds.jpg" alt=""> --}}
-            
+            <div class="admin-img-box">
+              <img src="{{asset('storage/'.$apartment['image'])}}" alt="immagine appartamento">
+  
+            </div>
           </div>
          
-
+            
+          
+          </div>
+         
           <div class="descrizione">
             <p class="recap">Stanze: {{$apartment['rooms']}} | Bagni: {{$apartment['bathrooms']}} | Letti: {{$apartment['beds']}} | Ospiti: 2 | Dimensioni: {{$apartment['mq'].'mq'}} </p>
             <p class="sottotesto">{{$apartment['description']}}</p>
@@ -41,8 +39,6 @@
             </div>          
           </div>
         </div>
-
-
 
 
         <div class="box-right d-flex-colmn">
