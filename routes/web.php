@@ -23,19 +23,6 @@ Route::prefix('/')->namespace('UI')->group(function () {
 //////////////////////////////////////////////////////////////////////
 
 
-// BRAINTREE - TRANSAZIONI
-Route::prefix('/admin/')->namespace('Transactions')->group(function () {
-    Route::get('apartments/{apartment}/payment', 'PaymentController@form')->name('payment.form');
-    Route::get('apartments/payment/process', 'PaymentController@process')->name('payment.process');
-    Route::get('apartments/{apartment}/payment/success', 'PaymentController@success')->name('payment.success');
-
-});
-
-// Route::namespace('Transactions')->get('ui/apartments/{apartment}/payment/process', 'PaymentController@process')->name('payment.process');
-// Route::namespace('Transactions')->get('ui/apartments/{apartment}/payment/process', 'PaymentController@process')->name('payment.process');
-//////////////////////////////////////////////////////////////////////
-
-
 // Route::get('/home', 'HomeController@index'); Pagina Login
 
 Auth::routes();
@@ -47,6 +34,18 @@ Route::prefix('admin')->name('admin.')->namespace('ADMIN')->middleware('auth')->
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
+// BRAINTREE - TRANSAZIONI
+Route::prefix('/admin/')->namespace('Transactions')->group(function () {
+    Route::get('apartments/{apartment}/payment', 'PaymentController@form')->name('payment.form');
+    Route::get('apartments/payment/process', 'PaymentController@process')->name('payment.process');
+    Route::get('apartments/{apartment}/payment/success', 'PaymentController@success')->name('payment.success');
+
+});
+///////////////////////////
+
+
 //////////////////////////////////////////////////////////////////////
 
 
