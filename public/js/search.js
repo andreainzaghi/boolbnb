@@ -134,7 +134,7 @@ function generateMap() {
     zoom: 9
   });
   /* map.on('load', function(){
-        let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
+       let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
           fillColor: '#29AB87',
       }).addTo(map);
   }) */

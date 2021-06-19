@@ -24,10 +24,6 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-<<<<<<< Updated upstream
-        "@turf/turf": "^6.4.0"
-=======
         "chart.js": "^3.3.2"
->>>>>>> Stashed changes
     }
 }
