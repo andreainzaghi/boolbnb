@@ -17,8 +17,8 @@
         <div class="title-page">
           <!-- v-for per ciclare il titolo-->
           <div class="title">
-            <h3>Casa Paradiso</h3>
-            <p>via Padova Rossi ,Milano,73102</p>
+            <h3>{{$apartment['title']}}</h3>
+            <p>{{$apartment['address']. ' - ' . $apartment['city']}}</p>
           </div>
           <div class="title-map">
             <h4>Posizione</h4>
@@ -28,6 +28,8 @@
         <div class="immagini">
           <div class="immagineappartamento">
 
+
+            <img src="{{asset('storage/'.$apartment['image'])}}" alt="immagine appartamento">
             {{-- <img class="imgaff" src="img/app.jpg" alt="">
             
             <img class="imgaff" src="img/art.jpg" alt="">
@@ -39,8 +41,8 @@
         <!-- cose della stanza -->
         <div class="box-appartamento">
           <div class="descrizione">
-            <p class="recap">Stanze: 5 | Bagni: 3| Letti: 3 | Ospiti: 2 | Dimensioni: 90mq </p>
-            <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+            <p class="recap">Stanze: {{$apartment['rooms']}} | Bagni: {{$apartment['bathrooms']}} | Letti: {{$apartment['beds']}} | Ospiti: 2 | Dimensioni: {{$apartment['mq'].'mq'}} </p>
+            <p class="sottotesto">{{$apartment['description']}}</p>
             <div class="select-servizi">
               <h4>Servizi</h4> 
               {{-- checkboxes lato admin --}}
