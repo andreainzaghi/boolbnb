@@ -421,7 +421,7 @@ class ApartmentsTableSeeder extends Seeder
                     $inserted[] = $index;
 
                     
-                   $apartment->save();
+                    $apartment->save();
                     
                     //Inserimento dei servizi
                    

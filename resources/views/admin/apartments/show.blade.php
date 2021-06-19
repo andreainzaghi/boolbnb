@@ -1,12 +1,3 @@
-  <div class="grafico-footer1">
-    <div class="grafico-footer">
-      <div class="grafico-footer2">
-          <canvas class="grafico" id="myChart" ></canvas>
-      </div>
-
-
-    </div>
-
 @extends('layouts.base-box')
 @section('styles')
 
@@ -96,6 +87,14 @@
   </div> 
   {{-- bottoni lato admin --}}    
   
+</div>
+
+<div class="grafico-footer1">
+    <div class="grafico-footer">
+      <div class="grafico-footer2">
+          <canvas class="grafico" id="myChart" ></canvas>
+      </div>
+    </div>
 </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
