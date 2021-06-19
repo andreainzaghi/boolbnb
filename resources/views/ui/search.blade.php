@@ -5,23 +5,23 @@
 @endsection
 
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
-    
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+    {{-- <script src='https://npmcdn.com/mapbox-gl-circle/dist/mapbox-gl-circle.min.js'></script> --}}
 @endsection
 
 @section('mainTitle')
-    Zona: {{$city}}
+    Zona: <span id="city_title"></span>
 @endsection
 
 @section('MainContent')
     <div id="app">
         <div class='control-panel'>
             <div class="text-right adv-search-btn-wrp">
-                <button class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Filtra</span></button>
+                <button v-on:click=" showAdvSearch = !showAdvSearch " class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Ricerca avanzata</span></button>
             </div>
             <!-- ricerca avanzata -->
-            <div class="advanced-search">
+            <div v-bind:class="{ 'active' : showAdvSearch }" class="advanced-search">
                 <div class="search">
                     <label for="adv-search-city">Città</label>
                     <input type="text" name="city" v-model="city" id="adv-search-city" placeholder="Inserisci un nome di una città">
@@ -33,20 +33,43 @@
                 <div class="filter">
                     @foreach ( $services as $service )
                         <div class="filter__services">
-                            <input type="checkbox" name="{{$service->name}}" value="{{$service->name}}">
+                            <input id="{{$service->name}}" type="checkbox" name="{{$service->name}}" value="{{$service->name}}">
                             <label for="{{$service->name}}">{{$service->name}}</label>
                         </div>
                     @endforeach                    
                 </div>
+                <h4 class="filter-title">Caratteristiche</h4>
+                <div class="filter">
+                    <div class="filter__services">
+                        <label>n° stanze</label>
+                        <input type="input" v-model="rooms">
+                    </div>
+                    <div class="filter__services">
+                        <label>n° bagni</label>
+                        <input type="input" v-model="bathrooms">
+                    </div>
+                    <div class="filter__services">
+                        <label>n° letti</label>
+                        <input type="input" v-model="beds">
+                    </div>
+                    <div class="filter__services">
+                        <label>superfice (mq)</label>
+                        <input type="input" v-model="mq">
+                    </div>
+                    <div class="filter__services">
+                        <label>raggio (km)</label>
+                        <input type="input" v-model="radius">
+                    </div>         
+                </div>
                 <div class="text-right">
-                    <button class="my-btn my-btn-primary search-btn"><i class="fas fa-chevron-right"></i></button>
+                    <button v-on:click="getPosition(); showAdvSearch = !showAdvSearch" class="my-btn my-btn-primary search-btn"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
             <!-- /ricerca avanzata -->
             <div id='apartments-list'>
-                <a v-for="apartment in apartments" href="{{-- {{ route('apartments.show') }} + '/' + apartment.id --}}#" class="apartment-card"  :class="popupSelected == apartment.title? 'selected' : '' " v-if="{{-- target.every(v => arr.includes(v)) --}}">
+                <a v-for="apartment in apartments" href="{{ route('ui.apartments.all') }}/@{{ apartment.id }}" class="apartment-card"  :class="popupSelected == apartment.title? 'selected' : '' ">
                     <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
-                    <h4 class="card__title">@{{ apartment.title }}</h4>
+                    <h3 class="card__title">@{{ apartment.title }}</h3>
                     <p class="card__rooms">Stanze: @{{ apartment.rooms }} | Bagni: @{{ apartment.bathrooms }} | Letti: @{{ apartment.beds }}</p>
                     <ul class="services-list">
                         <li v-for="service in apartment.services" class="card__service">

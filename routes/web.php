@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 Route::prefix('/')->namespace('UI')->group(function () {
     Route::get('', 'BnbController@index')->name('welcome');
     Route::get('search', 'BnbController@search')->name('search');
+    Route::get('apartments', 'BnbController@search')->name('ui.apartments.all');
     Route::get('apartments/{id}', 'BnbController@show')->name('ui.apartments.show');
 });
 
