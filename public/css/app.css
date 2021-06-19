@@ -60,7 +60,7 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #23286B;;
+  color: #212529;
   text-align: left;
   background-color: #f8fafc;
 }
@@ -16591,7 +16591,7 @@ h2 {
   padding: 20px;
   margin-bottom: 20px;
 }
-.admin-sponsor-box .custom-control-label span {
+.admin-sponsor-box .color {
   color: #23286B;
 }
 
@@ -16736,6 +16736,27 @@ h2 {
     margin-top: 10px;
   }
 }
+.grafico-footer {
+  width: 100%;
+  margin: auto;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.grafico-footer2 {
+  width: 80%;
+}
+
+.grafico-footer1 {
+  width: 100%;
+  padding: 0 55px;
+  background-color: #F2F3FA;
+  align-items: center;
+}
+
 .jumbotron {
   padding-top: 50px;
   background-image: url("https://source.unsplash.com/1600x900/?travel, city");
