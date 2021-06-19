@@ -24,10 +24,10 @@ Route::prefix('/')->namespace('UI')->group(function () {
 
 
 // BRAINTREE - TRANSAZIONI
-Route::prefix('/')->namespace('Transactions')->group(function () {
+Route::prefix('/admin/')->namespace('Transactions')->group(function () {
     Route::get('apartments/{apartment}/payment', 'PaymentController@form')->name('payment.form');
-    
     Route::get('apartments/payment/process', 'PaymentController@process')->name('payment.process');
+    Route::get('apartments/{apartment}/payment/success', 'PaymentController@success')->name('payment.success');
 
 });
 

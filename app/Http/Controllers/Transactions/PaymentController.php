@@ -18,7 +18,16 @@ class PaymentController extends Controller
 
         $user = User::where('id',Auth::id())->first();
 
+
+
         $request['token'] =  'fake-valid-nonce';
+        $sponsor = Sponsor::where('id',$request->session()->get('sponsor_id'))->first();
+        $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
+
+
+        $date = Carbon::now()->addHour($sponsor->hours)->isoFormat('DD-MM-YYYY, hh:mm');
+
+        $request->session()->get('date_expiration', $date);
 
         $gateway = new Gateway([
             'environment' => env('BRAINTREE_ENV'),
@@ -28,7 +37,7 @@ class PaymentController extends Controller
         ]);
         
         $result = $gateway->transaction()->sale ([
-            'amount' =>  $request->session()->get('sponsor'),
+            'amount' =>  $sponsor->price,
             'paymentMethodNonce' => $request->token,
             'customer' => [
                 'firstName' => $user->name,
@@ -54,12 +63,33 @@ class PaymentController extends Controller
 
         $sponsor = Sponsor::where('name', 'Silver')->first();
 
-        $request->session()->put('sponsor', $sponsor->price);
+        $request->session()->put('sponsor_id', $sponsor->id);
+        $request->session()->put('apartment_id', $apartment->id);
+        
 
         $date = Carbon::now()->addHour($sponsor->hours)->isoFormat('DD-MM-YYYY, hh:mm');
         $user = User::where('id', Auth::id())->first();
 
-        return view('ui.payments.payment', compact('sponsor','apartment','date'));
+
+        $request->session()->put('date_expiration', $date);
+        return view('admin.apartments.payments.payment', compact('sponsor','apartment','date'));
+
+
+    }
+
+
+    public function success(Request $request)
+    {
+        $sponsor = Sponsor::where('id',$request->session()->get('sponsor_id'))->first();
+        $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
+        $date = $request->session()->get('date_expiration');
+
+    
+        if($apartment->user_id != Auth::id()){
+            abort('403');
+        }
+
+        return view('admin.apartments.payments.success', compact('sponsor','apartment','date'));
 
 
     }
