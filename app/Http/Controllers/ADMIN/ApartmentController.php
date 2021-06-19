@@ -88,7 +88,7 @@ class ApartmentController extends Controller
 
         // Generazione dello slug univoco
         do{
-            $randomNumSlug = "-".rand(0, 100000000);
+            $randomNumSlug = "-".rand(0, 10000000000000000);
             $slugTmp = Str::slug( $data['title'], '-' ).$randomNumSlug;
         }
         while( Apartment::where('slug', $slugTmp)->first() );
