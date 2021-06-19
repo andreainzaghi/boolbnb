@@ -10153,7 +10153,7 @@ h3 {
     transform: rotate(360deg);
   }
 }
-.fa-rotate-90 {
+/* .fa-rotate-90 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
   transform: rotate(90deg);
 }
@@ -10181,7 +10181,7 @@ h3 {
 .fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
   transform: scale(-1, -1);
-}
+} */
 
 :root .fa-rotate-90,
 :root .fa-rotate-180,
@@ -16555,7 +16555,7 @@ body {
   padding: 20px;
   margin-bottom: 20px;
 }
-.admin-sponsor-box .color {
+.admin-sponsor-box .custom-control-label span {
   color: #23286B;
 }
 
@@ -16700,30 +16700,9 @@ body {
     margin-top: 10px;
   }
 }
-.grafico-footer {
-  width: 100%;
-  margin: auto;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-}
-
-.grafico-footer2 {
-  width: 80%;
-}
-
-.grafico-footer1 {
-  width: 100%;
-  padding: 0 55px;
-  background-color: #F2F3FA;
-  align-items: center;
-}
-
 .jumbotron {
   padding-top: 50px;
-  background-image: url("https://source.unsplash.com/1600x900/?travel");
+  background-image: url("https://www.viaggi-estate.com/wp-content/uploads/2018/08/montagna-1024x512.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border: 1px solid #ddd;
