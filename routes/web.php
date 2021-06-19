@@ -27,6 +27,7 @@ Auth::routes();
 
 Route::prefix('admin')->name('admin.')->namespace('ADMIN')->middleware('auth')->group(function () {
     Route::resource('apartments', 'ApartmentController');
+    
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

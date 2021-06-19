@@ -16568,132 +16568,106 @@ h2 {
   font-size: 20px;
 }
 
-* {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  padding: 0;
-  box-sizing: border-box;
+.d-flex-colmn {
+  display: flex;
+  flex-direction: column;
 }
 
-.box {
-  margin: 0 auto;
-}
-.box .interno-profilo {
-  width: 100%;
-}
-.box .interno-profilo .title-page {
+.d-flex {
   display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.sp-btw {
   justify-content: space-between;
-  width: 100%;
-  font-weight: bold;
 }
-.box .interno-profilo .title-page .title {
-  width: 65%;
-  margin-right: 20px;
+
+.admin-sponsor-box {
+  border: 1px solid #E94A47;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
-.box .interno-profilo .title-page .title h3 {
-  font-size: 30px;
-}
-.box .interno-profilo .title-page .title p {
-  font-size: 12px;
-  font-weight: 400;
+.admin-sponsor-box .color {
   color: #23286B;
-  margin-bottom: 5px;
 }
-.box .interno-profilo .title-page .title-map {
-  width: 35%;
-  display: flex;
-  align-items: flex-end;
+
+.admin-appartamento {
+  width: 100%;
 }
-.box .interno-profilo .title-page .title-map p {
-  font-size: 10px;
-}
-.box .interno-profilo .immagini {
-  height: 250px;
-  display: flex;
-}
-.box .interno-profilo .immagini .immagineappartamento {
-  height: 250px;
+.admin-appartamento .box-left {
   width: 65%;
+}
+.admin-appartamento .box-left .title p {
+  color: #23286B;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.admin-appartamento .box-left .admin-img-box {
   margin-right: 20px;
-  border: 1px solid black;
   border-top-left-radius: 20px 20px;
   border-bottom-left-radius: 20px 20px;
   overflow: hidden;
-}
-.box .interno-profilo .immagini .mappe {
   height: 250px;
-  border: 1px solid black;
+  display: flex;
+  margin-bottom: 15px;
+}
+.admin-appartamento .box-left .admin-img-box a .immagine {
+  background-color: grey;
+  display: block;
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.5s;
+}
+.admin-appartamento .box-left .admin-img-box:hover img {
+  transform: scale(1.05);
+}
+.admin-appartamento .box-left .descrizione {
+  display: flex;
+  flex-direction: column;
+}
+.admin-appartamento .box-left .descrizione .recap {
+  color: #23286B;
+  font-size: 12px;
+}
+.admin-appartamento .box-left .descrizione .sottotesto {
+  display: flex;
+  flex-direction: column;
+  color: #6E7078;
+  font-size: 13px;
+}
+.admin-appartamento .box-left .descrizione .select-servizi {
+  color: #23286B;
+  font-size: 12px;
+}
+.admin-appartamento .box-right {
   width: 35%;
+  margin-top: 43px;
+}
+.admin-appartamento .box-right .admin-title-page {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.admin-appartamento .box-right .admin-title-page .mappa {
+  height: 250px;
   border-top-right-radius: 20px 20px;
   border-bottom-right-radius: 20px 20px;
 }
-.box .interno-profilo .box-appartamento {
-  display: flex;
-  margin-top: 10px;
-  width: 100%;
-}
-.box .interno-profilo .box-appartamento .descrizione {
-  width: 65%;
-  margin-right: 20px;
-}
-.box .interno-profilo .box-appartamento .descrizione .recap {
-  color: #23286B;
-  font-size: 13px;
-}
-.box .interno-profilo .box-appartamento .descrizione .sottotesto {
-  color: #6E7078;
-  font-size: 12px;
-}
-.box .interno-profilo .box-appartamento .descrizione .select-servizi {
-  color: #23286B;
-  font-size: 12px;
-}
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  font-size: 12px;
-}
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-1,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-2,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-3,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-4,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-5,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-6,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-7 {
-  padding-left: 10px;
-}
-.box .interno-profilo .box-appartamento .box-right {
-  width: 35%;
-}
-.box .interno-profilo .box-appartamento .box-right .alert p {
+.admin-appartamento .box-right .alert-admin p {
   font-size: 12px;
   color: #23286B;
 }
-.box .interno-profilo .box-appartamento .box-right .alert p .fa-exclamation-circle {
+.admin-appartamento .box-right .alert-admin p .fa-exclamation-circle {
   color: #E94A47;
+  font-size: 14px;
 }
-.box .interno-profilo .box-appartamento .box-right .send-msg {
-  margin-bottom: 30px;
-}
-.box .interno-profilo .box-appartamento .box-right .send-msg .email {
-  margin-bottom: 10px;
-}
-.box .interno-profilo .box-appartamento .box-right .send-msg .email label, .box .interno-profilo .box-appartamento .box-right .send-msg .messaggio label {
-  font-size: 13px;
-  color: #23286B;
-}
-.box .interno-profilo .buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.admin-appartamento .box-right .alert-admin p span {
+  color: #E94A47;
 }
 
 /* scroll */
@@ -16714,6 +16688,54 @@ h2 {
   background: #b30000;
 }
 
+@media screen and (max-width: 768px) {
+  .admin-appartamento {
+    flex-wrap: wrap;
+  }
+
+  .admin-appartamento .box-left {
+    width: 100%;
+  }
+
+  .admin-appartamento .box-left .admin-img-box {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 0;
+  }
+
+  .admin-appartamento .box-right {
+    width: 100%;
+  }
+
+  .admin-appartamento .box-right .admin-title-page .mappa {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .admin-appartamento .box-right .alert-admin p br {
+    display: none;
+  }
+}
+@media screen and (max-width: 425px) {
+  .admin-sponsor-box .my-btn-primary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .my-btn-primary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .my-btn-secondary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
 .grafico-footer {
   width: 100%;
   margin: auto;
@@ -16737,7 +16759,7 @@ h2 {
 
 .jumbotron {
   padding-top: 50px;
-  background-image: url("https://source.unsplash.com/1600x900/?travel, city");
+  background-image: url("https://source.unsplash.com/1600x900/?travel");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -16814,132 +16836,119 @@ form .btn-search {
   transform: scale(1.4);
 }
 
-* {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  padding: 0;
-  box-sizing: border-box;
+.d-flex-colmn {
+  display: flex;
+  flex-direction: column;
 }
 
-.box {
-  margin: 0 auto;
-}
-.box .interno-profilo {
-  width: 100%;
-}
-.box .interno-profilo .title-page {
+.d-flex {
   display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.sp-btw {
   justify-content: space-between;
+}
+
+.admin-appartamento {
   width: 100%;
-  font-weight: bold;
 }
-.box .interno-profilo .title-page .title {
+.admin-appartamento .box-left {
   width: 65%;
-  margin-right: 20px;
 }
-.box .interno-profilo .title-page .title h3 {
-  font-size: 30px;
-}
-.box .interno-profilo .title-page .title p {
-  font-size: 12px;
-  font-weight: 400;
+.admin-appartamento .box-left .title p {
   color: #23286B;
-  margin-bottom: 5px;
+  font-size: 12px;
+  margin-bottom: 10px;
 }
-.box .interno-profilo .title-page .title-map {
-  width: 35%;
-  display: flex;
-  align-items: flex-end;
-}
-.box .interno-profilo .title-page .title-map p {
-  font-size: 10px;
-}
-.box .interno-profilo .immagini {
-  height: 250px;
-  display: flex;
-}
-.box .interno-profilo .immagini .immagineappartamento {
-  height: 250px;
-  width: 65%;
+.admin-appartamento .box-left .admin-img-box {
   margin-right: 20px;
-  border: 1px solid black;
   border-top-left-radius: 20px 20px;
   border-bottom-left-radius: 20px 20px;
   overflow: hidden;
-}
-.box .interno-profilo .immagini .mappe {
   height: 250px;
-  border: 1px solid black;
+  display: flex;
+  margin-bottom: 15px;
+}
+.admin-appartamento .box-left .admin-img-box a .immagine {
+  background-color: grey;
+  display: block;
+  height: 250px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.5s;
+}
+.admin-appartamento .box-left .admin-img-box:hover img {
+  transform: scale(1.05);
+}
+.admin-appartamento .box-left .descrizione {
+  display: flex;
+  flex-direction: column;
+}
+.admin-appartamento .box-left .descrizione .recap {
+  color: #23286B;
+  font-size: 12px;
+}
+.admin-appartamento .box-left .descrizione .sottotesto {
+  display: flex;
+  flex-direction: column;
+  color: #6E7078;
+  font-size: 13px;
+}
+.admin-appartamento .box-left .descrizione .select-servizi {
+  color: #23286B;
+  font-size: 12px;
+}
+.admin-appartamento .box-left .descrizione .select-servizi .check-squares {
+  color: #23286B;
+  margin-bottom: 20px;
+  font-size: 12px;
+  justify-content: space-between;
+}
+.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-1,
+.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-2,
+.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-3,
+.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-4,
+.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-5,
+.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-6,
+.admin-appartamento .box-left .descrizione .select-servizi .check-squares .check-squares .square-7 {
+  padding-left: 10px;
+}
+.admin-appartamento .box-right {
   width: 35%;
+  margin-top: 43px;
+}
+.admin-appartamento .box-right .admin-title-page {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.admin-appartamento .box-right .admin-title-page .mappa {
+  height: 250px;
   border-top-right-radius: 20px 20px;
   border-bottom-right-radius: 20px 20px;
 }
-.box .interno-profilo .box-appartamento {
-  display: flex;
-  margin-top: 10px;
-  width: 100%;
-}
-.box .interno-profilo .box-appartamento .descrizione {
-  width: 65%;
-  margin-right: 20px;
-}
-.box .interno-profilo .box-appartamento .descrizione .recap {
-  color: #23286B;
-  font-size: 13px;
-}
-.box .interno-profilo .box-appartamento .descrizione .sottotesto {
-  color: #6E7078;
-  font-size: 12px;
-}
-.box .interno-profilo .box-appartamento .descrizione .select-servizi {
-  color: #23286B;
-  font-size: 12px;
-}
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  font-size: 12px;
-}
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-1,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-2,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-3,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-4,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-5,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-6,
-.box .interno-profilo .box-appartamento .descrizione .select-servizi .check-square .check-square .square-7 {
-  padding-left: 10px;
-}
-.box .interno-profilo .box-appartamento .box-right {
-  width: 35%;
-}
-.box .interno-profilo .box-appartamento .box-right .alert p {
-  font-size: 12px;
-  color: #23286B;
-}
-.box .interno-profilo .box-appartamento .box-right .alert p .fa-exclamation-circle {
-  color: #E94A47;
-}
-.box .interno-profilo .box-appartamento .box-right .send-msg {
+.admin-appartamento .box-right .ui-msg {
   margin-bottom: 30px;
 }
-.box .interno-profilo .box-appartamento .box-right .send-msg .email {
+.admin-appartamento .box-right .ui-msg .email {
   margin-bottom: 10px;
 }
-.box .interno-profilo .box-appartamento .box-right .send-msg .email label, .box .interno-profilo .box-appartamento .box-right .send-msg .messaggio label {
+.admin-appartamento .box-right .ui-msg .email label {
   font-size: 13px;
   color: #23286B;
 }
-.box .interno-profilo .buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.admin-appartamento .box-right .ui-msg .messaggio label {
+  font-size: 13px;
+  color: #23286B;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.buttons-admin {
+  justify-content: flex-end;
+  margin-top: 20px;
 }
 
 /* scroll */
@@ -16958,4 +16967,63 @@ form .btn-search {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
+}
+
+@media screen and (max-width: 1200px) {
+  .custom-control-inline {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .custom-control-inline {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .admin-appartamento {
+    flex-wrap: wrap;
+  }
+
+  .admin-appartamento .box-left {
+    width: 100%;
+  }
+
+  .admin-appartamento .box-left .admin-img-box {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-right: 0;
+  }
+
+  .admin-appartamento .box-right {
+    width: 100%;
+  }
+
+  .admin-appartamento .box-right .admin-title-page .mappa {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .admin-appartamento .box-right .alert-admin p br {
+    display: none;
+  }
+}
+@media screen and (max-width: 425px) {
+  .admin-sponsor-box .my-btn-primary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .my-btn-primary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .my-btn-secondary {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
 }

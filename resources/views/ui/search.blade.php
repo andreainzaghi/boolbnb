@@ -24,12 +24,34 @@
             <div v-bind:class="{ 'active' : showAdvSearch }" class="advanced-search">
                 <div class="search">
                     <label for="adv-search-city">Città</label>
-                    <input type="text" name="city" v-model="city" id="adv-search-city" placeholder="Inserisci un nome di una città">
+                    <input type="text" name="city" v-model="city" id="adv-search-city">
                     {{-- <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
                     <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button> --}}
                 </div>
-
-                <h4 class="filter-title">Servizi</h4>
+                <div class="filter__services-num mt-1">
+                    <label>raggio (km)</label>
+                    <input type="input" v-model="radius">
+                </div>
+                <h4 class="filter-title mt-3">Caratteristiche</h4>
+                <div class="filter-num">
+                    <div class="filter__services-num">
+                        <label>n° stanze</label>
+                        <input type="input" v-model="rooms">
+                    </div>
+                    <div class="filter__services-num">
+                        <label>n° bagni</label>
+                        <input type="input" v-model="bathrooms">
+                    </div>
+                    <div class="filter__services-num">
+                        <label>n° letti</label>
+                        <input type="input" v-model="beds">
+                    </div>
+                    <div class="filter__services-num">
+                        <label>superfice (mq)</label>
+                        <input type="input" v-model="mq">
+                    </div>
+                </div>
+                <h4 class="filter-title mt-3">Servizi</h4>
                 <div class="filter">
                     @foreach ( $services as $service )
                         <div class="filter__services">
@@ -37,29 +59,6 @@
                             <label for="{{$service->name}}">{{$service->name}}</label>
                         </div>
                     @endforeach                    
-                </div>
-                <h4 class="filter-title">Caratteristiche</h4>
-                <div class="filter">
-                    <div class="filter__services">
-                        <label>n° stanze</label>
-                        <input type="input" v-model="rooms">
-                    </div>
-                    <div class="filter__services">
-                        <label>n° bagni</label>
-                        <input type="input" v-model="bathrooms">
-                    </div>
-                    <div class="filter__services">
-                        <label>n° letti</label>
-                        <input type="input" v-model="beds">
-                    </div>
-                    <div class="filter__services">
-                        <label>superfice (mq)</label>
-                        <input type="input" v-model="mq">
-                    </div>
-                    <div class="filter__services">
-                        <label>raggio (km)</label>
-                        <input type="input" v-model="radius">
-                    </div>         
                 </div>
                 <div class="text-right">
                     <button v-on:click="getPosition(); showAdvSearch = !showAdvSearch" class="my-btn my-btn-primary search-btn"><i class="fas fa-chevron-right"></i></button>
