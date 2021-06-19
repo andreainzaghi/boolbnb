@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/search.js": "/js/search.js",
     "/js/show.js": "/js/show.js",
-    "/css/app.css": "/css/app.css",
-    "/css/search.css": "/css/search.css"
+    "/js/ur-create-edit.js": "/js/ur-create-edit.js",
+    "/css/search.css": "/css/search.css",
+    "/css/app.css": "/css/app.css"
 }

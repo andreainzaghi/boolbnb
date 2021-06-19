@@ -15,6 +15,7 @@ class ApartmentController extends Controller
             'bathrooms' => 'numeric | max: 127',
             'beds' => 'numeric | max: 127',
             'mq' => 'numeric | max: 3000',
+            'radius' => 'numeric | max: 20038'
         ]);
 
         $lat = $data['lat'];
