@@ -33,11 +33,14 @@
   @section('script')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" referer></script>
   <script src="https://js.braintreegateway.com/web/dropin/1.8.1/js/dropin.min.js"></script>
-  
+  @php
+    Request()->merge([
+    'sponsor' => $sponsor,
+]);
+  @endphp
   <script>
     var button = document.querySelector('#submit-button');
-    // let apartment = "{{$apartment}}";
-  
+    
     braintree.dropin.create({
       authorization: "{{ Braintree\ClientToken::generate() }}",
       container: '#dropin-container'
@@ -45,11 +48,12 @@
       button.addEventListener('click', function () {
         instance.requestPaymentMethod(function (err, payload) {
 
-          $.get("{{ route('payment.process',$sponsor,$apartment) }}", {payload}, function (response) {
-        alert("Click 3");
+          $.get('{{ route('payment.process') }}', {payload}, function (response) {
+            console.log(response);
 
             if (response.success) {
               alert('Payment successfull!');
+              window.location.replace("http://localhost:8000/");
             } else {
               alert('Payment failed');
             }

@@ -6,8 +6,6 @@ use App\Apartment;
 use App\Http\Controllers\Controller;
 use App\Sponsor;
 use App\User;
-use Braintree\Transaction;
-use Braintree;
 use Braintree\Gateway;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,30 +14,35 @@ use Illuminate\Support\Facades\Auth;
 class PaymentController extends Controller
 {
 
-    public function process(Request $request,Sponsor $sponsor, Apartment $apartment){
+    public function process(Request $request){
 
-        // dd("ciao");
-        // dd($data);
-        // $user = $data['apartment'];
-        // $sponsor = $data['sponsor'];
-        $payload = $request->input('payload', false);
-        $nonce = $payload['nonce'];
-    
-        $status = Braintree\Transaction::sale([
-        'amount' => "2.99",
-        'customer' => [
-            'firstName' => 'Drew',
-            'lastName' => 'Smith',
-            'email' => 'drew@example.com'
-          ],
-        'paymentMethodNonce' => $nonce,
-        'options' => [
-            'submitForSettlement' => True
-        ]
+        $user = User::where('id',Auth::id())->first();
+
+        $request['token'] =  'fake-valid-nonce';
+
+        $gateway = new Gateway([
+            'environment' => env('BRAINTREE_ENV'),
+            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
+            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
+            'privateKey' => env('BRAINTREE_PRIVATE_KEY')
         ]);
-    
-        return response()->json($status);
-            // return view('ui.payments.payment', compact('apartment','sponsor','date'));
+        
+        $result = $gateway->transaction()->sale ([
+            'amount' =>  $request->session()->get('sponsor'),
+            'paymentMethodNonce' => $request->token,
+            'customer' => [
+                'firstName' => $user->name,
+                'lastName' => $user->last_name,
+                'company' => 'BoolBnb',
+                'website' => 'http://www.boolbnb.com',
+                'email' => $user->email
+            ],
+            'options' => [
+                'submitForSettlement' => True]
+            ]);
+
+
+        return response()->json($result);
     }
 
     public function form(Request $request, Apartment $apartment)
@@ -49,15 +52,14 @@ class PaymentController extends Controller
             abort('403');
         }
 
-        
-
         $sponsor = Sponsor::where('name', 'Silver')->first();
-        $data = ['apartment'=> $apartment,'sponsor'=> $sponsor];
+
+        $request->session()->put('sponsor', $sponsor->price);
+
         $date = Carbon::now()->addHour($sponsor->hours)->isoFormat('DD-MM-YYYY, hh:mm');
         $user = User::where('id', Auth::id())->first();
 
-        dump(gettype($data));
-        return view('ui.payments.payment', compact('apartment','sponsor','date'));
+        return view('ui.payments.payment', compact('sponsor','apartment','date'));
 
 
     }
