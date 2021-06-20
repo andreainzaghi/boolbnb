@@ -121,6 +121,24 @@
 
 
 
+// grafico
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 40vh;
+  width: 50vw;
+
+  canvas {
+    border: 1px solid $primaryColor;
+  }
+}
+
+
+// grafico
+
+
+
  /* scroll */
  /* width */
  ::-webkit-scrollbar {
