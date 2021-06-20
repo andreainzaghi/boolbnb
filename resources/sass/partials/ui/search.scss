@@ -1,7 +1,16 @@
 @import '../../app.scss';
 
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 h2 {
     position: fixed;
+    max-width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -41,6 +50,12 @@ h2 {
         flex-basis: 65%;
     }
 
+    // Reset larghezza xs
+    .my-btn-primary {
+        width: auto;
+    }
+
+
     .filter,
     .filter-num {
         &.active {
@@ -48,7 +63,7 @@ h2 {
         }
         span {
             display: none;
-            @include media-breakpoint-up(md) { 
+            @include media-breakpoint-up(lg) { 
                 display: inline-block;
             }
         }
@@ -88,7 +103,14 @@ h2 {
 
         .filter__services,
         .filter__services-num {
+            text-transform: capitalize;
             display: inline-block;
+        }
+
+        .filter__services {
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
         }
 
         .filter__services-num {
@@ -105,8 +127,10 @@ h2 {
                 padding-right: 5%;
             }
             input {
-                padding: 2px 18px;
                 width: 100%;
+                &.form-control {
+                    height: calc(1.2em + 0.75rem + 2px);
+                }
             }
         }
 
@@ -125,11 +149,6 @@ h2 {
             border: 1px solid $supportColor;
             padding: 6px 18px;
             border-radius: 5px;
-            
-            &:not(:last-child) {
-                margin-right: 10px;
-            }
-
 
             &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
                 color: #B9B7BD;

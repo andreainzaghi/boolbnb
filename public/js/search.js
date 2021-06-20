@@ -3,6 +3,8 @@ var __webpack_exports__ = {};
 /*!********************************!*\
   !*** ./resources/js/search.js ***!
   \********************************/
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var cityTitle;
 var app = new Vue({
   el: '#app',
@@ -24,7 +26,8 @@ var app = new Vue({
     selected: '',
     apartments: [],
     popupSelected: '',
-    showAdvSearch: false
+    showAdvSearch: false,
+    showURL: ''
   },
   methods: {
     changeTitle: function changeTitle() {
@@ -53,7 +56,7 @@ var app = new Vue({
       var _this2 = this;
 
       axios.get(this.apiSearch, {
-        params: {
+        params: _defineProperty({
           lat: this.lat,
           "long": this["long"],
           services: this.services,
@@ -62,7 +65,7 @@ var app = new Vue({
           beds: this.beds,
           mq: this.mq,
           radius: this.radius
-        }
+        }, "services", this.services)
       }).then(function (response) {
         _this2.apartments = response.data;
         generateMap();
@@ -131,8 +134,11 @@ function generateMap() {
     // Prop. nec. ID dell' elemento HTML in cui viene mostrata la mappa
     container: 'map',
     center: center,
-    zoom: 9
+    zoom: 9,
+    minZoom: 6
   });
+  map.addControl(new tt.FullscreenControl());
+  map.addControl(new tt.NavigationControl());
   /* map.on('load', function(){
         let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
           fillColor: '#29AB87',
@@ -142,7 +148,8 @@ function generateMap() {
 
 
 function createMarkers() {
-  // Converte gli appartamenti in format geoJson
+  console.log(app._data.apartments); // Converte gli appartamenti in format geoJson
+
   apartments = {
     "type": "FeatureCollection",
     "features": []

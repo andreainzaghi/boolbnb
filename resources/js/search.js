@@ -20,7 +20,8 @@ var app = new Vue({
         selected: '',
         apartments: [],
         popupSelected: '',
-        showAdvSearch: false
+        showAdvSearch: false,
+        showURL: ''
     },
     methods: {
         changeTitle() {
@@ -53,7 +54,8 @@ var app = new Vue({
                     bathrooms: this.bathrooms, 
                     beds: this.beds,
                     mq: this.mq,
-                    radius: this.radius
+                    radius: this.radius,
+                    services: this.services
                 },
             })
             .then( (response) => {
@@ -123,7 +125,12 @@ function generateMap() {
     center: center,
 
     zoom: 9,
+
+    minZoom: 6
     });
+
+    map.addControl(new tt.FullscreenControl());
+    map.addControl(new tt.NavigationControl());
 
     /* map.on('load', function(){
 
@@ -135,6 +142,7 @@ function generateMap() {
 
 // crea i markers e centra la mappa su di essi
 function createMarkers() {
+    console.log(app._data.apartments);
     // Converte gli appartamenti in format geoJson
     apartments = { 
         "type": "FeatureCollection",
