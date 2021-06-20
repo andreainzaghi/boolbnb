@@ -15,7 +15,7 @@
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
         "jquery": "^3.2",
-        "laravel-mix": "^6.0.20",
+        "laravel-mix": "^6.0.23",
         "lodash": "^4.17.13",
         "popper.js": "^1.12",
         "postcss": "^8.3.1",
@@ -24,6 +24,6 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "@turf/turf": "^6.4.0"
+        "chart.js": "^3.3.2"
     }
 }
