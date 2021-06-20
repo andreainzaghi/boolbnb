@@ -206,6 +206,12 @@ class ApartmentController extends Controller
             abort('403');
         }
 
-        return view('welcome');
+        $messages = $apartment->messages()->orderBy('created_at', 'desc')->get();
+        foreach ( $messages as $message ) {
+            $createdAt = Carbon::parse( $message['created_at'] )->format('d/m/Y');
+            $message->date = $createdAt;
+        }
+
+        return view('admin.apartments.messages', compact('apartment', 'messages'));
     }
 }
