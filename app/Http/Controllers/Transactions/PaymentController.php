@@ -82,12 +82,17 @@ class PaymentController extends Controller
     {
         $sponsor = Sponsor::where('id',$request->session()->get('sponsor_id'))->first();
         $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
-        $date = $request->session()->get('date_expiration');
 
-    
+        $dateParse = Carbon::parse($request->session()->get('date_expiration'));
+        $date = $dateParse->format('Y-m-d H:i:s');
+
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
+
+        // dd($date);
+        $apartment->sponsors()->attach($sponsor,['expiration' => $date, 'settled' =>1]);
+
 
         return view('admin.apartments.payments.success', compact('sponsor','apartment','date'));
 
