@@ -150,6 +150,18 @@
    background: #b30000;
  }
 
+
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 40vh;
+  width: 60vw;
+  padding: 50px 0;
+}
+
+
+
 // mediaquery 
 @media screen and (max-width: 1200px) {
   .custom-control-inline {
