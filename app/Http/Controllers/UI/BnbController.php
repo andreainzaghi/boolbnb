@@ -50,4 +50,16 @@ class BnbController extends Controller
         $apartment = Apartment::where('id', $id)->first();      
         return view('ui.show', compact('apartment'));
     }
+
+
+
+    public function sendMessage(Request $request, Apartment $apartment){
+
+
+        // MANCA LA VALIDAZIONE
+        $data = $request->all();
+        $data['apartment_id'] = $apartment->id; 
+
+        $newaMessage = Message::create( $data );
+    }
 }

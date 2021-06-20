@@ -19,6 +19,7 @@ Route::prefix('/')->namespace('UI')->group(function () {
     Route::get('', 'BnbController@index')->name('welcome');
     Route::get('search', 'BnbController@search')->name('search');
     Route::get('apartments/{id}', 'BnbController@show')->name('ui.apartments.show');
+    Route::get('apartments/{id}/message', 'BnbController@sendMessage')->name('ui.apartments.message');
 });
 //////////////////////////////////////////////////////////////////////
 
