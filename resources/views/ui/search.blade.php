@@ -1,7 +1,7 @@
 @extends('../layouts.base-box')
 
 @section('pageTitle')
-    Risultati per - {{$city}}
+    Risultati ricerca
 @endsection
 
 @section('styles')
@@ -24,38 +24,38 @@
             <div v-bind:class="{ 'active' : showAdvSearch }" class="advanced-search">
                 <div class="search">
                     <label for="adv-search-city">Città</label>
-                    <input type="text" name="city" v-model="city" id="adv-search-city">
+                    <input class="form-control" type="text" name="city" v-model="city" id="adv-search-city">
                     {{-- <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
                     <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button> --}}
                 </div>
                 <div class="filter__services-num mt-1">
                     <label>raggio (km)</label>
-                    <input type="input" v-model="radius">
+                    <input class="form-control" type="input" v-model="radius">
                 </div>
                 <h4 class="filter-title mt-3">Caratteristiche</h4>
                 <div class="filter-num">
                     <div class="filter__services-num">
                         <label>n° stanze</label>
-                        <input type="input" v-model="rooms">
+                        <input class="form-control" type="input" v-model="rooms">
                     </div>
                     <div class="filter__services-num">
                         <label>n° bagni</label>
-                        <input type="input" v-model="bathrooms">
+                        <input class="form-control" type="input" v-model="bathrooms">
                     </div>
                     <div class="filter__services-num">
                         <label>n° letti</label>
-                        <input type="input" v-model="beds">
+                        <input class="form-control" type="input" v-model="beds">
                     </div>
                     <div class="filter__services-num">
                         <label>superfice (mq)</label>
-                        <input type="input" v-model="mq">
+                        <input class="form-control" type="input" v-model="mq">
                     </div>
                 </div>
                 <h4 class="filter-title mt-3">Servizi</h4>
                 <div class="filter">
                     @foreach ( $services as $service )
                         <div class="filter__services">
-                            <input id="{{$service->name}}" type="checkbox" name="{{$service->name}}" value="{{$service->name}}">
+                            <input id="{{$service->name}}" type="checkbox" name="{{$service->name}}" v-model="services" value="{{$service->id}}">
                             <label for="{{$service->name}}">{{$service->name}}</label>
                         </div>
                     @endforeach                    
@@ -66,7 +66,7 @@
             </div>
             <!-- /ricerca avanzata -->
             <div id='apartments-list'>
-                <a v-for="apartment in apartments" href="{{ route('ui.apartments.all') }}/@{{ apartment.id }}" class="apartment-card"  :class="popupSelected == apartment.title? 'selected' : '' ">
+                <a v-for="apartment in apartments" :href="apartment.route" class="apartment-card"  :class="popupSelected == apartment.title? 'selected' : '' ">
                     <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
                     <h3 class="card__title">@{{ apartment.title }}</h3>
                     <p class="card__rooms">Stanze: @{{ apartment.rooms }} | Bagni: @{{ apartment.bathrooms }} | Letti: @{{ apartment.beds }}</p>
@@ -79,7 +79,7 @@
                     <p  v-else class="card__service"> - @{{ service.name }}</p> -->
                     <p class="card__description">@{{ apartment.description }}</p>
                 </a>
-            </div>    
+            </div>
         </div>
 
         <div id='map' class='map'></div>

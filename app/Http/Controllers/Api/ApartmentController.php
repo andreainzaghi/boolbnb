@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ApartmentController extends Controller
 {
@@ -25,6 +26,11 @@ class ApartmentController extends Controller
         $bathrooms = $data['bathrooms'];
         $beds = $data['beds'];
         $mq = $data['mq'];
+        $toDelete = [];
+
+        if ( isset($data['services']) ) {
+            $services = $data['services'];
+        }
 
         if ( isset($data['radius']) ) {
             $radius_km = $data['radius'];
@@ -39,9 +45,50 @@ class ApartmentController extends Controller
         ->having( 'distance', '<', $radius_km )
         ->orderBy('distance', 'asc' )
         ->get();
-        foreach( $apartments as $apartment ) {
-            $apartment->services;        
+        if ( isset($data['services']) ) {
+            foreach( $apartments as $index=>$apartment ) {
+                $apArrServices = [];
+                $apartment->route = route('ui.apartments.show', ['id' => $apartment->id]);
+                $apartment->services;
+                $apServices = $apartment->services()->get();
+                foreach( $apServices as $apService ) {
+                    $apArrServices[] = $apService->id;
+                }
+                foreach( $services as $service ) {
+                    if ( !in_array( $service, $apArrServices ) ) {
+                        $toDelete[] = $index;
+                    }
+                }
+            }
+            foreach ( $toDelete as $index ) {
+                $apartments->forget($index);
+            }
+        } else {
+            foreach( $apartments as $apartment ) {
+                $apartment->route = route('ui.apartments.show', ['id' => $apartment->id]);
+                $apartment->services;
+            }
         }
+
+        $sorted = $apartments->sortByDesc(function ($apartment) {
+            $currentDate = Carbon::now();
+            $sponsorColl = $apartment->sponsors()->where('expiration', '>=', $currentDate)->get();
+            $sponsor = $sponsorColl->first();
+            // L' appartamento non ha sponsor
+            if ( $sponsor === null ) {
+                return 0;
+            }
+            // L' appartamento ha sponsor
+            $apartment->sponsors;
+            if ( $sponsorColl->firstWhere('name', 'Silver') ) {
+                return 1;
+            } else if ( $sponsorColl->firstWhere('name', 'Gold') ) {
+                return 2;
+            } else if ( $sponsorColl->firstWhere('name', 'Platinum') ) {
+                return 3;
+            }
+        });
+        $apartments = $sorted->values()->all();
 
         return response()->json($apartments);
     }
