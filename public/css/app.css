@@ -60,7 +60,7 @@ body {
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
-  color: #23286B;;
+  color: #212529;
   text-align: left;
   background-color: #f8fafc;
 }
@@ -16555,7 +16555,7 @@ body {
   padding: 20px;
   margin-bottom: 20px;
 }
-.admin-sponsor-box .custom-control-label span {
+.admin-sponsor-box .color {
   color: #23286B;
 }
 
@@ -16632,6 +16632,16 @@ body {
 }
 .admin-appartamento .box-right .alert-admin p span {
   color: #E94A47;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 40vh;
+  width: 50vw;
+}
+.chart-container canvas {
+  border: 1px solid #E94A47;
 }
 
 /* scroll */

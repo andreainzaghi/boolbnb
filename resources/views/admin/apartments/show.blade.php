@@ -4,6 +4,7 @@
 
     {{-- style tom tom --}}
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
+
 @endsection
 
 @section('pageTitle')
@@ -88,12 +89,67 @@
   </div> 
   {{-- bottoni lato admin --}}    
   
-</div>
+  {{-- chart js  --}}
+  <div class="chart-container">
+    <canvas id="myChart"></canvas>
+  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-  <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
+  
+</div>
+{{-- -box conentitore  --}}
+
+ 
+
+
+
   @section('script')
-  <script src="{{ asset('js/show.js') }}" defer></script>
+  
+    {{-- tom tom script  --}}
+    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
+    <script src="{{ asset('js/show.js') }}" defer></script>
+
+    {{-- chart js script --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+
+      <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Lun', 'Mar', 'Merc', 'Gio', 'Ven', 'Sab', 'Dom'],
+                datasets: [{
+                    label: '# di Visite',
+                    data: [12, 19, 3, 5, 2, 3, 12],
+                    backgroundColor: [
+                        'rgba(233, 74, 71, 0.2)',
+                        'rgba(233, 74, 71, 0.2)',
+                        'rgba(233, 74, 71, 0.2)',
+                        'rgba(233, 74, 71, 0.2)',
+                        'rgba(233, 74, 71, 0.2)',
+                        'rgba(233, 74, 71, 0.2)',                    
+                    ],
+                    borderColor: [
+                        'rgba(233, 74, 71, 1)',
+                        'rgba(233, 74, 71, 1)',
+                        'rgba(233, 74, 71, 1)',
+                        'rgba(233, 74, 71, 1)',
+                        'rgba(233, 74, 71, 1)',
+                        'rgba(233, 74, 71, 1)',
+                        'rgba(233, 74, 71, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+ 
   @endsection
 
 @endsection
