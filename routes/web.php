@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 Route::prefix('/')->namespace('UI')->group(function () {
     Route::get('', 'BnbController@index')->name('welcome');
     Route::get('search', 'BnbController@search')->name('search');
+    Route::get('apartments', 'BnbController@search')->name('ui.apartments.all');
     Route::get('apartments/{id}', 'BnbController@show')->name('ui.apartments.show');
 });
 
@@ -31,3 +32,6 @@ Route::prefix('admin')->name('admin.')->namespace('ADMIN')->middleware('auth')->
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::get('/file-404', function() {
+    return view('file-404');
+})->name('file-404');

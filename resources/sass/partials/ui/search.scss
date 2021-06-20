@@ -1,10 +1,21 @@
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
 @import '../../app.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
 h2 {
     position: fixed;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    max-width: ((65%)/2.3);
+    span {
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+    }
 }
 
 
@@ -44,17 +55,32 @@ h2 {
         flex-basis: 65%;
     }
 
-    .filter {
+    // Reset larghezza xs
+    .my-btn-primary {
+        width: auto;
+    }
+
+
+    .filter,
+    .filter-num {
         &.active {
             border-radius: 10px 10px 0 0;
         }
         span {
             display: none;
-            @include media-breakpoint-up(md) { 
+            @include media-breakpoint-up(lg) { 
                 display: inline-block;
             }
         }
     }
+
+    .filter-num {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .adv-search-btn-wrp {
         width: 100%;
     }
@@ -74,8 +100,48 @@ h2 {
         position: absolute;
         border: 2px solid $primaryColorLight;
 
-        .filter__services{
+        .search {
+            width: 100%;
+            input {
+                width: 100%;
+            }
+        }
+
+        .filter__services,
+        .filter__services-num {
+            text-transform: capitalize;
             display: inline-block;
+            .input-number-add,
+            .input-number-sub {
+                display: none;
+            }
+        }
+
+        .filter__services {
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+
+        .filter__services-num {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            min-width: 60px;
+            width: 50%;
+            white-space: nowrap;
+            @include media-breakpoint-up(lg) { 
+                width: 20%;
+            }
+            @include media-breakpoint-up(xs) { 
+                /* padding-right: 5%; */
+            }
+            input {
+                width: 100%;
+                &.form-control {
+                    height: calc(1.2em + 0.75rem + 2px);
+                }
+            }
         }
 
         .search-btn i {
@@ -93,8 +159,6 @@ h2 {
             border: 1px solid $supportColor;
             padding: 6px 18px;
             border-radius: 5px;
-            margin-left: 10px;
-
 
             &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
                 color: #B9B7BD;
@@ -133,6 +197,10 @@ h2 {
                 height: 150px;
             }
 
+            h3 {
+                font-size: 1.3rem;
+            }
+
             .card__rooms {
                 color: $secondaryColor;
                 margin-bottom: 5px;
@@ -165,5 +233,11 @@ h2 {
 
     @include media-breakpoint-up(md) { 
         display: block;
+    }
+
+    .popup_title {
+        display: block;
+        color: $secondaryColor;
+        font-size: 16px;
     }
 }

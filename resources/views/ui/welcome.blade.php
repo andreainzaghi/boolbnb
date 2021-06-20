@@ -10,7 +10,7 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <form action="{{route('search')}}">
-                    <input class="search" type="text" id="city" placeholder="Inserisci una città" name="city">
+                    <input class="search" type="text" id="city" placeholder="Dove ti piacerebbe andare?" name="city">
                     <button class="btn btn-search" type="submit">Cerca</button>
                 </form>
                 <div class="phrase">

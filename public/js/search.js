@@ -3,12 +3,14 @@ var __webpack_exports__ = {};
 /*!********************************!*\
   !*** ./resources/js/search.js ***!
   \********************************/
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var cityTitle;
 var app = new Vue({
   el: '#app',
   data: {
+    // Variabili ricerca
     city: '',
-    selected: '',
-    apartments: [],
     services: [],
     rooms: 0,
     bathrooms: 0,
@@ -17,32 +19,47 @@ var app = new Vue({
     radius: 20,
     lat: 0,
     "long": 0,
+    // Dati Api
+    apiKey: "GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn",
     apiSearch: 'api/search',
-    apiFilter: 'api/filter',
-    popupSelected: ''
+    // Elementi dom
+    selected: '',
+    apartments: [],
+    popupSelected: '',
+    showAdvSearch: false,
+    showURL: '',
+    loaded: false
   },
   methods: {
-    getPosition: function getPosition(city) {
+    changeTitle: function changeTitle() {
+      cityTitle.innerHTML = this.city;
+    },
+    // Chiamata Api per localizzare l' indirizzo
+    getPosition: function getPosition() {
       var _this = this;
 
-      axios.get('https://api.tomtom.com/search/2/geocode/' + city + '.json', {
+      this.changeTitle();
+      axios.get('https://api.tomtom.com/search/2/geocode/' + this.city + '.json', {
         params: {
-          key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
+          key: this.apiKey,
           language: 'it-IT',
           limit: 1
         }
       }).then(function (geoJson) {
-        _this.lat = geoJson.data.results[0].position.lat;
-        _this["long"] = geoJson.data.results[0].position.lon;
+        if (geoJson.data.results[0] !== undefined) {
+          _this.lat = geoJson.data.results[0].position.lat;
+          _this["long"] = geoJson.data.results[0].position.lon;
 
-        _this.search();
+          _this.search();
+        }
       });
     },
+    // Chiamata Api della ricerca avanzata
     search: function search(location) {
       var _this2 = this;
 
       axios.get(this.apiSearch, {
-        params: {
+        params: _defineProperty({
           lat: this.lat,
           "long": this["long"],
           services: this.services,
@@ -51,24 +68,30 @@ var app = new Vue({
           beds: this.beds,
           mq: this.mq,
           radius: this.radius
-        }
+        }, "services", this.services)
       }).then(function (response) {
         _this2.apartments = response.data;
+        _this2.loaded = true;
         generateMap();
-        createMarkers();
+
+        if (_this2.apartments.length > 0) {
+          map.on('load', createMarkers());
+        }
       });
     }
   },
+  // Legge l' indirizzo inserito nell' URL
   created: function created() {
+    cityTitle = document.getElementById('city_title');
     var urlParams = new URLSearchParams(window.location.search);
 
     if (urlParams.has('city')) {
       this.city = urlParams.get('city');
     }
 
-    this.getPosition(this.city);
+    this.getPosition();
   }
-});
+}); // Visualizza l' appartamento selezionato nel control-panel
 
 function selectedScroll() {
   setTimeout(function () {
@@ -78,7 +101,8 @@ function selectedScroll() {
       selected[0].scrollIntoView();
     }
   }, 1);
-}
+} // Chiude i popup non selezionati
+
 
 function closeAllPopups() {
   markersCity.forEach(function (markerCity) {
@@ -86,7 +110,8 @@ function closeAllPopups() {
       markerCity.marker.togglePopup();
     }
   });
-}
+} // Calcola i confini in base ai marker
+
 
 function getMarkersBoundsForCity(city) {
   var bounds = new tt.LngLatBounds();
@@ -96,16 +121,39 @@ function getMarkersBoundsForCity(city) {
     }
   });
   return bounds;
-}
+} // Variabili globali
+
 
 var markersCity = [];
-var apartments, map;
-var adminKey = "xlh5oGUrsotW4VXTAD4dNxaxJ5MGwqrL2ezDmXAlv1OfuaAk";
-var apiKey = "GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn";
-var projectId = "6f2ff167-1c34-400b-9561-c650b915c786";
-var fenceId = "4e3cc3b6-d7b2-4cfd-9ea1-d1ff12164a9b";
+var apartments,
+    map,
+    center,
+    radius = app._data.radius; // Genera la mappa
 
 function generateMap() {
+  center = [app._data["long"], app._data.lat];
+  map = tt.map({
+    // Proprietà necessaria API Key
+    key: app._data.apiKey,
+    // Prop. nec. ID dell' elemento HTML in cui viene mostrata la mappa
+    container: 'map',
+    center: center,
+    zoom: 9,
+    minZoom: 6
+  });
+  map.addControl(new tt.FullscreenControl());
+  map.addControl(new tt.NavigationControl());
+  /* map.on('load', function(){
+        let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
+          fillColor: '#29AB87',
+      }).addTo(map);
+  }) */
+} // crea i markers e centra la mappa su di essi
+
+
+function createMarkers() {
+  console.log(app._data.apartments); // Converte gli appartamenti in format geoJson
+
   apartments = {
     "type": "FeatureCollection",
     "features": []
@@ -125,45 +173,9 @@ function generateMap() {
         "title": apartment.title
       }
     });
-  });
+  }); // Ciclo gli appartamenti per creare marker e voce della lista
 
-  console.log(apartments);
-  map = tt.map({
-    // Proprietà necessaria API Key
-    key: apiKey,
-    // Prop. nec. ID dell' elemento HTML in cui viene mostrata la mappa
-    container: 'map',
-    center: [app._data["long"], app._data.lat],
-    zoom: 9
-  });
-  map.on('load', function () {
-    map.addLayer({
-      'id': 'searchZone',
-      'type': 'fill',
-      'source': {
-        'type': 'geojson',
-        'data': {
-          'type': 'Feature',
-          'geometry': {
-            "type": "Point",
-            "radius": app._data.radius * 1000,
-            "shapeType": "Circle",
-            "coordinates": [app._data["long"], app._data.lat]
-          }
-        }
-      },
-      'layout': {},
-      'paint': {
-        'fill-color': '#2FAAFF',
-        'fill-opacity': 0.8,
-        'fill-outline-color': 'black'
-      }
-    });
-  });
-}
 
-function createMarkers() {
-  // Ciclo gli appartamenti per creare marker e voce della lista
   apartments.features.forEach(function (apartment, index) {
     // Salvo i dati
     var city = apartment.properties.city;
