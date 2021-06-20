@@ -21,7 +21,8 @@ var app = new Vue({
         apartments: [],
         popupSelected: '',
         showAdvSearch: false,
-        showURL: ''
+        showURL: '',
+        loaded: false
     },
     methods: {
         changeTitle() {
@@ -38,9 +39,11 @@ var app = new Vue({
                 }   
             })
             .then( (geoJson) => {
-                this.lat = geoJson.data.results[0].position.lat;
-                this.long = geoJson.data.results[0].position.lon;
-                this.search();
+                if ( geoJson.data.results[0] !== undefined ) {
+                    this.lat = geoJson.data.results[0].position.lat;
+                    this.long = geoJson.data.results[0].position.lon;
+                    this.search();
+                }
             });
         },
         // Chiamata Api della ricerca avanzata
@@ -60,6 +63,7 @@ var app = new Vue({
             })
             .then( (response) => {
             this.apartments = response.data;
+            this.loaded = true;
             generateMap();
             if ( this.apartments.length > 0 ) {
                 map.on('load', createMarkers());

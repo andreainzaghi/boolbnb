@@ -30,25 +30,33 @@
                 </div>
                 <div class="filter__services-num mt-1">
                     <label>raggio (km)</label>
-                    <input class="form-control" type="input" v-model="radius">
+                    <input class="form-control" type="number" v-model="radius" min="1" max="20038" value="">
+                    <button class="input-number-add"></button>
+                    <button class="input-number-sub"></button>
                 </div>
                 <h4 class="filter-title mt-3">Caratteristiche</h4>
                 <div class="filter-num">
                     <div class="filter__services-num">
                         <label>n° stanze</label>
-                        <input class="form-control" type="input" v-model="rooms">
+                        <input class="form-control" type="number" v-model="rooms" min="0" max="16" value="">
+                        <button class="input-number-add"></button>
+                        <button class="input-number-sub"></button>
                     </div>
                     <div class="filter__services-num">
                         <label>n° bagni</label>
-                        <input class="form-control" type="input" v-model="bathrooms">
+                        <input class="form-control" type="number" v-model="bathrooms" min="0" max="16" value="">
+                        <button class="input-number-add"></button>
+                        <button class="input-number-sub"></button>
                     </div>
                     <div class="filter__services-num">
                         <label>n° letti</label>
-                        <input class="form-control" type="input" v-model="beds">
+                        <input class="form-control" type="number" v-model="beds" min="0" max="16" value="">
+                        <button class="input-number-add"></button>
+                        <button class="input-number-sub"></button>
                     </div>
                     <div class="filter__services-num">
                         <label>superfice (mq)</label>
-                        <input class="form-control" type="input" v-model="mq">
+                        <input class="form-control" type="text" v-model="mq" value="">
                     </div>
                 </div>
                 <h4 class="filter-title mt-3">Servizi</h4>
@@ -65,7 +73,8 @@
                 </div>
             </div>
             <!-- /ricerca avanzata -->
-            <div id='apartments-list'>
+            {{-- Lista appartamenti --}}
+            <div v-if="apartments.length != []" id='apartments-list'>
                 <a v-for="apartment in apartments" :href="apartment.route" class="apartment-card"  :class="popupSelected == apartment.title? 'selected' : '' ">
                     <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
                     <h3 class="card__title">@{{ apartment.title }}</h3>
@@ -79,6 +88,9 @@
                     <p  v-else class="card__service"> - @{{ service.name }}</p> -->
                     <p class="card__description">@{{ apartment.description }}</p>
                 </a>
+            </div>
+            <div v-else-if="loaded == true" id='apartments-list'>
+                <span>Nessun appartamento trovato</span>
             </div>
         </div>
 

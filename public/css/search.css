@@ -17027,11 +17027,22 @@ form .btn-search {
     margin-top: 10px;
   }
 }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 h2 {
   position: fixed;
-  max-width: 30%;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  max-width: 28.2608695652%;
+}
+h2 span {
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
 }
 
 #app {
@@ -17072,6 +17083,7 @@ h2 {
 .control-panel .filter-num {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
 }
 .control-panel .adv-search-btn-wrp {
@@ -17103,6 +17115,12 @@ h2 {
   text-transform: capitalize;
   display: inline-block;
 }
+.control-panel .advanced-search .filter__services .input-number-add,
+.control-panel .advanced-search .filter__services .input-number-sub,
+.control-panel .advanced-search .filter__services-num .input-number-add,
+.control-panel .advanced-search .filter__services-num .input-number-sub {
+  display: none;
+}
 .control-panel .advanced-search .filter__services:not(:last-child) {
   margin-right: 10px;
 }
@@ -17113,11 +17131,11 @@ h2 {
   min-width: 60px;
   width: 50%;
   white-space: nowrap;
-  padding-right: 5%;
+  /* padding-right: 5%; */
 }
 @media (min-width: 992px) {
   .control-panel .advanced-search .filter__services-num {
-    width: 25%;
+    width: 20%;
   }
 }
 .control-panel .advanced-search .filter__services-num input {

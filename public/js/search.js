@@ -27,7 +27,8 @@ var app = new Vue({
     apartments: [],
     popupSelected: '',
     showAdvSearch: false,
-    showURL: ''
+    showURL: '',
+    loaded: false
   },
   methods: {
     changeTitle: function changeTitle() {
@@ -45,10 +46,12 @@ var app = new Vue({
           limit: 1
         }
       }).then(function (geoJson) {
-        _this.lat = geoJson.data.results[0].position.lat;
-        _this["long"] = geoJson.data.results[0].position.lon;
+        if (geoJson.data.results[0] !== undefined) {
+          _this.lat = geoJson.data.results[0].position.lat;
+          _this["long"] = geoJson.data.results[0].position.lon;
 
-        _this.search();
+          _this.search();
+        }
       });
     },
     // Chiamata Api della ricerca avanzata
@@ -68,6 +71,7 @@ var app = new Vue({
         }, "services", this.services)
       }).then(function (response) {
         _this2.apartments = response.data;
+        _this2.loaded = true;
         generateMap();
 
         if (_this2.apartments.length > 0) {
@@ -140,7 +144,7 @@ function generateMap() {
   map.addControl(new tt.FullscreenControl());
   map.addControl(new tt.NavigationControl());
   /* map.on('load', function(){
-       let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
+        let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
           fillColor: '#29AB87',
       }).addTo(map);
   }) */
