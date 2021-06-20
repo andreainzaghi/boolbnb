@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
@@ -91,5 +92,40 @@ class ApartmentController extends Controller
         $apartments = $sorted->values()->all();
 
         return response()->json($apartments);
+    }
+
+    public function apartment(Apartment $apartment) {
+
+        return response()->json($apartment);
+    }
+
+    public function apartmentViews(Apartment $apartment) {
+        
+        $currentYear = Carbon::now()->format('Y');
+        $monthlyViews = [];
+        for ( $i = 1; $i <= 12; $i++ ) {
+            if ( $i < 10 ) {
+                $monthlyViews[$i - 1] = $apartment->views()->whereYear('created_at', $currentYear)->whereMonth('created_at', '0'.$i)->count();
+            } else {
+                $monthlyViews[$i - 1] = $apartment->views()->whereYear('created_at', $currentYear)->whereMonth('created_at', $i)->count();
+            }
+        }
+
+        return response($monthlyViews);
+    }
+
+    public function apartmentMessages(Apartment $apartment) {
+        
+        $currentYear = Carbon::now()->format('Y');
+        $monthlyMessages = [];
+        for ( $i = 1; $i <= 12; $i++ ) {
+            if ( $i < 10 ) {
+                $monthlyMessages[$i - 1] = $apartment->messages()->whereYear('created_at', $currentYear)->whereMonth('created_at', '0'.$i)->count();
+            } else {
+                $monthlyMessages[$i - 1] = $apartment->messages()->whereYear('created_at', $currentYear)->whereMonth('created_at', $i)->count();
+            }
+        }
+
+        return response($monthlyMessages);
     }
 }

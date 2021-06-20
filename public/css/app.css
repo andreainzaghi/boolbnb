@@ -10153,7 +10153,7 @@ h3 {
     transform: rotate(360deg);
   }
 }
-/* .fa-rotate-90 {
+.fa-rotate-90 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
   transform: rotate(90deg);
 }
@@ -10181,7 +10181,7 @@ h3 {
 .fa-flip-both, .fa-flip-horizontal.fa-flip-vertical {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
   transform: scale(-1, -1);
-} */
+}
 
 :root .fa-rotate-90,
 :root .fa-rotate-180,
@@ -16136,6 +16136,7 @@ header {
   position: fixed;
   width: 100%;
   padding: 4px 0;
+  z-index: 1;
 }
 header #logo {
   color: #E94A47;
@@ -16262,6 +16263,10 @@ a:hover {
   box-shadow: 6px 6px 16px 0 #D9DCEA;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 body {
   font-family: "Poppins", sans-serif;
 }
@@ -16272,32 +16277,63 @@ body {
   flex-direction: column;
 }
 
+.titlewrapper {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
+}
+
 .ur-wrapper {
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  padding: 40px;
+  padding: 40px 40px 0px;
   overflow: auto;
 }
 @media (min-width: 768px) {
   .ur-wrapper {
-    padding: 40px 80px;
+    padding: 40px 80px 0;
   }
 }
 @media (min-width: 992px) {
   .ur-wrapper {
-    padding: 40px 100px;
+    padding: 40px 100px 0;
   }
 }
 .ur-wrapper .ur-main__title {
-  flex-basis: 100%;
   margin-bottom: 30px;
+}
+.ur-wrapper .add-btn-wrp {
+  width: 50px;
+}
+
+h2 {
+  display: inline-block;
+}
+
+.add_button {
+  position: fixed;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  bottom: 60px;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .add_button {
+    justify-content: flex-end;
+  }
 }
 
 .dash-wrapper {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -20px;
+  width: 100%;
 }
 
 .dash__card {
@@ -16611,7 +16647,7 @@ body {
 }
 .admin-appartamento .box-right {
   width: 35%;
-  margin-top: 43px;
+  margin-top: 18px !important;
 }
 .admin-appartamento .box-right .admin-title-page {
   width: 100%;
@@ -16710,11 +16746,31 @@ body {
     margin-top: 10px;
   }
 }
+.grafico-footer1 {
+  width: 100%;
+  padding: 0 55px;
+  background-color: #F2F3FA;
+  align-items: center;
+}
+.grafico-footer1 .grafico-footer {
+  width: 100%;
+  margin: auto;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.grafico-footer1 .grafico-footer .grafico-footer2 {
+  width: 80%;
+}
+
 .jumbotron {
   padding-top: 50px;
-  background-image: url("https://www.viaggi-estate.com/wp-content/uploads/2018/08/montagna-1024x512.jpg");
+  background-image: url("https://source.unsplash.com/1600x900/?travel");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   border: 1px solid #ddd;
   height: 400px;
   display: flex;
@@ -16740,8 +16796,9 @@ form .search {
   padding-left: 10px;
   width: 350px;
   outline: none;
+  box-shadow: 1px 1px lightgray;
 }
-form .btn {
+form .btn-search {
   background-color: #E94A47;
   border-radius: 20px;
   position: absolute;
@@ -16759,6 +16816,7 @@ form .btn {
 }
 .phrase h1 {
   color: #fff;
+  text-shadow: 2px 2px #666666;
 }
 
 .sponsored {
@@ -16917,6 +16975,14 @@ form .btn {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 40vh;
+  width: 60vw;
+  padding: 50px 0;
 }
 
 @media screen and (max-width: 1200px) {

@@ -44,8 +44,8 @@
         <div class="box-left d-flex-colmn">
 
           <div class="title">
-            <h3>Casa Paradiso</h3>
-            <p>via Padova Rossi, Milano 73102</p>
+            <h3>{{ $apartment->title }}</h3>
+            <p id="address">{{ $apartment->address }}, {{ $apartment->city }}</p>
           </div>
 
           <div class="admin-img-box">
@@ -53,13 +53,14 @@
           </div>
 
           <div class="descrizione">
-            <p class="recap d-flex">Stanze: 5 | Bagni: 3| Letti: 3 | Ospiti: 2 | Dimensioni: 90mq </p>
-            <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+            <p class="recap d-flex">Stanze: {{ $apartment->rooms }} | Bagni: {{ $apartment->bathrooms }} | Letti: {{ $apartment->beds }} | Ospiti: 2 | Dimensioni: {{ $apartment->mq }} </p>
+            <p class="sottotesto">{{ $apartment->description }}</p>
             {{-- serivizi --}}
             <div class="select-servizi d-flex-colmn flex-wrap">
               <h4>Servizi</h4> 
-            
-
+              @foreach( $apartment->services as $service )
+                <i class="{{ $service->icon_class }}"></i>
+              @endforeach
             </div>  
             {{-- serivizi --}}        
           </div>
@@ -70,21 +71,23 @@
           <div class="admin-title-page">
             <div class="title-map">
               <h4>Posizione</h4>
+              <span id="lat" class="d-none">{{ $apartment->lat }}</span><br>
+              <span id="long" class="d-none">{{ $apartment->long }}</span>
             </div>
-            <div id='map' class='mappa'></div>
+            <div id='map' class='mappa'>
+            </div>
           </div>
           <div class="alert-admin">
             <p><i class="fas fa-exclamation-circle"></i> Questo appartamento è sponsorizzato. <br>La promozione scadrà in data: <span>21-06-2022</span></p>
           </div>
         </div>
 
-               
   </div>
   {{-- bottoni lato admin --}}
   <div class="admin-button d-flex flex-wrap sp-btw">
-    <a href="#" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Modifica</span></a> 
-    <a href="#" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Visualizza messaggi</span></a>   
-    <a href="#" class="my-btn my-btn-primary"><span class=" d-md-inline-block">Elimina struttura</span></a>  
+    <a href="{{ route( 'admin.apartments.edit', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Modifica</span></a> 
+    <a href="{{ route( 'admin.apartments.messages', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Visualizza messaggi</span></a>   
+    <a href="{{ route( 'admin.apartments.destroy', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-primary"><span class=" d-md-inline-block">Elimina struttura</span></a>  
   </div> 
   {{-- bottoni lato admin --}}    
   
@@ -109,45 +112,6 @@
 
     {{-- chart js script --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
-
-      <script>
-        var ctx = document.getElementById('myChart');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Lun', 'Mar', 'Merc', 'Gio', 'Ven', 'Sab', 'Dom'],
-                datasets: [{
-                    label: '# di Visite',
-                    data: [12, 19, 3, 5, 2, 3, 12],
-                    backgroundColor: [
-                        'rgba(233, 74, 71, 0.2)',
-                        'rgba(233, 74, 71, 0.2)',
-                        'rgba(233, 74, 71, 0.2)',
-                        'rgba(233, 74, 71, 0.2)',
-                        'rgba(233, 74, 71, 0.2)',
-                        'rgba(233, 74, 71, 0.2)',                    
-                    ],
-                    borderColor: [
-                        'rgba(233, 74, 71, 1)',
-                        'rgba(233, 74, 71, 1)',
-                        'rgba(233, 74, 71, 1)',
-                        'rgba(233, 74, 71, 1)',
-                        'rgba(233, 74, 71, 1)',
-                        'rgba(233, 74, 71, 1)',
-                        'rgba(233, 74, 71, 1)',
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
  
   @endsection
 

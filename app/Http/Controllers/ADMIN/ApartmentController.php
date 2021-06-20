@@ -9,6 +9,7 @@ use App\Service;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ApartmentController extends Controller
 {
@@ -88,7 +89,7 @@ class ApartmentController extends Controller
 
         // Generazione dello slug univoco
         do{
-            $randomNumSlug = "-".rand(0, 10000000000000000);
+            $randomNumSlug = "-".rand(0, 100000000);
             $slugTmp = Str::slug( $data['title'], '-' ).$randomNumSlug;
         }
         while( Apartment::where('slug', $slugTmp)->first() );
@@ -115,6 +116,7 @@ class ApartmentController extends Controller
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
+
         return view('admin.apartments.show', compact('apartment'));
     }
 
@@ -159,7 +161,7 @@ class ApartmentController extends Controller
 
         // Generazione dello slug univoco
         do{
-            $randomNumSlug = "-".rand(0, 10000000000000000);
+            $randomNumSlug = "-".rand(0, 100000000);
             $slugTmp = Str::slug( $data['title'], '-' ).$randomNumSlug;
         }
         while( Apartment::where('slug', $slugTmp)->first() );
@@ -195,5 +197,15 @@ class ApartmentController extends Controller
         return redirect()
                 ->route('admin.apartments.index')
                 ->with('message', $apartment->title . 'è stato eliminato');
+    }
+
+    public function messages( Apartment $apartment )
+    {
+
+        if( $apartment->user_id != Auth::id() ) {
+            abort('403');
+        }
+
+        return view('welcome');
     }
 }

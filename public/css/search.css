@@ -16647,7 +16647,7 @@ h2 {
 }
 .admin-appartamento .box-right {
   width: 35%;
-  margin-top: 43px;
+  margin-top: 18px !important;
 }
 .admin-appartamento .box-right .admin-title-page {
   width: 100%;
@@ -16668,6 +16668,16 @@ h2 {
 }
 .admin-appartamento .box-right .alert-admin p span {
   color: #E94A47;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 40vh;
+  width: 50vw;
+}
+.chart-container canvas {
+  border: 1px solid #E94A47;
 }
 
 /* scroll */
@@ -16736,7 +16746,13 @@ h2 {
     margin-top: 10px;
   }
 }
-.grafico-footer {
+.grafico-footer1 {
+  width: 100%;
+  padding: 0 55px;
+  background-color: #F2F3FA;
+  align-items: center;
+}
+.grafico-footer1 .grafico-footer {
   width: 100%;
   margin: auto;
   height: 500px;
@@ -16745,16 +16761,8 @@ h2 {
   align-items: center;
   background-color: #fff;
 }
-
-.grafico-footer2 {
+.grafico-footer1 .grafico-footer .grafico-footer2 {
   width: 80%;
-}
-
-.grafico-footer1 {
-  width: 100%;
-  padding: 0 55px;
-  background-color: #F2F3FA;
-  align-items: center;
 }
 
 .jumbotron {
@@ -16967,6 +16975,14 @@ form .btn-search {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 40vh;
+  width: 60vw;
+  padding: 50px 0;
 }
 
 @media screen and (max-width: 1200px) {
