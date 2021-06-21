@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Sponsor;
 use App\Service;
 use App\Apartment;
+use App\View;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\VarDumper;
 
 class BnbController extends Controller
 {
@@ -46,11 +48,22 @@ class BnbController extends Controller
     }
     
     public function show($id){
+<<<<<<< HEAD
 
    
        
         $apartment = Apartment::where('id', $id)->first();   
   
+=======
+
+        $clientIP = request()->ip();
+   
+        $apartment = Apartment::where('id', $id)->first();
+
+        $newView['apartment_id'] = $id;
+        $newView['ip'] = $clientIP;
+        $newView = View::create($newView);
+>>>>>>> apartmentViewCounter
 
         return view('ui.show', compact('apartment'));
     }
