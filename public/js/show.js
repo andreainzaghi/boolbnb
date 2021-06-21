@@ -2108,16 +2108,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 var apartment, views, messages;
-axios__WEBPACK_IMPORTED_MODULE_0___default().get(window.location.pathname.split('admin').shift() + 'api/user/' + window.location.pathname.split("/").pop()).then(function (response) {
+axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/user/' + window.location.pathname.split("/").pop()).then(function (response) {
   apartment = response.data;
   generateMap();
   generateStats();
 });
 
 function generateStats() {
-  axios__WEBPACK_IMPORTED_MODULE_0___default().get(window.location.pathname.split('admin').shift() + 'api/user/' + window.location.pathname.split("/").pop() + '/views').then(function (response) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/user/' + window.location.pathname.split("/").pop() + '/views').then(function (response) {
     views = response.data;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get(window.location.pathname.split('admin').shift() + 'api/user/' + window.location.pathname.split("/").pop() + '/messages').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/user/' + window.location.pathname.split("/").pop() + '/messages').then(function (response) {
       messages = response.data;
       generateGraph(views, messages);
     });

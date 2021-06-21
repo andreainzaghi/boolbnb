@@ -43,6 +43,7 @@
       container: '#dropin-container'
     }, function (createErr, instance) {
       button.addEventListener('click', function () {
+        button.classList.add('d-none');
         instance.requestPaymentMethod(function (err, payload) {
 
           $.get('{{ route('payment.process') }}', {payload}, function (response) {

@@ -81,9 +81,9 @@
   
 </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+@section('script')
+  {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> --}}
   <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
-  @section('script')
   <script src="{{ asset('js/show.js') }}" defer></script>
   @endsection
 

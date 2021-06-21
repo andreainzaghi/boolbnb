@@ -15,10 +15,10 @@
   <div class="admin-sponsor-box d-flex sp-btw flex-wrap">
 
     {{-- checkboxes  --}}
-    <!-- <form action="{{route('payment.form', ['apartment' => $apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
+    <form action="{{route('payment.form', ['apartment' => $apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
       @method('GET')
       @csrf
-    -->
+    
         @foreach ($sponsors as $sponsor)
           <div class="custom-control custom-radio custom-control-inline">
             <input type="radio" id="{{ $sponsor->name }}" name="sponsor" class="custom-control-input" value="{{ $sponsor }}">
@@ -27,7 +27,7 @@
         @endforeach
 
       <button type="submit" class="my-btn my-btn-primary submit">Sponsorizza</button>
-    <!-- </form> -->
+    </form>
       
     
     <!-- <div class="custom-control custom-radio custom-control-inline">

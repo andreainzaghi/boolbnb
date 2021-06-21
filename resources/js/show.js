@@ -1,7 +1,7 @@
 import axios from 'axios';
 let apartment, views, messages;
 
-axios.get(window.location.pathname.split('admin').shift()+'api/user/'+window.location.pathname.split("/").pop())
+axios.get('/api/user/'+window.location.pathname.split("/").pop())
 .then( (response) => {
     apartment = response.data;
     generateMap();
@@ -9,10 +9,10 @@ axios.get(window.location.pathname.split('admin').shift()+'api/user/'+window.loc
 });
 
 function generateStats() {
-    axios.get(window.location.pathname.split('admin').shift()+'api/user/'+window.location.pathname.split("/").pop()+'/views')
+    axios.get('/api/user/'+window.location.pathname.split("/").pop()+'/views')
     .then( (response) => {
         views = response.data;
-        axios.get(window.location.pathname.split('admin').shift()+'api/user/'+window.location.pathname.split("/").pop()+'/messages')
+        axios.get('/api/user/'+window.location.pathname.split("/").pop()+'/messages')
         .then( (response) => {
             messages = response.data;
             generateGraph(views, messages)
