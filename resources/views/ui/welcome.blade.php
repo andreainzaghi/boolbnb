@@ -9,15 +9,19 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
+                <div class="overlay-black"></div>
                 <form action="{{route('search')}}">
                     <input class="search" type="text" id="city" placeholder="Dove ti piacerebbe andare?" name="city">
                     <button class="btn btn-search" type="submit">Cerca</button>
                 </form>
+                
                 <div class="phrase">
                     <h1 class="display-4">Scegli la tua prossima destinazione</h1>
                     <p class="lead"></p>
                 </div>
+              
             </div>
+            
         </div>
 
     {{-- /hero --}}
@@ -34,6 +38,7 @@
                 <h4 class="card_title">{{$item['title']}}</h4>
                 <div class="card_image shadow p-3 mb-5 bg-white rounded">
                     <img class="zoom" src="{{asset('storage/'.$item['image'])}}" alt="Immagine appartamento">
+                   
                 </div>
             </div>
         </a>
