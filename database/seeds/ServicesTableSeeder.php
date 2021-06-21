@@ -136,13 +136,6 @@ class ServicesTableSeeder extends Seeder
             $newService->save();
 
         }
-        // for ($i=0; $i< count($services)-1; $i++) {
-
-        //     $newService = new Service();
-        //     $newService->name = $services[$i];
-        //     $newService->icon_class = $icon_class[$i];
-
-        //     $newService->save();
-        // }
+    
     }
 }
