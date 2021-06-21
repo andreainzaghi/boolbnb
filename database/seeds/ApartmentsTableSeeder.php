@@ -423,7 +423,7 @@ class ApartmentsTableSeeder extends Seeder
         foreach ($users as $user) {
 
             if( rand(0,1) ){
-                for ( $i = 0; $i < rand(1,6); $i++ ) {
+                for ( $i = 0; $i < rand(1,20); $i++ ) {
                     do
                         $index = rand(0, count($appartamenti) - 1);
                     while( in_array( $index, $inserted ) );
