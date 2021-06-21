@@ -18,8 +18,6 @@ class PaymentController extends Controller
 
         $user = User::where('id',Auth::id())->first();
 
-
-
         $request['token'] =  'fake-valid-nonce';
         $sponsor = Sponsor::where('id',$request->session()->get('sponsor_id'))->first();
         $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
