@@ -423,7 +423,7 @@ class ApartmentsTableSeeder extends Seeder
         foreach ($users as $user) {
 
             if( rand(0,1) ){
-                for ( $i = 0; $i < rand(3,40); $i++ ) {
+                for ( $i = 0; $i < rand(4,20); $i++ ) {
                     do
                         $index = rand(0, count($appartamenti) - 1);
                     while( in_array( $index, $inserted ) );
@@ -478,16 +478,17 @@ class ApartmentsTableSeeder extends Seeder
                         
                         }
                     }
-                }
-
-                    //Inserimento degli sponsor
-                    if($apartment->visible){
-                        $currentDate = Carbon::now();
-                        if(rand(0,1)){
-                            $data['sponsors'] = $sponsors[rand( 0,count($sponsors)-1 )];
-                            $apartment->sponsors()->attach($data['sponsors'],['expiration' => $currentDate->addHours($data['sponsors']->hours)]);
+                         //Inserimento degli sponsor
+                         if($apartment->visible){
+                            $currentDate = Carbon::now();
+                            if(rand(0,1)){
+                                $data['sponsors'] = $sponsors[rand( 0,count($sponsors)-1 )];
+                                $apartment->sponsors()->attach($data['sponsors'],['expiration' => $currentDate->addHours($data['sponsors']->hours)]);
+                            }
                         }
-                    }
+                     }
+
+               
                 }
             }
         }
