@@ -59,10 +59,12 @@ class PaymentController extends Controller
     public function form(Request $request, Apartment $apartment)
     {
 
+        // Controllo se è l'utente dell'appartamento
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
 
+        // Controllo se è visibile
         if($apartment->visible == 1){
             if($apartment->sponsors()->orderBy('expiration', 'desc')->first()){
                 if( $apartment->sponsors()->orderBy('expiration', 'desc')->first()->expiration < Carbon::now()){
@@ -74,8 +76,6 @@ class PaymentController extends Controller
             abort('403', "L'appartamento deve essere visibile per essere sponsorizzato");
             
         }
-    
-     
     
 
         $data = $request->all();
