@@ -11,36 +11,28 @@
 @endsection
 
 @section('MainContent')
-<div class="box">
-  <div class="admin-sponsor-box d-flex sp-btw flex-wrap">
+<div class="box w-100">
 
-    {{-- checkboxes  --}}
-    <form action="{{route('payment.form', ['apartment' => $apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
-      @method('GET')
-      @csrf
-    
-        @foreach ($sponsors as $sponsor)
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="{{ $sponsor->name }}" name="sponsor" class="custom-control-input" value="{{ $sponsor }}">
-            <label class="custom-control-label color" for="{{ $sponsor->name }}"> {{ $sponsor->name }} | {{ $sponsor->price }} € per {{ $sponsor->hours }} ore</label>
-          </div>
-        @endforeach
+  @if ( isset($sponsor_expiration) )
+    <div class="admin-sponsor-box d-flex sp-btw flex-wrap">
 
-      <button type="submit" class="my-btn my-btn-primary submit">Sponsorizza</button>
-    </form>
-      
-    
-    <!-- <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-        <label class="custom-control-label color" for="customRadioInline2">Gold | 5,99 € per 72 ore</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
-      <label class="custom-control-label" for="customRadioInline3">Platinum | 9,99 € per 144 ore</label>
-    </div> -->
-    {{-- checkboxes  --}}
-      
-  </div> 
+        {{-- checkboxes  --}}
+        <form action="{{route('payment.form', ['apartment' => $apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
+          @method('GET')
+          @csrf
+        
+            @foreach ($sponsors as $sponsor)
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="{{ $sponsor->name }}" name="sponsor" class="custom-control-input" value="{{ $sponsor }}">
+                <label class="custom-control-label color" for="{{ $sponsor->name }}"> {{ $sponsor->name }} | {{ $sponsor->price }} € per {{ $sponsor->hours }} ore</label>
+              </div>
+            @endforeach
+
+          <button type="submit" class="my-btn my-btn-primary submit">Sponsorizza</button>
+        </form>
+        
+      </div> 
+    @endif
    
   <div class="admin-appartamento d-flex"> 
 
@@ -63,9 +55,11 @@
             {{-- serivizi --}}
             <div class="select-servizi d-flex-colmn flex-wrap">
               <h4>Servizi</h4> 
-              @foreach( $apartment->services as $service )
-                <i class="{{ $service->icon_class }}"></i>
-              @endforeach
+              <div>
+                @foreach( $apartment->services as $service )
+                  <i class="{{ $service->icon_class }} mr-2 d-inline-block"></i>
+                @endforeach
+              </div>
             </div>  
             {{-- serivizi --}}        
           </div>
@@ -76,20 +70,20 @@
           <div class="admin-title-page">
             <div class="title-map">
               <h4>Posizione</h4>
-              <span id="lat" class="d-none">{{ $apartment->lat }}</span><br>
-              <span id="long" class="d-none">{{ $apartment->long }}</span>
             </div>
             <div id='map' class='mappa'>
             </div>
           </div>
           <div class="alert-admin">
-            <p><i class="fas fa-exclamation-circle"></i> Questo appartamento è sponsorizzato. <br>La promozione scadrà in data: <span>21-06-2022</span></p>
-          </div>
+            @if ( !isset($sponsor_expiration) )
+              <p><i class="fas fa-exclamation-circle"></i> Questo appartamento è sponsorizzato. <br>La promozione scadrà in data: <span>{{ $apartment->sponsor_expiration }}</span></p>
+            @endif
+            </div>
         </div>
 
   </div>
   {{-- bottoni lato admin --}}
-  <div class="admin-button d-flex flex-wrap sp-btw">
+  <div class="admin-button d-flex flex-wrap sp-btw mt-5">
     <a href="{{ route( 'admin.apartments.edit', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Modifica</span></a> 
     <a href="{{ route( 'admin.apartments.messages', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Visualizza messaggi</span></a>
     <form class="mt-0" action="{{ route( 'admin.apartments.destroy', ['apartment' => $apartment->id ] ) }}" method="POST">                             

@@ -122,10 +122,10 @@ class ApartmentController extends Controller
             abort('403');
         }
 
-        $rwa_sponsor_expiration = $apartment->sponsors()
+        $raw_sponsor_expiration = $apartment->sponsors()
         ->where('expiration', '>=', $currentDate)
-        ->get(['expiration']);
-
+        ->first(['expiration']);
+        
         if (isset($raw_sponsor_expiration['expiration'])) {
             $sponsor_expiration = Carbon::parse($raw_sponsor_expiration['expiration'])->format('d-m-Y');
             $apartment->sponsor_expiration = $sponsor_expiration;
