@@ -114,7 +114,8 @@ class PaymentController extends Controller
     
         $apartment->sponsors()->attach($sponsor,['expiration' => $date, 'settled' =>1]);
 
-        Session::flush();
+        $request->session()->forget('settled');
+
         return view('admin.apartments.payments.success', compact('sponsor','apartment','date'));
 
     }
@@ -129,7 +130,8 @@ class PaymentController extends Controller
             abort('403');
         }
 
-        Session::flush();
+        $request->session()->forget('settled');
+
 
         return view('admin.apartments.payments.error', compact('apartment'));
 
