@@ -99,10 +99,12 @@
       {{-- <button type="submit" class="btn btn-danger actions"><i class="fas fa-trash-alt"></i></button> --}}                         
       </form>
   </div> 
-  {{-- bottoni lato admin --}}    
+  {{-- bottoni lato admin --}}   
+
   
   {{-- chart js  --}}
   <div class="chart-container">
+    <h4>Statistiche dell'appartamento</h4>
     <canvas id="myChart"></canvas>
   </div>
 

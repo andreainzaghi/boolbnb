@@ -122,17 +122,24 @@
 
 
 // grafico
+.box {
+  h4 {
+    padding-bottom: 15px;
+  }
+  .chart-container {
+    position: relative;
+    margin: auto;
+    height: 40vh;
+    width: 45vw;
+    padding: 50px 0;
 
-.chart-container {
-  position: relative;
-  margin: auto;
-  height: 40vh;
-  width: 50vw;
-
-  canvas {
-    border: 1px solid $primaryColor;
+    canvas {
+      border: 1px solid $primaryColor;
+      padding-top: 20px;
+    }
   }
 }
+  
 
 
 // grafico
@@ -212,27 +219,3 @@
   }
 }
 
-
-// grafico
-.grafico-footer1{
-  width:100%;
-  padding:0 55px;
-  background-color:#F2F3FA;
-  align-items: center;
-
-  .grafico-footer{
-    width:100%;
-    margin:auto;
-    height:500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#fff;
-
-    .grafico-footer2{
-      width:80%;
-    }  
-
-  }
-}
-  
