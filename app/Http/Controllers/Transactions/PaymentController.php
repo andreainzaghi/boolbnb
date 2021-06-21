@@ -98,4 +98,19 @@ class PaymentController extends Controller
 
 
     }
+
+
+    public function error(Request $request)
+    {
+
+        $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
+
+        if($apartment->user_id != Auth::id()){
+            abort('403');
+        }
+
+        return view('admin.apartments.payments.error', compact('apartment'));
+
+
+    }
 }

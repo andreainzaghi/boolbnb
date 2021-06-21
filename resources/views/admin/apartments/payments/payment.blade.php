@@ -37,6 +37,7 @@
   <script>
     var button = document.querySelector('#submit-button');
     var apartment_id = "{{$apartment->id}}";
+    
     braintree.dropin.create({
       authorization: "{{ Braintree\ClientToken::generate() }}",
       container: '#dropin-container'
@@ -52,7 +53,7 @@
 
               window.location.replace("http://localhost:8000/admin/apartments/"+apartment_id+"/payment/success");
             } else {
-              alert('Payment failed');
+              window.location.replace("http://localhost:8000/admin/apartments/"+apartment_id+"/payment/error");
             }
           }, 'json');
         });
