@@ -194,6 +194,9 @@ class ApartmentController extends Controller
         }
         $apartment->delete();
 
+        $apartment->services()->detach();
+        $apartment->sponsors()->detach();
+
         return redirect()
                 ->route('admin.apartments.index')
                 ->with('message', $apartment->title . 'è stato eliminato');

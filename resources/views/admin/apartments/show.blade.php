@@ -86,8 +86,13 @@
   {{-- bottoni lato admin --}}
   <div class="admin-button d-flex flex-wrap sp-btw">
     <a href="{{ route( 'admin.apartments.edit', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Modifica</span></a> 
-    <a href="{{ route( 'admin.apartments.messages', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Visualizza messaggi</span></a>   
-    <a href="{{ route( 'admin.apartments.destroy', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-primary"><span class=" d-md-inline-block">Elimina struttura</span></a>  
+    <a href="{{ route( 'admin.apartments.messages', ['apartment' => $apartment->id ] ) }}" class="my-btn my-btn-secondary"><span class=" d-md-inline-block">Visualizza messaggi</span></a>
+    <form class="mt-0" action="{{ route( 'admin.apartments.destroy', ['apartment' => $apartment->id ] ) }}" method="POST">                             
+      @method('DELETE')                             
+      @csrf                             
+      <button type="submit" class="my-btn my-btn-primary"><span class=" d-md-inline-block">Elimina struttura</span></a>  
+      {{-- <button type="submit" class="btn btn-danger actions"><i class="fas fa-trash-alt"></i></button> --}}                         
+      </form>
   </div> 
   {{-- bottoni lato admin --}}    
   
