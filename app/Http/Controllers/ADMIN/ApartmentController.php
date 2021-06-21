@@ -116,9 +116,19 @@ class ApartmentController extends Controller
     public function show( Apartment $apartment )
     {
         $sponsors = Sponsor::all();
+        $currentDate = Carbon::now();
 
         if($apartment->user_id != Auth::id()){
             abort('403');
+        }
+
+        $rwa_sponsor_expiration = $apartment->sponsors()
+        ->where('expiration', '>=', $currentDate)
+        ->get(['expiration']);
+
+        if (isset($raw_sponsor_expiration['expiration'])) {
+            $sponsor_expiration = Carbon::parse($raw_sponsor_expiration['expiration'])->format('d-m-Y');
+            $apartment->sponsor_expiration = $sponsor_expiration;
         }
 
         return view('admin.apartments.show', compact('sponsors', 'apartment'));

@@ -128,4 +128,15 @@ class ApartmentController extends Controller
 
         return response($monthlyMessages);
     }
+
+    public function messagesJson(Apartment $apartment) {
+
+        $messages = $apartment->messages()->orderBy('created_at', 'desc')->get();
+        foreach ( $messages as $message ) {
+            $createdAt = Carbon::parse( $message['created_at'] )->format('d/m/Y');
+            $message->date = $createdAt;
+        }
+
+        return response()->json($messages);
+    }
 }
