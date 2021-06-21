@@ -50,7 +50,6 @@
             console.log(response);
 
             if (response.success) {
-              // alert('Payment successfull!');
 
               window.location.replace("http://localhost:8000/admin/apartments/"+apartment_id+"/payment/success");
             } else {

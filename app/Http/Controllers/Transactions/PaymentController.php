@@ -50,6 +50,7 @@ class PaymentController extends Controller
                 'submitForSettlement' => True]
             ]);
 
+        $request->session()->put('settled', true);
 
         return response()->json($result);
     }
@@ -83,13 +84,17 @@ class PaymentController extends Controller
 
 
         $request->session()->put('date_expiration', $date);
+
+
         return view('admin.apartments.payments.payment', compact('sponsor','apartment','date'));
     }
 
 
     public function success(Request $request)
     {
-     
+        if(!$request->session()->get('settled')){
+            abort('403', 'Non hai effettuato il pagamento!!!');
+        }
 
         $sponsor = Sponsor::where('id',$request->session()->get('sponsor_id'))->first();
         $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
@@ -103,9 +108,8 @@ class PaymentController extends Controller
     
         $apartment->sponsors()->attach($sponsor,['expiration' => $date, 'settled' =>1]);
 
-
+        Session::flush();
         return view('admin.apartments.payments.success', compact('sponsor','apartment','date'));
-
 
     }
 
@@ -119,8 +123,9 @@ class PaymentController extends Controller
             abort('403');
         }
 
-        return view('admin.apartments.payments.error', compact('apartment'));
+        Session::flush();
 
+        return view('admin.apartments.payments.error', compact('apartment'));
 
     }
 }
