@@ -32,6 +32,11 @@
             <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
             <div class="select-servizi d-flex-colmn flex-wrap">
               <h4>Servizi</h4> 
+              <ul class="services-list">
+                <li v-for="service in services" class="card__service">
+                    <i :class="service.icon_class"></i>
+                </li>
+              </ul>
             </div>          
           </div>
         </div>

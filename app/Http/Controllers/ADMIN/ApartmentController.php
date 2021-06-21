@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Service;
+use App\Sponsor;
 use App\View;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -114,11 +115,13 @@ class ApartmentController extends Controller
      */
     public function show( Apartment $apartment )
     {
+        $sponsors = Sponsor::all();
+
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
 
-        return view('admin.apartments.show', compact('apartment'));
+        return view('admin.apartments.show', compact('sponsors', 'apartment'));
     }
 
     /**

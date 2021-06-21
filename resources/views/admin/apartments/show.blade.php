@@ -15,25 +15,30 @@
   <div class="admin-sponsor-box d-flex sp-btw flex-wrap">
 
     {{-- checkboxes  --}}
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-      <label class="custom-control-label color" for="customRadioInline1"> Silver | 2,99 € per 24 ore</label>
-    </div>
-    <div class="custom-control custom-radio custom-control-inline">
+    <!-- <form action="{{route('payment.form', ['apartment' => $apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
+      @method('GET')
+      @csrf
+    -->
+        @foreach ($sponsors as $sponsor)
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="{{ $sponsor->name }}" name="sponsor" class="custom-control-input" value="{{ $sponsor }}">
+            <label class="custom-control-label color" for="{{ $sponsor->name }}"> {{ $sponsor->name }} | {{ $sponsor->price }} € per {{ $sponsor->hours }} ore</label>
+          </div>
+        @endforeach
+
+      <button type="submit" class="my-btn my-btn-primary submit">Sponsorizza</button>
+    <!-- </form> -->
+      
+    
+    <!-- <div class="custom-control custom-radio custom-control-inline">
         <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
         <label class="custom-control-label color" for="customRadioInline2">Gold | 5,99 € per 72 ore</label>
     </div>
     <div class="custom-control custom-radio custom-control-inline">
       <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
       <label class="custom-control-label" for="customRadioInline3">Platinum | 9,99 € per 144 ore</label>
-    </div>
+    </div> -->
     {{-- checkboxes  --}}
-
-    {{-- bottone sponsorizza  --}}
-    <div class="sponsorizza">
-      <a href="#" class="my-btn my-btn-primary "><span class=" d-md-inline-block">Sponsorizza</span></a> 
-    </div>
-    {{-- bottone sponsorizza  --}}
       
   </div> 
    

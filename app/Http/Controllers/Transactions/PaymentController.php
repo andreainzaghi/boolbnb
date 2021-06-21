@@ -61,7 +61,11 @@ class PaymentController extends Controller
             abort('403');
         }
 
-        $sponsor = Sponsor::where('name', 'Silver')->first();
+
+        $data = $request->all();
+        $sponsor = json_decode($data['sponsor']);
+
+        // $sponsor = Sponsor::find($data['sponsor'])->get();
 
         $request->session()->put('sponsor_id', $sponsor->id);
         $request->session()->put('apartment_id', $apartment->id);
@@ -73,8 +77,6 @@ class PaymentController extends Controller
 
         $request->session()->put('date_expiration', $date);
         return view('admin.apartments.payments.payment', compact('sponsor','apartment','date'));
-
-
     }
 
 

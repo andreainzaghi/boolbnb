@@ -48,13 +48,6 @@ class BnbController extends Controller
     }
     
     public function show($id){
-<<<<<<< HEAD
-
-   
-       
-        $apartment = Apartment::where('id', $id)->first();   
-  
-=======
 
         $clientIP = request()->ip();
    
@@ -63,7 +56,6 @@ class BnbController extends Controller
         $newView['apartment_id'] = $id;
         $newView['ip'] = $clientIP;
         $newView = View::create($newView);
->>>>>>> apartmentViewCounter
 
         return view('ui.show', compact('apartment'));
     }

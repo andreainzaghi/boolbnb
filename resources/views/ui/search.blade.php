@@ -18,7 +18,7 @@
     <div id="app">
         <div class='control-panel'>
             <div class="text-right adv-search-btn-wrp">
-                <button v-on:click=" showAdvSearch = !showAdvSearch " class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Ricerca avanzata</span></button>
+                <button v-on:click=" showAdvSearch = !showAdvSearch " v-bind:class="{ 'active' : showAdvSearch }" class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Ricerca avanzata</span></button>
             </div>
             <!-- ricerca avanzata -->
             <div v-bind:class="{ 'active' : showAdvSearch }" class="advanced-search">
