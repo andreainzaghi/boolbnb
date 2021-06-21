@@ -61,6 +61,13 @@ class PaymentController extends Controller
             abort('403');
         }
 
+        if($apartment->sponsors()->orderBy('expiration', 'desc')->first()){
+            if( $apartment->sponsors()->orderBy('expiration', 'desc')->first()->expiration < Carbon::now()){
+                abort('403', "Non puoi fare una nuova sponsorizzazione finchè non è finita quella in corso!");
+            }
+        }
+     
+    
 
         $data = $request->all();
         $sponsor = json_decode($data['sponsor']);
@@ -82,17 +89,18 @@ class PaymentController extends Controller
 
     public function success(Request $request)
     {
+     
+
         $sponsor = Sponsor::where('id',$request->session()->get('sponsor_id'))->first();
         $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
-
-        $dateParse = Carbon::parse($request->session()->get('date_expiration'));
-        $date = $dateParse->format('Y-m-d H:i:s');
 
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
 
-        // dd($date);
+        $dateParse = Carbon::parse($request->session()->get('date_expiration'));
+        $date = $dateParse->format('Y-m-d H:i:s');
+    
         $apartment->sponsors()->attach($sponsor,['expiration' => $date, 'settled' =>1]);
 
 
