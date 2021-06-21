@@ -55,6 +55,7 @@ class PaymentController extends Controller
         return response()->json($result);
     }
 
+
     public function form(Request $request, Apartment $apartment)
     {
 
@@ -62,11 +63,18 @@ class PaymentController extends Controller
             abort('403');
         }
 
-        if($apartment->sponsors()->orderBy('expiration', 'desc')->first()){
-            if( $apartment->sponsors()->orderBy('expiration', 'desc')->first()->expiration < Carbon::now()){
-                abort('403', "Non puoi fare una nuova sponsorizzazione finchè non è finita quella in corso!");
+        if($apartment->visible == 1){
+            if($apartment->sponsors()->orderBy('expiration', 'desc')->first()){
+                if( $apartment->sponsors()->orderBy('expiration', 'desc')->first()->expiration < Carbon::now()){
+                    abort('403', "Non puoi fare una nuova sponsorizzazione finchè non è finita quella in corso!");
+                }
             }
         }
+        else{
+            abort('403', "L'appartamento deve essere visibile per essere sponsorizzato");
+            
+        }
+    
      
     
 
