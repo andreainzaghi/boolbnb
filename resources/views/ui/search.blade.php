@@ -1,7 +1,7 @@
 @extends('../layouts.base-box')
 
 @section('pageTitle')
-    Risultati ricerca
+    BoolBnb - Ricerca Appartamenti
 @endsection
 
 @section('styles')
