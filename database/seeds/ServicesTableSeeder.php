@@ -80,27 +80,6 @@ class ServicesTableSeeder extends Seeder
              ];
 
 
-
-        // $services = [
-        //     'cucina',
-        //     'aria condizionata',
-        //     'asciugatrice',
-        //     'Seggiolone',
-        //     // 'Rilevatore di monossido di carbonio',
-        //     'colazione',
-        //     'ferro da stiro',
-        //     'spazio di lavoro dedicato',
-        //     'culla',
-        //     'self check-in',
-        //     'tv',
-        //     'lavatrice',
-        //     'wi-fi',
-        //     'riscaldamento',
-        //     'asciugacapelli',
-        //     'allarme antincendio',
-        //     'bagno privato'
-        // ]; 
-
         $category = [
             ''
         ];
