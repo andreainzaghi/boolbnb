@@ -58,14 +58,19 @@
           </div>
 
           <div class="descrizione">
-            <p class="recap d-flex">Stanze: {{ $apartment->rooms }} | Bagni: {{ $apartment->bathrooms }} | Letti: {{ $apartment->beds }} | Ospiti: 2 | Dimensioni: {{ $apartment->mq }} </p>
+            <p class="recap d-flex">Stanze: {{ $apartment->rooms }} | Bagni: {{ $apartment->bathrooms }} | Letti: {{ $apartment->beds }} | Ospiti: 2 | Dimensioni: {{ $apartment->mq }} mq</p>
             <p class="sottotesto">{{ $apartment->description }}</p>
             {{-- serivizi --}}
             <div class="select-servizi d-flex-colmn flex-wrap">
               <h4>Servizi</h4> 
+              <div class="list_services">
               @foreach( $apartment->services as $service )
-                <i class="{{ $service->icon_class }}"></i>
+                <div class="services_wrap">
+                  <p>{{$service->name}}</p>
+                  <i class="{{ $service->icon_class }}"></i>
+                </div>
               @endforeach
+              </div>
             </div>  
             {{-- serivizi --}}        
           </div>

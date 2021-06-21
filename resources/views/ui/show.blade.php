@@ -18,8 +18,8 @@
         <div class="box-left d-flex-colmn">
 
           <div class="title">
-            <h3>Casa Paradiso</h3>
-            <p>via Padova Rossi, Milano 73102</p>
+            <h3>{{ $apartment->title }}</h3>
+            <p>{{ $apartment->address }}, {{ $apartment->city }}</p>
           </div>
 
           <div class="admin-img-box">
@@ -28,15 +28,19 @@
          
 
           <div class="descrizione">
-            <p class="recap d-flex">Stanze: 5 | Bagni: 3| Letti: 3 | Ospiti: 2 | Dimensioni: 90mq </p>
-            <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+            <p class="recap d-flex">Stanze: {{ $apartment->rooms }} | Bagni: {{ $apartment->bathrooms }} | Letti: {{ $apartment->beds }} | Ospiti: 2 | Dimensioni: {{ $apartment->mq }} mq</p>
+            <p class="sottotesto">{{ $apartment->description }}</p>
             <div class="select-servizi d-flex-colmn flex-wrap">
               <h4>Servizi</h4> 
-              <ul class="services-list">
-                <li v-for="service in services" class="card__service">
-                    <i :class="service.icon_class"></i>
-                </li>
-              </ul>
+              <div class="list_services">
+              @foreach( $apartment->services as $service )
+                <div class="services_wrap">
+                  <p>{{$service->name}}</p>
+                  <i class="{{ $service->icon_class }}"></i>
+                </div>
+              @endforeach
+              </div>
+              
             </div>          
           </div>
         </div>
