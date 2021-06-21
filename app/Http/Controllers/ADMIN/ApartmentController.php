@@ -117,8 +117,6 @@ class ApartmentController extends Controller
             abort('403');
         }
 
-        $views = View::where('apartment_id', $apartment['id'])->get();
-
         return view('admin.apartments.show', compact('apartment'));
     }
 
