@@ -18,15 +18,16 @@
     <div id="app">
         <div class='control-panel'>
             <div class="text-right adv-search-btn-wrp">
-                <button v-on:click=" showAdvSearch = !showAdvSearch " v-bind:class="{ 'active' : showAdvSearch }" class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Ricerca avanzata</span></button>
+                <button v-on:click=" showAdvSearch = !showAdvSearch " v-bind:class="{ 'active' : showAdvSearch }" class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Filtra</span></button>
             </div>
             <!-- ricerca avanzata -->
             <div v-bind:class="{ 'active' : showAdvSearch }" class="advanced-search">
                 <div class="search">
                     <label for="adv-search-city">Città</label>
-                    <input class="form-control" type="text" name="city" v-model="city" id="adv-search-city">
-                    {{-- <button type="button" class="btn btn-success mt-2" @@click="apartmentsSearch">Cerca</button>
-                    <button type="button" class="btn btn-success mt-2" @@click="nearBySearch">Nelle vicinanze</button> --}}
+                    <input class="form-control" v-on:keyup.letters="autocomplete()" v-on:keydown.enter="select()" v-on:keydown.up="selectUp()" v-on:keydown.down="selectDown()" v-on:focus="cityFocus = true" v-on:blur="cityFocus = false"  autocomplete="off" class="search" type="text" name="city" v-model="city" id="adv-search-city">
+                    <ul class="results-box" :class=" results.length === 0 || cityFocus === false ? 'd-none' : 'd-block'">
+                        <li v-on:click="addToCity($event); results = [];" class="result" :class=" resultSelected == i? 'selected' : '' " v-for="(result, i) in results">@{{ result.address.freeformAddress+', '+result.address.countrySubdivision }}</li>
+                    </ul>
                 </div>
                 <div class="filter__services-num mt-1">
                     <label>raggio (km)</label>

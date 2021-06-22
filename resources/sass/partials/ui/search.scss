@@ -101,9 +101,39 @@ h2 {
         border: 2px solid $primaryColorLight;
 
         .search {
+            position: relative;
             width: 100%;
+            z-index: 30;
             input {
                 width: 100%;
+                position: relative;
+                z-index: 20;
+            }
+            .results-box {
+                list-style: none;
+                background-color: #fff;
+                border: 2px solid $primaryColorLight;
+                position: absolute;
+                top: calc(100% + 5px);
+                z-index: 10;
+                width: 100%;
+                border-radius: 6px;
+                padding: 10px;
+        
+                .result {
+                    border-radius: 6px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    padding: 5px;
+                    cursor: pointer;
+        
+                    &:hover,
+                    &.selected {
+                        background-color: $primaryColorLight;
+                        color: #fff;
+                    }
+                }
             }
         }
 

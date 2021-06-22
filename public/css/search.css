@@ -17163,10 +17163,37 @@ h2 span {
   border: 2px solid #ED6E6C;
 }
 .control-panel .advanced-search .search {
+  position: relative;
   width: 100%;
+  z-index: 30;
 }
 .control-panel .advanced-search .search input {
   width: 100%;
+  position: relative;
+  z-index: 20;
+}
+.control-panel .advanced-search .search .results-box {
+  list-style: none;
+  background-color: #fff;
+  border: 2px solid #ED6E6C;
+  position: absolute;
+  top: calc(100% + 5px);
+  z-index: 10;
+  width: 100%;
+  border-radius: 6px;
+  padding: 10px;
+}
+.control-panel .advanced-search .search .results-box .result {
+  border-radius: 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+  cursor: pointer;
+}
+.control-panel .advanced-search .search .results-box .result:hover, .control-panel .advanced-search .search .results-box .result.selected {
+  background-color: #ED6E6C;
+  color: #fff;
 }
 .control-panel .advanced-search .filter__services,
 .control-panel .advanced-search .filter__services-num {

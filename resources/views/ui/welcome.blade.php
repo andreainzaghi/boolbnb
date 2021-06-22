@@ -9,7 +9,7 @@
 
         <div id="app" class="jumbotron jumbotron-fluid">
             <div class="container">
-                {{-- <form action="{{route('search')}}"> --}}
+
                 <div class="search-box">
                     <input v-on:keyup.letters="autocomplete()" v-on:keydown.enter="search()" v-on:keydown.up="selectUp()" v-on:keydown.down="selectDown()" v-model="query" class="search" type="text" id="city" autocomplete="off" placeholder="Dove ti piacerebbe andare?" name="city">
                     <a v-bind:href="searchURL+query" class="btn btn-search" type="submit">Cerca</a>
@@ -17,13 +17,12 @@
                         <li v-on:click="addToQuery($event); results = [];" class="result" :class=" resultSelected == i? 'selected' : '' " v-for="(result, i) in results">@{{ result.address.freeformAddress+', '+result.address.countrySubdivision }}</li>
                     </ul>
                 </div>
-                {{-- </form> --}}
                 
                 <div class="phrase">
                     <h1 class="display-4">Scegli la tua prossima destinazione</h1>
                     <p class="lead"></p>
                 </div>
-              
+            
             </div>
             
         </div>
