@@ -84,6 +84,9 @@ class ApartmentController extends Controller
         if ( isset($data['image']) ) {
             $data['image'] = Storage::disk('public')->put('images', $data['image']);
         }
+        else{
+            $data['image'] = "images/placeholder.png";
+        }
 
         $data['user_id'] = Auth::id();
 
