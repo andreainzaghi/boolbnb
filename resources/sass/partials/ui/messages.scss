@@ -7,14 +7,18 @@
     border:1px solid black;
     width:60%;
     height:400px;
+    overflow-y: hidden;
+    overflow: scroll;
 }
 .list-group-item{
     border:1px solid black;
     width:40%;
+    overflow-y: hidden;
+    overflow: scroll;
     height:400px;  
 }
 .list-group{
-    border:1px solid black;
+    
     width:100%;
     display: flex;
     height:400px;  
