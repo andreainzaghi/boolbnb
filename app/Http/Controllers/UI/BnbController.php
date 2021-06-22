@@ -17,6 +17,17 @@ use Symfony\Component\VarDumper\VarDumper;
 
 class BnbController extends Controller
 {
+    
+    protected $validation = [];
+
+    public function __construct() {
+        $this->validation = [
+            'email' => 'required | string | email | max:100',
+            'content' => 'required | string',
+        ];
+    }
+
+
     public function index() {
         $count = 0;
         $sponsors = Sponsor::orderBy('id', 'desc')->get();
@@ -68,9 +79,14 @@ class BnbController extends Controller
 
     public function sendMessage(Request $request, $id){
 
+
+        $request->validate( $this->validation );
+        $data = $request->all();
+
+
         $apartment = Apartment::find(intval($id));
         // MANCA LA VALIDAZIONE
-        $data = $request->all();
+
         $data['apartment_id'] = intval($id);
         $newMessage['apartment_id'] = $data['apartment_id']; 
         $newMessage['email'] = $data['email'];

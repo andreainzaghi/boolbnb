@@ -84,6 +84,9 @@ class ApartmentController extends Controller
         if ( isset($data['image']) ) {
             $data['image'] = Storage::disk('public')->put('images', $data['image']);
         }
+        else{
+            $data['image'] = "images/placeholder.png";
+        }
 
         $data['user_id'] = Auth::id();
 
@@ -127,11 +130,14 @@ class ApartmentController extends Controller
         ->first(['expiration']);
         
         if (isset($raw_sponsor_expiration['expiration'])) {
-            $sponsor_expiration = Carbon::parse($raw_sponsor_expiration['expiration'])->format('d-m-Y');
+            $sponsor_expiration = Carbon::parse($raw_sponsor_expiration['expiration'])->format('d-m-Y - h:m');
             $apartment->sponsor_expiration = $sponsor_expiration;
         }
+        else{
+            $sponsor_expiration  = null; 
+        }
 
-        return view('admin.apartments.show', compact('sponsors', 'apartment'));
+        return view('admin.apartments.show', compact('sponsors', 'apartment','sponsor_expiration'));
     }
 
     /**
