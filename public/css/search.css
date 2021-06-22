@@ -16664,28 +16664,28 @@ h2 {
 .admin-appartamento .box-left .descrizione .select-servizi .list_services .services_wrap p::first-letter {
   text-transform: uppercase;
 }
-.admin-appartamento .box-right {
+.admin-appartamento .admin-box-right {
   width: 35%;
-  margin-top: 18px !important;
+  margin-top: 28px;
 }
-.admin-appartamento .box-right .admin-title-page {
+.admin-appartamento .admin-box-right .admin-title-page {
   width: 100%;
   margin-bottom: 15px;
 }
-.admin-appartamento .box-right .admin-title-page .mappa {
+.admin-appartamento .admin-box-right .admin-title-page .mappa {
   height: 250px;
   border-top-right-radius: 20px 20px;
   border-bottom-right-radius: 20px 20px;
 }
-.admin-appartamento .box-right .alert-admin p {
+.admin-appartamento .admin-box-right .alert-admin p {
   font-size: 12px;
   color: #23286B;
 }
-.admin-appartamento .box-right .alert-admin p .fa-exclamation-circle {
+.admin-appartamento .admin-box-right .alert-admin p .fa-exclamation-circle {
   color: #E94A47;
   font-size: 14px;
 }
-.admin-appartamento .box-right .alert-admin p span {
+.admin-appartamento .admin-box-right .alert-admin p span {
   color: #E94A47;
 }
 

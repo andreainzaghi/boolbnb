@@ -69,7 +69,7 @@
         </div>
 
         <!-- box-right -->
-        <div class="box-right d-flex-colmn">
+        <div class="admin-box-right d-flex-colmn">
           <div class="admin-title-page">
             <div class="title-map">
               <h4>Posizione</h4>
