@@ -83,16 +83,21 @@
           font-size: 12px;
           .list_services {
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
             padding-bottom: 20px;
             .services_wrap {
               display: flex;
               flex-direction: row;
-              line-height: 12px;
-              margin: 5px;
+              line-height: 13px;
+              margin: 6px;
+              border: 1px solid #e84a47;
+              border-radius: 15px;
+              padding: 10px;
               i {
                 margin-left: 5px;
+              }
+              p {
+                margin: 0;
               }
               p::first-letter {
                 text-transform: uppercase;
