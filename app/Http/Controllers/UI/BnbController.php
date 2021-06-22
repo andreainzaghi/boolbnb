@@ -8,7 +8,10 @@ use App\Service;
 use App\Apartment;
 use App\View;
 use App\Message;
+use App\User;
+use App\Mail\SendNewMail;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Symfony\Component\VarDumper\VarDumper;
 
@@ -65,7 +68,7 @@ class BnbController extends Controller
 
     public function sendMessage(Request $request, $id){
 
-
+        $apartment = Apartment::find(intval($id));
         // MANCA LA VALIDAZIONE
         $data = $request->all();
         $data['apartment_id'] = intval($id);
@@ -78,6 +81,9 @@ class BnbController extends Controller
         $message = $data['content'];
         $user = User::where('id', $apartment->user_id)->first();
         // Invio della maiil
-        Mail::to($user->email)->send(new SendNewMail($post, $message, $user->email));
+        Mail::to($user->email)->send(new SendNewMail($apartment, $message, $data['email']));
+        return redirect()
+            ->route('ui.apartments.show', $id)
+            ->with('message', 'Il messaggio è stato inviato!');
     }
 }

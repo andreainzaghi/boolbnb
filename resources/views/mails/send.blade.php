@@ -3,5 +3,5 @@
     <h1>Appartmento: {{$apartment->title}}</h1>
     <p>Email mittente: {{$email_author }}</p>
     <p>{{$content}}</p>
-    <a href="{{route('apartments/{id}')}}">Link al tuo appartamento</a>
+    {{-- <a href="{{route('apartments/{id}')}}">Link al tuo appartamento</a> --}}
 </div>
