@@ -38,19 +38,19 @@
                 <div class="filter-num">
                     <div class="filter__services-num">
                         <label>n° stanze</label>
-                        <input class="form-control" type="number" v-model="rooms" min="0" max="16" value="">
+                        <input class="form-control" type="number" v-model="rooms" min="1" max="16" value="">
                         <button class="input-number-add"></button>
                         <button class="input-number-sub"></button>
                     </div>
                     <div class="filter__services-num">
                         <label>n° bagni</label>
-                        <input class="form-control" type="number" v-model="bathrooms" min="0" max="16" value="">
+                        <input class="form-control" type="number" v-model="bathrooms" min="1" max="16" value="">
                         <button class="input-number-add"></button>
                         <button class="input-number-sub"></button>
                     </div>
                     <div class="filter__services-num">
                         <label>n° letti</label>
-                        <input class="form-control" type="number" v-model="beds" min="0" max="16" value="">
+                        <input class="form-control" type="number" v-model="beds" min="1" max="16" value="">
                         <button class="input-number-add"></button>
                         <button class="input-number-sub"></button>
                     </div>

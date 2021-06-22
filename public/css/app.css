@@ -16136,7 +16136,7 @@ header {
   position: fixed;
   width: 100%;
   padding: 4px 0;
-  z-index: 1;
+  z-index: 1024;
 }
 header #logo {
   color: #E94A47;
@@ -16180,6 +16180,7 @@ footer {
   position: fixed;
   width: 100%;
   bottom: 0;
+  z-index: 1024;
 }
 footer a i {
   font-size: 15px;
@@ -16763,6 +16764,18 @@ h2 {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  position: relative;
+}
+.jumbotron::after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.23;
+  border-radius: 9px;
+  content: "";
 }
 .jumbotron .container {
   display: flex;
@@ -16771,11 +16784,12 @@ h2 {
   position: relative;
 }
 
-form {
+.search-box {
   position: relative;
   margin-top: 100px;
+  z-index: 30;
 }
-form .search {
+.search-box .search {
   border-radius: 20px;
   border: 0px;
   height: 41px;
@@ -16784,14 +16798,40 @@ form .search {
   width: 350px;
   outline: none;
   box-shadow: 1px 1px lightgray;
+  position: relative;
+  z-index: 20;
 }
-form .btn-search {
+.search-box .btn-search {
   background-color: #E94A47;
   border-radius: 20px;
   position: absolute;
   top: 2px;
   right: 2px;
   width: 76px;
+  color: #fff;
+  z-index: 20;
+}
+.search-box .results-box {
+  list-style: none;
+  background-color: #fff;
+  box-shadow: 1px 1px lightgray;
+  position: absolute;
+  top: calc(100% + 5px);
+  z-index: 10;
+  width: 100%;
+  border-radius: 20px;
+  padding: 10px;
+}
+.search-box .results-box .result {
+  border-radius: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 5px;
+  cursor: pointer;
+}
+.search-box .results-box .result:hover, .search-box .results-box .result.selected {
+  background-color: #E94A47;
   color: #fff;
 }
 
@@ -16800,7 +16840,7 @@ form .btn-search {
   color: #fff;
   width: 90%;
   text-align: left;
-  z-index: 33;
+  z-index: 20;
 }
 .phrase h1 {
   color: #fff;
@@ -16830,17 +16870,6 @@ form .btn-search {
 }
 .sponsored .ap_card .card_image img:hover {
   transform: scale(1.4);
-}
-
-.overlay-black {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: black;
-  opacity: 0.23;
-  border-radius: 9px;
 }
 
 .d-flex-colmn {
