@@ -18,6 +18,7 @@ var app = new Vue({
         resultQuery: '',
         results: [],
         resultSelected: -1,
+        focus: false,
         // Axios
         searchURL: window.location.href+'search?city=',
         apiKey: "GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn",

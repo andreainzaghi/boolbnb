@@ -5,7 +5,19 @@ var __webpack_exports__ = {};
   \********************************/
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var cityTitle;
+var cityTitle; // Array di tasti ammessi
+
+var letters = [8, 46]; // Aggiungo le lettere
+
+for (var i = 64; i < 91; i++) {
+  letters.push(i);
+} // Aggiungo i keycodes a Vue
+
+
+Vue.config.keyCodes = {
+  letters: letters
+};
+var axiosSource = null;
 var app = new Vue({
   el: '#app',
   data: {
@@ -22,21 +34,92 @@ var app = new Vue({
     // Dati Api
     apiKey: "GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn",
     apiSearch: 'api/search',
+    apiTomTom: 'https://api.tomtom.com/search/2/search/',
     // Elementi dom
     selected: '',
     apartments: [],
     popupSelected: '',
     showAdvSearch: false,
     showURL: '',
-    loaded: false
+    loaded: false,
+    cityFocus: false,
+    // Filtra
+    resultCity: '',
+    results: [],
+    resultSelected: -1,
+    // Axios
+    axiosIsCalling: false,
+    axiosSource: null
   },
   methods: {
+    autocomplete: function autocomplete() {
+      var _this = this;
+
+      if (this.axiosIsCalling) {
+        axiosSource.cancel();
+      }
+
+      this.resultSelected = -1;
+      this.resultCity = '';
+
+      if (this.city.length > 2) {
+        this.axiosIsCalling = true;
+        axiosSource = axios.CancelToken.source();
+        axios.get(this.apiTomTom + this.city + '.json', {
+          cancelToken: axiosSource.token,
+          params: {
+            typeahead: true,
+            key: this.apiKey,
+            language: 'it-IT',
+            countrySet: 'IT',
+            limit: 5,
+            entityTypeSet: 'Municipality'
+          }
+        }).then(function (response) {
+          _this.axiosIsCalling = false;
+          var match = response.data;
+          _this.results = match.results;
+        })["catch"](function (thrown) {});
+      } else {
+        this.results = [];
+      }
+    },
+    select: function select() {
+      if (this.city.length > 0) {
+        if (this.resultCity.length > 0) {
+          this.city = this.resultCity;
+        }
+
+        this.results = [];
+      }
+    },
+    selectUp: function selectUp() {
+      if (this.resultSelected > 0) {
+        this.resultSelected -= 1;
+        this.addToCity();
+      }
+    },
+    selectDown: function selectDown() {
+      if (this.resultSelected < 4) {
+        this.resultSelected += 1;
+        this.addToCity();
+      }
+    },
+    addToCity: function addToCity() {
+      var e = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      if (e != null) {
+        this.city = e.target.innerText;
+      } else {
+        this.resultCity = this.results[this.resultSelected].address.freeformAddress + ', ' + this.results[this.resultSelected].address.countrySubdivision;
+      }
+    },
     changeTitle: function changeTitle() {
       cityTitle.innerHTML = this.city;
     },
     // Chiamata Api per localizzare l' indirizzo
     getPosition: function getPosition() {
-      var _this = this;
+      var _this2 = this;
 
       this.changeTitle();
       axios.get('https://api.tomtom.com/search/2/geocode/' + this.city + '.json', {
@@ -47,16 +130,16 @@ var app = new Vue({
         }
       }).then(function (geoJson) {
         if (geoJson.data.results[0] !== undefined) {
-          _this.lat = geoJson.data.results[0].position.lat;
-          _this["long"] = geoJson.data.results[0].position.lon;
+          _this2.lat = geoJson.data.results[0].position.lat;
+          _this2["long"] = geoJson.data.results[0].position.lon;
 
-          _this.search();
+          _this2.search();
         }
       });
     },
     // Chiamata Api della ricerca avanzata
-    search: function search(location) {
-      var _this2 = this;
+    search: function search() {
+      var _this3 = this;
 
       axios.get(this.apiSearch, {
         params: _defineProperty({
@@ -70,13 +153,9 @@ var app = new Vue({
           radius: this.radius
         }, "services", this.services)
       }).then(function (response) {
-        _this2.apartments = response.data;
-        _this2.loaded = true;
+        _this3.apartments = response.data;
+        _this3.loaded = true;
         generateMap();
-
-        if (_this2.apartments.length > 0) {
-          map.on('load', createMarkers());
-        }
       });
     }
   },
@@ -143,17 +222,15 @@ function generateMap() {
   });
   map.addControl(new tt.FullscreenControl());
   map.addControl(new tt.NavigationControl());
-  /* map.on('load', function(){
-       let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
-          fillColor: '#29AB87',
-      }).addTo(map);
-  }) */
+
+  if (app._data.apartments.length > 0) {
+    createMarkers();
+  }
 } // crea i markers e centra la mappa su di essi
 
 
 function createMarkers() {
-  console.log(app._data.apartments); // Converte gli appartamenti in format geoJson
-
+  // Converte gli appartamenti in format geoJson
   apartments = {
     "type": "FeatureCollection",
     "features": []

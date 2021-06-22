@@ -98,12 +98,43 @@ h2 {
         padding: 20px 30px;
         overflow: auto;
         position: absolute;
+        z-index: 30;
         border: 2px solid $primaryColorLight;
 
         .search {
+            position: relative;
             width: 100%;
+            z-index: 30;
             input {
                 width: 100%;
+                position: relative;
+                z-index: 20;
+            }
+            .results-box {
+                list-style: none;
+                background-color: #fff;
+                border: 2px solid $primaryColorLight;
+                position: absolute;
+                top: calc(100% + 5px);
+                z-index: 10;
+                width: 100%;
+                border-radius: 6px;
+                padding: 10px;
+        
+                .result {
+                    border-radius: 6px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    padding: 5px;
+                    cursor: pointer;
+        
+                    &:hover,
+                    &.selected {
+                        background-color: $primaryColorLight;
+                        color: #fff;
+                    }
+                }
             }
         }
 
@@ -189,12 +220,24 @@ h2 {
                 flex-basis: 50%;
             }
 
-            img.card__image {
-                margin-bottom: 10px;
-                border-radius: 15px;
-                object-fit: cover;
-                width: 100%;
-                height: 150px;
+            .img-wrapper {
+                position: relative;
+
+                img.card__image {
+                    margin-bottom: 10px;
+                    border-radius: 15px;
+                    object-fit: cover;
+                    width: 100%;
+                    height: 150px;
+                }
+    
+                .fa.fa-star {
+                    color: $primaryColor;
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    font-size: 20px;
+                }
             }
 
             h3 {

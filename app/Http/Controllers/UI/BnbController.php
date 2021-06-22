@@ -83,19 +83,15 @@ class BnbController extends Controller
         $request->validate( $this->validation );
         $data = $request->all();
 
-
         $apartment = Apartment::find(intval($id));
-        // MANCA LA VALIDAZIONE
 
         $data['apartment_id'] = intval($id);
-        $newMessage['apartment_id'] = $data['apartment_id']; 
-        $newMessage['email'] = $data['email'];
-        $newMessage['content'] = $data['content'];
-        
-        $newMessage = Message::create( $data );
+
+        Message::create( $data );
         
         $message = $data['content'];
         $user = User::where('id', $apartment->user_id)->first();
+
         // Invio della maiil
         Mail::to($user->email)->send(new SendNewMail($apartment, $message, $data['email']));
         return redirect()
