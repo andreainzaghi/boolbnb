@@ -12,8 +12,7 @@
 
 @section('MainContent')
 <div class="box w-100">
-
-  @if ( isset($sponsor_expiration) )
+  @if ( !isset($sponsor_expiration) )
     <div class="admin-sponsor-box d-flex sp-btw flex-wrap">
 
         {{-- checkboxes  --}}
@@ -78,7 +77,7 @@
             </div>
           </div>
           <div class="alert-admin">
-            @if ( !isset($sponsor_expiration) )
+            @if ( isset($sponsor_expiration) )
               <p><i class="fas fa-exclamation-circle"></i> Questo appartamento è sponsorizzato. <br>La promozione scadrà in data: <span>{{ $apartment->sponsor_expiration }}</span></p>
             @endif
             </div>
