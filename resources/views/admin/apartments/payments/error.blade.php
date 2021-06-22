@@ -24,13 +24,12 @@
   </div>
 
   <script>
-
-            window.onload = function() {
-                let apartment_id = "{{$apartment->id}}";
-                setTimeout(function () {
-                            window.location.replace("http://localhost:8000/admin/apartments/"+apartment_id);
-                        }, 2000);
-            };
+        window.onload = function() {
+            let apartment_id = "{{$apartment->id}}";
+            setTimeout(function () {
+                    window.location.replace("http://localhost:8000/admin/apartments/"+apartment_id);
+                    }, 2000);
+        };
 
   </script>
 

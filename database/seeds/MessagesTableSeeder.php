@@ -18,13 +18,14 @@ class MessagesTableSeeder extends Seeder
         $apartments = Apartment::all();
         
         foreach ($apartments as $apartment) {
-            if( rand(0,1) ){
-                $newMessage = new Message;
-                $newMessage->apartment_id = $apartment->id;
-                $newMessage->email = $faker->email();
-                $newMessage->content = $faker->text(rand(20,100));
-                $newMessage->save();
+            for ($i=0; $i < rand(0,20); $i++) { 
+                    $newMessage = new Message;
+                    $newMessage->apartment_id = $apartment->id;
+                    $newMessage->email = $faker->email();
+                    $newMessage->content = $faker->text(rand(20,100));
+                    $newMessage->save();
             }
+         
         }
     }
 }
