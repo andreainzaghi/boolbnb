@@ -16952,6 +16952,9 @@ form .btn-search {
   width: 100%;
   margin-bottom: 15px;
 }
+.admin-appartamento .box-right .admin-title-page .title-map h4 {
+  padding-bottom: 2px;
+}
 .admin-appartamento .box-right .admin-title-page .mappa {
   height: 250px;
   border-top-right-radius: 20px 20px;
