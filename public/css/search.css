@@ -16975,16 +16975,16 @@ h2 {
 }
 .admin-appartamento .box-right {
   width: 35%;
-  margin-top: 43px;
+  margin-top: 18px;
 }
-.admin-appartamento .box-right .admin-title-page {
+.admin-appartamento .box-right .guest-title-page {
   width: 100%;
   margin-bottom: 15px;
 }
-.admin-appartamento .box-right .admin-title-page .title-map h4 {
+.admin-appartamento .box-right .guest-title-page .title-map h4 {
   padding-bottom: 2px;
 }
-.admin-appartamento .box-right .admin-title-page .mappa {
+.admin-appartamento .box-right .guest-title-page .mappa {
   height: 250px;
   border-top-right-radius: 20px 20px;
   border-bottom-right-radius: 20px 20px;

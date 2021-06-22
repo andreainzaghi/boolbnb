@@ -57,7 +57,7 @@
 
 
         <div class="box-right d-flex-colmn">
-          <div class="admin-title-page">
+          <div class="guest-title-page">
             <div class="title-map">
               <h4>Posizione</h4>
               <span id="lat" class="d-none">{{ $apartment->lat }}</span><br>
