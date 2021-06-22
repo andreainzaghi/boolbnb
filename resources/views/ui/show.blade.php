@@ -40,7 +40,6 @@
                 </div>
               @endforeach
               </div>
-              
             </div>          
           </div>
         </div>
@@ -52,25 +51,37 @@
           <div class="admin-title-page">
             <div class="title-map">
               <h4>Posizione</h4>
+              <span id="lat" class="d-none">{{ $apartment->lat }}</span><br>
+              <span id="long" class="d-none">{{ $apartment->long }}</span>
             </div>
-            <div id='map' class='mappa'></div>
+            <div id='map' class='mappa'>
+            </div>
           </div>
           <div class="ui-msg">
                {{-- form invio messaggio lato guest  --}}
-            
-                <div class="email">
+              <form action="{{route('ui.apartments.message', [$apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
+                @method('GET')
+                @csrf
+                
                   {{-- campo email --}}
+                <div class="email">
                   <label for="indirizzo email">Indirizzo email</label>
-                  <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" placeholder="Inserisci la tua email" value="{{ old('email') }}">
+                  <input type="email" class="form-control form-control-sm" id="email" name="email" aria-describedby="emailHelp" placeholder="Inserisci la tua email" value="{{ old('email') }}" required>
                   <small id="emailHelp" class="form-text text-muted">Non condivideremo la tua email con nessuno</small>
                 </div>
                   {{-- campo messaggio  --}}
                 <div class="messaggio">
                   <label for="messaggio testo">Invia un messaggio al proprietario</label>
-                  <textarea class="form-control form-control-sm" id="message" rows="8"
-                  placeholder="Scrivi qui il messaggio"></textarea>
+                  <textarea class="form-control form-control-sm" id="message" name="content" rows="8"
+                  placeholder="Scrivi qui il messaggio" required></textarea>
                 </div>
-              
+                {{-- <div>
+                  <input type="text" value="{{$apartment->id}}">
+                </div> --}}
+                <div class="buttons-admin d-flex flex-wrap sp-btw"> 
+                  <button type="submit" class="my-btn my-btn-primary">Invia messagio</button>  
+                </div> 
+              </form>
               {{-- form invio messaggio lato guest  --}}
           </div>
         </div>
@@ -78,17 +89,15 @@
                
   </div>
   {{-- bottoni lato admin --}}
-  <div class="buttons-admin d-flex flex-wrap sp-btw"> 
-    <a href="#" class="my-btn my-btn-primary"><span class=" d-md-inline-block">Invia messagio</span></a>  
-  </div> 
+  
   {{-- bottoni lato admin --}}    
   
 </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-  <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
   @section('script')
-  <script src="{{ asset('js/show.js') }}" defer></script>
+  {{-- tom tom script  --}}
+    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
+    <script src="{{ asset('js/show.js') }}" defer></script>
   @endsection
 
 @endsection
