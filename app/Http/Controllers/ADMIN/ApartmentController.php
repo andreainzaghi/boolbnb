@@ -127,11 +127,14 @@ class ApartmentController extends Controller
         ->first(['expiration']);
         
         if (isset($raw_sponsor_expiration['expiration'])) {
-            $sponsor_expiration = Carbon::parse($raw_sponsor_expiration['expiration'])->format('d-m-Y');
+            $sponsor_expiration = Carbon::parse($raw_sponsor_expiration['expiration'])->format('d-m-Y - h:m');
             $apartment->sponsor_expiration = $sponsor_expiration;
         }
+        else{
+            $sponsor_expiration  = null; 
+        }
 
-        return view('admin.apartments.show', compact('sponsors', 'apartment'));
+        return view('admin.apartments.show', compact('sponsors', 'apartment','sponsor_expiration'));
     }
 
     /**
