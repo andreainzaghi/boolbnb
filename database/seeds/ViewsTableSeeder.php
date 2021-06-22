@@ -20,7 +20,7 @@ class ViewsTableSeeder extends Seeder
 
         foreach ($apartments as $apartment) {
 
-            for ($i=0; $i < rand(0, 100); $i++) { 
+            for ($i=0; $i < rand(20, 40); $i++) { 
                 
                 $view = new View();
 
