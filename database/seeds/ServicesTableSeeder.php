@@ -80,27 +80,6 @@ class ServicesTableSeeder extends Seeder
              ];
 
 
-
-        // $services = [
-        //     'cucina',
-        //     'aria condizionata',
-        //     'asciugatrice',
-        //     'Seggiolone',
-        //     // 'Rilevatore di monossido di carbonio',
-        //     'colazione',
-        //     'ferro da stiro',
-        //     'spazio di lavoro dedicato',
-        //     'culla',
-        //     'self check-in',
-        //     'tv',
-        //     'lavatrice',
-        //     'wi-fi',
-        //     'riscaldamento',
-        //     'asciugacapelli',
-        //     'allarme antincendio',
-        //     'bagno privato'
-        // ]; 
-
         $category = [
             ''
         ];
@@ -136,13 +115,6 @@ class ServicesTableSeeder extends Seeder
             $newService->save();
 
         }
-        // for ($i=0; $i< count($services)-1; $i++) {
-
-        //     $newService = new Service();
-        //     $newService->name = $services[$i];
-        //     $newService->icon_class = $icon_class[$i];
-
-        //     $newService->save();
-        // }
+    
     }
 }

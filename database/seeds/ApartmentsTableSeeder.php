@@ -23,9 +23,45 @@ class ApartmentsTableSeeder extends Seeder
         $services = Service::all();
         $sponsors = Sponsor::all();
         
+        
         // Si prende la data corrente
-
         $appartamenti = [
+            [
+                'address' => 'Via Felice Cavallotti, 54',
+                'city' => 'Genova',
+                'lat' => 44.391906,
+                'long' => 8.974566
+            ],
+            [
+                'address' => 'Via Cornigliano, 103',
+                'city' => 'Genova',
+                'lat' => 44.415779,
+                'long' => 8.870764
+            ],
+            [
+                'address' => 'Via Ciro Menotti, 49',
+                'city' => 'Genova',
+                'lat' => 44.423714,
+                'long' => 8.851250
+            ],
+            [
+                'address' => 'Piazza Giuseppe Bignami, 3',
+                'city' => 'Genova',
+                'lat' => 44.427695,
+                'long' => 8.784596
+            ],
+            [
+                'address' => 'Via Antonio Cantore, 159',
+                'city' => 'Genova',
+                'lat' => 44.412555,
+                'long' => 8.890760
+            ],
+            [
+                'address' => 'Via Dino Bellucci, 27',
+                'city' => 'Genova',
+                'lat' => 44.415240,
+                'long' => 8.928127
+            ],
             [
                 'address' => 'Via Nazionale, 12',
                 'city' => 'Firenze',
@@ -387,7 +423,7 @@ class ApartmentsTableSeeder extends Seeder
         foreach ($users as $user) {
 
             if( rand(0,1) ){
-                for ( $i = 0; $i < rand(1,6); $i++ ) {
+                for ( $i = 0; $i < rand(4,20); $i++ ) {
                     do
                         $index = rand(0, count($appartamenti) - 1);
                     while( in_array( $index, $inserted ) );
@@ -442,16 +478,17 @@ class ApartmentsTableSeeder extends Seeder
                         
                         }
                     }
-                }
-
-                    //Inserimento degli sponsor
-                    if($apartment->visible){
-                        $currentDate = Carbon::now();
-                        if(rand(0,1)){
-                            $data['sponsors'] = $sponsors[rand( 0,count($sponsors)-1 )];
-                            $apartment->sponsors()->attach($data['sponsors'],['expiration' => $currentDate->addHours($data['sponsors']->hours)]);
+                         //Inserimento degli sponsor
+                         if($apartment->visible){
+                            $currentDate = Carbon::now();
+                            if(rand(0,1)){
+                                $data['sponsors'] = $sponsors[rand( 0,count($sponsors)-1 )];
+                                $apartment->sponsors()->attach($data['sponsors'],['expiration' => $currentDate->addHours($data['sponsors']->hours)]);
+                            }
                         }
-                    }
+                     }
+
+               
                 }
             }
         }

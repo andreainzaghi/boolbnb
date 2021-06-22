@@ -18,8 +18,6 @@ class PaymentController extends Controller
 
         $user = User::where('id',Auth::id())->first();
 
-
-
         $request['token'] =  'fake-valid-nonce';
         $sponsor = Sponsor::where('id',$request->session()->get('sponsor_id'))->first();
         $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
@@ -50,23 +48,32 @@ class PaymentController extends Controller
                 'submitForSettlement' => True]
             ]);
 
+        $request->session()->put('settled', true);
 
         return response()->json($result);
     }
 
+
     public function form(Request $request, Apartment $apartment)
     {
 
+        // Controllo se è l'utente dell'appartamento
         if($apartment->user_id != Auth::id()){
             abort('403');
         }
 
-        if($apartment->sponsors()->orderBy('expiration', 'desc')->first()){
-            if( $apartment->sponsors()->orderBy('expiration', 'desc')->first()->expiration < Carbon::now()){
-                abort('403', "Non puoi fare una nuova sponsorizzazione finchè non è finita quella in corso!");
+        // Controllo se è visibile
+        if($apartment->visible == 1){
+            if($apartment->sponsors()->orderBy('expiration', 'desc')->first()){
+                if( $apartment->sponsors()->orderBy('expiration', 'desc')->first()->expiration < Carbon::now()){
+                    abort('403', "Non puoi fare una nuova sponsorizzazione finchè non è finita quella in corso!");
+                }
             }
         }
-     
+        else{
+            abort('403', "L'appartamento deve essere visibile per essere sponsorizzato");
+            
+        }
     
 
         $data = $request->all();
@@ -83,13 +90,17 @@ class PaymentController extends Controller
 
 
         $request->session()->put('date_expiration', $date);
+
+
         return view('admin.apartments.payments.payment', compact('sponsor','apartment','date'));
     }
 
 
     public function success(Request $request)
     {
-     
+        if(!$request->session()->get('settled')){
+            abort('403', 'Non hai effettuato il pagamento!!!');
+        }
 
         $sponsor = Sponsor::where('id',$request->session()->get('sponsor_id'))->first();
         $apartment = Apartment::where('id',$request->session()->get('apartment_id'))->first();
@@ -103,9 +114,9 @@ class PaymentController extends Controller
     
         $apartment->sponsors()->attach($sponsor,['expiration' => $date, 'settled' =>1]);
 
+        $request->session()->forget('settled');
 
         return view('admin.apartments.payments.success', compact('sponsor','apartment','date'));
-
 
     }
 
@@ -119,8 +130,10 @@ class PaymentController extends Controller
             abort('403');
         }
 
-        return view('admin.apartments.payments.error', compact('apartment'));
+        $request->session()->forget('settled');
 
+
+        return view('admin.apartments.payments.error', compact('apartment'));
 
     }
 }

@@ -34,6 +34,6 @@ class SendNewMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.mails.send');
+        return $this->view('mails.send');
     }
 }
