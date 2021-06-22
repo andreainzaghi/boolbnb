@@ -18,8 +18,8 @@
         <div class="box-left d-flex-colmn">
 
           <div class="title">
-            <h3>Casa Paradiso</h3>
-            <p>via Padova Rossi, Milano 73102</p>
+            <h3>{{ $apartment->title }}</h3>
+            <p>{{ $apartment->address }}, {{ $apartment->city }}</p>
           </div>
 
           <div class="admin-img-box">
@@ -28,15 +28,18 @@
          
 
           <div class="descrizione">
-            <p class="recap d-flex">Stanze: 5 | Bagni: 3| Letti: 3 | Ospiti: 2 | Dimensioni: 90mq </p>
-            <p class="sottotesto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+            <p class="recap d-flex">Stanze: {{ $apartment->rooms }} | Bagni: {{ $apartment->bathrooms }} | Letti: {{ $apartment->beds }} | Ospiti: 2 | Dimensioni: {{ $apartment->mq }} mq</p>
+            <p class="sottotesto">{{ $apartment->description }}</p>
             <div class="select-servizi d-flex-colmn flex-wrap">
               <h4>Servizi</h4> 
-              <ul class="services-list">
-                <li v-for="service in services" class="card__service">
-                    <i :class="service.icon_class"></i>
-                </li>
-              </ul>
+              <div class="list_services">
+              @foreach( $apartment->services as $service )
+                <div class="services_wrap">
+                  <p>{{$service->name}}</p>
+                  <i class="{{ $service->icon_class }}"></i>
+                </div>
+              @endforeach
+              </div>
             </div>          
           </div>
         </div>
@@ -48,25 +51,37 @@
           <div class="admin-title-page">
             <div class="title-map">
               <h4>Posizione</h4>
+              <span id="lat" class="d-none">{{ $apartment->lat }}</span><br>
+              <span id="long" class="d-none">{{ $apartment->long }}</span>
             </div>
-            <div id='map' class='mappa'></div>
+            <div id='map' class='mappa'>
+            </div>
           </div>
           <div class="ui-msg">
                {{-- form invio messaggio lato guest  --}}
-            
-                <div class="email">
+              <form action="{{route('ui.apartments.message', [$apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
+                @method('GET')
+                @csrf
+                
                   {{-- campo email --}}
+                <div class="email">
                   <label for="indirizzo email">Indirizzo email</label>
-                  <input type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" placeholder="Inserisci la tua email" value="{{ old('email') }}">
+                  <input type="email" class="form-control form-control-sm" id="email" name="email" aria-describedby="emailHelp" placeholder="Inserisci la tua email" value="{{ old('email') }}" required>
                   <small id="emailHelp" class="form-text text-muted">Non condivideremo la tua email con nessuno</small>
                 </div>
                   {{-- campo messaggio  --}}
                 <div class="messaggio">
                   <label for="messaggio testo">Invia un messaggio al proprietario</label>
-                  <textarea class="form-control form-control-sm" id="message" rows="8"
-                  placeholder="Scrivi qui il messaggio"></textarea>
+                  <textarea class="form-control form-control-sm" id="message" name="content" rows="8"
+                  placeholder="Scrivi qui il messaggio" required></textarea>
                 </div>
-              
+                {{-- <div>
+                  <input type="text" value="{{$apartment->id}}">
+                </div> --}}
+                <div class="buttons-admin d-flex flex-wrap sp-btw"> 
+                  <button type="submit" class="my-btn my-btn-primary">Invia messagio</button>  
+                </div> 
+              </form>
               {{-- form invio messaggio lato guest  --}}
           </div>
         </div>
@@ -74,9 +89,7 @@
                
   </div>
   {{-- bottoni lato admin --}}
-  <div class="buttons-admin d-flex flex-wrap sp-btw"> 
-    <a href="#" class="my-btn my-btn-primary"><span class=" d-md-inline-block">Invia messagio</span></a>  
-  </div> 
+  
   {{-- bottoni lato admin --}}    
   
 </div>
