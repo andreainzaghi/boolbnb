@@ -17160,6 +17160,7 @@ h2 span {
   padding: 20px 30px;
   overflow: auto;
   position: absolute;
+  z-index: 30;
   border: 2px solid #ED6E6C;
 }
 .control-panel .advanced-search .search {
@@ -17270,13 +17271,23 @@ h2 span {
     flex-basis: 50%;
   }
 }
-.control-panel #apartments-list .apartment-card img.card__image {
+.control-panel #apartments-list .apartment-card .img-wrapper {
+  position: relative;
+}
+.control-panel #apartments-list .apartment-card .img-wrapper img.card__image {
   margin-bottom: 10px;
   border-radius: 15px;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
   height: 150px;
+}
+.control-panel #apartments-list .apartment-card .img-wrapper .fa.fa-star {
+  color: #E94A47;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
 }
 .control-panel #apartments-list .apartment-card h3 {
   font-size: 1.3rem;

@@ -76,8 +76,11 @@
             <!-- /ricerca avanzata -->
             {{-- Lista appartamenti --}}
             <div v-if="apartments.length != []" id='apartments-list'>
-                <a v-for="apartment in apartments" :href="apartment.route" class="apartment-card"  :class="popupSelected == apartment.title? 'selected' : '' ">
-                    <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
+                <a v-for="apartment in apartments" :href="apartment.route" class="apartment-card" :class="popupSelected == apartment.title? 'selected' : '' ">
+                    <div class="img-wrapper">
+                        <img class="card__image" src="{{ asset('storage/images/placeholder.png') }}" :alt="apartment.title">
+                        <i v-if="typeof apartment.sponsors !== 'undefined'" class="fa fa-star" aria-hidden="true"></i>
+                    </div>
                     <h3 class="card__title">@{{ apartment.title }}</h3>
                     <p class="card__rooms">Stanze: @{{ apartment.rooms }} | Bagni: @{{ apartment.bathrooms }} | Letti: @{{ apartment.beds }}</p>
                     <ul class="services-list">

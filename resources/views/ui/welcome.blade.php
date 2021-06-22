@@ -11,9 +11,9 @@
             <div class="container">
 
                 <div class="search-box">
-                    <input v-on:keyup.letters="autocomplete()" v-on:keydown.enter="search()" v-on:keydown.up="selectUp()" v-on:keydown.down="selectDown()" v-model="query" class="search" type="text" id="city" autocomplete="off" placeholder="Dove ti piacerebbe andare?" name="city">
+                    <input v-on:keyup.letters="autocomplete()" v-on:keydown.enter="search()" v-on:keydown.up="selectUp()" v-on:keydown.down="selectDown()" v-on:focus="focus = true" v-on:blur="focus = false" v-model="query" class="search" type="text" id="city" autocomplete="off" placeholder="Dove ti piacerebbe andare?" name="city">
                     <a v-bind:href="searchURL+query" class="btn btn-search" type="submit">Cerca</a>
-                    <ul class="results-box" :class=" results.length === 0? 'd-none' : 'd-block'">
+                    <ul class="results-box" :class=" results.length === 0 || focus === false ? 'd-none' : 'd-block'">
                         <li v-on:click="addToQuery($event); results = [];" class="result" :class=" resultSelected == i? 'selected' : '' " v-for="(result, i) in results">@{{ result.address.freeformAddress+', '+result.address.countrySubdivision }}</li>
                     </ul>
                 </div>
