@@ -8,31 +8,6 @@ use Illuminate\Support\Str;
 class Apartment extends Model
 {
 
-/*     public function setSlugAttribute($value) {
-
-        if (static::whereSlug($slug = Str::slug($value))->exists()) {
-    
-            $slug = $this->incrementSlug($slug);
-        }
-    
-        $this->attributes['slug'] = $slug;
-    }
-
-    public function incrementSlug($slug) {
-
-        $original = $slug;
-    
-        $count = 2;
-    
-        while (static::whereSlug($slug)->exists()) {
-    
-            $slug = "{$original}-" . $count++;
-        }
-    
-        return $slug;
-    
-    } */
-
     protected $guarded = ['services', 'sponsors'];
 
     // SERVICES
@@ -55,7 +30,6 @@ class Apartment extends Model
 
         return $this->hasMany('App\Message');
     }
-
      
     // USER
     public function user()

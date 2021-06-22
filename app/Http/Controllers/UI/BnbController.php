@@ -96,6 +96,7 @@ class BnbController extends Controller
         
         $message = $data['content'];
         $user = User::where('id', $apartment->user_id)->first();
+        
         // Invio della maiil
         Mail::to($user->email)->send(new SendNewMail($apartment, $message, $data['email']));
         return redirect()
