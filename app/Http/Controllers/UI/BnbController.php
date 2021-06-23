@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UI;
 
 use App\Http\Controllers\Controller;
 use App\Sponsor;
+use Illuminate\Support\Facades\Auth;
 use App\Service;
 use App\Apartment;
 use App\Message;
@@ -64,9 +65,15 @@ class BnbController extends Controller
     
     public function show($slug){
 
+        $apartment = Apartment::where('slug', $slug)->first();
+
+        if($apartment->user_id == Auth::id()){
+            return redirect()
+            ->route('admin.apartments.show', $apartment);
+        }
+
         $clientIP = request()->ip();
    
-        $apartment = Apartment::where('slug', $slug)->first();
 
         $newView['apartment_id'] = $apartment->id;
         $newView['ip'] = $clientIP;
