@@ -45,7 +45,7 @@
           </div>
 
           <div class="admin-img-box">
-            <a href="#"><img class="immagine" src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento"></a>
+            <a href="#" class="w-100"><img class="immagine" src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento"></a>
           </div>
 
           <div class="descrizione">

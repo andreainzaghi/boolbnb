@@ -3,18 +3,23 @@
     padding:0;
     box-sizing: border-box;
 }
+
+#app {
+    display: flex;
+}
+
 .container-messages{
     border:1px solid black;
     width:60%;
     height:400px;
     overflow-y: hidden;
-    overflow: scroll;
+    overflow: auto;
 }
 .list-group-item{
     border:1px solid black;
     width:40%;
     overflow-y: hidden;
-    overflow: scroll;
+    overflow: auto;
     height:400px;  
 }
 .list-group{

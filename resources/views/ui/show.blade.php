@@ -11,7 +11,7 @@
 @endsection
 
 @section('MainContent')
-<div class="box">
+<div class="box w-100">
 
   @if (session('message'))
     <div class="alert alert-success" style="position: fixed; bottom: 30px; right: 6px; z-index: 2">
@@ -32,7 +32,7 @@
           </div>
 
           <div class="admin-img-box">
-            <a href="#"><img class="immagine" src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento"></a>
+            <a href="#" class="w-100"><img class="immagine" src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento"></a>
           </div>
          
 
