@@ -73,6 +73,7 @@ class BnbController extends Controller
 
         $view = $apartment->views()->where('ip', $clientIP)->first();
 
+        //Controllo se l'ip è già presente, in caso contrario lo inserisco
         if(!$view){
             $newView = View::create($newView);
         }
