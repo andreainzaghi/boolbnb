@@ -13,10 +13,10 @@
 @section('MainContent')
 <div class="box w-100">
   @if ( !isset($sponsor_expiration) )
-    <div class="admin-sponsor-box d-flex sp-btw flex-wrap">
+    <div class="admin-sponsor-box ">
 
-        {{-- checkboxes  --}}
-        <form action="{{route('payment.form', ['apartment' => $apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
+        {{-- sposorizza box  --}}
+        <form action="{{route('payment.form', ['apartment' => $apartment->id])}}" method="GET" class="myForm d-flex sp-btw flex-wrap" enctype="multipart/form-data">
           @method('GET')
           @csrf
         
