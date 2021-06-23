@@ -5,6 +5,8 @@ use App\User;
 use App\View;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Carbon\Carbon;
+
 
 class ViewsTableSeeder extends Seeder
 {
@@ -32,7 +34,8 @@ class ViewsTableSeeder extends Seeder
                 else{
                     $view->ip = $ip;
                     $view->apartment_id = $apartment->id;
-    
+                    $view->created_at = Carbon::now()->subDays(rand(0,360));
+                    $view->updated_at = $view->created_at;
                     $view->save();
                 }
             }
