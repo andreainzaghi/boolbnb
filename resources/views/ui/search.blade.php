@@ -5,8 +5,11 @@
 @endsection
 
 @section('styles')
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.11/SearchBox.css'>
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
+
+
     {{-- <script src='https://npmcdn.com/mapbox-gl-circle/dist/mapbox-gl-circle.min.js'></script> --}}
 @endsection
 
@@ -97,7 +100,6 @@
                 <span>Nessun appartamento trovato</span>
             </div>
         </div>
-
         <div id='map' class='map'></div>
     </div>
     
@@ -108,4 +110,10 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
 <script src="{{ asset('js/search.js') }}" defer></script>
+<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.11/SearchBox-web.js"></script>
+
+
+<script type='text/javascript' src='../assets/js/search/side-panel.js'></script>
+
+
 @endsection

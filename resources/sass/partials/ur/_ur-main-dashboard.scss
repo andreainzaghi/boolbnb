@@ -22,13 +22,22 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -20px;
-    width: 100%;
 }
 
 .dash__card{
     margin: 0 20px 30px;
-    flex-basis: calc( (100% - (40px * 4) ) / 4);
+    flex-basis: 100%;
     
+
+    @include media-breakpoint-up(md) { 
+        flex-basis: calc( (100% - (40px * 2) ) / 2);
+    }
+    @include media-breakpoint-up(lg) { 
+        flex-basis: calc( (100% - (40px * 3) ) / 3);
+    }
+    @include media-breakpoint-up(xl) { 
+        flex-basis: calc( (100% - (40px * 4) ) / 4);
+    }
 
     .img__wrapper {
         overflow: hidden;
