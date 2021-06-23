@@ -16256,6 +16256,10 @@ a:hover {
   color: #fff;
 }
 
+.btn-disabled {
+  cursor: not-allowed;
+}
+
 .flex-center {
   align-items: center;
 }

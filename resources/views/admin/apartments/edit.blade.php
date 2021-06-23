@@ -81,29 +81,29 @@
             <!-- address -->
             <div class="form-group input__address">
                 <label for="address">Indirizzo</label>
-                <input type="address" class="form-control" id="address" name="address" placeholder="address" value="{{ old('address', $apartment->address) }}">
+                <input type="address" class="form-control" id="address" name="address" placeholder="Inserisci indirizzo" v-on:input=" city !== '' ? geolocate() : ''" v-model="address" value="{{ old('address', $apartment->address) }}">
             </div>
             <!-- / address -->
 
             <!-- city -->
             <div class="form-group input__city">
                 <label for="city">Città</label>
-                <input type="city" class="form-control" id="city" name="city" placeholder="city" value="{{ old('city', $apartment->city) }}">
+                <input type="city" class="form-control" id="city" name="city" placeholder="Inserisci città" v-on:input=" city !== '' ? geolocate() : ''" v-model="city" value="{{ old('city', $apartment->city) }}">
             </div>
             <!-- / city -->
         </div>
 
         <!-- lat -->
         <div class="form-group">
-            <label for="lat">lat</label>
-            <input type="lat" class="form-control" id="lat" name="lat" placeholder="lat" value="{{ old('lat', $apartment->lat) }}">
+            <label for="lat">Latitudine</label>
+            <input type="lat" class="form-control" id="lat" name="lat" placeholder="Generazione automatica" v-model="lat" value="{{ old('lat', $apartment->lat) }}">
         </div>
         <!-- / lat -->
 
         <!-- long -->
         <div class="form-group">
-            <label for="long">long</label>
-            <input type="long" class="form-control" id="long" name="long" placeholder="long" value="{{ old('long', $apartment->long) }}">
+            <label for="long">Longitudine</label>
+            <input type="long" class="form-control" id="long" name="long" placeholder="Generazione automatica" v-model="long" value="{{ old('long', $apartment->long) }}">
         </div>
         <!-- / long -->
 

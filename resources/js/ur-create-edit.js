@@ -4,7 +4,8 @@ var app = new Vue({
         city: '',
         address: '',
         lat: '',
-        long: ''
+        long: '',
+        submitDisabled: 'true'
     },
     methods: {
         geolocate() {
@@ -16,13 +17,16 @@ var app = new Vue({
                 }   
             })
             .then( (geoJson) => {
-            this.fillForm(geoJson.data);
+                if ( typeof geoJson.data.results[0] !== 'undefined' ) {
+                    console.log(typeof geoJson.data.results[0]);
+                    this.fillForm(geoJson.data.results[0]);
+                }
             });
         },
 
         fillForm(json) {
-            this.lat = location.results[0].position.lat;
-            this.long = location.results[0].position.lon;
+            this.lat = json.position.lat;
+            this.long = json.position.lon;
         }
     }
 });
