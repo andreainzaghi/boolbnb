@@ -38,7 +38,7 @@
 @endsection
 
 @section('MainContent')
-    <div class="" id="app" >
+    <div class="" id="app-messages" >
        
             <div class="list-group">
                 <div class="border list-group-item  list-group-item-action" v-for="(message, id) in messages" v-on:click="personalChat(id)">

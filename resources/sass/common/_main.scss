@@ -13,3 +13,14 @@ main {
         border-radius: 20px 20px 0 0; 
     }
 }
+
+.register-link {
+    font-size: 0.8rem;
+    a {
+        color: $primaryColor;
+
+        &:hover {
+            filter:brightness(75%);
+        }
+    }
+}

@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-md-8 pt-5">
+            <div class="card mt-3">
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -45,7 +45,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Ricordami') }}
                                     </label>
                                 </div>
                             </div>
@@ -59,9 +59,13 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn my-btn-secondary" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('Dimenticato la password?') }}
                                     </a>
                                 @endif
+
+                                <div class="mt-3 register-link">
+                                    <span>Non sei registrato? </span><a class="" href="{{ route('register') }}">Registrati</a>
+                                </div>
                             </div>
                         </div>
                     </form>

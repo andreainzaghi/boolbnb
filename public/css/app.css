@@ -16172,6 +16172,16 @@ main {
   }
 }
 
+.register-link {
+  font-size: 0.8rem;
+}
+.register-link a {
+  color: #E94A47;
+}
+.register-link a:hover {
+  filter: brightness(75%);
+}
+
 footer {
   background-color: #E94A47;
   font-size: 10px;
@@ -16799,7 +16809,7 @@ h2 {
   box-sizing: border-box;
 }
 
-#app {
+#app-messages {
   display: flex;
 }
 
