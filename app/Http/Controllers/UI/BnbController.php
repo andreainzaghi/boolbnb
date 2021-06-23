@@ -70,7 +70,12 @@ class BnbController extends Controller
 
         $newView['apartment_id'] = $id;
         $newView['ip'] = $clientIP;
-        $newView = View::create($newView);
+
+        $view = $apartment->views()->where('ip', $clientIP)->first();
+
+        if(!$view){
+            $newView = View::create($newView);
+        }
 
         return view('ui.show', compact('apartment'));
     }
