@@ -62,13 +62,13 @@ class BnbController extends Controller
 
     }
     
-    public function show($id){
+    public function show($slug){
 
         $clientIP = request()->ip();
    
-        $apartment = Apartment::where('id', $id)->first();
+        $apartment = Apartment::where('slug', $slug)->first();
 
-        $newView['apartment_id'] = $id;
+        $newView['apartment_id'] = $apartment->id;
         $newView['ip'] = $clientIP;
 
         $view = $apartment->views()->where('ip', $clientIP)->first();
@@ -83,15 +83,15 @@ class BnbController extends Controller
 
 
 
-    public function sendMessage(Request $request, $id){
+    public function sendMessage(Request $request, $slug){
 
 
         $request->validate( $this->validation );
         $data = $request->all();
 
-        $apartment = Apartment::find(intval($id));
-
-        $data['apartment_id'] = intval($id);
+        //$apartment = Apartment::find(intval($id));
+        $apartment = Apartment::where('slug', $slug)->first();
+        $data['apartment_id'] = intval($apartment->id);
 
         Message::create( $data );
         
@@ -101,7 +101,7 @@ class BnbController extends Controller
         // Invio della maiil
         Mail::to($user->email)->send(new SendNewMail($apartment, $message, $data['email']));
         return redirect()
-            ->route('ui.apartments.show', $id)
+            ->route('ui.apartments.show', $slug)
             ->with('message', 'Il messaggio è stato inviato!');
     }
 }
