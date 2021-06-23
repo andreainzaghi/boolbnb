@@ -144,7 +144,7 @@ function generateMap() {
   map.addControl(new tt.FullscreenControl());
   map.addControl(new tt.NavigationControl());
   /* map.on('load', function(){
-        let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
+       let searchZone = new MapboxCircle({lat: center[1], lng: center[0]}, (radius*1000), {
           fillColor: '#29AB87',
       }).addTo(map);
   }) */
@@ -203,6 +203,55 @@ function createMarkers() {
     padding: 50,
     maxZoom: 12
   });
-}
+} // autocomplete
+
+
+var searchOptions = {
+  key: app._data.apiKey,
+  language: 'en-GB',
+  limit: 5
+};
+var autocompleteOptions = {
+  key: app._data.apiKey,
+  language: 'en-GB'
+};
+var searchBoxOptions = {
+  minNumberOfCharacters: 0,
+  searchOptions: searchOptions,
+  autocompleteOptions: autocompleteOptions,
+  distanceFromPoint: [15.4, 53.0]
+};
+var ttSearchBox = new tt.plugins.SearchBox(tt.services, searchBoxOptions);
+document.querySelector('.tt-side-panel__header').appendChild(ttSearchBox.getSearchBoxHTML());
+var state = {
+  previousOptions: {
+    query: null,
+    center: null
+  },
+  callbackId: null,
+  userLocation: null
+};
+new SidePanel('.tt-side-panel', map);
+var geolocateControl = new tt.GeolocateControl({
+  positionOptions: {
+    enableHighAccuracy: false
+  }
+});
+geolocateControl.on('geolocate', function (event) {
+  var coordinates = event.coords;
+  state.userLocation = [coordinates.longitude, coordinates.latitude];
+  ttSearchBox.updateOptions(Object.assign({}, ttSearchBox.getOptions(), {
+    distanceFromPoint: state.userLocation
+  }));
+});
+map.addControl(geolocateControl);
+var resultsManager = new ResultsManager();
+var searchMarkersManager = new SearchMarkersManager(map);
+map.on('load', handleMapEvent);
+map.on('moveend', handleMapEvent);
+ttSearchBox.on('tomtom.searchbox.resultscleared', handleResultsCleared);
+ttSearchBox.on('tomtom.searchbox.resultsfound', handleResultsFound);
+ttSearchBox.on('tomtom.searchbox.resultfocused', handleResultSelection);
+ttSearchBox.on('tomtom.searchbox.resultselected', handleResultSelection);
 /******/ })()
 ;
