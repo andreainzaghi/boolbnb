@@ -52,12 +52,12 @@
                 <div class="container-fluid">
                     <div class="row flex-center">
                         <div class="col-6">
-                            <a href="#" id="logo"><i class="fab fa-airbnb"></i> © 2021 Airbnb, Inc.</a>
+                            <a href="{{ route('admin.apartments.index') }}" id="logo"><i class="fab fa-airbnb"></i> © 2021 Airbnb, Inc.</a>
                         </div>
                         <div class="col-6 text-right social-list">
-                            <a href="#" id="logo"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" id="logo"><i class="fab fa-instagram"></i></i></a>
-                            <a href="#" id="logo"><i class="fab fa-twitter"></i></i></a>
+                            <a href="https://www.facebook.com/AirbnbItalia" id="logo"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/airbnb/" id="logo"><i class="fab fa-instagram"></i></i></a>
+                            <a href="https://twitter.com/airbnb_it" id="logo"><i class="fab fa-twitter"></i></i></a>
                         </div>
                     </div>
                 </div>
