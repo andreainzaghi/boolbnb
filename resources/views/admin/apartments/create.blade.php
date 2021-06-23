@@ -113,7 +113,7 @@
             @foreach ($services as $service)
                 <div class="form-check services">
                     <label class="form-check-label" for="{{ $service->name }}">{{ $service->name }}
-                        <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="{{ $service->name }}" name="services[]" {{ in_array($service->id, old('services', [])) ? 'checked' : '' }} required>
+                        <input class="form-check-input" type="checkbox" value="{{ $service->id }}" id="{{ $service->name }}" name="services[]" {{ in_array($service->id, old('services', [])) ? 'checked' : '' }}>
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -124,7 +124,7 @@
         <!-- visible -->
         <div class="form-check checkVisible">
             <label class="form-check-label" for="visible">Visibile</label>
-            <input class="form-check-input" type="checkbox" id="visible" name="visible" value="1" {{ old('visible') ? 'checked' : '' }} required>
+            <input class="form-check-input" type="checkbox" id="visible" name="visible" value="1" {{ old('visible') ? 'checked' : '' }}>
             <span class="toogle"></span>
         </div>
         <!-- /visible -->
