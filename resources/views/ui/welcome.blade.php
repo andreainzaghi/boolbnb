@@ -36,7 +36,7 @@
         <?php $count = 0; ?>
         @foreach ($sponsored as $item)
         <?php if($count == 4) break; ?>
-        <a href="{{ route('ui.apartments.show', ['id' => $item->id ] ) }}">
+        <a href="{{ route('ui.apartments.show', ['slug' => $item->slug ] ) }}">
             <div class="ap_card">
                 <h4 class="card_title">{{$item['title']}}</h4>
                 <div class="card_image shadow p-3 mb-5 bg-white rounded">

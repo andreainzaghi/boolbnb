@@ -68,7 +68,7 @@
           </div>
           <div class="ui-msg">
                {{-- form invio messaggio lato guest  --}}
-              <form action="{{route('ui.apartments.message', [$apartment->id])}}" method="GET" class="myForm" enctype="multipart/form-data">
+              <form action="{{route('ui.apartments.message', [$apartment->slug])}}" method="GET" class="myForm" enctype="multipart/form-data">
                 @method('GET')
                 @csrf
                 

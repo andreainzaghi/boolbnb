@@ -4,6 +4,7 @@ namespace App\Http\Controllers\UI;
 
 use App\Http\Controllers\Controller;
 use App\Sponsor;
+use Illuminate\Support\Facades\Auth;
 use App\Service;
 use App\Apartment;
 use App\Message;
@@ -62,30 +63,42 @@ class BnbController extends Controller
 
     }
     
-    public function show($id){
+    public function show($slug){
+
+        $apartment = Apartment::where('slug', $slug)->first();
+
+        if($apartment->user_id == Auth::id()){
+            return redirect()
+            ->route('admin.apartments.show', $apartment);
+        }
 
         $clientIP = request()->ip();
    
-        $apartment = Apartment::where('id', $id)->first();
 
-        $newView['apartment_id'] = $id;
+        $newView['apartment_id'] = $apartment->id;
         $newView['ip'] = $clientIP;
-        $newView = View::create($newView);
+
+        $view = $apartment->views()->where('ip', $clientIP)->first();
+
+        //Controllo se l'ip è già presente, in caso contrario lo inserisco
+        if(!$view){
+            $newView = View::create($newView);
+        }
 
         return view('ui.show', compact('apartment'));
     }
 
 
 
-    public function sendMessage(Request $request, $id){
+    public function sendMessage(Request $request, $slug){
 
 
         $request->validate( $this->validation );
         $data = $request->all();
 
-        $apartment = Apartment::find(intval($id));
-
-        $data['apartment_id'] = intval($id);
+        //$apartment = Apartment::find(intval($id));
+        $apartment = Apartment::where('slug', $slug)->first();
+        $data['apartment_id'] = intval($apartment->id);
 
         Message::create( $data );
         
@@ -95,7 +108,7 @@ class BnbController extends Controller
         // Invio della maiil
         Mail::to($user->email)->send(new SendNewMail($apartment, $message, $data['email']));
         return redirect()
-            ->route('ui.apartments.show', $id)
+            ->route('ui.apartments.show', $slug)
             ->with('message', 'Il messaggio è stato inviato!');
     }
 }
