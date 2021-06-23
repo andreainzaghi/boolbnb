@@ -8,7 +8,6 @@ use App\Service;
 use App\Apartment;
 use App\Message;
 use App\View;
-use App\Message;
 use App\User;
 use App\Mail\SendNewMail;
 use Carbon\Carbon;
