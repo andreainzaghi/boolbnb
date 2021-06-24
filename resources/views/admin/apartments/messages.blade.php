@@ -38,7 +38,7 @@
 @endsection
 
 @section('MainContent')
-    <div id="app-messages" >
+    <div id="app-messages">
        
             <div class="list-group mt-5">
                 <div :class="{ 'active': id == currentUser}" class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <transition id="details" name="slide-fade">
-                <div v-show="currentChat" class="container-messages" v-for="(message, id) in messages" v-if="currentUser == id">
+                <div class="container-messages" v-for="(message, id) in messages" v-if="currentUser == id">
                     <p>@{{ message.email }}</p>
                     <p>@{{ message.date }}</p>
                     <p>@{{ message.content }}</p>
