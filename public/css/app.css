@@ -16729,7 +16729,6 @@ h2 {
   position: relative;
   margin: auto;
   height: 40vh;
-  width: 45vw;
   padding: 50px 0;
 }
 .box .chart-container canvas {
@@ -16790,13 +16789,21 @@ h2 {
     margin-top: 10px;
   }
 
-  .my-btn-primary {
+  .mt-0 {
+    width: 100%;
+  }
+
+  .admin-button .mt-0 .my-btn-primary {
     width: 100%;
     text-align: center;
     margin-top: 10px;
   }
 }
 @media screen and (max-width: 320px) {
+  .mt-0 {
+    width: 100%;
+  }
+
   .my-btn-secondary {
     width: 100%;
     text-align: center;
@@ -16955,6 +16962,36 @@ h2 {
   transform: scale(1.4);
 }
 
+@media screen and (max-width: 992px) {
+  .container h1 {
+    font-size: 35px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .container h1 {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .container h1 {
+    font-size: 20px;
+  }
+
+  .container .search-box input {
+    width: 300px;
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .container h1 {
+    font-size: 20px;
+  }
+
+  .container .search-box input {
+    width: 250px;
+    font-size: 11px;
+  }
+}
 .d-flex-colmn {
   display: flex;
   flex-direction: column;
