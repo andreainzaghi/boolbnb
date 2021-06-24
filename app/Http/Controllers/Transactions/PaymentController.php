@@ -65,7 +65,7 @@ class PaymentController extends Controller
         // Controllo se è visibile
         if($apartment->visible == 1){
             if($apartment->sponsors()->orderBy('expiration', 'desc')->first()){
-                if( $apartment->sponsors()->orderBy('expiration', 'desc')->first()->expiration < Carbon::now()){
+                if( $apartment->sponsors()->orderBy('expiration', 'desc')->first()->expiration > Carbon::now()){
                     abort('403', "Non puoi fare una nuova sponsorizzazione finchè non è finita quella in corso!");
                 }
             }
