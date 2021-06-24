@@ -85,7 +85,7 @@ class PaymentController extends Controller
         $request->session()->put('apartment_id', $apartment->id);
         
 
-        $date = Carbon::now()->addHour($sponsor->hours)->isoFormat('DD-MM-YYYY, hh:mm');
+        $date = Carbon::now(+2)->addHour($sponsor->hours)->format('d-m-Y, H:i:s');
         $user = User::where('id', Auth::id())->first();
 
 
