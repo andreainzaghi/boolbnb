@@ -160,7 +160,7 @@
     position: relative;
     margin: auto;
     height: 40vh;
-    width: 45vw;
+    // width: 45vw;
     padding: 50px 0;
 
     canvas {
@@ -234,13 +234,21 @@
     text-align: center;
     margin-top: 10px;
   }
-  .my-btn-primary {
+
+  .mt-0 {
+    width: 100%;
+  }
+  
+  .admin-button .mt-0 .my-btn-primary {
     width: 100%;
     text-align: center;
     margin-top: 10px
   }
 }
 @media screen and (max-width: 320px) {
+  .mt-0 {
+    width: 100%;
+  }
 
   .my-btn-secondary {
     width: 100%;

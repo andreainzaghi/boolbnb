@@ -111,4 +111,5 @@
 <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
 <script src="{{ asset('js/search.js') }}" defer></script>
 
+
 @endsection
