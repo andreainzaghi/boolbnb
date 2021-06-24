@@ -119,7 +119,7 @@ class ApartmentController extends Controller
     public function show( Apartment $apartment )
     {
         $sponsors = Sponsor::all();
-        $currentDate = Carbon::now();
+        $currentDate = Carbon::now(+2)->format('Y-m-d - H:i:s');
 
         if($apartment->user_id != Auth::id()){
             abort('403');
@@ -130,7 +130,7 @@ class ApartmentController extends Controller
         ->first(['expiration']);
         
         if (isset($raw_sponsor_expiration['expiration'])) {
-            $sponsor_expiration = Carbon::parse($raw_sponsor_expiration['expiration'])->format('d-m-Y - h:m');
+            $sponsor_expiration = Carbon::parse($raw_sponsor_expiration['expiration'])->format('d-m-Y - H:i');
             $apartment->sponsor_expiration = $sponsor_expiration;
         }
         else{

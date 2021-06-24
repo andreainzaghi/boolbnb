@@ -16816,13 +16816,10 @@ h2 {
   box-sizing: border-box;
 }
 
-.titlewrapper {
-  margin-bottom: 50px;
-}
-
 #app-messages {
   display: flex;
   width: 100%;
+  height: calc(100% - 64px);
 }
 @media screen and (max-width: 1000px) {
   #app-messages {
@@ -16839,7 +16836,7 @@ h2 {
 #app-messages .container-messages {
   border: 1px solid #E94A47;
   width: 50%;
-  height: 500px;
+  height: 100%;
   overflow-y: hidden;
   overflow: auto;
   padding: 20px;
