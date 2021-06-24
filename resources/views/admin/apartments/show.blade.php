@@ -117,6 +117,7 @@
     {{-- tom tom script  --}}
     <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
     <script src="{{ asset('js/show.js') }}" defer></script>
+    <script src="{{ asset('js/show_stats.js') }}" defer></script>
 
     {{-- chart js script --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>

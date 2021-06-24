@@ -2,6 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/js/search.js": "/js/search.js",
     "/js/show.js": "/js/show.js",
+    "/js/show_stats.js": "/js/show_stats.js",
     "/js/ur-create-edit.js": "/js/ur-create-edit.js",
     "/js/welcome.js": "/js/welcome.js",
     "/css/search.css": "/css/search.css",

@@ -284,3 +284,28 @@ h2 {
         font-size: 16px;
     }
 }
+
+
+@media screen and (max-width: 992px) {
+    .container h1 {
+        font-size: 35px;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    .container h1 {
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .container h1 {
+        font-size: 25px;
+    }
+    .search-box input {
+        width: 300px;
+        font-size: 13px;
+    }
+}
