@@ -68,6 +68,7 @@ class ApartmentController extends Controller
         } else {
             foreach( $apartments as $apartment ) {
                 $apartment->route = route('ui.apartments.show', ['slug' => $apartment->slug]);
+                $apartment->image = asset( 'storage/'.$apartment->image );
                 $apartment->services;
             }
         }
