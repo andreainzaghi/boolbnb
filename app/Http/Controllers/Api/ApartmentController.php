@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Hamcrest\Type\IsNumeric;
 use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
@@ -94,11 +95,15 @@ class ApartmentController extends Controller
         return response()->json($apartments);
     }
 
-    // Api per restituire lat e long alla ui.show
+    // Api per restituire lat e long alla ui e ur show
 
-    public function apartment($slug) {
+    public function apartment($id) {
         
-        $apartment = Apartment::where('slug', $slug)->first();
+        if ( is_numeric($id) ) {
+            $apartment = Apartment::find($id);
+        } else {
+            $apartment = Apartment::where('slug', $id)->first();
+        }
 
         return response()->json($apartment);
     }
