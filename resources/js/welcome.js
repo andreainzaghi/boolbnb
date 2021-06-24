@@ -18,7 +18,8 @@ var app = new Vue({
         resultQuery: '',
         results: [],
         resultSelected: -1,
-        focus: false,
+        focusSearch: false,
+        mouseOverRes: false,
         // Axios
         searchURL: window.location.href+'search?city=',
         apiKey: "GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn",
@@ -68,15 +69,17 @@ var app = new Vue({
                 this.results = [];
             }
         },
-        selectUp() {
+        selectUp(e) {
             if ( this.resultSelected > 0 ) {
                 this.resultSelected -= 1;
+                e.preventDefault();
                 this.addToQuery();
             }
         },
-        selectDown() {
+        selectDown(e) {
             if ( this.resultSelected < 4 ) {
                 this.resultSelected += 1;
+                e.preventDefault();
                 this.addToQuery();
             }
         },

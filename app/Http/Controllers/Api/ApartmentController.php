@@ -66,7 +66,7 @@ class ApartmentController extends Controller
             }
         } else {
             foreach( $apartments as $apartment ) {
-                $apartment->route = route('ui.apartments.show', ['id' => $apartment->id]);
+                $apartment->route = route('ui.apartments.show', ['slug' => $apartment->slug]);
                 $apartment->services;
             }
         }
@@ -94,10 +94,16 @@ class ApartmentController extends Controller
         return response()->json($apartments);
     }
 
-    public function apartment(Apartment $apartment) {
+    // Api per restituire lat e long alla ui.show
+
+    public function apartment($slug) {
+        
+        $apartment = Apartment::where('slug', $slug)->first();
 
         return response()->json($apartment);
     }
+
+    // Api per le visite tot.
 
     public function apartmentViews(Apartment $apartment) {
         
@@ -114,6 +120,8 @@ class ApartmentController extends Controller
         return response($monthlyViews);
     }
 
+    // Api per i messaggi tot.
+
     public function apartmentMessages(Apartment $apartment) {
         
         $currentYear = Carbon::now()->format('Y');
@@ -128,6 +136,8 @@ class ApartmentController extends Controller
 
         return response($monthlyMessages);
     }
+
+    // Api che restituisce tutti i messagi dell' appartamento
 
     public function messagesJson(Apartment $apartment) {
 

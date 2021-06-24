@@ -121,6 +121,8 @@ var app = new Vue({
     getPosition: function getPosition() {
       var _this2 = this;
 
+      this.apartments = [];
+      this.loaded = false;
       this.changeTitle();
       axios.get('https://api.tomtom.com/search/2/geocode/' + this.city + '.json', {
         params: {
@@ -134,6 +136,9 @@ var app = new Vue({
           _this2["long"] = geoJson.data.results[0].position.lon;
 
           _this2.search();
+        } else {
+          _this2.loaded = true;
+          map.remove();
         }
       });
     },

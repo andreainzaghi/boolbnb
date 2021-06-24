@@ -2124,8 +2124,6 @@ function generateStats() {
   });
 }
 
-console.log(views);
-
 function generateMap() {
   // Ricavo i dati
   var coordinates = [apartment["long"], apartment.lat];

@@ -110,10 +110,5 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
 <script src="{{ asset('js/search.js') }}" defer></script>
-<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/plugins/SearchBox/3.1.11/SearchBox-web.js"></script>
-
-
-<script type='text/javascript' src='../assets/js/search/side-panel.js'></script>
-
 
 @endsection

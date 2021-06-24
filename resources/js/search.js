@@ -111,6 +111,8 @@ var app = new Vue({
         },
         // Chiamata Api per localizzare l' indirizzo
         getPosition() {
+            this.apartments = [];
+            this.loaded = false;
             this.changeTitle();
             axios.get( 'https://api.tomtom.com/search/2/geocode/'+this.city+'.json', {
                 params: {
@@ -124,6 +126,9 @@ var app = new Vue({
                     this.lat = geoJson.data.results[0].position.lat;
                     this.long = geoJson.data.results[0].position.lon;
                     this.search();
+                } else {
+                    this.loaded = true;
+                    map.remove();
                 }
             });
         },

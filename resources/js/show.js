@@ -20,8 +20,6 @@ function generateStats() {
     });
 }
 
-console.log(views);
-
 function generateMap() {
     // Ricavo i dati
     let coordinates = [ apartment.long , apartment.lat ];
