@@ -41,7 +41,7 @@
     <div id="app-messages" >
        
             <div class="list-group mt-5">
-                <div class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
+                <div :class="{ 'active': id == currentUser}" class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
                         <p>@{{ message.email }}</p>
                         <p>@{{ message.date }}</p>
                 </div>
@@ -86,7 +86,7 @@ let app = new Vue({
                 this.currentChat = this.messages[id];
                 this.lastId = id;
             }
-            this.currentUser = id;
+            this.currentUser = this.lastId;
         
         }
     }

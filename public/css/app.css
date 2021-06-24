@@ -16833,7 +16833,7 @@ h2 {
 #app-messages .list-group {
   overflow-y: auto;
   max-height: 400px;
-  padding: 0;
+  padding-left: 20px;
 }
 #app-messages .list-group .message {
   border: 1px solid #E94A47;
@@ -16858,6 +16858,9 @@ h2 {
   -moz-transform: translateX(0px);
   -ms-transform: translateX(0px);
   -o-transform: translateX(0px);
+}
+#app-messages .active {
+  background-color: #E94A47;
 }
 
 .jumbotron {
