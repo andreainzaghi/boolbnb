@@ -38,24 +38,21 @@
 @endsection
 
 @section('MainContent')
-    <div class="" id="app-messages" >
+    <div id="app-messages">
        
-            <div class="list-group">
-                <div class="border list-group-item  list-group-item-action" v-for="(message, id) in messages" v-on:click="personalChat(id)">
-                    <span class="list-item__top">
-                        <span>@{{ message.email }}</span>
-                        <span>@{{ message.date }}</span>
-                    </span>
-                    <span class="list-item__bottom mt-2">
-                        <span>@{{ message.content }}</span>
-                    </span>
+            <div class="list-group mt-5">
+                <div :class="{ 'active': id == currentUser}" class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
+                        <p>@{{ message.email }}</p>
+                        <p>@{{ message.date }}</p>
                 </div>
             </div>
-            <div class="container-messages" v-for="(message, id) in messages" v-if="currentUser == id">
-                <span>@{{ message.email }}</span>
-                <span>@{{ message.date }}</span>
-                <span>@{{ message.content }}</span>
-            </div>
+            <transition id="details" name="slide-fade">
+                <div class="container-messages" v-for="(message, id) in messages" v-if="currentUser == id">
+                    <p>@{{ message.email }}</p>
+                    <p>@{{ message.date }}</p>
+                    <p>@{{ message.content }}</p>
+                </div>
+            </transition>    
       
     </div>
 @endsection
@@ -68,7 +65,9 @@ let app = new Vue({
     el: '#app-messages',
     data: {            
         messages: [],
-        currentUser: null
+        currentUser: null,
+        lastId: null,
+        currentChat: null
     },
     mounted() {
         axios.get('/api/user/'+{{ $apartment->id }}+'/messages/json')
@@ -78,7 +77,17 @@ let app = new Vue({
     },
     methods: {
         personalChat(id) {
-            this.currentUser = id;
+      
+            if( id == this.lastId){
+                this.currentChat = null;
+                this.lastId = null;
+            }
+            else{
+                this.currentChat = this.messages[id];
+                this.lastId = id;
+            }
+            this.currentUser = this.lastId;
+        
         }
     }
 })
