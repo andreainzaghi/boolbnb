@@ -27,7 +27,7 @@
               </div>
             @endforeach
 
-          <button type="submit" class="my-btn my-btn-primary submit">Sponsorizza</button>
+          <button type="submit" class="my-btn my-btn-primary submit sponsorizza">Sponsorizza</button>
         </form>
         
       </div> 
@@ -43,6 +43,11 @@
         </div>
 
         <div class="box-left d-flex-colmn">
+
+          <div class="title">
+            <h3>{{ $apartment->title }} @if($apartment->visible) <span><i class="fas fa-eye"></i></span> @else <i class="fas fa-eye-slash"></i>@endif</h3>
+            <p id="address">{{ $apartment->address }}, {{ $apartment->city }}</p>
+          </div>
 
           <div class="admin-img-box">
             <a href="#" class="w-100"><img class="immagine" src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento"></a>
@@ -92,7 +97,6 @@
       @method('DELETE')                             
       @csrf                             
       <button type="submit" class="my-btn my-btn-primary"><span class=" d-md-inline-block">Elimina struttura</span></a>  
-      {{-- <button type="submit" class="btn btn-danger actions"><i class="fas fa-trash-alt"></i></button> --}}                         
       </form>
   </div> 
   {{-- bottoni lato admin --}}   

@@ -126,14 +126,14 @@
       }      
     }
      
+    .buttons-guest {
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
   }
-
+  
 }
 
-.buttons-admin {
-  justify-content: flex-end;
-  margin-top: 20px;
-}
 
 
  /* scroll */
@@ -202,16 +202,16 @@
 
 @media screen and (max-width: 425px) {
 
-  .admin-sponsor-box .my-btn-primary {
+  .admin-appartamento .box-right .ui-msg form .buttons-guest button {
     width: 100%;
     text-align: center;
     margin-top: 10px;
   }
-  .my-btn-primary {
-    width: 100%;
-    text-align: center;
-    margin-top: 10px
-  }
+  // .my-btn-primary {
+  //   width: 100%;
+  //   text-align: center;
+  //   margin-top: 10px
+  // }
 }
 @media screen and (max-width: 320px) {
 
