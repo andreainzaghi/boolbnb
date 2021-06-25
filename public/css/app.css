@@ -16635,6 +16635,10 @@ h2 {
   font-size: 12px;
   margin-bottom: 10px;
 }
+.admin-appartamento .box-left .title .fa-eye-slash, .admin-appartamento .box-left .title .fa-eye {
+  margin-left: 5px;
+  font-size: 15px;
+}
 .admin-appartamento .box-left .admin-img-box {
   margin-right: 20px;
   border-top-left-radius: 20px 20px;
