@@ -43,12 +43,24 @@
     flex-shrink: 0;
     h3 {
       width: 65%;
+
+      span, .fas.fa-eye-slash.no-visibile   {
+        font-size: 15px;
+        color: $primaryColor;
+        margin-left: 5px;
+      }
+      // {
+      //   font-size: 15px;
+      //   color: $primaryColor;
+      // }
     }
+
     p {
       color: $secondaryColor;
       font-size: 12px;
       margin-bottom: 10px;
     }
+    
   }
 
   .box-left {

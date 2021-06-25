@@ -16634,6 +16634,11 @@ h2 {
 .admin-appartamento .title h3 {
   width: 65%;
 }
+.admin-appartamento .title h3 span, .admin-appartamento .title h3 .fas.fa-eye-slash.no-visibile {
+  font-size: 15px;
+  color: #E94A47;
+  margin-left: 5px;
+}
 .admin-appartamento .title p {
   color: #23286B;
   font-size: 12px;
