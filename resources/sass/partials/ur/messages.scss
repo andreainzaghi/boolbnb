@@ -10,20 +10,7 @@
     height: calc(100% - 64px);
 
    
-    @media screen and (max-width: 1000px) {
-       & {
-          flex-direction: column;
-        }
-       
-        .list-group, .message, .container-messages{
-            width: 100%;
-        }
-        .container-messages{
-            margin-left: 0;
-            margin-top: 50px;
-        }
-     
-      }
+    
     .container-messages{
         border:1px solid $primaryColor;
         width:50%;
@@ -78,3 +65,21 @@
     
 }
 
+@media screen and (max-width: 1000px) {
+
+    #app-messages {
+       flex-direction: column;
+
+       .list-group, .message, .container-messages{
+           width: 100%;
+       }
+       .container-messages{
+           margin-left: 0;
+           margin-top: 50px;
+       }
+
+
+     }
+    
+  
+   }

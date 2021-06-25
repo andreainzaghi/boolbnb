@@ -80,8 +80,8 @@
         <div class="inlineInput">
             <!-- address -->
             <div class="form-group input__address">
-                <label for="address">Indirizzo</label>
-                <input type="address" class="form-control" id="address" name="address" placeholder="Inserisci indirizzo" v-on:input=" city !== '' ? geolocate() : ''" v-model="address" value="{{ old('address') }}" required>
+                <label for="address">Indirizzo (via/piazza, n° civico/interno, CAP)</label>
+                <input type="address" class="form-control" id="address" name="address" placeholder="Es: Via Canova, 22/1, 50142" v-on:input=" city !== '' ? geolocate() : ''" v-model="address" value="{{ old('address') }}" required>
             </div>
             <!-- / address -->
 
@@ -96,14 +96,14 @@
         <!-- lat -->
         <div class="form-group">
             <label for="lat">Latitudine</label>
-            <input type="lat" class="form-control disabled" id="lat" name="lat" placeholder="Generazione automatica" v-model="lat" value="{{ old('lat') }}" required>
+            <input type="lat" class="form-control" readonly id="lat" name="lat" placeholder="Generazione automatica" v-model="lat" value="{{ old('lat') }}" required>
         </div>
         <!-- / lat -->
 
         <!-- long -->
         <div class="form-group">
             <label for="long">Longitudine</label>
-            <input type="long" class="form-control" id="long" name="long" placeholder="Generazione automatica" v-model="long" value="{{ old('long') }}" required>
+            <input type="long" class="form-control" id="long" readonly name="long" placeholder="Generazione automatica" v-model="long" value="{{ old('long') }}" required>
         </div>
         <!-- / long -->
 

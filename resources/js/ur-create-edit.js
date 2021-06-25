@@ -9,7 +9,15 @@ var app = new Vue({
     },
     methods: {
         geolocate() {
-            axios.get( 'https://api.tomtom.com/search/2/geocode/'+this.address+' '+this.city+'.json', {
+            let query;
+            if ( this.address.indexOf('/') > -1 ) {
+                let intern = this.address.split('/').pop();
+                if ( intern.indexOf(',') > -1 ) {
+                    intern = intern.split(',').shift();
+                }
+                query = this.address.replace('/' + intern, '') + ' ' + this.city;
+            }
+            axios.get( 'https://api.tomtom.com/search/2/geocode/'+query+'.json', {
                 params: {
                     key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
                     language: 'it-IT',
@@ -18,9 +26,12 @@ var app = new Vue({
             })
             .then( (geoJson) => {
                 if ( typeof geoJson.data.results[0] !== 'undefined' ) {
-                    console.log(typeof geoJson.data.results[0]);
                     this.fillForm(geoJson.data.results[0]);
                 }
+            })
+            .catch( () => {
+                this.lat = 'Non è stato possibile individuare la posizione';
+                this.long = 'Non è stato possibile individuare la posizione';
             });
         },
 

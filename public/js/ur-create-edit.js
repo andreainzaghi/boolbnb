@@ -3,8 +3,6 @@ var __webpack_exports__ = {};
 /*!****************************************!*\
   !*** ./resources/js/ur-create-edit.js ***!
   \****************************************/
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 var app = new Vue({
   el: '#vue-app',
   data: {
@@ -18,7 +16,19 @@ var app = new Vue({
     geolocate: function geolocate() {
       var _this = this;
 
-      axios.get('https://api.tomtom.com/search/2/geocode/' + this.address + ' ' + this.city + '.json', {
+      var query;
+
+      if (this.address.indexOf('/') > -1) {
+        var intern = this.address.split('/').pop();
+
+        if (intern.indexOf(',') > -1) {
+          intern = intern.split(',').shift();
+        }
+
+        query = this.address.replace('/' + intern, '') + ' ' + this.city;
+      }
+
+      axios.get('https://api.tomtom.com/search/2/geocode/' + query + '.json', {
         params: {
           key: 'GxjgBi0sgi7GaGSXnTt0T5AWco9tXGdn',
           language: 'it-IT',
@@ -26,10 +36,11 @@ var app = new Vue({
         }
       }).then(function (geoJson) {
         if (typeof geoJson.data.results[0] !== 'undefined') {
-          console.log(_typeof(geoJson.data.results[0]));
-
           _this.fillForm(geoJson.data.results[0]);
         }
+      })["catch"](function () {
+        _this.lat = 'Non è stato possibile individuare la posizione';
+        _this["long"] = 'Non è stato possibile individuare la posizione';
       });
     },
     fillForm: function fillForm(json) {

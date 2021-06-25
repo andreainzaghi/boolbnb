@@ -12,6 +12,7 @@
 .sp-btw {
   justify-content: space-between;
 }
+
 // classi helpers
 
 
@@ -37,6 +38,19 @@
 .admin-appartamento {
   width: 100%;
 
+  .title {
+    width: 100% !important;
+    flex-shrink: 0;
+    h3 {
+      width: 65%;
+    }
+    p {
+      color: $secondaryColor;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
   .box-left {
     width: 65%;
 
@@ -45,6 +59,10 @@
         color: $secondaryColor;
         font-size: 12px;
         margin-bottom: 10px;
+      }
+      .fa-eye-slash,.fa-eye{
+        margin-left: 5px;
+        font-size: 15px;
       }
     }
 
@@ -117,11 +135,18 @@
 
   .admin-box-right {
     width: 35%;
-    margin-top: 28px;
+    margin-top: -39px;
   
     .admin-title-page { 
       width:100%;
       margin-bottom: 15px;
+
+      .title-map {
+          h4 {
+            padding-bottom: 2px;
+            padding-top: 13px;
+          }
+      }
 
       .mappa {
         height:250px;
@@ -213,6 +238,7 @@
   }
   .admin-appartamento .admin-box-right {
     width: 100%;
+    margin-top: 0;
   }
   .admin-appartamento .box-right .admin-title-page .mappa {
     border-top-left-radius: 20px;
@@ -229,7 +255,7 @@
 
 @media screen and (max-width: 425px) {
 
-  .admin-sponsor-box .my-btn-primary {
+  .admin-sponsor-box form button .sponsorizza {
     width: 100%;
     text-align: center;
     margin-top: 10px;
