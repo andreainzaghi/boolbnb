@@ -27,7 +27,7 @@
               </div>
             @endforeach
 
-          <button type="submit" class="my-btn my-btn-primary submit">Sponsorizza</button>
+          <button type="submit" class="my-btn my-btn-primary submit sponsorizza">Sponsorizza</button>
         </form>
         
       </div> 

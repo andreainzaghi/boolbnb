@@ -12,6 +12,7 @@
 .sp-btw {
   justify-content: space-between;
 }
+
 // classi helpers
 
 
@@ -229,7 +230,7 @@
 
 @media screen and (max-width: 425px) {
 
-  .admin-sponsor-box .my-btn-primary {
+  .admin-sponsor-box form button .sponsorizza {
     width: 100%;
     text-align: center;
     margin-top: 10px;

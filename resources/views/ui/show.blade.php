@@ -87,7 +87,7 @@
                 {{-- <div>
                   <input type="text" value="{{$apartment->id}}">
                 </div> --}}
-                <div class="buttons-admin d-flex flex-wrap sp-btw"> 
+                <div class="buttons-guest d-flex flex-wrap sp-btw"> 
                   <button type="submit" class="my-btn my-btn-primary">Invia messagio</button>  
                 </div> 
               </form>
