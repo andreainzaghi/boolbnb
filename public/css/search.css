@@ -16405,6 +16405,7 @@ h2 {
 .myForm {
   width: 100%;
   margin-top: 0;
+  margin-bottom: 20px;
 }
 .myForm h3 {
   margin-top: 30px;
@@ -16416,7 +16417,7 @@ h2 {
 }
 .myForm input,
 .myForm textarea {
-  border: 1px solid #6E7078;
+  border: 1px solid #E94A47;
   padding: 12px 20px;
 }
 .myForm input::-webkit-input-placeholder,
@@ -16480,7 +16481,7 @@ h2 {
 .myForm .upload-image::before {
   display: inline-block;
   padding: 0 20px;
-  background-color: #23286B;
+  background-color: #E94A47;
   height: 37px;
   line-height: 37px;
   margin-right: 20px;
@@ -16530,7 +16531,7 @@ h2 {
   left: 0;
   height: 20px;
   width: 20px;
-  border: 2px solid #23286B;
+  border: 2px solid #E94A47;
   border-radius: 5px;
 }
 .services .checkmark:after {
@@ -16554,10 +16555,10 @@ h2 {
 .checkVisible {
   margin: 20px 0;
   width: 50px;
-  height: 28px;
   position: relative;
-  border: 2px solid #23286B;
+  border: 2px solid #E94A47;
   border-radius: 30px;
+  height: 29px;
 }
 
 .checkVisible input {
@@ -16567,17 +16568,17 @@ h2 {
   cursor: pointer;
   opacity: 0;
   z-index: 999;
-  top: -5px;
+  top: -4px;
 }
 
 .checkVisible .toogle {
   position: absolute;
   z-index: 998;
-  width: 25px;
-  height: 25px;
-  background: #23286B;
-  top: 0px;
-  left: 0;
+  width: 23px;
+  height: 23px;
+  background: #E94A47;
+  top: 1px;
+  left: 1px;
   transition: all 0.2s ease;
   text-align: center;
   border-radius: 100%;
@@ -16590,7 +16591,7 @@ h2 {
 
 .checkVisible label {
   margin-left: 40px;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .d-flex-colmn {
