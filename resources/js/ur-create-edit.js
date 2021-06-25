@@ -18,7 +18,6 @@ var app = new Vue({
             })
             .then( (geoJson) => {
                 if ( typeof geoJson.data.results[0] !== 'undefined' ) {
-                    console.log(typeof geoJson.data.results[0]);
                     this.fillForm(geoJson.data.results[0]);
                 }
             });

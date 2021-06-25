@@ -40,7 +40,7 @@
         <div class="box-left d-flex-colmn">
 
           <div class="title">
-            <h3>{{ $apartment->title }}</h3>
+            <h3>{{ $apartment->title }} @if($apartment->visible) <span><i class="fas fa-eye"></i></span> @else <i class="fas fa-eye-slash"></i>@endif</h3>
             <p id="address">{{ $apartment->address }}, {{ $apartment->city }}</p>
           </div>
 
@@ -92,7 +92,6 @@
       @method('DELETE')                             
       @csrf                             
       <button type="submit" class="my-btn my-btn-primary"><span class=" d-md-inline-block">Elimina struttura</span></a>  
-      {{-- <button type="submit" class="btn btn-danger actions"><i class="fas fa-trash-alt"></i></button> --}}                         
       </form>
   </div> 
   {{-- bottoni lato admin --}}   
