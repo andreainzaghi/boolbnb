@@ -96,14 +96,14 @@
         <!-- lat -->
         <div class="form-group">
             <label for="lat">Latitudine</label>
-            <input type="lat" class="form-control disabled" id="lat" name="lat" placeholder="Generazione automatica" v-model="lat" value="{{ old('lat') }}" required>
+            <input type="lat" class="form-control" disabled id="lat" name="lat" placeholder="Generazione automatica" v-model="lat" value="{{ old('lat') }}" required>
         </div>
         <!-- / lat -->
 
         <!-- long -->
         <div class="form-group">
             <label for="long">Longitudine</label>
-            <input type="long" class="form-control" id="long" name="long" placeholder="Generazione automatica" v-model="long" value="{{ old('long') }}" required>
+            <input type="long" class="form-control" id="long" disabled name="long" placeholder="Generazione automatica" v-model="long" value="{{ old('long') }}" required>
         </div>
         <!-- / long -->
 
