@@ -80,8 +80,8 @@
         <div class="inlineInput">
             <!-- address -->
             <div class="form-group input__address">
-                <label for="address">Indirizzo</label>
-                <input type="address" class="form-control" id="address" name="address" placeholder="Inserisci indirizzo" v-on:input=" city !== '' ? geolocate() : ''" v-model="address" value="{{ old('address') }}" required>
+                <label for="address">Indirizzo (via/piazza, n° civico/interno, CAP)</label>
+                <input type="address" class="form-control" id="address" name="address" placeholder="Es: Via Canova, 22/1, 50142" v-on:input=" city !== '' ? geolocate() : ''" v-model="address" value="{{ old('address') }}" required>
             </div>
             <!-- / address -->
 

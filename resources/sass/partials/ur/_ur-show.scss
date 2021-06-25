@@ -37,16 +37,22 @@
 .admin-appartamento {
   width: 100%;
 
+  .title {
+    width: 100% !important;
+    flex-shrink: 0;
+    h3 {
+      width: 65%;
+    }
+    p {
+      color: $secondaryColor;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
+
   .box-left {
     width: 65%;
 
-    .title {
-      p {
-        color: $secondaryColor;
-        font-size: 12px;
-        margin-bottom: 10px;
-      }
-    }
 
     .admin-img-box {
       margin-right: 20px;
@@ -117,11 +123,18 @@
 
   .admin-box-right {
     width: 35%;
-    margin-top: 28px;
+    margin-top: -39px;
   
     .admin-title-page { 
       width:100%;
       margin-bottom: 15px;
+
+      .title-map {
+          h4 {
+            padding-bottom: 2px;
+            padding-top: 13px;
+          }
+      }
 
       .mappa {
         height:250px;
@@ -213,6 +226,7 @@
   }
   .admin-appartamento .admin-box-right {
     width: 100%;
+    margin-top: 0;
   }
   .admin-appartamento .box-right .admin-title-page .mappa {
     border-top-left-radius: 20px;

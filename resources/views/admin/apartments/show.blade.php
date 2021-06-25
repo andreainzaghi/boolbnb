@@ -33,16 +33,16 @@
       </div> 
     @endif
    
-  <div class="admin-appartamento d-flex"> 
+  <div class="admin-appartamento d-flex flex-wrap"> 
 
         <!-- box-left -->
 
-        <div class="box-left d-flex-colmn">
+        <div class="title">
+          <h3>{{ $apartment->title }}</h3>
+          <p id="address">{{ $apartment->address }}, {{ $apartment->city }}</p>
+        </div>
 
-          <div class="title">
-            <h3>{{ $apartment->title }}</h3>
-            <p id="address">{{ $apartment->address }}, {{ $apartment->city }}</p>
-          </div>
+        <div class="box-left d-flex-colmn">
 
           <div class="admin-img-box">
             <a href="#" class="w-100"><img class="immagine" src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento"></a>
