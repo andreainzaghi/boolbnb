@@ -5,7 +5,9 @@ var __webpack_exports__ = {};
   \********************************/
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var cityTitle; // Array di tasti ammessi
+var cityTitle;
+var primaryColor = '#E94A47'; // X cambiare colore svg fill='%23E94A47' %s3 sta per #
+// Array di tasti ammessi
 
 var letters = [8, 46]; // Aggiungo le lettere
 
@@ -43,6 +45,7 @@ var app = new Vue({
     showURL: '',
     loaded: false,
     cityFocus: false,
+    mouseOverRes: false,
     // Filtra
     resultCity: '',
     results: [],
@@ -93,15 +96,17 @@ var app = new Vue({
         this.results = [];
       }
     },
-    selectUp: function selectUp() {
+    selectUp: function selectUp(e) {
       if (this.resultSelected > 0) {
         this.resultSelected -= 1;
+        e.preventDefault();
         this.addToCity();
       }
     },
-    selectDown: function selectDown() {
+    selectDown: function selectDown(e) {
       if (this.resultSelected < 4) {
         this.resultSelected += 1;
+        e.preventDefault();
         this.addToCity();
       }
     },
@@ -197,18 +202,16 @@ function closeAllPopups() {
 } // Calcola i confini in base ai marker
 
 
-function getMarkersBoundsForCity(city) {
+function getMarkersBounds() {
   var bounds = new tt.LngLatBounds();
-  markersCity.forEach(function (markerCity) {
-    if (markerCity.city === city) {
-      bounds.extend(markerCity.marker.getLngLat());
-    }
+  markers.forEach(function (marker) {
+    bounds.extend(marker.getLngLat());
   });
   return bounds;
 } // Variabili globali
 
 
-var markersCity = [];
+var markers = [];
 var apartments,
     map,
     center,
@@ -235,55 +238,34 @@ function generateMap() {
 
 
 function createMarkers() {
-  // Converte gli appartamenti in format geoJson
-  apartments = {
-    "type": "FeatureCollection",
-    "features": []
-  };
+  markers = []; // Converte gli appartamenti in format geoJson
 
-  app._data.apartments.forEach(function (apartment) {
-    apartments.features.push({
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        //Lng e Lat
-        "coordinates": [apartment["long"], apartment.lat]
-      },
-      "properties": {
-        "address": apartment.address,
-        "city": apartment.city,
-        "title": apartment.title
-      }
-    });
-  }); // Ciclo gli appartamenti per creare marker e voce della lista
+  apartments = app._data.apartments; // Ciclo gli appartamenti per creare marker e voce della lista
 
-
-  apartments.features.forEach(function (apartment, index) {
+  apartments.forEach(function (apartment, index) {
     // Salvo i dati
-    var city = apartment.properties.city;
-    var address = apartment.properties.address;
-    var location = apartment.geometry.coordinates;
-    var title = apartment.properties.title; // Creazione del marker
+    var city = apartment.city;
+    var address = apartment.address;
+    var location = [apartment["long"], apartment.lat];
+    var title = apartment.title; // Creazione del marker
 
     var marker = new tt.Marker({
-      color: '#2271b3',
-      id: apartment.properties.title
+      color: primaryColor,
+      id: title
     }).setLngLat(location).setPopup(new tt.Popup({
       offset: 35
     }).setHTML('<span class="popup_title">' + title + '</span><span>' + address + '</span>')).addTo(map);
-    markersCity[index] = {
-      marker: marker,
-      city: city
-    };
+    markers[index] = marker;
 
     marker._element.addEventListener('click', function () {
-      app._data.popupSelected = apartment.properties.title;
+      app._data.popupSelected = title;
       selectedScroll();
     });
   });
-  map.fitBounds(getMarkersBoundsForCity(app._data.city), {
+  map.fitBounds(getMarkersBounds(), {
     padding: 50,
-    maxZoom: 12
+    maxZoom: 12,
+    linear: true
   });
 }
 /******/ })()

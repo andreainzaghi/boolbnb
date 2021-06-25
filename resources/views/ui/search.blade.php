@@ -27,9 +27,9 @@
             <div v-bind:class="{ 'active' : showAdvSearch }" class="advanced-search">
                 <div class="search">
                     <label for="adv-search-city">Città</label>
-                    <input class="form-control" v-on:keyup.letters="autocomplete()" v-on:keydown.enter="select()" v-on:keydown.up="selectUp()" v-on:keydown.down="selectDown()" v-on:focus="cityFocus = true" v-on:blur="cityFocus = false"  autocomplete="off" class="search" type="text" name="city" v-model="city" id="adv-search-city">
-                    <ul class="results-box" :class=" results.length === 0 || cityFocus === false ? 'd-none' : 'd-block'">
-                        <li v-on:click="addToCity($event); results = [];" class="result" :class=" resultSelected == i? 'selected' : '' " v-for="(result, i) in results">@{{ result.address.freeformAddress+', '+result.address.countrySubdivision }}</li>
+                    <input class="form-control" v-on:keyup.letters="autocomplete()" v-on:keydown.enter="select()" v-on:keydown.up="selectUp($event)" v-on:keydown.down="selectDown($event)" v-on:focus="cityFocus = true" v-on:blur="cityFocus = false"  autocomplete="off" class="search" type="text" name="city" v-model="city" id="adv-search-city">
+                    <ul class="results-box" :class=" results.length === 0 || cityFocus === false && mouseOverRes === false ? 'd-none' : 'd-block'" v-on:mouseover="mouseOverRes = true" v-on:mouseleave="mouseOverRes = false">
+                        <li v-on:click="addToCity($event); results = []; mouseOverRes = false;" class="result" :class=" resultSelected == i? 'selected' : '' " v-for="(result, i) in results">@{{ result.address.freeformAddress+', '+result.address.countrySubdivision }}</li>
                     </ul>
                 </div>
                 <div class="filter__services-num mt-1">
