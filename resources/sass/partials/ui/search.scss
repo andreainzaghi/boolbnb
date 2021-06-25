@@ -110,6 +110,7 @@ h2 {
                 width: 100%;
                 position: relative;
                 z-index: 20;
+                border-color: #e94a47;   
             }
             .results-box {
                 list-style: none;
@@ -172,6 +173,7 @@ h2 {
                 width: 100%;
                 &.form-control {
                     height: calc(1.2em + 0.75rem + 2px);
+                    border-color: $primaryColor;
                 }
             }
         }

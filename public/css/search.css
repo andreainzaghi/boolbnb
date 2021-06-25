@@ -17335,6 +17335,7 @@ h2 span {
   width: 100%;
   position: relative;
   z-index: 20;
+  border-color: #e94a47;
 }
 .control-panel .advanced-search .search .results-box {
   list-style: none;
@@ -17392,6 +17393,7 @@ h2 span {
 }
 .control-panel .advanced-search .filter__services-num input.form-control {
   height: calc(1.2em + 0.75rem + 2px);
+  border-color: #E94A47;
 }
 .control-panel .advanced-search .search-btn i {
   margin-right: 0;
