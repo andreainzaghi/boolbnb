@@ -4287,6 +4287,14 @@ h2 span {
 .control-panel .adv-search-btn-wrp {
   width: 100%;
 }
+.control-panel .adv-search-btn-wrp .my-btn i {
+  margin-right: 0;
+}
+@media (min-width: 992px) {
+  .control-panel .adv-search-btn-wrp .my-btn i {
+    margin-right: 10px;
+  }
+}
 .control-panel .advanced-search.active {
   display: block;
 }
@@ -4352,18 +4360,18 @@ h2 span {
 .control-panel .advanced-search .filter__services:not(:last-child) {
   margin-right: 10px;
 }
-.control-panel .advanced-search .filter__services .services .checkmark {
-  top: unset;
+.control-panel .advanced-search .filter__services .services .services .checkmark {
+  top: 4px;
   height: 15px;
   width: 15px;
 }
-.control-panel .advanced-search .filter__services .services .checkmark::after {
+.control-panel .advanced-search .filter__services .services .services .checkmark::after {
   left: 3px;
   top: 1px;
   width: 5px;
   height: 8px;
 }
-.control-panel .advanced-search .filter__services .services label {
+.control-panel .advanced-search .filter__services .services .services label {
   margin-left: unset;
 }
 .control-panel .advanced-search .filter__services-num {
