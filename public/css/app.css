@@ -16156,8 +16156,8 @@ header .my-btn-secondary {
 }
 
 main {
-  height: calc(100vh - 40px);
-  background-color: #F2F3FA;
+  /* height: calc(100vh - 40px); */
+  /* background-color: $bgColor; */
 }
 
 .main__box {
@@ -16280,6 +16280,7 @@ a:hover {
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: #F2F3FA;
 }
 
 #root {

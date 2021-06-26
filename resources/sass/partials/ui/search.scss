@@ -85,6 +85,12 @@ h2 {
 
     .adv-search-btn-wrp {
         width: 100%;
+        .my-btn i {
+            margin-right: 0;
+            @include media-breakpoint-up(lg) { 
+                margin-right: 10px;
+            }
+        }
     }
 
     .advanced-search.active{
@@ -156,20 +162,23 @@ h2 {
             &:not(:last-child) {
                 margin-right: 10px;
             }
-            .services .checkmark {
-                top: unset;
-                height: 15px;
-                width: 15px;
-                &::after {
-                    left: 3px;
-                    top: 1px;
-                    width: 5px;
-                    height: 8px;
-                }
-            }
 
-            .services label {
-                margin-left: unset;
+            .services {
+                .services .checkmark {
+                    top: 4px;
+                    height: 15px;
+                    width: 15px;
+                    &::after {
+                        left: 3px;
+                        top: 1px;
+                        width: 5px;
+                        height: 8px;
+                    }
+                }
+    
+                .services label {
+                    margin-left: unset;
+                }
             }
         }
 
