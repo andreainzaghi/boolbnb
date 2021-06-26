@@ -50,7 +50,8 @@ class ApartmentController extends Controller
         if ( isset($data['services']) ) {
             foreach( $apartments as $index=>$apartment ) {
                 $apArrServices = [];
-                $apartment->route = route('ui.apartments.show', ['id' => $apartment->id]);
+                $apartment->route = route('ui.apartments.show', ['slug' => $apartment->slug]);
+                $apartment->image = asset( 'storage/'.$apartment->image );
                 $apartment->services;
                 $apServices = $apartment->services()->get();
                 foreach( $apServices as $apService ) {

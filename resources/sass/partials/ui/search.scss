@@ -1,4 +1,7 @@
-@import '../../app.scss';
+@import '../../common/myVariables.scss';
+@import '~bootstrap/scss/bootstrap-grid.scss';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '../../variables';
 
 * {
     padding: 0;
@@ -14,7 +17,6 @@ h2 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    background-color:rgb(230, 204, 204);
     width: calc(65% - 47px);
     @include media-breakpoint-up(sm) {
         width: 350px;
@@ -153,6 +155,21 @@ h2 {
         .filter__services {
             &:not(:last-child) {
                 margin-right: 10px;
+            }
+            .services .checkmark {
+                top: unset;
+                height: 15px;
+                width: 15px;
+                &::after {
+                    left: 3px;
+                    top: 1px;
+                    width: 5px;
+                    height: 8px;
+                }
+            }
+
+            .services label {
+                margin-left: unset;
             }
         }
 

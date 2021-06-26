@@ -27,7 +27,7 @@
             <div v-bind:class="{ 'active' : showAdvSearch }" class="advanced-search">
                 <div class="search">
                     <label for="adv-search-city">Città</label>
-                    <input class="form-control" v-on:keyup.letters="autocomplete()" v-on:keydown.enter="select()" v-on:keydown.up="selectUp($event)" v-on:keydown.down="selectDown($event)" v-on:focus="cityFocus = true" v-on:blur="cityFocus = false"  autocomplete="off" class="search" type="text" name="city" v-model="city" id="adv-search-city">
+                    <input class="form-control" v-on:keyup.letters="autocomplete()" v-on:keydown.enter="select()" v-on:keydown.up="selectUp($event)" v-on:keydown.down="selectDown($event)" v-on:focus="cityFocus = true" v-on:blur="cityFocus = false"  autocomplete="off" class="search" type="text" name="searchCity" v-model="city" id="adv-search-city">
                     <ul class="results-box" :class=" results.length === 0 || cityFocus === false && mouseOverRes === false ? 'd-none' : 'd-block'" v-on:mouseover="mouseOverRes = true" v-on:mouseleave="mouseOverRes = false">
                         <li v-on:click="addToCity($event); results = []; mouseOverRes = false;" class="result" :class=" resultSelected == i? 'selected' : '' " v-for="(result, i) in results">@{{ result.address.freeformAddress+', '+result.address.countrySubdivision }}</li>
                     </ul>
@@ -64,12 +64,18 @@
                     </div>
                 </div>
                 <h4 class="filter-title mt-3">Servizi</h4>
-                <div class="filter">
+                <div class="filter__services">
                     @foreach ( $services as $service )
-                        <div class="filter__services">
+                        <div class="form-check services">
+                            <label class="form-check-label" for="{{ $service->name }}">{{ $service->name }}
+                                <input class="form-check-input" type="checkbox" v-model="services" value="{{ $service->id }}" id="{{ $service->name }}" name="{{$service->name}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        {{-- <div class="filter__services">
                             <input id="{{$service->name}}" type="checkbox" name="{{$service->name}}" v-model="services" value="{{$service->id}}">
                             <label for="{{$service->name}}">{{$service->name}}</label>
-                        </div>
+                        </div> --}}
                     @endforeach                    
                 </div>
                 <div class="text-right">
