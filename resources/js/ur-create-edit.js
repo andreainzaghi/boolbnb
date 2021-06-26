@@ -9,7 +9,7 @@ var app = new Vue({
     },
     methods: {
         geolocate() {
-            let query;
+            let query = this.address + ' ' + this.city;
             if ( this.address.indexOf('/') > -1 ) {
                 let intern = this.address.split('/').pop();
                 if ( intern.indexOf(',') > -1 ) {
