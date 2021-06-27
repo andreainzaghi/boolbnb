@@ -43,7 +43,7 @@
             <div class="list-group mt-5">
                 <div :class="{ 'active': id == currentUser}" class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
                         <p>@{{ message.email }}</p>
-                        <p>@{{ message.date }} <i class="fas fa-trash-alt" v-on:click="deleteMess"></i></p>
+                        <p class="message_button">@{{ message.date }} <i class="fas fa-trash-alt" v-on:click="deleteMess(message.id)"></i></p>
                 </div>
                 
 
@@ -67,6 +67,7 @@ let app = new Vue({
     el: '#app-messages',
     data: {            
         messages: [],
+        idDelete: null,
         delete: false,
         currentUser: null,
         lastId: null,
@@ -79,9 +80,19 @@ let app = new Vue({
         });
     },
     methods: {
-        deleteMess(){
-            alert("Delete");
-          this.delete = true;
+        deleteMess(idMess){
+
+            axios.get("/admin/messages/delete/"+idMess).then((response) => {
+
+                console.log(this.messages)
+                }, (err) => {
+
+                    console.log("Error While Posting Data", err);
+                });
+               
+                this.messages = this.messages.filter(function(e) { return e.id !== idMess })
+         
+                this.delete = true;
         },
         personalChat(id) {
       

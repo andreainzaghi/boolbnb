@@ -16869,6 +16869,14 @@ h2 {
   white-space: nowrap;
   height: 100px;
 }
+#app-messages .list-group .message .message_button {
+  display: flex;
+  justify-content: space-between;
+}
+#app-messages .list-group .message .message_button i {
+  color: #e3342f;
+  font-size: 18px;
+}
 #app-messages .list-group .message:hover {
   cursor: pointer;
 }
