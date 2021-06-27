@@ -16877,6 +16877,9 @@ h2 {
   color: #e3342f;
   font-size: 18px;
 }
+#app-messages .list-group .message .message_button .active_del {
+  color: #F2F3FA;
+}
 #app-messages .list-group .message:hover {
   cursor: pointer;
 }

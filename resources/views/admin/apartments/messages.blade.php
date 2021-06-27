@@ -43,7 +43,7 @@
             <div class="list-group mt-5">
                 <div :class="{ 'active': id == currentUser}" class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
                         <p>@{{ message.email }}</p>
-                        <p class="message_button">@{{ message.date }} <i class="fas fa-trash-alt" v-on:click="deleteMess(message.id)"></i></p>
+                        <p class="message_button">@{{ message.date }} <i class="fas fa-trash-alt" :class="{ 'active_del': id == currentUser}" v-on:click="deleteMess(message.id)"></i></p>
                 </div>
                 
 
