@@ -43,8 +43,10 @@
             <div class="list-group mt-5">
                 <div :class="{ 'active': id == currentUser}" class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
                         <p>@{{ message.email }}</p>
-                        <p>@{{ message.date }}</p>
+                        <p>@{{ message.date }} <i class="fas fa-trash-alt" v-on:click="deleteMess"></i></p>
                 </div>
+                
+
             </div>
             <transition id="details" name="slide-fade">
                 <div class="container-messages" v-for="(message, id) in messages" v-if="currentUser == id">
@@ -65,6 +67,7 @@ let app = new Vue({
     el: '#app-messages',
     data: {            
         messages: [],
+        delete: false,
         currentUser: null,
         lastId: null,
         currentChat: null
@@ -76,17 +79,25 @@ let app = new Vue({
         });
     },
     methods: {
+        deleteMess(){
+            alert("Delete");
+          this.delete = true;
+        },
         personalChat(id) {
       
-            if( id == this.lastId){
-                this.currentChat = null;
-                this.lastId = null;
+            if( !this.delete ){
+                if( id == this.lastId){
+                    this.currentChat = null;
+                    this.lastId = null;
+                }
+                else{
+                    this.currentChat = this.messages[id];
+                    this.lastId = id;
+                }
+                this.currentUser = this.lastId;
             }
-            else{
-                this.currentChat = this.messages[id];
-                this.lastId = id;
-            }
-            this.currentUser = this.lastId;
+     
+            this.delete = false;
         
         }
     }
