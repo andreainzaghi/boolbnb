@@ -11,7 +11,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
         <!-- / google-font -->
-
+        <!-- favicon -->
+        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
         <!-- style  -->
         @yield('styles')
         <link rel="stylesheet"  href="{{ asset('css/app.css') }}">
@@ -23,7 +24,7 @@
                 <div class="container-fluid">
                     <div class="row flex-center">
                         <div class="col-2">
-                            <a href="{{ route('welcome') }}" id="logo"><i class="fab fa-airbnb"></i></a>
+                            <a href="{{ route('welcome') }}" id="logo"><img src="{{ asset('img/logo-name.png') }}" alt="logo"></a>
                         </div>
                         <div class="col-10 text-right">
                             @if (Route::has('login'))

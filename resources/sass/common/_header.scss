@@ -6,13 +6,16 @@ header {
     z-index: 1024;
 
     #logo {
-        color: $primaryColor;
-        font-size: 30px;
-        transition: all 0.5s;
-
-        &:hover {
-            color: $primaryColorDark;
+        img {
+            height: 45px;
         }
+        // color: $primaryColor;
+        // font-size: 30px;
+        // transition: all 0.5s;
+
+        // &:hover {
+        //     color: $primaryColorDark;
+        // }
     }
 
     .my-btn-secondary {

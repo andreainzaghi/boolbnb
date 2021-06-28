@@ -16138,13 +16138,8 @@ header {
   padding: 4px 0;
   z-index: 1024;
 }
-header #logo {
-  color: #E94A47;
-  font-size: 30px;
-  transition: all 0.5s;
-}
-header #logo:hover {
-  color: #D63735;
+header #logo img {
+  height: 45px;
 }
 header .my-btn-secondary {
   margin-right: 10px;
