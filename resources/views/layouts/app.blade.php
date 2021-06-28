@@ -17,8 +17,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    {{-- favicon --}}
-    <link rel="shortcut icon" type="image/ico" href="public/storage/images/favicon.ico"/>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
     <!-- Styles -->
     @yield('styles')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,7 +31,7 @@
             <div class="container-fluid">
                 <div class="row flex-center">
                     <div class="col-2">
-                        <a href="{{ route('welcome') }}" id="logo"><i class="fab fa-airbnb"></i></a>
+                        <a href="{{ route('welcome') }}" id="logo"><img src="{{ asset('img/logo-name.png') }}" alt="logo"></a>
                     </div>
                 </div>
             </div>

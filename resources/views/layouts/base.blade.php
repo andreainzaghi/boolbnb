@@ -54,7 +54,7 @@
                 <div class="container-fluid">
                     <div class="row flex-center">
                         <div class="col-6">
-                            <a href="{{ route('admin.apartments.index') }}" id="logo"><i class="fab fa-airbnb"></i> © 2021 Airbnb, Inc.</a>
+                            <a href="{{ route('admin.apartments.index') }}" id="logo"> © 2021 Boolbnb, Inc.</a>
                         </div>
                         <div class="col-6 text-right social-list">
                             <a href="https://www.facebook.com/AirbnbItalia" id="logo"><i class="fab fa-facebook-f"></i></a>
