@@ -16851,12 +16851,13 @@ h2 {
 #app-messages .container-messages {
   border: 1px solid #E94A47;
   width: 50%;
-  height: 100%;
+  height: 80%;
   overflow-y: hidden;
   overflow: auto;
   padding: 20px;
-  margin-left: 50px;
+  margin-left: 80px;
   box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }
 #app-messages .list-group {
   overflow-y: auto;
@@ -16865,9 +16866,19 @@ h2 {
 }
 #app-messages .list-group .message {
   border: 1px solid #E94A47;
-  width: 90%;
-  white-space: nowrap;
+  width: 100%;
   height: 100px;
+}
+#app-messages .list-group .message .message_button {
+  display: flex;
+  justify-content: space-between;
+}
+#app-messages .list-group .message .message_button i {
+  color: #e3342f;
+  font-size: 18px;
+}
+#app-messages .list-group .message .message_button .active_del {
+  color: #F2F3FA;
 }
 #app-messages .list-group .message:hover {
   cursor: pointer;

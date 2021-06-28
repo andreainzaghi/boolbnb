@@ -4,34 +4,7 @@
     {{ $apartment->title }} - Messaggi ricevuti
 @endsection
 
-@section('styles')
-    <style>
-        .ur-wrapper {
-            align-content: flex-start;
-        }
-        .list-group {
-            width: 50%;
-        }
-        .list-group-item span {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            -webkit-line-clamp: 1;
-            display: inline-block;
-        }
-        .list-item__top {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-        }
-        .list-item__bottom {
-            overflow: hidden;
-        }
-        .list-item__bottom span {
-            width: 100%;
-        }
-    </style>
-@endsection
+
 
 @section('mainTitle')
     {{ $apartment->title }} - Messaggi ricevuti
@@ -43,8 +16,10 @@
             <div class="list-group mt-5">
                 <div :class="{ 'active': id == currentUser}" class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
                         <p>@{{ message.email }}</p>
-                        <p>@{{ message.date }}</p>
+                        <p class="message_button">@{{ message.date }} <i class="fas fa-trash-alt" :class="{ 'active_del': id == currentUser}" v-on:click="deleteMess(message.id)"></i></p>
                 </div>
+                
+
             </div>
             <transition id="details" name="slide-fade">
                 <div class="container-messages" v-for="(message, id) in messages" v-if="currentUser == id">
@@ -65,6 +40,8 @@ let app = new Vue({
     el: '#app-messages',
     data: {            
         messages: [],
+        idDelete: null,
+        delete: false,
         currentUser: null,
         lastId: null,
         currentChat: null
@@ -76,17 +53,35 @@ let app = new Vue({
         });
     },
     methods: {
+        deleteMess(idMess){
+
+            axios.get("/admin/messages/delete/"+idMess).then((response) => {
+
+                console.log(this.messages)
+                }, (err) => {
+
+                    console.log("Error While Posting Data", err);
+                });
+               
+                this.messages = this.messages.filter(function(e) { return e.id !== idMess })
+         
+                this.delete = true;
+        },
         personalChat(id) {
       
-            if( id == this.lastId){
-                this.currentChat = null;
-                this.lastId = null;
+            if( !this.delete ){
+                if( id == this.lastId){
+                    this.currentChat = null;
+                    this.lastId = null;
+                }
+                else{
+                    this.currentChat = this.messages[id];
+                    this.lastId = id;
+                }
+                this.currentUser = this.lastId;
             }
-            else{
-                this.currentChat = this.messages[id];
-                this.lastId = id;
-            }
-            this.currentUser = this.lastId;
+     
+            this.delete = false;
         
         }
     }
