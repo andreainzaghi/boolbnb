@@ -41,6 +41,7 @@ var app = new Vue({
         loaded: false,
         cityFocus: false,
         mouseOverRes: false,
+        showMap: true,
         // Filtra
         resultCity: '',
         results: [],

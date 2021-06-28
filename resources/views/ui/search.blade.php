@@ -14,13 +14,14 @@
 @endsection
 
 @section('mainTitle')
-    Zona: <span id="city_title"></span>
+<i class="fas fa-map-marker-alt"></i> <span id="city_title"></span>
 @endsection
 
 @section('MainContent')
     <div id="app">
-        <div class='control-panel'>
+        <div class='control-panel' :class="{ 'h_50' : showMap }">
             <div class="text-right adv-search-btn-wrp">
+                <button v-on:click=" showMap = !showMap " class="my-btn my-btn-primary show-map "><i class="far fa-map"></i></button>
                 <button v-on:click=" showAdvSearch = !showAdvSearch " v-bind:class="{ 'active' : showAdvSearch }" class="my-btn my-btn-primary filter "><i class="fas fa-filter"></i><span> Filtra</span></button>
             </div>
             <!-- ricerca avanzata -->
@@ -106,7 +107,7 @@
                 <span>Nessun appartamento trovato</span>
             </div>
         </div>
-        <div id='map' class='map'></div>
+        <div id='map' class='map' :class="{ 'd-block' : showMap }"></div>
     </div>
     
 @endsection

@@ -16,7 +16,7 @@ var app = new Vue({
     geolocate: function geolocate() {
       var _this = this;
 
-      var query;
+      var query = this.address + ' ' + this.city;
 
       if (this.address.indexOf('/') > -1) {
         var intern = this.address.split('/').pop();

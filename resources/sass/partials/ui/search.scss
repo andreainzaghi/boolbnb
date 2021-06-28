@@ -9,6 +9,25 @@
     box-sizing: border-box;
 }
 
+main {
+    .container {
+        @include media-breakpoint-down(sm) {
+            max-width: 100% !important;
+        }
+        .main__box {
+            @include media-breakpoint-down(sm) {
+                height: calc(100vh - 40px - 31px) !important;
+                margin-top: 71px !important;
+            }
+            .ur-wrapper {
+                @include media-breakpoint-down(sm) { 
+                    padding-top: 20px;
+                }
+            }
+        }
+    }
+}
+
 h2 {
     @include media-breakpoint-down(md) {
         font-size: 1.5rem !important;
@@ -17,9 +36,9 @@ h2 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: calc(65% - 47px);
+    width: calc( 60% - 100px );
     @include media-breakpoint-up(sm) {
-        width: 350px;
+        width: calc( 42% - 100px );
     }
     @include media-breakpoint-up(md) {
         width: 255px;
@@ -40,25 +59,60 @@ h2 {
 #app {
     height: 100%;
     width: 100%;
-    display: flex;    
+    display: flex;   
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    @include media-breakpoint-up(sm) {
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+
 }
 
 .control-panel {
     position: relative;
     padding-right: 10px;
     flex-basis: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    min-height: 50px;
 
-    @include media-breakpoint-up(md) { 
+    &.h_50 {
+        max-height: 50%;
+    }
+    &.h_0 {
+        max-height: 0%;
+    }
+    
+    @include media-breakpoint-up(sm) {
+        flex-basis: 50%;
+
+        &.h_50 {
+            max-height: 100%;
+        }
+        &.h_0 {
+            max-height: 0%;
+        }
+    }
+
+    @include media-breakpoint-up(md) {
         flex-basis: 65%;
     }
+
 
     // Reset larghezza xs
     .my-btn-primary {
         width: auto;
         &.filter {
             margin-top: 0 !important;
+        }
+        &.show-map {
+            @include media-breakpoint-up(md) { 
+                display: none;
+            }
         }
     }
 
@@ -239,14 +293,27 @@ h2 {
         overflow: auto;
         display: flex;
         flex-wrap: wrap;
+        
+        @include media-breakpoint-down(sm) { 
+            margin-top: 15px;
+        }
 
         .apartment-card {
             color: #B9B7BD;
-            padding-right: 25px;
             flex-basis: 100%;
+            max-width: 100%;
+            margin-bottom: 25px;
+
+            @include media-breakpoint-up(sm) { 
+                flex-basis: 100%;
+                max-width: 100%;
+            }
             
             @include media-breakpoint-up(md) { 
+                margin-bottom: 40px;
+                padding-right: 25px;
                 flex-basis: 50%;
+                max-width: 50%;
             }
 
             .img-wrapper {
@@ -271,6 +338,9 @@ h2 {
 
             h3 {
                 font-size: 1.3rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .card__rooms {
@@ -291,20 +361,50 @@ h2 {
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;  
                 overflow: hidden;
-                margin-bottom: 40px;
+                @include media-breakpoint-down(sm) { 
+                    display: none;
+                }
             }
         }
     }
 }
 
 #map {
-    flex-basis: 35%;
-    height: 100%;
-    border-radius: 15px 15px 0 0;
+    height: 44%;
     display: none;
-
-    @include media-breakpoint-up(md) { 
+    position: relative;
+    overflow: hidden;
+    &::before {
+        content: '';
         display: block;
+        height: 2px;
+        background-color: $primaryColor;
+        position: relative;
+        z-index: 2;
+    }
+
+    @include media-breakpoint-down(xs) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin-left: 15px;
+        margin-right: 15px;
+        width: calc(100% - 30px);
+    }
+
+    @include media-breakpoint-up(sm) { 
+        flex-basis: 50%;
+        display: block;
+        height: unset;
+        border-radius: 15px 15px 0 0;
+        &::before {
+            display: none;
+        }
+    }
+    
+    @include media-breakpoint-up(md) { 
+        flex-basis: 35%;
     }
 
     .popup_title {
@@ -336,5 +436,11 @@ h2 {
     .search-box input {
         width: 300px;
         font-size: 13px;
+    }
+}
+
+footer {
+    @include media-breakpoint-down(sm) { 
+        display: none !important;
     }
 }
