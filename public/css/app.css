@@ -16850,7 +16850,7 @@ h2 {
   overflow-y: hidden;
   overflow: auto;
   padding: 20px;
-  margin-left: 80px;
+  margin-left: 50px;
   box-shadow: 0px 5px 5px 5px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 }
@@ -16858,6 +16858,7 @@ h2 {
   overflow-y: auto;
   max-height: 400px;
   padding-left: 20px;
+  width: 44%;
 }
 #app-messages .list-group .message {
   border: 1px solid #E94A47;
