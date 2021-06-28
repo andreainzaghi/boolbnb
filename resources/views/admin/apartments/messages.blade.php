@@ -11,15 +11,14 @@
 @endsection
 
 @section('MainContent')
-    <div id="app-messages">
-       
+    <div id="app-messages">       
             <div class="list-group mt-5">
+                <div v-if="messages.length == 0">Non hai nessun messaggio</div>
+
                 <div :class="{ 'active': id == currentUser}" class="border list-group-item list-group-item-action message" v-for="(message, id) in messages" v-on:click="personalChat(id)">
                         <p>@{{ message.email }}</p>
                         <p class="message_button">@{{ message.date }} <i class="fas fa-trash-alt" :class="{ 'active_del': id == currentUser}" v-on:click="deleteMess(message.id)"></i></p>
                 </div>
-                
-
             </div>
             <transition id="details" name="slide-fade">
                 <div class="container-messages" v-for="(message, id) in messages" v-if="currentUser == id">
