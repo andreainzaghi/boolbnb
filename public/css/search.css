@@ -4284,23 +4284,24 @@ h2 span {
 .control-panel.h_50 {
   max-height: 50%;
 }
-.control-panel.h_0 {
-  max-height: 0%;
-}
 @media (min-width: 576px) {
   .control-panel {
-    flex-basis: 50%;
+    flex-basis: 100%;
   }
   .control-panel.h_50 {
+    flex-basis: 50%;
     max-height: 100%;
   }
-  .control-panel.h_0 {
-    max-height: 0%;
+  .control-panel.h_50 #apartments-list .apartment-card {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-bottom: 25px;
+    padding-right: 0;
   }
 }
 @media (min-width: 768px) {
   .control-panel {
-    flex-basis: 65%;
+    flex-basis: 65% !important;
   }
 }
 .control-panel .my-btn-primary {
@@ -4489,16 +4490,14 @@ h2 span {
 }
 @media (min-width: 576px) {
   .control-panel #apartments-list .apartment-card {
-    flex-basis: 100%;
-    max-width: 100%;
+    flex-basis: 50%;
+    max-width: 50%;
+    padding-right: 25px;
   }
 }
 @media (min-width: 768px) {
   .control-panel #apartments-list .apartment-card {
     margin-bottom: 40px;
-    padding-right: 25px;
-    flex-basis: 50%;
-    max-width: 50%;
   }
 }
 .control-panel #apartments-list .apartment-card .img-wrapper {
@@ -4578,7 +4577,6 @@ h2 span {
 @media (min-width: 576px) {
   #map {
     flex-basis: 50%;
-    display: block;
     height: unset;
     border-radius: 15px 15px 0 0;
   }
@@ -4589,6 +4587,7 @@ h2 span {
 @media (min-width: 768px) {
   #map {
     flex-basis: 35%;
+    display: block;
   }
 }
 #map .popup_title {
