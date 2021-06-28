@@ -18,6 +18,9 @@
             <h4 class="alert-heading"><i class="far fa-check-circle"></i> Pagamento riuscito!</h4>
             <hr>
             <p class="mb-0">La tua sponsorizzazione finirà: {{$date}}</p>
+            <div id="app">
+                <p>Attendi...</p>
+            </div>        
           </div>
         
      </div>
