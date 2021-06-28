@@ -16150,11 +16150,6 @@ header .my-btn-secondary {
   }
 }
 
-main {
-  /* height: calc(100vh - 40px); */
-  /* background-color: $bgColor; */
-}
-
 .main__box {
   height: calc(100vh - 40px - 90px);
   margin-top: 90px;
@@ -16630,6 +16625,11 @@ h2 {
 .admin-appartamento .title h3 {
   width: 65%;
 }
+@media (max-width: 767.98px) {
+  .admin-appartamento .title h3 {
+    width: 100%;
+  }
+}
 .admin-appartamento .title h3 span, .admin-appartamento .title h3 .fas.fa-eye-slash.no-visibile {
   font-size: 15px;
   color: #E94A47;
@@ -17088,13 +17088,25 @@ h2 {
 .admin-appartamento {
   width: 100%;
 }
-.admin-appartamento .box-left {
+.admin-appartamento .title {
+  width: 100% !important;
+  flex-shrink: 0;
+}
+.admin-appartamento .title h3 {
   width: 65%;
 }
-.admin-appartamento .box-left .title p {
+@media (max-width: 767.98px) {
+  .admin-appartamento .title h3 {
+    width: 100%;
+  }
+}
+.admin-appartamento .title p {
   color: #23286B;
   font-size: 12px;
   margin-bottom: 10px;
+}
+.admin-appartamento .box-left {
+  width: 65%;
 }
 .admin-appartamento .box-left .admin-img-box {
   margin-right: 20px;
@@ -17152,11 +17164,19 @@ h2 {
 }
 .admin-appartamento .box-right {
   width: 35%;
-  margin-top: 18px;
+  margin-top: -28px;
+}
+@media (max-width: 767.98px) {
+  .admin-appartamento .box-right {
+    margin-top: 0;
+  }
 }
 .admin-appartamento .box-right .guest-title-page {
   width: 100%;
   margin-bottom: 15px;
+}
+.admin-appartamento .box-right .guest-title-page .title-map {
+  height: 28px;
 }
 .admin-appartamento .box-right .guest-title-page .title-map h4 {
   padding-bottom: 2px;

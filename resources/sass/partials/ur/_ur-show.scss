@@ -16,7 +16,6 @@
 // classi helpers
 
 
-
 .admin-sponsor-box {
   border: 1px solid $primaryColor;
   border-radius: 15px;
@@ -42,6 +41,9 @@
     width: 100% !important;
     flex-shrink: 0;
     h3 {
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
       width: 65%;
 
       span, .fas.fa-eye-slash.no-visibile   {
@@ -49,10 +51,6 @@
         color: $primaryColor;
         margin-left: 5px;
       }
-      // {
-      //   font-size: 15px;
-      //   color: $primaryColor;
-      // }
     }
 
     p {

@@ -4,6 +4,7 @@
 
     {{-- style tom tom --}}
     <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps.css'/>
+    <link rel='stylesheet' type='text/css' href="{{ asset( 'css/_show.css') }}"/>
 @endsection
 
 @section('pageTitle')
@@ -22,14 +23,14 @@
     </div>
   @endif
 
-  <div class="admin-appartamento d-flex"> 
+  <div class="admin-appartamento d-flex flex-wrap"> 
+    <div class="title">
+      <h3>{{ $apartment->title }}</h3>
+      <p>{{ $apartment->address }}, {{ $apartment->city }}</p>
+    </div>
         <!-- box-left -->
         <div class="box-left d-flex-colmn">
 
-          <div class="title">
-            <h3>{{ $apartment->title }}</h3>
-            <p>{{ $apartment->address }}, {{ $apartment->city }}</p>
-          </div>
 
           <div class="admin-img-box">
             <a href="#" class="w-100"><img class="immagine" src="{{asset('storage/'.$apartment['image'])}}" alt="Immagine appartamento"></a>
@@ -97,14 +98,10 @@
 
                
   </div>
-  {{-- bottoni lato admin --}}
-  
-  {{-- bottoni lato admin --}}    
   
 </div>
 
   @section('script')
-  {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> --}}
   <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.13.0/maps/maps-web.min.js'></script>
   <script src="{{ asset('js/show.js') }}" defer></script>
   @endsection

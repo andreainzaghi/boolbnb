@@ -18,4 +18,5 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/ur-create-edit.js', 'public/js')
     .js('resources/js/welcome', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
-    .sass('resources/sass/partials/ui/search.scss', 'public/css');
+    .sass('resources/sass/partials/ui/search.scss', 'public/css')
+    .sass('resources/sass/common/_show.scss', 'public/css');

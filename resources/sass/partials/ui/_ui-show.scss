@@ -14,20 +14,28 @@
 }
 // classi helpers
 
-
 .admin-appartamento {
   width: 100%;
+  
+  .title {
+    width: 100% !important;
+    flex-shrink: 0;
+    h3 {
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+      width: 65%;
+    }
+    p {
+      color: $secondaryColor;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  }
 
   .box-left {
     width: 65%;
 
-    .title {
-      p {
-        color: $secondaryColor;
-        font-size: 12px;
-        margin-bottom: 10px;
-      }
-    }
 
     .admin-img-box {
       margin-right: 20px;
@@ -92,13 +100,17 @@
 
   .box-right {
     width: 35%;
-    margin-top: 18px;
+    margin-top: -28px;
+    @include media-breakpoint-down(sm) {
+      margin-top: 0;
+    }
   
     .guest-title-page { 
       width:100%;
       margin-bottom: 15px;
       
       .title-map {
+        height: 28px;
         h4 {
           padding-bottom: 2px;
         }
@@ -207,11 +219,6 @@
     text-align: center;
     margin-top: 10px;
   }
-  // .my-btn-primary {
-  //   width: 100%;
-  //   text-align: center;
-  //   margin-top: 10px
-  // }
 }
 @media screen and (max-width: 320px) {
 
