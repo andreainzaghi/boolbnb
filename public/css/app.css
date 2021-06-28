@@ -17010,22 +17010,31 @@ h2 {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.sponsored .ap_card {
+.sponsored a {
+  width: 250px;
+  margin: auto;
+}
+.sponsored a .ap_card {
   border: 0px;
   background-color: transparent;
 }
-.sponsored .ap_card .card_image {
+.sponsored a .ap_card .card_title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sponsored a .ap_card .card_image {
   height: 150px;
   width: 250px;
   border-radius: 15px;
   overflow: hidden;
 }
-.sponsored .ap_card .card_image img {
+.sponsored a .ap_card .card_image img {
   height: 100%;
   width: 100%;
   transition: transform 0.5s;
 }
-.sponsored .ap_card .card_image img:hover {
+.sponsored a .ap_card .card_image img:hover {
   transform: scale(1.4);
 }
 
