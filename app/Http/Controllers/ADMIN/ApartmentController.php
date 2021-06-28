@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ADMIN;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Apartment;
+use App\Message;
 use App\Service;
 use App\Sponsor;
 use App\View;
@@ -220,6 +221,20 @@ class ApartmentController extends Controller
         return redirect()
                 ->route('admin.apartments.index')
                 ->with('message', $apartment->title . 'è stato eliminato');
+    }
+
+    public function destroyMessage($id){
+        
+        $message = Message::find($id);
+        
+        $apartment = Apartment::find($message->apartment_id);
+        
+        if( $apartment->user_id != Auth::id() ) {
+            abort('403');
+        }
+
+        $message->delete();
+
     }
 
     public function messages( Apartment $apartment )

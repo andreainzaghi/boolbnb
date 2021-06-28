@@ -32,6 +32,7 @@ Auth::routes();
 // AREA PRIVATA
 Route::prefix('admin')->name('admin.')->namespace('ADMIN')->middleware('auth')->group(function () {
     Route::resource('apartments', 'ApartmentController');
+    Route::get('messages/delete/{id}', 'ApartmentController@destroyMessage');
     Route::get('apartments/{apartment}/messages', 'ApartmentController@messages')->name('apartments.messages');
 });
 
