@@ -17,7 +17,7 @@
         overflow-y: hidden;
         overflow: auto;
         padding: 20px;
-        margin-left: 80px;
+        margin-left: 50px;
         box-shadow: 0px 5px 5px 5px rgba(0,0,0,0.3);
         border-radius: 5px;
 
@@ -27,6 +27,7 @@
         overflow-y: auto;
         max-height: 400px;
         padding-left: 20px;
+        width: 44%;
 
         .message{
             border:1px solid $primaryColor;
