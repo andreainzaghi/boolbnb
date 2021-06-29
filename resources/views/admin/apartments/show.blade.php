@@ -23,7 +23,7 @@
         
             @foreach ($sponsors as $sponsor)
               <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="{{ $sponsor->name }}" name="sponsor" class="custom-control-input" value="{{ $sponsor }}">
+                <input type="radio" id="{{ $sponsor->name }}" name="sponsor" class="custom-control-input" value="{{ $sponsor }}" {{$sponsor->id == 1 ? 'checked' : ''}}>
                 <label class="custom-control-label color" for="{{ $sponsor->name }}"> {{ $sponsor->name }} | {{ $sponsor->price }} € per {{ $sponsor->hours }} ore</label>
               </div>
             @endforeach
